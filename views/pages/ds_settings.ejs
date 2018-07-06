@@ -1,0 +1,21 @@
+<% include ../partials/head %>
+
+<div>
+  <h1>DocuSign Connection</h1>
+  <p>In addition to its primary authentication system, this app
+    also authenticates with DocuSign</p>
+  <p>DocuSign authentication status:
+  </p>
+
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="/ds/login" role="button"
+       data-busy="href">DocuSign Login</a>
+  </p>
+
+  <p><a href="/ds/delete_user_data" data-busy="href">
+      Delete all refresh tokens</a>
+  </p>
+
+</div>
+
+<% include ../partials/foot %>
