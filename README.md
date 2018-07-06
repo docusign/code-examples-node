@@ -1,4 +1,4 @@
-# Node Authorization Code Grant Examples
+# Node.JS: Authorization Code Grant Examples
 
 ### Github repo: eg-03-node-auth-code-grant
 
