@@ -5,6 +5,8 @@
 ## Contents
 * [Introduction](#introduction)
 * [Installation](#installation)
+* [Using the examples with other authentication flows](#notes)
+* [License and additional information]
 
 ## Introduction
 This repo is a Node.JS application that demonstrates the following:
@@ -127,5 +129,19 @@ API method used: [EnvelopeViews::createConsole](https://developers.docusign.com/
 1. **npm start** 
 1. Open a browser to **http://localhost:3000**
 
+## Using the examples with other authentication flows
+
+The examples in this repository can also be used with either the Implicit Grant or JWT flows. 
+See the [Authentication guide](https://developers.docusign.com/esign-rest-api/guides/authentication)
+for information on choosing the right authentication flow for your application.
+
+## License and additional information
+
+### License
+This repository uses the MIT License. See the LICENSE file for more information.
+
+### Pull Requests
+Pull requests are welcomed. Pull requests will only be considered if their content
+uses the MIT License.
 
  
