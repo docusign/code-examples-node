@@ -7,7 +7,7 @@
 * [Installation](#installation)
 
 ## Introduction
-This repo is a Node.JS application that demonstrates:
+This repo is a Node.JS application that demonstrates the following:
 
 ### Authorization Code Grant
 This example enables the user to authenticate with DocuSign via the 
@@ -19,17 +19,18 @@ The **refresh token** is not used in this example.
 
 #### Embedded Signing Ceremony
 This example sends an envelope, and then uses an embedded signing ceremony for the first signer.
-With embedded signing, the signer uses a DocuSign signing ceremony from your website. 
+With embedded signing, the DocuSign signing ceremony is initiated from your website. 
 
-API methods used: [Envelopes::create](https://developers.docusign.com/esign-rest-api/guides/authentication/oauth2-code-grant) and
+API methods used: [Envelopes::create](https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/create) and
 [EnvelopeViews::createRecipient](https://developers.docusign.com/esign-rest-api/reference/Envelopes/EnvelopeViews/createRecipient)
 
 
 #### Send an envelope with a remote (email) signer and cc recipient
-The envelope includes three documents: a pdf, Word, and HTML document. 
-Anchor text (Auto place) is used to position the signing fields in the documents.
+The envelope includes a pdf, Word, and HTML document. 
+Anchor text ([AutoPlace](https://support.docusign.com/en/guides/AutoPlace-New-DocuSign-Experience)) 
+is used to position the signing fields in the documents.
 
-API method used: [Envelopes::create](https://developers.docusign.com/esign-rest-api/guides/authentication/oauth2-code-grant)
+API method used: [Envelopes::create](https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/create)
 
 #### List envelopes in the user's account
 The example lists the user's envelopes created in the last 30 days.
@@ -38,19 +39,19 @@ API method used: [Envelopes::listStatusChanges](https://developers.docusign.com/
 
 #### Get an envelope's core information
 The example lists the core information about an envelope, including its overall status.
-Additional API/SDK methods are used to get additional information about the 
+Additional API/SDK methods may be used to get additional information about the 
 envelope, its documents, recipients, etc.
 
 API method used: [Envelopes::get](https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/get)
 
 #### List an envelope's recipients
-The example lists the envelope's recpipients, including their current status
+The example lists the envelope's recipients, including their current status.
 
 API method used: [EnvelopeRecipients::list](https://developers.docusign.com/esign-rest-api/reference/Envelopes/EnvelopeRecipients/list)
 
 #### List and download an envelope's documents
-This example lists and then downloads an envelope's documents. 
-The documents are downloaded to a local directory on the server. 
+This example lists and then downloads an envelope's documents from DocuSign to  
+a local directory on the server. 
 They are not downloaded to the browser. 
 
 API methods used: [EnvelopeDocuments::list](https://developers.docusign.com/esign-rest-api/reference/Envelopes/EnvelopeDocuments/list)
@@ -66,26 +67,41 @@ API method used: [Templates::create](https://developers.docusign.com/esign-rest-
 This example sends an envelope using a template. The template created with the **Create a template** example 
 (immediately above) will be used. A common pattern for integrating DocuSign is to enable
 the members of a business department to maintain and update a template by using the DocuSign web application.
-Then your SDK application uses the template when it programmatically sends envelopes.
+Then your SDK application can use the template when it programmatically sends envelopes.
+
+API method used: [Envelopes::create](https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/create)
 
 ### Envelope Content
 
-#### Composite templates eg 1
-lorem epsom lorem epsom lorem epsom lorem epsom lorem epsom lorem epsom lorem epsom lorem epsom lorem epsom lorem epsom lorem epsom lorem epsom lorem epsom lorem epsom lorem epsom lorem epsom lorem epsom lorem epsom lorem epsom lorem epsom lorem epsom lorem epsom lorem epsom lorem epsom lorem epsom lorem epsom 
+These examples demonstrate different techniques for updating an envelope's content.
+
+#### Replacing a template's document
+This example demonstrates how to create an envelope which uses all of the settings of a template,
+except that a document in the template is replaced with a different document.
+
+API method used: [Envelopes::create](https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/create)
 
 ### Embedding the DocuSign webtool
 
 #### Embedded Sending
-This example creates an envelope and then opens the DocuSign sending view for the envelope.
+This example creates an envelope and then opens the DocuSign sending view for the envelope. 
+The sender can use the DocuSign web tool to add or update recipients, document fields (tabs),
+and make other changes to the envelope. After the envelope has been sent, the user will be
+redirected back to your application.
 
+API method used: [EnvelopeViews::createSender](https://developers.docusign.com/esign-rest-api/reference/Envelopes/EnvelopeViews/createSender)
 
-Auth Code Grant: Embedded DocuSign console
+#### Embedded DocuSign console
+This example redirects your application's user to the DocuSign console, the New DocuSign Signing Experience.
+The user is not redirected back to your application.
+
+API method used: [EnvelopeViews::createConsole](https://developers.docusign.com/esign-rest-api/reference/Envelopes/EnvelopeViews/createConsole)
 
 ## Installation
 
 ### Prerequisites
 1. A DocuSign Developer Sandbox account (email and password) on [demo.docusign.net](https://demo.docusign.net).
-   [Create a free account](https://go.docusign.com/o/sandbox/)
+   Create a [free account](https://go.docusign.com/o/sandbox/)
 1. A DocuSign Integration Key (a client ID) that is configured to use the OAuth Authorization Code flow.
    You will need the **Integration Key** itself, and its **secret**.
 
