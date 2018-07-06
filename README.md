@@ -2,7 +2,9 @@
 
 ### Github repo: eg-03-node-auth-code-grant
 
-## [Installation](#Installation)
+## Contents
+* [Introduction](#introduction)
+* [Installation](#installation)
 
 ## Introduction
 This repo is a Node.JS application that demonstrates:
