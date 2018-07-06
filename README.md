@@ -5,8 +5,8 @@
 ## Contents
 * [Introduction](#introduction)
 * [Installation](#installation)
-* [Using the examples with other authentication flows](#notes)
-* [License and additional information]
+* [Using the examples with other authentication flows](#using-the-examples-with-other-authentication-flows)
+* [License and additional information](#license-and-additional-information)
 
 ## Introduction
 This repo is a Node.JS application that demonstrates the following:
