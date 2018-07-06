@@ -17,11 +17,19 @@ The **refresh token** is not used in this example.
 
 ### Core Examples
 
+#### Embedded Signing Ceremony
+This example sends an envelope, and then uses an embedded signing ceremony for the first signer.
+With embedded signing, the signer uses a DocuSign signing ceremony from your website. 
+
+API methods used: [Envelopes::create](https://developers.docusign.com/esign-rest-api/guides/authentication/oauth2-code-grant) and
+[EnvelopeViews::createRecipient](https://developers.docusign.com/esign-rest-api/reference/Envelopes/EnvelopeViews/createRecipient)
+
+
 #### Send an envelope with a remote (email) signer and cc recipient
 The envelope includes three documents: a pdf, Word, and HTML document. 
 Anchor text (Auto place) is used to position the signing fields in the documents.
 
-API method used: [Emvelopes::create](https://developers.docusign.com/esign-rest-api/guides/authentication/oauth2-code-grant)
+API method used: [Envelopes::create](https://developers.docusign.com/esign-rest-api/guides/authentication/oauth2-code-grant)
 
 #### List envelopes in the user's account
 The example lists the user's envelopes created in the last 30 days.
@@ -40,12 +48,37 @@ The example lists the envelope's recpipients, including their current status
 
 API method used: [EnvelopeRecipients::list](https://developers.docusign.com/esign-rest-api/reference/Envelopes/EnvelopeRecipients/list)
 
-Auth Code Grant: list envelope docs, download docs
-Auth Code Grant: Create a template
-Auth Code Grant: Send envelope using a template
-Auth Code Grant: Composite templates eg 1
-Auth Code Grant: Embedded Signing Ceremony
-Auth Code Grant: Embedded Sending
+#### List and download an envelope's documents
+This example lists and then downloads an envelope's documents. 
+The documents are downloaded to a local directory on the server. 
+They are not downloaded to the browser. 
+
+API methods used: [EnvelopeDocuments::list](https://developers.docusign.com/esign-rest-api/reference/Envelopes/EnvelopeDocuments/list)
+and [EnvelopeDocuments::get](https://developers.docusign.com/esign-rest-api/reference/Envelopes/EnvelopeDocuments/get)
+
+#### Create a template
+This example creates a template programmatically. 
+The template will include three documents and two roles: `signer` and `cc`.
+
+API method used: [Templates::create](https://developers.docusign.com/esign-rest-api/reference/Templates/Templates/create)
+
+#### Send an envelope using a template
+This example sends an envelope using a template. The template created with the **Create a template** example 
+(immediately above) will be used. A common pattern for integrating DocuSign is to enable
+the members of a business department to maintain and update a template by using the DocuSign web application.
+Then your SDK application uses the template when it programmatically sends envelopes.
+
+### Envelope Content
+
+#### Composite templates eg 1
+lorem epsom lorem epsom lorem epsom lorem epsom lorem epsom lorem epsom lorem epsom lorem epsom lorem epsom lorem epsom lorem epsom lorem epsom lorem epsom lorem epsom lorem epsom lorem epsom lorem epsom lorem epsom lorem epsom lorem epsom lorem epsom lorem epsom lorem epsom lorem epsom lorem epsom lorem epsom 
+
+### Embedding the DocuSign webtool
+
+#### Embedded Sending
+This example creates an envelope and then opens the DocuSign sending view for the envelope.
+
+
 Auth Code Grant: Embedded DocuSign console
 
 ## Installation
@@ -70,10 +103,10 @@ Auth Code Grant: Embedded DocuSign console
 1. **npm install**
 1. *Either:*
    
-   1. Update the file **ds_configuration.js** in the project's root directory with the Integration Key
-      and other settings, or
-   1. Create and export environment variables for the settings. See the **ds_configuration.js** file 
-      for the names of the environment variables.
+   * Update the file **ds_configuration.js** in the project's root directory with the Integration Key
+     and other settings, *or*
+   * Create and export environment variables for the settings. See the **ds_configuration.js** file 
+     for the names of the environment variables.
 
 1. **npm start** 
 1. Open a browser to **http://localhost:3000**
