@@ -1,21 +1,28 @@
 <% include ../partials/head %>
 
-<% if (! locals.user) { %>
-  <!-- Not signed in -->
-  <div class="jumbotron">
-    <h1 class="display-4">Welcome!</h1>
-    <p class="lead">Welcome to the DocuSign Node.JS examples with
-      OAuth Authorization Code Grant.</p>
-  </div>
-<% } %>
+<h4>Embedded Signing Ceremony</h4>
+<p>This example sends an envelope, and then uses an embedded signing ceremony for the first signer. 
+  With embedded signing, the DocuSign signing ceremony is initiated from your website.
+</p>
+<p>API methods used: 
+   <a href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/create">Envelopes::create</a> and 
+   <a href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/EnvelopeViews/createRecipient">EnvelopeViews::createRecipient</a>.
+</p>
 
-
-  <!-- Signed in -->
-  <div>
-    <p class="lead">
-      <a class="btn btn-primary btn-lg" href="/envelope_1_form" role="button"
-        data-busy="href">Send an Envelope</a>
-    </p>
-  </div>
-
+<form class="eg" action="" method="post" > <!-- data-busy="form" -->
+    <div class="form-group">
+      <label for="signerEmail">Signer Email</label>
+      <input type="email" class="form-control" id="signerEmail" name="signerEmail"
+             aria-describedby="emailHelp" placeholder="Enter email" 
+             value="<%= locals.dsConfig.signerEmail %>">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label for="signerName">Signer Name</label>
+      <input type="text" class="form-control" id="signerName" placeholder="Name" name="signerName"
+             value="<%= locals.dsConfig.signerName %>">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  
 <% include ../partials/foot %>

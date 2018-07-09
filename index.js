@@ -2,12 +2,13 @@
 
 const express = require('express')
     , session = require('express-session')  // https://github.com/expressjs/session
+    , bodyParser = require('body-parser')
     , MemoryStore = require('memorystore')(session) // https://github.com/roccomuso/memorystore
     , path = require('path')
     , DSAuthCodeGrant = require('./lib/DSAuthCodeGrant')
     , passport = require('passport')
     , DocusignStrategy = require('passport-docusign')
-    , ds_config = require('./ds_configuration.js').config
+    , dsConfig = require('./ds_configuration.js').config
     , dsWork = require('./lib/dsWork')
     , flash = require('express-flash')
     , helmet = require('helmet') // https://expressjs.com/en/advanced/best-practice-security.html
@@ -26,7 +27,7 @@ let app = express()
   .use(helmet())
   .use(express.static(path.join(__dirname, 'public')))
   .use(session({
-    secret: ds_config.sessionSecret,
+    secret: dsConfig.sessionSecret,
     name: 'ds-eg03-session',
     cookie: {maxAge: max_session_min * 60000},
     saveUninitialized: true,
@@ -36,7 +37,12 @@ let app = express()
   })}))
   .use(passport.initialize())
   .use(passport.session())
-  .use(((req, res, next) => {res.locals.user = req.user; res.locals.session = req.session; next()})) // Send user info to views
+  .use(bodyParser.urlencoded({ extended: true }))
+  .use(((req, res, next) => {
+    res.locals.user = req.user;
+    res.locals.session = req.session;
+    res.locals.dsConfig = dsConfig;
+    next()})) // Send user info to views
   .use(flash())
   .use(csp({
     // Specify directives as normal.
@@ -81,8 +87,8 @@ function dsLoginCB1 (req, res, next) {req.dsAuthCodeGrant.oauth_callback1(req, r
 function dsLoginCB2 (req, res, next) {req.dsAuthCodeGrant.oauth_callback2(req, res, next)}
 
 /* Start the web server */
-if (ds_config.dsClientId && ds_config.dsClientId !== '{CLIENT_ID}' &&
-    ds_config.dsClientSecret && ds_config.dsClientSecret !== '{CLIENT_SECRET}') {
+if (dsConfig.dsClientId && dsConfig.dsClientId !== '{CLIENT_ID}' &&
+    dsConfig.dsClientSecret && dsConfig.dsClientSecret !== '{CLIENT_SECRET}') {
   app.listen(PORT, HOST, function (err) {
     if (err) {throw err}
     console.log(`Ready! Open ${hostUrl}`);
@@ -106,9 +112,9 @@ passport.deserializeUser(function(obj,  done) {done(null, obj)});
 
 // Configure passport for DocusignStrategy
 let docusignStrategy = new DocusignStrategy({
-    production: ds_config.production,
-    clientID: ds_config.dsClientId,
-    clientSecret: ds_config.dsClientSecret,
+    production: dsConfig.production,
+    clientID: dsConfig.dsClientId,
+    clientSecret: dsConfig.dsClientSecret,
     callbackURL: hostUrl + '/ds/callback',
     state: true // automatic CSRF protection.
     // See https://github.com/jaredhanson/passport-oauth2/blob/master/lib/state/session.js
@@ -132,7 +138,7 @@ let docusignStrategy = new DocusignStrategy({
  * The DocuSign OAuth default is to allow silent authentication.
  * An additional OAuth query parameter is used to not allow silent authentication
  */
-if (!ds_config.allowSilentAuthentication) {
+if (!dsConfig.allowSilentAuthentication) {
   // See https://stackoverflow.com/a/32877712/64904 
   docusignStrategy.authorizationParams = function(options) {
     return {prompt: 'login'};

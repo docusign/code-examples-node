@@ -5,6 +5,10 @@ body {
 .feedback, .hidden {display: none;}
 span.feedback {margin-left:2em;}
 
+form.eg {max-width: 30em;}
+form.eg label {font-weight: 550;}
+
+
 /* From http://tobiasahlin.com/spinkit/ */
 .spinner {
   margin: 100px auto;
