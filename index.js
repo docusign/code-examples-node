@@ -13,10 +13,13 @@ const express = require('express')
     , helmet = require('helmet') // https://expressjs.com/en/advanced/best-practice-security.html
     , moment = require('moment')
     , csp = require('helmet-csp')
-    , PORT = process.env.PORT || 5000
+    , eg001 = require('./lib/examples/eg001')
+    ;
+
+    const PORT = process.env.PORT || 5000
     , HOST = process.env.HOST || 'localhost'
     , hostUrl = 'http://' + HOST + ':' + PORT
-    , max_session_min = 60
+    , max_session_min = 180
     ;
 
 let app = express()
@@ -69,9 +72,9 @@ let app = express()
   .get('/ds/login', (req, res, next) => {req.dsAuthCodeGrant.login(req, res, next)})
   .get('/ds/callback', [dsLoginCB1, dsLoginCB2]) // See below
   .get('/ds/logout', (req, res) => {req.dsAuthCodeGrant.logout(req, res)})
-  .get('/ds/must_authenticate', dsWork.mustAuthenticateController)
-  .get('/go', dsWork.goController)
-  .post('/go', dsWork.goController)
+  .get('/ds/mustAuthenticate', dsWork.mustAuthenticateController)
+  .get('/eg001',  eg001.getController)
+  .post('/eg001', eg001.createController)
   ;
 
 function dsLoginCB1 (req, res, next) {req.dsAuthCodeGrant.oauth_callback1(req, res, next)}
