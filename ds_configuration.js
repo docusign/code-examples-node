@@ -11,6 +11,8 @@ exports.config = {
   , production: false
   , debug: true // Send debugging statements to console
   , sessionSecret: '12345' // Secret for encrypting session cookie content
+  , allowSilentAuthentication: true // a user can be silently authenticated if they have an 
+    // active login session on another tab of the same browser
 
   , targetAccountId: null // Set if you want a specific DocuSign AccountId, If null, the user's default account will be used.
   , demoDocPath: 'demo_documents'

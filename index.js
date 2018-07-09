@@ -65,13 +65,13 @@ let app = express()
   // Add an instance of DSAuthCodeGrant to req
   .use((req, res, next) => {req.dsAuthCodeGrant = new DSAuthCodeGrant(req); next()})
   // Routes
-  .get('/', dsWork.index_controller)
+  .get('/', dsWork.indexController)
   .get('/ds/login', (req, res, next) => {req.dsAuthCodeGrant.login(req, res, next)})
   .get('/ds/callback', [dsLoginCB1, dsLoginCB2]) // See below
   .get('/ds/logout', (req, res) => {req.dsAuthCodeGrant.logout(req, res)})
-  .get('/ds/must_authenticate', dsWork.must_authenticate_controller)
-  .get('/go', dsWork.go_controller)
-  .post('/go', dsWork.go_controller)
+  .get('/ds/must_authenticate', dsWork.mustAuthenticateController)
+  .get('/go', dsWork.goController)
+  .post('/go', dsWork.goController)
   ;
 
 function dsLoginCB1 (req, res, next) {req.dsAuthCodeGrant.oauth_callback1(req, res, next)}
@@ -86,7 +86,8 @@ if (ds_config.dsClientId && ds_config.dsClientId !== '{CLIENT_ID}' &&
   })
 } else {
   console.log(`PROBLEM: You need to set the clientId (Integrator Key), and perhaps other settings as well. 
-You can set them in the source file ds_configuration.js or set environment variables.`);
+You can set them in the source file ds_configuration.js or set environment variables.\n`);
+  process.exit(); // We're not using exit code of 1 to avoid extraneous npm messages.
 }
 
 
@@ -101,7 +102,7 @@ passport.serializeUser  (function(user, done) {done(null, user)});
 passport.deserializeUser(function(obj,  done) {done(null, obj)});
 
 // Configure passport for DocusignStrategy
-passport.use(new DocusignStrategy({
+let docusignStrategy = new DocusignStrategy({
     production: ds_config.production,
     clientID: ds_config.dsClientId,
     clientSecret: ds_config.dsClientSecret,
@@ -119,7 +120,19 @@ passport.use(new DocusignStrategy({
     user.accessToken = accessToken;
     user.refreshToken = refreshToken;
     user.expiresIn = params.expires_in;
-    user.expires = moment().add(user.expiresIn, 's');
+    user.expires = moment().add(user.expiresIn, 's'); // The dateTime when the access token will expire
     return done(null, user);
   }
-));
+);
+
+/**
+ * The DocuSign OAuth default is to allow silent authentication.
+ * An additional OAuth query parameter is used to not allow silent authentication
+ */
+if (!ds_config.allowSilentAuthentication) {
+  // See https://stackoverflow.com/a/32877712/64904 
+  docusignStrategy.authorizationParams = function(options) {
+    return {prompt: 'login'};
+  }
+}
+passport.use(docusignStrategy);
