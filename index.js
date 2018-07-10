@@ -3,6 +3,7 @@
 const express = require('express')
     , session = require('express-session')  // https://github.com/expressjs/session
     , bodyParser = require('body-parser')
+    , cookieParser = require('cookie-parser')
     , MemoryStore = require('memorystore')(session) // https://github.com/roccomuso/memorystore
     , path = require('path')
     , DSAuthCodeGrant = require('./lib/DSAuthCodeGrant')
@@ -14,6 +15,7 @@ const express = require('express')
     , helmet = require('helmet') // https://expressjs.com/en/advanced/best-practice-security.html
     , moment = require('moment')
     , csp = require('helmet-csp')
+    , csrf = require('csurf') // https://www.npmjs.com/package/csurf
     , eg001 = require('./lib/examples/eg001')
     ;
 
@@ -21,11 +23,13 @@ const express = require('express')
     , HOST = process.env.HOST || 'localhost'
     , hostUrl = 'http://' + HOST + ':' + PORT
     , max_session_min = 180
+    , csrfProtection = csrf({ cookie: true })
     ;
 
 let app = express()
   .use(helmet())
   .use(express.static(path.join(__dirname, 'public')))
+  .use(cookieParser())
   .use(session({
     secret: dsConfig.sessionSecret,
     name: 'ds-eg03-session',
@@ -79,7 +83,8 @@ let app = express()
   .get('/ds/callback', [dsLoginCB1, dsLoginCB2]) // See below
   .get('/ds/logout', (req, res) => {req.dsAuthCodeGrant.logout(req, res)})
   .get('/ds/mustAuthenticate', dsWork.mustAuthenticateController)
-  .get('/eg001',  eg001.getController)
+  .use(csrfProtection) // CSRF protection for the following routes
+  .get('/eg001', eg001.getController)
   .post('/eg001', eg001.createController)
   ;
 
