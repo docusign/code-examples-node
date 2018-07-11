@@ -21,6 +21,7 @@ let DS_EG = (function(){
   // Add on_click handlers to elements with data-busy attribute
   function augment_busy(){
     $('a[data-busy="href"]').click(busy_href);
+    $('form[data-busy="form"]').submit(busy_form);
   }
 
   // Process flash messages from the server
@@ -44,6 +45,14 @@ let DS_EG = (function(){
     $("#content").hide();
     const href = $(e.target).attr("href");
     window.location = href;
+  }
+
+  let busy_form = function _busy_form(e){
+    e.preventDefault();
+    $("#feedback,#busy").show();
+    $("#content").hide();
+    const form = $(e.target);
+    form.get(0).submit();  
   }
 
   let start_up = function(){
