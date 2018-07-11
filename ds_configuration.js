@@ -19,5 +19,6 @@ exports.config = {
   , demoDocPath: 'demo_documents'
   , docDocx: 'World_Wide_Corp_Battle_Plan_Trafalgar.docx'
   , docPdf:  'World_Wide_Corp_lorem.pdf'
+  , githubExampleUrl: 'https://github.docusignhq.com/DevCenter/eg-03-node-auth-code-grant/tree/master/lib/examples/'
 
 }

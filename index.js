@@ -17,6 +17,7 @@ const express = require('express')
     , csp = require('helmet-csp')
     , csrf = require('csurf') // https://www.npmjs.com/package/csurf
     , eg001 = require('./lib/examples/eg001')
+    , eg002 = require('./lib/examples/eg002')
     ;
 
 const PORT = process.env.PORT || 5000
@@ -87,6 +88,8 @@ let app = express()
   .use(csrfProtection) // CSRF protection for the following routes
   .get('/eg001', eg001.getController)
   .post('/eg001', eg001.createController)
+  .get('/eg002', eg002.getController)
+  .post('/eg002', eg002.createController)
   ;
 
 function dsLoginCB1 (req, res, next) {req.dsAuthCodeGrant.oauth_callback1(req, res, next)}

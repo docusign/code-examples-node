@@ -4,7 +4,14 @@
 <p>Data:</p>
 
 <% if (event) { %>
-  <p>event: <%= event %></p>
+  <p><b>event: <%= event %>.</b> This event parameter is supplied by DocuSign. 
+    Since it could have been spoofed, don't make business decisions based on
+    its value. Instead, query DocuSign as appropriate.</p>
+<% } %>
+
+<% if (state) { %>
+  <p><b>state: <%= state %>.</b> This example state was sent to DocuSign and has now been received back.
+     It is usually better to store state in your web framework's session.</p>
 <% } %>
 
 <p><a href="/">Continue</a></p>

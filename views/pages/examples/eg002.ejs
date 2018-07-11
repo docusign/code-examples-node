@@ -1,13 +1,14 @@
 <% include ../../partials/head %>
 
-<h4>Embedded Signing Ceremony</h4>
-<p>This example sends an envelope, and then uses an embedded signing ceremony for the first signer. 
-  With embedded signing, the DocuSign signing ceremony is initiated from your website.
+<h4>Send an envelope with a remote (email) signer and cc recipient</h4>
+<p>The envelope includes a pdf, Word, and HTML document. Anchor text 
+  (<a href="https://support.docusign.com/en/guides/AutoPlace-New-DocuSign-Experience">AutoPlace</a>)
+  is used to position the signing fields in the documents.
 </p>
-<p>API methods used: 
-   <a href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/create">Envelopes::create</a> and 
-   <a href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/EnvelopeViews/createRecipient">EnvelopeViews::createRecipient</a>.
+<p>API method used: 
+   <a href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/create">Envelopes::create</a>.
 </p>
+
 <p>
   <a target="_blank" href="<%= source %>">Example source.</a>
 </p>
@@ -24,6 +25,17 @@
       <label for="signerName">Signer Name</label>
       <input type="text" class="form-control" id="signerName" placeholder="Pat Johnson" name="signerName"
              value="<%= locals.dsConfig.signerName %>" required>
+    </div>
+    <div class="form-group">
+      <label for="signerEmail">CC Email</label>
+      <input type="email" class="form-control" id="ccEmail" name="ccEmail"
+             aria-describedby="emailHelp" placeholder="pat@example.com" required
+      <small id="emailHelp" class="form-text text-muted">The email and/or name for the cc recipient must be different from the signer.</small>
+    </div>
+    <div class="form-group">
+      <label for="signerName">CC Name</label>
+      <input type="text" class="form-control" id="ccName" placeholder="Pat Johnson" name="ccName"
+             required>
     </div>
     <input type="hidden" name="_csrf" value="<%- csrfToken %>">
     <button type="submit" class="btn btn-primary">Submit</button>
