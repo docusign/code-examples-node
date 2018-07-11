@@ -6,16 +6,49 @@
 // for the supported browser list
 
 let DS_EG = (function(){
-
-
-
   // globals
   //
   // NotifyJS -- see https://notifyjs.jpillora.com/
   const notify_info_t = { className:"info", globalPosition: "top center" }
       , notify_warning_t = { className:"warn", globalPosition: "top center" }
       ;
-  let library = {}
+  let library = {};
+
+  // See http://jsfiddle.net/unLSJ/
+  // USAGE: $(el).html(library.json.prettyPrint(json_obj));
+  // where el is <pre><code> el
+  // or
+  // $(el).html(library.json.prettyPrint2(json_obj));
+  // where el is any el (<pre><code> will be added)
+  library.json = {
+    replacer: function(match, pIndent, pKey, pVal, pEnd) {
+       var key = '<span class=json-key>';
+       var val = '<span class=json-value>';
+       var str = '<span class=json-string>';
+       var r = pIndent || '';
+       if (pKey)
+          r = r + key + pKey.replace(/[": ]/g, '') + '</span>: ';
+       if (pVal)
+          r = r + (pVal[0] == '"' ? str : val) + pVal + '</span>';
+       return r + (pEnd || '');
+       },
+    prettyPrint: function(obj) {
+       var jsonLine = /^( *)("[\w]+": )?("[^"]*"|[\w.+-]*)?([,[{])?$/mg;
+       return JSON.stringify(obj, null, 3)
+          .replace(/&/g, '&amp;').replace(/\\"/g, '&quot;')
+          .replace(/</g, '&lt;').replace(/>/g, '&gt;')
+          .replace(jsonLine, library.json.replacer);
+       },
+    prettyPrint2: function(obj) {
+        var jsonLine = /^( *)("[\w]+": )?("[^"]*"|[\w.+-]*)?([,[{])?$/mg
+          , out = JSON.stringify(obj, null, 3)
+           .replace(/&/g, '&amp;').replace(/\\"/g, '&quot;')
+           .replace(/</g, '&lt;').replace(/>/g, '&gt;')
+           .replace(jsonLine, library.json.replacer);
+        return '<pre><code>' + out + '</code></pre>';
+       }
+    };
+ 
 
 
   // Add on_click handlers to elements with data-busy attribute
@@ -34,6 +67,19 @@ let DS_EG = (function(){
     _.forEach(flash_msg_info, function (msg){
       $.notify(msg, notify_info_t);
     })
+  }
+
+  // process json display
+  function process_json_display() {
+    let json_raw = $("#server_json_data").attr("data-server-json-data")
+      , json_raw2 = json_raw ? JSON.parse(json_raw) : false
+      , json_raw3 = json_raw2 && json_raw2.json
+      , json = JSON.parse(json_raw3)
+      ;
+    
+    if (json) {
+      $('#json-display').html(library.json.prettyPrint(json))
+    }
   }
 
   // Handles clicks for elements with attribute data-busy="href"
@@ -70,49 +116,15 @@ let DS_EG = (function(){
   let start_up = function(){
     augment_busy();
     process_server_flash_msgs();
+    process_json_display();
   }
 
-  // See http://jsfiddle.net/unLSJ/
-  // USAGE: $(el).html(library.json.prettyPrint(json_obj));
-  // where el is <pre><code> el
-  // or
-  // $(el).html(library.json.prettyPrint2(json_obj));
-  // where el is any el (<pre><code> will be added)
-  library.json = {
-   replacer: function(match, pIndent, pKey, pVal, pEnd) {
-      var key = '<span class=json-key>';
-      var val = '<span class=json-value>';
-      var str = '<span class=json-string>';
-      var r = pIndent || '';
-      if (pKey)
-         r = r + key + pKey.replace(/[": ]/g, '') + '</span>: ';
-      if (pVal)
-         r = r + (pVal[0] == '"' ? str : val) + pVal + '</span>';
-      return r + (pEnd || '');
-      },
-   prettyPrint: function(obj) {
-      var jsonLine = /^( *)("[\w]+": )?("[^"]*"|[\w.+-]*)?([,[{])?$/mg;
-      return JSON.stringify(obj, null, 3)
-         .replace(/&/g, '&amp;').replace(/\\"/g, '&quot;')
-         .replace(/</g, '&lt;').replace(/>/g, '&gt;')
-         .replace(jsonLine, library.json.replacer);
-      },
-   prettyPrint2: function(obj) {
-       var jsonLine = /^( *)("[\w]+": )?("[^"]*"|[\w.+-]*)?([,[{])?$/mg
-         , out = JSON.stringify(obj, null, 3)
-          .replace(/&/g, '&amp;').replace(/\\"/g, '&quot;')
-          .replace(/</g, '&lt;').replace(/>/g, '&gt;')
-          .replace(jsonLine, library.json.replacer);
-       return '<pre><code>' + out + '</code></pre>';
-      }
-   };
-
-   function notify_info (msg) {
+  function notify_info (msg) {
      $.notify(msg, notify_info_t);
-   }
-   function notify_warning (msg) {
+  }
+  function notify_warning (msg) {
      $.notify(msg, notify_warning_t);
-   }
+  }
 
 ////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////

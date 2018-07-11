@@ -18,6 +18,9 @@ const express = require('express')
     , csrf = require('csurf') // https://www.npmjs.com/package/csurf
     , eg001 = require('./lib/examples/eg001')
     , eg002 = require('./lib/examples/eg002')
+    , eg003 = require('./lib/examples/eg003')
+    , eg004 = require('./lib/examples/eg004')
+    , eg005 = require('./lib/examples/eg005')
     ;
 
 const PORT = process.env.PORT || 5000
@@ -90,6 +93,12 @@ let app = express()
   .post('/eg001', eg001.createController)
   .get('/eg002', eg002.getController)
   .post('/eg002', eg002.createController)
+  .get('/eg003', eg003.getController)
+  .post('/eg003', eg003.createController)
+  .get('/eg004', eg004.getController)
+  .post('/eg004', eg004.createController)
+  .get('/eg005', eg005.getController)
+  .post('/eg005', eg005.createController)
   ;
 
 function dsLoginCB1 (req, res, next) {req.dsAuthCodeGrant.oauth_callback1(req, res, next)}

@@ -8,6 +8,23 @@ span.feedback {margin-left:2em;}
 form.eg {max-width: 30em;}
 form.eg label {font-weight: 550;}
 
+pre.json-display {
+  background-color: ghostwhite;
+  border: 1px solid silver;
+  padding: 10px 20px;
+  }
+.json-key {
+  color: brown;
+  }
+.json-value {
+  color: navy;
+  }
+.json-string {
+  color: olive;
+  }
+
+
+
 
 /* From http://tobiasahlin.com/spinkit/ */
 .spinner {

@@ -3,6 +3,12 @@
 <h2><%= h1 %></h2>
 <p><%- message %></p>
 
+<% if (locals.json) { %>
+  <!-- Data from the server -->
+  <div id="server_json_data" data-server-json-data='{"json":<%- JSON.stringify(json) %>}' class="hidden"></div>
+  <p><pre class="json-display"><code id="json-display"></code></pre></p>
+<% } %>
+
 <p><a href="/">Continue</a></p>
   
 <% include ../partials/foot %>
