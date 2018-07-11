@@ -19,7 +19,7 @@ const express = require('express')
     , eg001 = require('./lib/examples/eg001')
     ;
 
-    const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 5000
     , HOST = process.env.HOST || 'localhost'
     , hostUrl = 'http://' + HOST + ':' + PORT
     , max_session_min = 180
@@ -83,6 +83,7 @@ let app = express()
   .get('/ds/callback', [dsLoginCB1, dsLoginCB2]) // See below
   .get('/ds/logout', (req, res) => {req.dsAuthCodeGrant.logout(req, res)})
   .get('/ds/mustAuthenticate', dsWork.mustAuthenticateController)
+  .get('/ds-return', dsWork.returnController)
   .use(csrfProtection) // CSRF protection for the following routes
   .get('/eg001', eg001.getController)
   .post('/eg001', eg001.createController)
