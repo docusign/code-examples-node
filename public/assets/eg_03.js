@@ -52,7 +52,19 @@ let DS_EG = (function(){
     $("#feedback,#busy").show();
     $("#content").hide();
     const form = $(e.target);
-    form.get(0).submit();  
+    form.get(0).submit();
+    doCountdown(); 
+  }
+
+  function doCountdown() {
+    let value = 200
+      , timerMS = 300
+      , el = $('#feedback h3 span')
+      , show = () => {el.text(value); value -= 1}
+      ;
+    
+    show();
+    setInterval( show, timerMS );
   }
 
   let start_up = function(){
