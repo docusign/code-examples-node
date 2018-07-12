@@ -1,11 +1,14 @@
 <% include ../../partials/head %>
 
-<h4>5. List an envelope's recipients and their status</h4>
-<p>List the envelope's recipients, including their current status.
+<h4>4. Get an envelope's core information and status</h4>
+<p>List the core information about an envelope, including its overall status.
+  Additional API/SDK methods may be used to get additional information about the 
+  envelope, its documents, recipients, etc.
 </p>
 <p>API method used: 
-   <a href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/EnvelopeRecipients/list">EnvelopeRecipients::list</a>.
+   <a href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/get">Envelopes::get</a>.
 </p>
+
 <p>
   <a target="_blank" href="<%= source %>">Example source.</a>
 </p>
@@ -26,5 +29,5 @@
       <button type="submit" class="btn btn-primary">Continue</button>
   </form>
 <% } %>
-  
+
 <% include ../../partials/foot %>
