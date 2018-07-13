@@ -9,10 +9,10 @@
   </div>
 <% } %>
 
-<div>
+<div id="index-page">
   <h2>Core Examples</h2>
 
-  <h4>1. <a href="eg001">Embedded Signing Ceremony</a></h4>
+  <h4  id="example001">1. <a href="eg001">Embedded Signing Ceremony</a></h4>
   <p>This example sends an envelope, and then uses an embedded signing ceremony for the first signer. 
     With embedded signing, the DocuSign signing ceremony is initiated from your website.
   </p>
@@ -21,7 +21,7 @@
      <a href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/EnvelopeViews/createRecipient">EnvelopeViews::createRecipient</a>.
   </p>
 
-  <h4>2. <a href="eg002">Send an envelope with a remote (email) signer and cc recipient</a></h4>
+  <h4  id="example002">2. <a href="eg002">Send an envelope with a remote (email) signer and cc recipient</a></h4>
   <p>The envelope includes a pdf, Word, and HTML document. Anchor text 
     (<a href="https://support.docusign.com/en/guides/AutoPlace-New-DocuSign-Experience">AutoPlace</a>)
     is used to position the signing fields in the documents.
@@ -30,14 +30,14 @@
      <a href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/create">Envelopes::create</a>.
   </p>
 
-  <h4>3. <a href="eg003">List envelopes in the user's account</a></h4>
+  <h4  id="example003">3. <a href="eg003">List envelopes in the user's account</a></h4>
   <p>List the envelopes created in the last 30 days.
   </p>
   <p>API method used: 
      <a href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/listStatusChanges">Envelopes::listStatusChanges</a>.
   </p>
 
-  <h4>4. <a href="eg004">Get an envelope's core information and status</a></h4>
+  <h4  id="example004">4. <a href="eg004">Get an envelope's core information and status</a></h4>
   <p>List the core information about an envelope, including its overall status.
     Additional API/SDK methods may be used to get additional information about the 
     envelope, its documents, recipients, etc.
@@ -46,13 +46,32 @@
      <a href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/get">Envelopes::get</a>.
   </p>
 
-  <h4>5. <a href="eg005">List an envelope's recipients and their status</a></h4>
+  <h4  id="example005">5. <a href="eg005">List an envelope's recipients and their status</a></h4>
   <p>List the envelope's recipients, including their current status.
   </p>
   <p>API method used: 
      <a href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/EnvelopeRecipients/list">EnvelopeRecipients::list</a>.
   </p>
 
+  <h4  id="example006">6. <a href="eg006">List an envelope's documents</a></h4>
+  <p>List the envelope's documents. A <i>Certificate of Completion</i> document 
+     is also associated with every envelope.
+  </p>
+  <p>API method used: 
+     <a href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/EnvelopeDocuments/list">EnvelopeDocuments::list</a>.
+  </p>
+
+  <h4  id="example007">7. <a href="eg007">Download a document from an envelope</a></h4>
+  <p>An envelope's documents can be downloaded one by one or as a complete set.
+  </p>
+  <p>API method used: 
+     <a href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/EnvelopeDocuments/get">EnvelopeDocuments::get</a>.
+  </p>
+
 </div>
+
+<!-- anchor-js is only for the index page -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js"></script>
+<script>anchors.options.placement = 'left'; anchors.add('h4')</script>
 
 <% include ../partials/foot %>

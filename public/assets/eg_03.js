@@ -55,6 +55,7 @@ let DS_EG = (function(){
   function augment_busy(){
     $('a[data-busy="href"]').click(busy_href);
     $('form[data-busy="form"]').submit(busy_form);
+    $('form[data-busy="form-download"]').submit(busy_form_download);
   }
 
   // Process flash messages from the server
@@ -93,24 +94,50 @@ let DS_EG = (function(){
     window.location = href;
   }
 
+  let countdownInfo = { // using an object since it's a pointer
+        countdown: null, // Should countdown continue?
+        intervalId: null // id of the count down interval
+      }
+      // When starting a download request, how long should the spinner display?
+    , downloadSpinnerMS = 3000; 
+
   let busy_form = function _busy_form(e){
     e.preventDefault();
     $("#feedback,#busy").show();
     $("#content").hide();
     const form = $(e.target);
     form.get(0).submit();
-    doCountdown(); 
+    countdownInfo.countdown = true;
+    doCountdown();
+  }
+
+  let busy_form_download = function _busy_form_download(e){
+    e.preventDefault();
+    $("#feedback,#busy").show();
+    $("#content").hide();
+    const form = $(e.target);
+    form.get(0).submit();
+    countdownInfo.countdown = true;
+    doCountdown();
+    let stopCount = info => {
+      info.countdown = false;
+      clearInterval(info.intervalId);
+      $('#feedback h3 span').text("your download will start soon.");
+      $("#busy").hide();
+      $("#download-continue").show();
+    }
+    setTimeout(stopCount, downloadSpinnerMS, countdownInfo);
   }
 
   function doCountdown() {
     let value = 200
       , timerMS = 300
       , el = $('#feedback h3 span')
-      , show = () => {el.text(value); value -= 1}
+      , show = () => {if (countdownInfo.countdown) {el.text(value)} value -= 1}
       ;
     
     show();
-    setInterval( show, timerMS );
+    countdownInfo.intervalId = setInterval( show, timerMS );
   }
 
   let start_up = function(){

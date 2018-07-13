@@ -1,32 +1,56 @@
 <% include ../../partials/head %>
 
-<h4>4. Get an envelope's core information and status</h4>
-<p>List the core information about an envelope, including its overall status.
-  Additional API/SDK methods may be used to get additional information about the 
-  envelope, its documents, recipients, etc.
-</p>
+<h4>7. Download a document from an envelope</h4>
+<p>An envelope's documents can be downloaded one by one or as a complete set.</p>
+<p>Document download options:</p>
+<ul>
+  <li><b>Combined</b>: a PDF with the combined content of all documents and the
+         certificate</li>
+  <li><b>Zip Archive</b>: a ZIP archive that contains all of the PDF documents, 
+         the certificate, and any .WAV files used for voice authentication.</li>
+  <li>The envelope's individual documents</li>
+  <li>The envelope's Certificate of Completion</li>
+</ul>
 <p>API method used: 
-   <a href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/get">Envelopes::get</a>.
+   <a href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/EnvelopeDocuments/get">EnvelopeDocuments::get</a>.
 </p>
 
 <p>
   <a target="_blank" href="<%= source %>">Example source.</a>
 </p>
 
-<% if (envelopeOk) { %>
-  <p>The envelope you created via example 2 will be queried.</p>
-  
-  <form class="eg" action="" method="post" data-busy="form">
-      <input type="hidden" name="_csrf" value="<%- csrfToken %>">
-      <button type="submit" class="btn btn-primary">Continue</button>
-  </form>
-
-<% } else { %>
+<% if (! envelopeOk) { %>
   <p>Problem: please first create an envelope using <a href="eg002">example 2.</a> <br/>
-     Thank you.</p>
-     
-  <form class="eg" action="eg002" method="get">
-      <button type="submit" class="btn btn-primary">Continue</button>
+    You will then need to use example 6 to create the list of documents.<br/>
+    Thank you.</p>
+    
+ <form class="eg" action="eg002" method="get">
+     <button type="submit" class="btn btn-primary">Continue</button>
+ </form>
+<% } else if (!documentsOk) { %>
+  <p>Problem: please first create a list of the envelope's documents using 
+    <a href="eg006">example 6.</a> <br/>
+    Thank you.</p>
+    
+ <form class="eg" action="eg006" method="get">
+     <button type="submit" class="btn btn-primary">Continue</button>
+ </form>
+<% } else { %>
+  <p>Please choose a document.<br/>
+     The document list is from your results for example 6.</p>
+  
+  <form class="eg" action="" method="post" data-busy="form-download">
+    <div class="form-group">
+        <label for="docSelect">Document selection</label>
+        <select class="custom-select" id="docSelect" 
+          name="docSelect" aria-describedby="emailHelp">
+        <% for (let opt of documentOptions) { %>
+          <option value="<%= opt.documentId %>"><%= opt.text %></option>
+        <% } %>
+        </select>
+    </div>  
+    <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+    <button type="submit" class="btn btn-primary">Continue</button>
   </form>
 <% } %>
 

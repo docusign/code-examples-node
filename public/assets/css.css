@@ -2,6 +2,20 @@ body {
   padding-top: 5rem;
 }
 
+/* See https://css-tricks.com/hash-tag-links-padding/ */
+#index-page h4 {
+  z-index: -100;
+}
+#index-page h4::before {
+  z-index: -100;
+  display: block; 
+  content: " "; 
+  margin-top: -4rem; 
+  height: 4rem; 
+  visibility: hidden; 
+  pointer-events: none;
+}
+
 .feedback, .hidden {display: none;}
 span.feedback {margin-left:2em;}
 

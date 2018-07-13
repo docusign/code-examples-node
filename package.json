@@ -42,6 +42,7 @@
     "passport": "^0.4.0",
     "passport-docusign": "^1.0.0",
     "path": "^0.12.7",
+    "stream": "0.0.2",
     "validator": "^10.4.0"
   },
   "devDependencies": {

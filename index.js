@@ -59,16 +59,17 @@ let app = express()
     directives: {
       defaultSrc: ["'none'"],
       scriptSrc: ["'self'", "https://code.jquery.com","https://cdnjs.cloudflare.com",
-        "https://maxcdn.bootstrapcdn.com", "https://cdn.jsdelivr.net"],
+        "https://maxcdn.bootstrapcdn.com", "https://cdn.jsdelivr.net",
+        "'sha256-0NW9KKBQYh2Iv0XLsH/B9LSOfn2Z00m55p5eKSUlikE='"], // hash is for inline script for anchor lib on index page.
       styleSrc: ["'self'", "'unsafe-inline'", "https://maxcdn.bootstrapcdn.com"],
       imgSrc: ["'self'", "data:"],
-      sandbox: ['allow-forms', 'allow-scripts', 'allow-modals',
-        'allow-popups', 'allow-same-origin'],
+      //sandbox: ['allow-forms', 'allow-scripts', 'allow-modals',
+      //  'allow-popups', 'allow-same-origin'], // Sandboxing does not allow PDF viewer plugin...
+      objectSrc: ["'self'"],
+      fontSrc: ["data:"],
       // Don't set the following
       upgradeInsecureRequests: false,
-      workerSrc: false,
-      fontSrc: false,
-      objectSrc: false,
+      workerSrc: false
     },
     // This module will detect common mistakes in your directives and throw errors
     // if it finds any. To disable this, enable "loose mode".
