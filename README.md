@@ -127,7 +127,7 @@ API method used: [EnvelopeViews::createConsole](https://developers.docusign.com/
      for the names of the environment variables.
 
 1. **npm start** 
-1. Open a browser to **http://localhost:3000**
+1. Open a browser to **http://localhost:5000**
 
 ## Using the examples with other authentication flows
 
