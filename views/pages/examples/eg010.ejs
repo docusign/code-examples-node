@@ -1,12 +1,13 @@
 <% include ../../partials/head %>
 
-<h4>2. Send an envelope with a remote (email) signer and cc recipient</h4>
-<p>The envelope includes a pdf, Word, and HTML document. Anchor text 
-  (<a href="https://support.docusign.com/en/guides/AutoPlace-New-DocuSign-Experience">AutoPlace</a>)
-  is used to position the signing fields in the documents.
+<h4>10. Send an envelope using binary document transfer</h4>
+<p>The envelope includes a pdf, Word, and HTML document.</p>
+<p>Multipart data transfer is used to send the documents in binary format to DocuSign. 
+  Binary transfer is a more efficient than base64 encoding and is recommended for documents over 15M Bytes.
+  Binary transfer is not yet supported by the SDK.
 </p>
 <p>API method used: 
-   <a href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/create">Envelopes::create</a>.
+  <a href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/create">Envelopes::create</a>.
 </p>
 
 <p>

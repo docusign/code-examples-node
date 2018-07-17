@@ -1,0 +1,20 @@
+<% include ../../partials/head %>
+
+<h4>8. Create a template</h4>
+<p>Create a template with two roles, <b>signer</b> and <b>cc</b>. 
+   The template includes three documents.
+</p>
+<p>API method used:
+   <a href="https://developers.docusign.com/esign-rest-api/reference/Templates/Templates/create">Templates::create</a>.
+</p>
+
+<p>
+  <a target="_blank" href="<%= source %>">Example source</a> from GitHub.
+</p>
+  
+  <form class="eg" action="" method="post" data-busy="form">
+      <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+      <button type="submit" class="btn btn-primary">Continue</button>
+  </form>
+  
+<% include ../../partials/foot %>
