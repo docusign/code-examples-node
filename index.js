@@ -24,6 +24,7 @@ const express = require('express')
     , eg006 = require('./lib/examples/eg006')
     , eg007 = require('./lib/examples/eg007')
     , eg008 = require('./lib/examples/eg008')
+    , eg009 = require('./lib/examples/eg009')
     , eg010 = require('./lib/examples/eg010')
     ;
 
@@ -110,6 +111,8 @@ let app = express()
   .post('/eg007', eg007.createController)
   .get('/eg008', eg008.getController)
   .post('/eg008', eg008.createController)
+  .get('/eg009', eg009.getController)
+  .post('/eg009', eg009.createController)
   .get('/eg010', eg010.getController)
   .post('/eg010', eg010.createController)
   ;

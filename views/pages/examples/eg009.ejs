@@ -1,28 +1,51 @@
 <% include ../../partials/head %>
 
-<h4>5. List an envelope's recipients and their status</h4>
-<p>List the envelope's recipients, including their current status.
-</p>
+<h4>9. Send an envelope using a template</h4>
+<p>The envelope is defined by the template.
+   The signer and cc recipient name and email are used to fill in the template's <i>roles</i>.</p>
 <p>API method used: 
-   <a href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/EnvelopeRecipients/list">EnvelopeRecipients::list</a>.
+   <a href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/create">Envelopes::create</a>.
 </p>
 <p>
   <a target="_blank" href="<%= source %>">Example source</a> from GitHub.
 </p>
 
-<% if (envelopeOk) { %>
-  <p>The envelope you created via example 2 will be queried.</p>
+<% if (templateOk) { %>
+  <p>The template you created via example 8 will be used.</p>
   
   <form class="eg" action="" method="post" data-busy="form">
+      <div class="form-group">
+        <label for="signerEmail">Signer Email</label>
+        <input type="email" class="form-control" id="signerEmail" name="signerEmail"
+               aria-describedby="emailHelp" placeholder="pat@example.com" required
+               value="<%= locals.dsConfig.signerEmail %>">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+      <div class="form-group">
+        <label for="signerName">Signer Name</label>
+        <input type="text" class="form-control" id="signerName" placeholder="Pat Johnson" name="signerName"
+               value="<%= locals.dsConfig.signerName %>" required>
+      </div>
+      <div class="form-group">
+        <label for="signerEmail">CC Email</label>
+        <input type="email" class="form-control" id="ccEmail" name="ccEmail"
+               aria-describedby="emailHelp" placeholder="pat@example.com" required
+        <small id="emailHelp" class="form-text text-muted">The email and/or name for the cc recipient must be different from the signer.</small>
+      </div>
+      <div class="form-group">
+        <label for="signerName">CC Name</label>
+        <input type="text" class="form-control" id="ccName" placeholder="Pat Johnson" name="ccName"
+               required>
+      </div>
       <input type="hidden" name="_csrf" value="<%- csrfToken %>">
-      <button type="submit" class="btn btn-primary">Continue</button>
-  </form>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>  
 
 <% } else { %>
-  <p>Problem: please first create an envelope using <a href="eg002">example 2.</a> <br/>
+  <p>Problem: please first create the template using <a href="eg008">example 8.</a> <br/>
      Thank you.</p>
      
-  <form class="eg" action="eg002" method="get">
+  <form class="eg" action="eg008" method="get">
       <button type="submit" class="btn btn-primary">Continue</button>
   </form>
 <% } %>
