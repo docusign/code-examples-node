@@ -10,7 +10,7 @@ const express = require('express')
     , passport = require('passport')
     , DocusignStrategy = require('passport-docusign')
     , dsConfig = require('./ds_configuration.js').config
-    , dsWork = require('./lib/dsWork')
+    , commonControllers = require('./lib/commonControllers')
     , flash = require('express-flash')
     , helmet = require('helmet') // https://expressjs.com/en/advanced/best-practice-security.html
     , moment = require('moment')
@@ -88,12 +88,12 @@ let app = express()
   // Add an instance of DSAuthCodeGrant to req
   .use((req, res, next) => {req.dsAuthCodeGrant = new DSAuthCodeGrant(req); next()})
   // Routes
-  .get('/', dsWork.indexController)
+  .get('/', commonControllers.indexController)
   .get('/ds/login', (req, res, next) => {req.dsAuthCodeGrant.login(req, res, next)})
   .get('/ds/callback', [dsLoginCB1, dsLoginCB2]) // See below
   .get('/ds/logout', (req, res) => {req.dsAuthCodeGrant.logout(req, res)})
-  .get('/ds/mustAuthenticate', dsWork.mustAuthenticateController)
-  .get('/ds-return', dsWork.returnController)
+  .get('/ds/mustAuthenticate', commonControllers.mustAuthenticateController)
+  .get('/ds-return', commonControllers.returnController)
   .use(csrfProtection) // CSRF protection for the following routes
   .get('/eg001', eg001.getController)
   .post('/eg001', eg001.createController)
