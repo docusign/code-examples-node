@@ -28,11 +28,11 @@ describe ('eg002 (test takes a long time)', function(){
         }
     ;
 
-    try {
-      let results = await eg002.worker(args);
-      let worked = results.envelopeId.length > 10;
-      expect(worked).to.equal(true);
-    } 
-    catch (error) {helpers.catchMethod(error)}
+    let results = null;
+    try {results = await eg002.worker(args)} 
+    catch (error) {helpers.catchMethod(error)};
+    
+    let worked = results && results.envelopeId.length > 10;
+    expect(worked).to.equal(true);
   })
 })

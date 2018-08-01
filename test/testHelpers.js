@@ -37,7 +37,7 @@ helpers.catchMethod = (error) => {
         ;
     // In production, may want to provide customized error messages and 
     // remediation advice to the user.
-    console.log `err: ${error}, errorCode: ${errorCode}, errorMessage: ${errorMessage}`;
+    console.log (`err: ${error}, errorCode: ${errorCode}, errorMessage: ${errorMessage}`);
 
-    throw error; // an unexpected error has occured
+    //throw error; // an unexpected error has occured
 }
