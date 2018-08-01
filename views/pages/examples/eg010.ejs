@@ -3,9 +3,14 @@
 <h4>10. Send an envelope using binary document transfer</h4>
 <p>The envelope includes a pdf, Word, and HTML document.</p>
 <p>Multipart data transfer is used to send the documents in binary format to DocuSign. 
-  Binary transfer is a more efficient than base64 encoding and is recommended for documents over 15M Bytes.
-  Binary transfer is not yet supported by the SDK.
+  Binary transfer is a more 33% efficient than base64 encoding and is recommended for documents over 15M Bytes.
 </p>
+
+<p>Since binary transfer is not yet supported by the SDK, this example uses the API directly and 
+demonstrates how to do so.</p>
+
+<p><a target='_blank' href='<%= documentation %>'>Documentation</a> about this example.</p>
+
 <p>API method used: 
   <a href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/create">Envelopes::create</a>.
 </p>

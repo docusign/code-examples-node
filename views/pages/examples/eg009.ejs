@@ -3,6 +3,15 @@
 <h4>9. Send an envelope using a template</h4>
 <p>The envelope is defined by the template.
    The signer and cc recipient name and email are used to fill in the template's <i>roles</i>.</p>
+
+<p>This example demonstrates a common pattern for DocuSign integrations: envelopes will
+  be sent programmatically, based on a template. If the template definition needs to be
+  updated, the DocuSign web tool can be used to easily update the template, thus 
+  avoiding the need to make software changes.
+</p>
+
+<p><a target='_blank' href='<%= documentation %>'>Documentation</a> about this example.</p>
+
 <p>API method used: 
    <a href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/create">Envelopes::create</a>.
 </p>
