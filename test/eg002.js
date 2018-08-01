@@ -1,4 +1,4 @@
-// Test for eg001
+// Test for eg002
 
 // See https://mochajs.org/
 const chai = require('chai')
@@ -7,17 +7,18 @@ const chai = require('chai')
     , fs = require('fs')
     , path = require('path')
     , helpers = require('./testHelpers')
-    , eg001 = require('../lib/examples/eg001')
+    , eg002 = require('../lib/examples/eg002')
     ;
 
-describe ('eg001', function(){
-  it('create envelope and Signing Ceremony URL should work', async function(){
+describe ('eg002 (test takes a long time)', function(){
+  it('create envelope should work', async function(){
     this.timeout(30000); // 30 sec allows for the envelope to be created
 
     let envelopeArgs = {
             signerEmail: helpers.signerEmail, 
             signerName: helpers.signerName, 
-            signerClientId: helpers.signerClientId
+            ccEmail: helpers.ccEmail, 
+            ccName: helpers.ccName, 
         }
       , args = {
             dsAPIclient: helpers.dsAPIclient,
@@ -28,10 +29,8 @@ describe ('eg001', function(){
     ;
 
     try {
-      let results = await eg001.worker(args);
-      // eg redirectUrl = https://demo.docusign.net/Signing/StartInSession.aspx?t=914f97b8-060a-421c-8794-391513e9e780
-      let worked = results.redirectUrl.indexOf('.docusign.net/Signing/StartInSession') > 0 && 
-            results.envelopeId.length > 10;
+      let results = await eg002.worker(args);
+      let worked = results.envelopeId.length > 10;
       expect(worked).to.equal(true);
     } 
     catch (error) {helpers.catchMethod(error)}
