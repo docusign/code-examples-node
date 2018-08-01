@@ -50,7 +50,9 @@ describe ('eg001', function(){
 
     try {
       let results = await eg001.worker(args);
-      let worked = results.redirectUrl && results.envelopeId.length > 10;
+      // eg redirectUrl = https://demo.docusign.net/Signing/StartInSession.aspx?t=914f97b8-060a-421c-8794-391513e9e780
+      let worked = results.redirectUrl.indexOf('.docusign.net/Signing/StartInSession') > 0 && 
+            results.envelopeId.length > 10;
       expect(worked).to.equal(true);
     } 
     catch (error) {
