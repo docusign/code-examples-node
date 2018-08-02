@@ -55,6 +55,7 @@ let app = express()
     res.locals.user = req.user;
     res.locals.session = req.session;
     res.locals.dsConfig = dsConfig;
+    res.locals.hostUrl = hostUrl; // Used by DSAuthCodeGrant#logout
     next()})) // Send user info to views
   .use(flash())
   .use(csp({
@@ -92,6 +93,7 @@ let app = express()
   .get('/ds/login', (req, res, next) => {req.dsAuthCodeGrant.login(req, res, next)})
   .get('/ds/callback', [dsLoginCB1, dsLoginCB2]) // See below
   .get('/ds/logout', (req, res) => {req.dsAuthCodeGrant.logout(req, res)})
+  .get('/ds/logoutCallback', (req, res) => {req.dsAuthCodeGrant.logoutCallback(req, res)})
   .get('/ds/mustAuthenticate', commonControllers.mustAuthenticateController)
   .get('/ds-return', commonControllers.returnController)
   .use(csrfProtection) // CSRF protection for the following routes

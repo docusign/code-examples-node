@@ -22,3 +22,7 @@ exports.config = {
   , githubExampleUrl: 'https://github.com/DSDPE/eg-03-node-auth-code-grant/tree/master/lib/examples/'
   , documentation: 'https://developers.docusign.com/esign-rest-api/code-examples/'
 }
+
+exports.config.dsOauthServer = exports.config.production ? 
+  'https://account.docusign.com/oauth' : 'https://account-d.docusign.com/oauth';
+
