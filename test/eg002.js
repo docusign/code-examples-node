@@ -11,7 +11,7 @@ const chai = require('chai')
     ;
 
 describe ('eg002 (test takes a long time)', function(){
-  it('create envelope should work', async function(){
+  it('create envelope with 3 documents should work', async function(){
     this.timeout(30000); // 30 sec allows for the envelope to be created
 
     let envelopeArgs = {
