@@ -19,6 +19,7 @@ describe ('eg002 (test takes a long time)', function(){
             signerName: helpers.signerName, 
             ccEmail: helpers.ccEmail, 
             ccName: helpers.ccName, 
+            status: "sent"
         }
       , args = {
             dsAPIclient: helpers.dsAPIclient,

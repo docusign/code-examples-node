@@ -9,6 +9,12 @@
     its value. Instead, query DocuSign as appropriate.</p>
 <% } %>
 
+<% if (envelopeId) { %>
+  <p><b>envelopeId: <%= envelopeId %>.</b> The envelopeId parameter is supplied by DocuSign. 
+    Since it could have been spoofed, don't make business decisions based on
+    its value. Instead, query DocuSign as appropriate.</p>
+<% } %>
+
 <% if (state) { %>
   <p><b>state: <%= state %>.</b> This example state was sent to DocuSign and has now been received back.
      It is usually better to store state in your web framework's session.</p>
