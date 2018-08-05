@@ -16,6 +16,17 @@ body {
   pointer-events: none;
 }
 
+.jumbotron {
+  background: #164a91;
+  padding: 3em;
+  color: white;
+  margin: 1em auto 1.5em; }
+
+.jumbotron p {
+  margin-top: 1em;
+  font-size: 1.45em;
+}
+
 .feedback, .hidden {display: none;}
 span.feedback {margin-left:2em;}
 

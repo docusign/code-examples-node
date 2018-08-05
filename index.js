@@ -165,7 +165,7 @@ let docusignStrategy = new DocusignStrategy({
     user.accessToken = accessToken;
     user.refreshToken = refreshToken;
     user.expiresIn = params.expires_in;
-    user.expires = moment().add(user.expiresIn, 's'); // The dateTime when the access token will expire
+    user.tokenExpirationTimestamp = moment().add(user.expiresIn, 's'); // The dateTime when the access token will expire
     return done(null, user);
   }
 );
