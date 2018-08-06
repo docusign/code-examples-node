@@ -8,7 +8,13 @@
   <p><%= errorCode %>: <%= errorMessage %></p>
 <% } else { %>
   <p><pre><%= err %></pre></p>
+
+  <h3>Stack trace</h3>
+  <p><pre>
+    <%= err.stack %>
+  </pre></p>
 <% } %>
+
 
 <p><a href="/">Continue</a></p>
   
