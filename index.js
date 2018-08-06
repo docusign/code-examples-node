@@ -27,6 +27,7 @@ const express = require('express')
     , eg009 = require('./lib/examples/eg009')
     , eg010 = require('./lib/examples/eg010')
     , eg011 = require('./lib/examples/eg011')
+    , eg012 = require('./lib/examples/eg012')
     ;
 
 const PORT = process.env.PORT || 5000
@@ -92,7 +93,7 @@ let app = express()
   // Routes
   .get('/', commonControllers.indexController)
   .get('/ds/login', (req, res, next) => {req.dsAuthCodeGrant.login(req, res, next)})
-  .get('/ds/callback', [dsLoginCB1, dsLoginCB2]) // See below
+  .get('/ds/callback', [dsLoginCB1, dsLoginCB2]) // OAuth callbacks. See below
   .get('/ds/logout', (req, res) => {req.dsAuthCodeGrant.logout(req, res)})
   .get('/ds/logoutCallback', (req, res) => {req.dsAuthCodeGrant.logoutCallback(req, res)})
   .get('/ds/mustAuthenticate', commonControllers.mustAuthenticateController)
@@ -120,6 +121,8 @@ let app = express()
   .post('/eg010', eg010.createController)
   .get('/eg011', eg011.getController)
   .post('/eg011', eg011.createController)
+  .get('/eg012', eg012.getController)
+  .post('/eg012', eg012.createController)
   ;
 
 function dsLoginCB1 (req, res, next) {req.dsAuthCodeGrant.oauth_callback1(req, res, next)}
@@ -137,7 +140,6 @@ if (dsConfig.dsClientId && dsConfig.dsClientId !== '{CLIENT_ID}' &&
 You can set them in the source file ds_configuration.js or set environment variables.\n`);
   process.exit(); // We're not using exit code of 1 to avoid extraneous npm messages.
 }
-
 
 // Passport session setup.
 //   To support persistent login sessions, Passport needs to be able to
