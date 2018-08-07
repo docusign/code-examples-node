@@ -27,6 +27,24 @@ body {
   font-size: 1.45em;
 }
 
+hr.styled {
+  overflow: visible; /* For IE */
+  padding: 0;
+  border: none;
+  border-top: medium double #333;
+  color: #333;
+  text-align: center;
+}
+hr.styled:after {
+  content: "§";
+  display: inline-block;
+  position: relative;
+  top: -0.7em;
+  font-size: 1.5em;
+  padding: 0 0.25em;
+  background: white;
+}
+
 .feedback, .hidden {display: none;}
 span.feedback {margin-left:2em;}
 

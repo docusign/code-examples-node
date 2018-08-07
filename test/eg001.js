@@ -17,7 +17,9 @@ describe ('eg001', function(){
     let envelopeArgs = {
             signerEmail: helpers.signerEmail, 
             signerName: helpers.signerName, 
-            signerClientId: helpers.signerClientId
+            signerClientId: helpers.signerClientId,
+            dsReturnUrl: "http://example.com",
+            dsPingUrl: "http://example.com"
         }
       , args = {
             dsAPIclient: helpers.dsAPIclient,
