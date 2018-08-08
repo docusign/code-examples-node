@@ -73,10 +73,11 @@
 
   <h4 id="example008">8. <a href="eg008">Create a template</a></h4>
   <p>Create a template with two roles, <b>signer</b> and <b>cc</b>.</p>
-  <p>API method used:
-     <a target ='_blank' href="https://developers.docusign.com/esign-rest-api/reference/Templates/Templates/create">Templates::create</a>.
+  <p>API methods used:
+      <a target='_blank' href="https://developers.docusign.com/esign-rest-api/reference/Templates/Templates/list">Templates::list</a>,
+      <a target='_blank' href="https://developers.docusign.com/esign-rest-api/reference/Templates/Templates/create">Templates::create</a>.
   </p>
-
+  
   <h4 id="example009">9. <a href="eg009">Send an envelope using a template</a></h4>
   <p>The envelope is defined by the template.
      The signer and cc recipient name and email are used to fill in the template's <i>roles</i>.</p>
@@ -87,7 +88,7 @@
   <h4 id="example010">10. <a href="eg010">Send an envelope using binary document transfer</a></h4>
   <p>The envelope includes a pdf, Word, and HTML document.</p>
   <p>Multipart data transfer is used to send the documents in binary format to DocuSign. 
-    Binary transfer is a more efficient than base64 encoding and is recommended for documents over 15M Bytes.
+    Binary transfer is 33% more efficient than base64 encoding and is recommended for documents over 15M Bytes.
     Binary transfer is not yet supported by the SDK.
   </p>
   <p>API method used: 
@@ -100,7 +101,7 @@
     to the envelope before it is sent.
   </p>
   <p>API methods used: 
-    <a target='_blank' href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/create">Envelopes::create</a>.
+    <a target='_blank' href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/create">Envelopes::create</a>,
     <a target='_blank' href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/EnvelopeViews/createSender">EnvelopeViews::createSender</a>.
 
   <h4 id="example012">12. <a href="eg012">Embedded DocuSign web tool</a></h4>
