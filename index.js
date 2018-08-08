@@ -28,6 +28,7 @@ const express = require('express')
     , eg010 = require('./lib/examples/eg010')
     , eg011 = require('./lib/examples/eg011')
     , eg012 = require('./lib/examples/eg012')
+    , eg013 = require('./lib/examples/eg013')
     ;
 
 const PORT = process.env.PORT || 5000
@@ -123,6 +124,8 @@ let app = express()
   .post('/eg011', eg011.createController)
   .get('/eg012', eg012.getController)
   .post('/eg012', eg012.createController)
+  .get('/eg013', eg013.getController)
+  .post('/eg013', eg013.createController)
   ;
 
 function dsLoginCB1 (req, res, next) {req.dsAuthCodeGrant.oauth_callback1(req, res, next)}

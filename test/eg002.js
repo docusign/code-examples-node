@@ -10,7 +10,7 @@ const chai = require('chai')
     , eg002 = require('../lib/examples/eg002')
     ;
 
-describe ('eg002 (test takes a long time)', function(){
+describe ('eg002 (test takes a long time to create an envelope with 3 documents)', function(){
   it('create envelope with 3 documents should work', async function(){
     this.timeout(30000); // 30 sec allows for the envelope to be created
 
