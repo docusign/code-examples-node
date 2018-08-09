@@ -17,15 +17,14 @@ The **refresh token** is not used in this example.
 1. List envelopes in the user's account.
 1. Get an envelope's basic information.
    The example lists the basic information about an envelope, including its overall status.
-1.  List an envelope's recipients and their current status.
-1.  List an envelope's documents.
-1.  Download an envelope's documents. The example can download individual
-    documents, the documents concatenated together, or a zip file of the documents.
-1.  Programmatically create a template.
-1.  Send an envelope using a template.
-1.  Send an envelope and upload its documents with multpart binary transfer.
+1. List an envelope's recipients and their current status.
+1. List an envelope's documents.
+1. Download an envelope's documents. The example can download individual
+   documents, the documents concatenated together, or a zip file of the documents.
+1. Programmatically create a template.
+1. Send an envelope using a template.
+1. Send an envelope and upload its documents with multpart binary transfer.
    Binary transfer is 33% more efficient than using Base64 encoding.
-   This example shows you how.
 1. Embedded sending.
 1. Embedded DocuSign web tool (NDSE).
 1. Embedded Signing Ceremony from a template with an added document.
