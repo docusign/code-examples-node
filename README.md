@@ -51,8 +51,7 @@ The **refresh token** is not used in this example.
 
 1. Node.JS v8.10 or later and NPM v5 or later.
 1. A name and email for a signer, and a name and email for a cc recipient.
-   The signer and the cc information cannot be the same:
-   at least the names must be different.
+   The signer and the cc email cannot be the same.
 
 ### Installation steps
 1. Download or clone this repository to your workstation to directory **eg-03-node-auth-code-grant**
