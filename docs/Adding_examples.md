@@ -30,13 +30,13 @@ Add information and a link to the new example
 
 * Do a mass replace to change `eg001` to your new example number. 
 
-The get controller won't need many changes. But you can check 
+The `get` controller won't need many changes. But you can check 
 additional prerequisites here. For example, if the example needs
 a template, check the session.templateId and complain to the
 user if a different example (to create the template) needs to be
 run first.
 
-The create controller and supporting methods are the heart of your example.
+The `create` controller and supporting methods are the heart of your example.
 
 If you want to use a generic response view after creating an envelope,
 see lib/examples/eg002.js and its use of the example_done.ejs view.

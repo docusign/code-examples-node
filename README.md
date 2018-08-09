@@ -39,12 +39,13 @@ The **refresh token** is not used in this example.
 
 ### Prerequisites
 1. A DocuSign Developer Sandbox account (email and password) on [demo.docusign.net](https://demo.docusign.net).
-   Create a [free account](https://go.docusign.com/o/sandbox/)
+   Create a [free account](https://go.docusign.com/o/sandbox/).
 1. A DocuSign Integration Key (a client ID) that is configured to use the
    OAuth Authorization Code flow.
    You will need the **Integration Key** itself, and its **secret**.
 
-   The Integration key must include a **Redirect URI** of `http://localhost:5000/ds/callback`
+   If you use this example on your own workstation,
+   the Integration key must include a **Redirect URI** of `http://localhost:5000/ds/callback`
 
    If you will not be running the example on your own workstation,
    use the appropriate DNS name and port instead of `localhost`
@@ -66,6 +67,11 @@ The **refresh token** is not used in this example.
    * Create and export environment variables for the settings.
      See the **ds_configuration.js** file
      for the names of the environment variables.
+
+   **Note:** Protect your Integration Key and secret--If you update
+   the ds_configuration.js file, then you
+   should ensure that it will not be stored in your source code
+   repository.
 
 1. **npm start**
 1. Open a browser to **http://localhost:5000**
