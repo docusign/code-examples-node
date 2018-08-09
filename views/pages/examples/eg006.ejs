@@ -5,10 +5,13 @@
    is also associated with every envelope.
 </p>
 
-<p>This method is often used to dynamically create a list of an envelope's documents.</p>
+<p>This method is often used to dynamically create a list of an envelope's documents
+    in preparation for enabling your user to download one or more of the documents.</p>
 
-<p><a target='_blank' href='<%= documentation %>'>Documentation</a> about this example.</p>
-
+<% if (showDoc) { %>
+    <p><a target='_blank' href='<%= documentation %>'>Documentation</a> about this example.</p>
+<% } %>
+  
 <p>API method used: 
    <a target='_blank' href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/EnvelopeDocuments/list">EnvelopeDocuments::list</a>.
 </p>

@@ -11,8 +11,10 @@
 <p>This example first lists the user's templates and only creates a new template if one does not already exist in your account.
 </p>
 
-<p><a target='_blank' href='<%= documentation %>'>Documentation</a> about this example.</p>
-
+<% if (showDoc) { %>
+    <p><a target='_blank' href='<%= documentation %>'>Documentation</a> about this example.</p>
+<% } %>
+  
 <p>API methods used:
     <a target='_blank' href="https://developers.docusign.com/esign-rest-api/reference/Templates/Templates/list">Templates::list</a>,
     <a target='_blank' href="https://developers.docusign.com/esign-rest-api/reference/Templates/Templates/create">Templates::create</a>.

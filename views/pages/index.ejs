@@ -12,7 +12,11 @@
 <div id="index-page">
   <h2>Welcome</h2>
   <p>This launcher both demonstrates use of the OAuth Authorization Code Grant flow and includes multiple usage examples for the DocuSign eSignature REST API.</p>
-  <p><a target='_blank' href='<%= documentation %>'>Documentation</a> on using OAuth Authorization Code Grant from a Node Express application.</p>
+  
+  <% if (showDoc) { %>
+    <p><a target='_blank' href='<%= documentation %>'>Documentation</a> on using OAuth Authorization Code Grant from a Node Express application.</p>
+  <% } %>
+  
   <h2>Basic Examples</h2>
 
   <h4 id="example001">1. <a href="eg001">Embedded Signing Ceremony</a></h4>
