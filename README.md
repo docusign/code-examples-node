@@ -32,7 +32,8 @@ The **refresh token** is not used in this example.
    In addition to the template's document(s), the example adds an
    additional document to the envelope by using the
    [Composite Templates](https://developers.docusign.com/esign-rest-api/guides/features/templates#composite-templates)
-   feature.   
+   feature.
+1. Payments example: an order form, with payment, is sent to the signer. 
 
 ## Installation
 
@@ -73,6 +74,12 @@ The **refresh token** is not used in this example.
 
 1. **npm start**
 1. Open a browser to **http://localhost:5000**
+1. **Payments example:** To use the payments example, create a 
+   test payments gateway for your developer sandbox account. 
+   See the 
+   [Managing Payment Gateways](https://support.docusign.com/en/guides/managing-payment-gateways)
+   documentation. Then add the payment gateway account id to 
+   the **ds_configuration.js** file.
 
 ## Using the examples with other authentication flows
 
