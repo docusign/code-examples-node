@@ -33,7 +33,8 @@ The **refresh token** is not used in this example.
    additional document to the envelope by using the
    [Composite Templates](https://developers.docusign.com/esign-rest-api/guides/features/templates#composite-templates)
    feature.
-1. Payments example: an order form, with payment, is sent to the signer. 
+1. Payments example: an order form, with online payment by credit card,
+   is sent to the signer.
 
 ## Installation
 
