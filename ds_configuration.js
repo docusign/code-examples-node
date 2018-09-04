@@ -19,6 +19,10 @@ exports.config = {
   , demoDocPath: 'demo_documents'
   , docDocx: 'World_Wide_Corp_Battle_Plan_Trafalgar.docx'
   , docPdf:  'World_Wide_Corp_lorem.pdf'
+  // Payment gateway information is optional
+  , gatewayAccountId: process.env.DS_PAYMENT_GATEWAY_ID || '{DS_PAYMENT_GATEWAY_ID}'
+  , gatewayName: "stripe"
+  , gatewayDisplayName: "Stripe"
   , githubExampleUrl: 'https://github.com/docusign/eg-03-node-auth-code-grant/tree/master/lib/examples/'
   , documentation: null
   //, documentation: 'https://developers.docusign.com/esign-rest-api/code-examples/'
