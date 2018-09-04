@@ -99,8 +99,23 @@ the example during development and test.
 Test that your branch can be downloaded, configured and then
 run successfully. 
 
+### Add an automated test
+Add an automated test for your example. 
+
+See the `test` directory for examples.
+
+### Running the tests
+
+````
+DS_TEST_ACCESS_TOKEN=1234567...  # Tokens are very long
+DS_TEST_ACCOUNT_ID=1234567...
+export DS_TEST_ACCESS_TOKEN
+export DS_TEST_ACCOUNT_ID
+npm test
+````
+
 ## Make a pull request
-Make a pull request to for your changes. Your initial pull 
+Make a pull request for your new example. Your initial pull 
 request for a new example will probably not be 
 approved--the examples manager will review your implementation 
 and will often request changes.
