@@ -171,7 +171,7 @@ let docusignStrategy = new DocusignStrategy({
     // See https://github.com/jaredhanson/passport-oauth2/pull/84
     //
     // Here we're just assigning the tokens to the account object
-    // We store the data in DSAuthCodeGrant.loginCallback2
+    // We store the data in DSAuthCodeGrant.getDefaultAccountInfo
     let user = profile;
     user.accessToken = accessToken;
     user.refreshToken = refreshToken;
