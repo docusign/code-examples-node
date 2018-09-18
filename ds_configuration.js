@@ -9,6 +9,8 @@ exports.config = {
   , signerEmail: process.env.DS_SIGNER_EMAIL || '{USER_EMAIL}'
   , signerName: process.env.DS_SIGNER_NAME || '{USER_NAME}'
   , appUrl: process.env.DS_APP_URL || '{APP_URL}' // The url of the application. Eg http://localhost:5000
+    // NOTE: You must add a Redirect URI of appUrl/ds/callback to your Integration Key.
+    //       Example: http://localhost:5000/ds/callback
   , production: false
   , debug: true // Send debugging statements to console
   , sessionSecret: '12345' // Secret for encrypting session cookie content
