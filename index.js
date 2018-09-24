@@ -34,10 +34,12 @@ const express = require('express')
 
 const PORT = process.env.PORT || 5000
     , HOST = process.env.HOST || 'localhost'
-    , hostUrl = 'http://' + HOST + ':' + PORT
     , max_session_min = 180
     , csrfProtection = csrf({ cookie: true })
     ;
+
+let hostUrl = 'http://' + HOST + ':' + PORT
+if (dsConfig.appUrl != '' && dsConfig.appUrl != '{APP_URL}') {hostUrl = dsConfig.appUrl}
 
 let app = express()
   .use(helmet())
