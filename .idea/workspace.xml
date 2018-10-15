@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ab4e8982-0dcf-48bd-a21b-83100bb5dd27" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/examples/eg001.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/examples/eg001EmbeddedSigning.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/examples/eg002.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/examples/eg002SigningViaEmail.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/examples/eg003.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/examples/eg003ListEnvelopes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/examples/eg004.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/examples/eg004EnvelopeInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/examples/eg005.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/examples/eg005EnvelopeRecipients.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/examples/eg006.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/examples/eg006EnvelopeDocs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/examples/eg007.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/examples/eg007EnvelopeGetDoc.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/examples/eg008.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/examples/eg008CreateTemplate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/examples/eg009.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/examples/eg009UseTemplate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/examples/eg010.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/examples/eg010SendBinaryDocs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/examples/eg011.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/examples/eg011EmbeddedSending.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/examples/eg012.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/examples/eg012EmbeddedConsole.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/examples/eg013.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/examples/eg013AddDocToTemplate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/examples/eg014.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/examples/eg014CollectPayment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/eg001.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/eg001.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/eg002.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/eg002.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/pages/examples/eg001.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/examples/eg001EmbeddedSigning.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/pages/examples/eg002.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/examples/eg002SigningViaEmail.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/pages/examples/eg003.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/examples/eg003ListEnvelopes.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/pages/examples/eg004.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/examples/eg004EnvelopeInfo.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/pages/examples/eg005.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/examples/eg005EnvelopeRecipients.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/pages/examples/eg006.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/examples/eg006EnvelopeDocs.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/pages/examples/eg007.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/examples/eg007EnvelopeGetDoc.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/pages/examples/eg008.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/examples/eg008CreateTemplate.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/pages/examples/eg009.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/examples/eg009UseTemplate.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/pages/examples/eg010.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/examples/eg010SendBinaryDocs.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/pages/examples/eg011.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/examples/eg011EmbeddedSending.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/pages/examples/eg012.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/examples/eg012EmbeddedConsole.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/pages/examples/eg013.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/examples/eg013AddDocToTemplate.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/pages/examples/eg014.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/examples/eg014CollectPayment.ejs" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/out/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-1874958324">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.4" value="1" />
+          <entry key="project.open.time.8" value="1" />
+          <entry key="project.opened" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="ejs" value="3" />
+          <entry key="js" value="19" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="EJS" value="2" />
+          <entry key="JavaScript" value="19" />
+          <entry key="PLAIN_TEXT" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="js" value="8" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JavaScript" value="8" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/DSAuthCodeGrant.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1570" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/examples/eg013AddDocToTemplate.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="356">
+              <caret line="69" column="56" selection-start-line="69" selection-start-column="56" selection-end-line="69" selection-end-column="56" />
+              <folding>
+                <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#h1#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#h2#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#h3#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#h3#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/pages/examples/eg014CollectPayment.ejs">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/examples/eg014CollectPayment.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-899">
+              <caret line="30" column="54" selection-start-line="30" selection-start-column="54" selection-end-line="30" selection-end-column="54" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="510">
+              <caret line="34" column="37" lean-forward="true" selection-start-line="34" selection-start-column="37" selection-end-line="34" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lib/examples/eg008CreateTemplate.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="435">
+              <caret line="95" column="51" selection-start-line="95" selection-start-column="51" selection-end-line="95" selection-end-column="51" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/lib/examples/eg001EmbeddedSigning.js" />
+        <option value="$PROJECT_DIR$/lib/examples/eg002SigningViaEmail.js" />
+        <option value="$PROJECT_DIR$/lib/examples/eg003ListEnvelopes.js" />
+        <option value="$PROJECT_DIR$/lib/examples/eg004EnvelopeInfo.js" />
+        <option value="$PROJECT_DIR$/lib/examples/eg005EnvelopeRecipients.js" />
+        <option value="$PROJECT_DIR$/lib/examples/eg006EnvelopeDocs.js" />
+        <option value="$PROJECT_DIR$/lib/examples/eg007EnvelopeGetDoc.js" />
+        <option value="$PROJECT_DIR$/lib/examples/eg009UseTemplate.js" />
+        <option value="$PROJECT_DIR$/lib/examples/eg010SendBinaryDocs.js" />
+        <option value="$PROJECT_DIR$/lib/examples/eg011EmbeddedSending.js" />
+        <option value="$PROJECT_DIR$/lib/examples/eg012EmbeddedConsole.js" />
+        <option value="$PROJECT_DIR$/lib/examples/eg013AddDocToTemplate.js" />
+        <option value="$PROJECT_DIR$/lib/examples/eg014CollectPayment.js" />
+        <option value="$PROJECT_DIR$/lib/examples/eg008CreateTemplate.js" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER">
+    <package-json value="$PROJECT_DIR$/package.json" />
+  </component>
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/node_modules" />
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths>
+      <path value="$PROJECT_DIR$/package.json" />
+    </packageJsonPaths>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="71" />
+    <option name="y" value="29" />
+    <option name="width" value="1674" />
+    <option name="height" value="1003" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="eg-03-node-auth-code-grant" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eg-03-node-auth-code-grant" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="eg-03-node-auth-code-grant" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eg-03-node-auth-code-grant" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="eg-03-node-auth-code-grant" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eg-03-node-auth-code-grant" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="examples" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="eg-03-node-auth-code-grant" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eg-03-node-auth-code-grant" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="eg-03-node-auth-code-grant" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eg-03-node-auth-code-grant" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="eg-03-node-auth-code-grant" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eg-03-node-auth-code-grant" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="examples" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SearchEverywhereHistoryKey" value="/eg0&#9;null&#9;null" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ab4e8982-0dcf-48bd-a21b-83100bb5dd27" name="Default Changelist" comment="" />
+      <created>1539582252829</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1539582252829</updated>
+      <workItem from="1539582260896" duration="1428000" />
+      <workItem from="1539584306107" duration="2218000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="3646000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="71" y="29" width="1674" height="1003" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25306374" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="npm" order="2" side_tool="true" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32930845" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="right" id="Palette&#9;" order="5" />
+      <window_info anchor="right" id="Maven Projects" order="6" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/views/pages/examples/eg002SigningViaEmail.ejs">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/examples/eg002SigningViaEmail.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-895">
+          <caret line="33" column="55" selection-start-line="33" selection-start-column="55" selection-end-line="33" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/examples/eg003ListEnvelopes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-413">
+          <caret line="27" column="53" selection-start-line="27" selection-start-column="53" selection-end-line="27" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/examples/eg004EnvelopeInfo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-136">
+          <caret line="62" column="52" selection-start-line="62" selection-start-column="52" selection-end-line="62" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/examples/eg006EnvelopeDocs.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="62" column="52" selection-start-line="62" selection-start-column="52" selection-end-line="62" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/examples/eg007EnvelopeGetDoc.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1459">
+          <caret line="150" column="7" lean-forward="true" selection-start-line="150" selection-start-column="7" selection-end-line="150" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/examples/eg005EnvelopeRecipients.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="39">
+          <caret line="79" column="2" lean-forward="true" selection-start-line="79" selection-start-column="2" selection-end-line="79" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/examples/eg009UseTemplate.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1131">
+          <caret line="64" column="51" selection-start-line="64" selection-start-column="51" selection-end-line="64" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/pages/examples/eg009UseTemplate.ejs">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/examples/eg010SendBinaryDocs.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="31" column="54" selection-start-line="31" selection-start-column="54" selection-end-line="31" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/examples/eg011EmbeddedSending.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-31">
+          <caret line="64" column="43" lean-forward="true" selection-start-line="64" selection-start-column="43" selection-end-line="64" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/examples/eg012EmbeddedConsole.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-861">
+          <caret line="41" column="5" lean-forward="true" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/examples/eg001EmbeddedSigning.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="33" column="55" selection-start-line="33" selection-start-column="55" selection-end-line="33" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/DSAuthCodeGrant.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1570" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/examples/eg013AddDocToTemplate.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="356">
+          <caret line="69" column="56" selection-start-line="69" selection-start-column="56" selection-end-line="69" selection-end-column="56" />
+          <folding>
+            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h1#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h2#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h3#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#h3#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/pages/examples/eg014CollectPayment.ejs">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/examples/eg014CollectPayment.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-899">
+          <caret line="30" column="54" selection-start-line="30" selection-start-column="54" selection-end-line="30" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="34" column="37" lean-forward="true" selection-start-line="34" selection-start-column="37" selection-end-line="34" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/examples/eg008CreateTemplate.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="95" column="51" selection-start-line="95" selection-start-column="51" selection-end-line="95" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

@@ -7,7 +7,7 @@ const chai = require('chai')
     , fs = require('fs')
     , path = require('path')
     , helpers = require('./testHelpers')
-    , eg002 = require('../lib/examples/eg002')
+    , eg002 = require('../lib/examples/eg002SigningViaEmail')
     ;
 
 describe ('eg002 (test takes a long time to create an envelope with 3 documents)', function(){
