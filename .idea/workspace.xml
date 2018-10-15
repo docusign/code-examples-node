@@ -1,39 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ab4e8982-0dcf-48bd-a21b-83100bb5dd27" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/examples/eg001.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/examples/eg001EmbeddedSigning.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/examples/eg002.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/examples/eg002SigningViaEmail.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/examples/eg003.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/examples/eg003ListEnvelopes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/examples/eg004.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/examples/eg004EnvelopeInfo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/examples/eg005.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/examples/eg005EnvelopeRecipients.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/examples/eg006.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/examples/eg006EnvelopeDocs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/examples/eg007.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/examples/eg007EnvelopeGetDoc.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/examples/eg008.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/examples/eg008CreateTemplate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/examples/eg009.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/examples/eg009UseTemplate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/examples/eg010.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/examples/eg010SendBinaryDocs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/examples/eg011.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/examples/eg011EmbeddedSending.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/examples/eg012.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/examples/eg012EmbeddedConsole.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/examples/eg013.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/examples/eg013AddDocToTemplate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/examples/eg014.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/examples/eg014CollectPayment.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/eg001.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/eg001.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/eg002.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/eg002.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/pages/examples/eg001.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/examples/eg001EmbeddedSigning.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/pages/examples/eg002.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/examples/eg002SigningViaEmail.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/pages/examples/eg003.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/examples/eg003ListEnvelopes.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/pages/examples/eg004.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/examples/eg004EnvelopeInfo.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/pages/examples/eg005.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/examples/eg005EnvelopeRecipients.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/pages/examples/eg006.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/examples/eg006EnvelopeDocs.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/pages/examples/eg007.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/examples/eg007EnvelopeGetDoc.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/pages/examples/eg008.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/examples/eg008CreateTemplate.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/pages/examples/eg009.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/examples/eg009UseTemplate.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/pages/examples/eg010.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/examples/eg010SendBinaryDocs.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/pages/examples/eg011.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/examples/eg011EmbeddedSending.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/pages/examples/eg012.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/examples/eg012EmbeddedConsole.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/pages/examples/eg013.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/examples/eg013AddDocToTemplate.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/pages/examples/eg014.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/examples/eg014CollectPayment.ejs" afterDir="false" />
-    </list>
+    <list default="true" id="ab4e8982-0dcf-48bd-a21b-83100bb5dd27" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -45,7 +13,7 @@
     <session id="-1874958324">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.8" value="1" />
           <entry key="project.opened" value="2" />
@@ -179,10 +147,10 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="71" />
-    <option name="y" value="29" />
-    <option name="width" value="1674" />
-    <option name="height" value="1003" />
+    <option name="x" value="2096" />
+    <option name="y" value="35" />
+    <option name="width" value="2177" />
+    <option name="height" value="1222" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -263,18 +231,18 @@
       <option name="presentableId" value="Default" />
       <updated>1539582252829</updated>
       <workItem from="1539582260896" duration="1428000" />
-      <workItem from="1539584306107" duration="2218000" />
+      <workItem from="1539584306107" duration="2552000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3646000" />
+    <option name="totallyTimeSpent" value="3980000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="71" y="29" width="1674" height="1003" extended-state="0" />
+    <frame x="2096" y="35" width="2177" height="1222" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25306374" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19344263" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Designer" order="3" />
