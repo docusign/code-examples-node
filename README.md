@@ -39,7 +39,8 @@ The **refresh token** is not used in this example.
    Binary transfer is 33% more efficient than using Base64 encoding.
 1. **Embedded sending.**
    [Source.](https://github.com/docusign/eg-03-node-auth-code-grant/blob/master/lib/examples/eg011EmbeddedSending.js)
-   Embeds the DocuSign web tool (NDSE) in your web app to finalize the envelope and documents before they are sent.
+   Embeds the DocuSign web tool (NDSE) in your web app to finalize or update 
+   the envelope and documents before they are sent.
 1. **Embedded DocuSign web tool (NDSE).**
    [Source.](https://github.com/docusign/eg-03-node-auth-code-grant/blob/master/lib/examples/eg012EmbeddedConsole.js)
 1. **Embedded Signing Ceremony from a template with an added document.**
