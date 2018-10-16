@@ -14,14 +14,6 @@ helpers.ccEmail = 'ds_test_cc@mailinator.com';
 helpers.ccName = 'Mocha CC Tester';
 helpers.signerClientId = 1000;
 
-helpers.makePromise = function _makePromise(obj, methodName){
-    let promiseName = methodName + '_promise';
-    if (!(promiseName in obj)) {
-      obj[promiseName] = promisify(obj[methodName]).bind(obj)
-    }
-    return obj[promiseName]
-}
-
 helpers.dsAPIclient = new docusign.ApiClient();
 helpers.dsAPIclient.addDefaultHeader('Authorization', 'Bearer ' + helpers.accessToken);
 helpers.dsAPIclient.setBasePath(helpers.basePath);

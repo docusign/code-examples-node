@@ -23,7 +23,6 @@ describe ('eg001', function(){
         }
       , args = {
             dsAPIclient: helpers.dsAPIclient,
-            makePromise: helpers.makePromise, // this is a function
             accountId: helpers.accountId,
             envelopeArgs: envelopeArgs
         }

@@ -23,7 +23,6 @@ describe ('eg002 (test takes a long time to create an envelope with 3 documents)
         }
       , args = {
             dsAPIclient: helpers.dsAPIclient,
-            makePromise: helpers.makePromise, // this is a function
             accountId: helpers.accountId,
             envelopeArgs: envelopeArgs
         }
