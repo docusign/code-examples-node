@@ -12,7 +12,7 @@ gateway service.
    by using the `Skip this account form` link:
 
    ![Skipping the Stripe account form](docs/stripe_skip_account_form_link.png)
-1. Next, your browser will show that an enabled Stripe
+1. Next, the Admin Tool will show that an enabled Stripe
    payment gateway account has been associated with your
    DocuSign demo sandbox account.
 1. Configure the example launcher with the gateway account id shown in the Admin tool.
