@@ -97,7 +97,9 @@ The **refresh token** is not used in this example.
 To use the payments example, create a 
 test payments gateway for your developer sandbox account. 
 
-See the PAYMENTS_INSTALLATION.md file for instructions.
+See the 
+[PAYMENTS_INSTALLATION.md](https://github.com/docusign/eg-03-node-auth-code-grant/blob/master/PAYMENTS_INSTALLATION.md)
+file for instructions.
    
 Then add the payment gateway account id to the **ds_configuration.js** file.
 
