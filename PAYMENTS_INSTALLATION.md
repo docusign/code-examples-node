@@ -6,7 +6,7 @@ gateway service.
 
 ## Creating the payments gateway account
 
-1. Login to demo.docusign.com and go to the Admin Tool.
+1. Login to demo.docusign.net and go to the Admin Tool.
 1. On the Integrations / Payments screen, click Stripe.
 1. For development, you can skip the Stripe account application
    by using the `Skip this account form` link:
