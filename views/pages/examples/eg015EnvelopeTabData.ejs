@@ -1,0 +1,43 @@
+<% include ../../partials/head %>
+
+<h4>15. Get the tab data from an envelope</h4>
+<p>Get the tab (field) values from an envelope for all of the envelope's recipients.</p>
+
+<p>This method is used to read the updated tab values from
+   the envelope. The method can be used after the envelope is complete or while it is
+   still in progress.
+</p>
+
+<% if (show_doc) { %>
+    <p><a target='_blank' href='<%= documentation %>'>Documentation</a> about this example.</p>
+<% } %>
+
+<p>API method used:
+    <a target ='_blank' href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/EnvelopeFormData/get">EnvelopeFormData::get</a>.
+</p>
+
+<p>
+    View source file <a target="_blank" href="<%= sourceUrl %>"><%= sourceFile %></a> on GitHub.
+</p>
+
+<% if (envelopeOk) { %>
+    <p>The last envelope you created with this example launcher will be queried.
+     Recommendation:  use example 9, then this example, since example 9 includes many tabs of different types.</p>
+  
+  <form class="eg" action="" method="post" data-busy="form">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+      <button type="submit" class="btn btn-primary">Continue</button>
+  </form>
+
+  <% } else { %>
+    <p>Problem: please first create an envelope using <a href="{{ app_url ~ 'index.php?page=' }}eg009">example 9.</a> <br/>
+     Thank you.</p>
+     
+  <form class="eg" action="{{ app_url ~ 'index.php' }}" method="get">
+      <input type="hidden" name="page" value="eg009"/>
+      <button type="submit" class="btn btn-primary">Continue</button>
+  </form>
+  <% } %>
+
+  <% include ../../partials/foot %>
+  

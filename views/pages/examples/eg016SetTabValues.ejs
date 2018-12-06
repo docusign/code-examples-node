@@ -1,0 +1,37 @@
+<% include ../../partials/head %>
+
+<h4>16. Set tab values for a envelope</h4>
+<p>This example creates an example with both read-only tabs (fields) and tabs that can
+    be updated by the recipient.</p>
+<p>The example also sets custom metadata in the envelope via the envelope custom fields feature.</p>
+
+<% if (showDoc) { %>
+  <p><a target='_blank' href='<%= documentation %>'>Documentation</a> about this example.</p>
+<% } %>
+
+<p>API method used:
+   <a target ='_blank' href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/create">Envelopes::create</a>.
+</p>
+<p>
+  View source file <a target="_blank" href="<%= sourceUrl %>"><%= sourceFile %></a> on GitHub.
+</p>
+
+<form class="eg" action="" method="post" data-busy="form">
+    <div class="form-group">
+      <label for="signer_email">Signer Email</label>
+      <input type="email" class="form-control" id="signer_email" name="signer_email"
+             aria-describedby="emailHelp" placeholder="pat@example.com" required
+             value="{{ signer_email }}">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label for="signer_name">Signer Name</label>
+      <input type="text" class="form-control" id="signer_name" placeholder="Pat Johnson" name="signer_name"
+             value="{{ signer_name }}" required>
+    </div>
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  
+  <% include ../../partials/foot %>
+
