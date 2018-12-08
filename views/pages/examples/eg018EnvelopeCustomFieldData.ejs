@@ -10,9 +10,9 @@ envelope's certificate of completion.</p>
    an envelope.
 </p>
 
-{% if show_doc %}
+<% if (showDoc) { %>
 <p><a target='_blank' href='<%= documentation %>'>Documentation</a> about this example.</p>
-{% endif %}
+<% } %>
 
 <p>API method used:
     <a target ='_blank' href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/EnvelopeCustomFields/list">EnvelopeCustomFields::list</a>.
@@ -27,16 +27,15 @@ envelope's certificate of completion.</p>
      Recommendation:  use example 16 or 17, then this example, since those examples set a custom data field for the envelope.</p>
   
   <form class="eg" action="" method="post" data-busy="form">
-      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
-      <button type="submit" class="btn btn-primary">Continue</button>
+    <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+    <button type="submit" class="btn btn-primary">Continue</button>
   </form>
 
   <% } else { %>
-    <p>Problem: please first create an envelope using <a href="{{ app_url ~ 'index.php?page=' }}eg016">example 16.</a> <br/>
+    <p>Problem: please first create an envelope using <a href="eg016">example 16.</a> <br/>
      Thank you.</p>
      
-  <form class="eg" action="{{ app_url ~ 'index.php' }}" method="get">
-      <input type="hidden" name="page" value="eg016"/>
+  <form class="eg" action="eg016" method="get">
       <button type="submit" class="btn btn-primary">Continue</button>
   </form>
   <% } %>

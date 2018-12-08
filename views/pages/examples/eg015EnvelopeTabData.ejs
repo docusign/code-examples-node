@@ -8,7 +8,7 @@
    still in progress.
 </p>
 
-<% if (show_doc) { %>
+<% if (showDoc) { %>
     <p><a target='_blank' href='<%= documentation %>'>Documentation</a> about this example.</p>
 <% } %>
 
@@ -25,16 +25,15 @@
      Recommendation:  use example 9, then this example, since example 9 includes many tabs of different types.</p>
   
   <form class="eg" action="" method="post" data-busy="form">
-      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
-      <button type="submit" class="btn btn-primary">Continue</button>
+    <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+    <button type="submit" class="btn btn-primary">Continue</button>
   </form>
 
   <% } else { %>
-    <p>Problem: please first create an envelope using <a href="{{ app_url ~ 'index.php?page=' }}eg009">example 9.</a> <br/>
+    <p>Problem: please first create an envelope using <a href="eg009">example 9.</a> <br/>
      Thank you.</p>
      
-  <form class="eg" action="{{ app_url ~ 'index.php' }}" method="get">
-      <input type="hidden" name="page" value="eg009"/>
+  <form class="eg" action="eg009" method="get">
       <button type="submit" class="btn btn-primary">Continue</button>
   </form>
   <% } %>

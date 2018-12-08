@@ -30,6 +30,8 @@ const express = require('express')
     , eg012 = require('./lib/examples/eg012EmbeddedConsole')
     , eg013 = require('./lib/examples/eg013AddDocToTemplate')
     , eg014 = require('./lib/examples/eg014CollectPayment')
+    , eg015 = require('./lib/examples/eg015EnvelopeTabData')
+    , eg018 = require('./lib/examples/eg018EnvelopeCustomFieldData')
     ;
 
 const PORT = process.env.PORT || 5000
@@ -131,6 +133,10 @@ let app = express()
   .post('/eg013', eg013.createController)
   .get('/eg014', eg014.getController)
   .post('/eg014', eg014.createController)
+  .get('/eg015', eg015.getController)
+  .post('/eg015', eg015.createController)
+  .get('/eg018', eg018.getController)
+  .post('/eg018', eg018.createController)
   ;
 
 function dsLoginCB1 (req, res, next) {req.dsAuthCodeGrant.oauth_callback1(req, res, next)}
