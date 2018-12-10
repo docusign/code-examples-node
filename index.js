@@ -32,6 +32,7 @@ const express = require('express')
     , eg014 = require('./lib/examples/eg014CollectPayment')
     , eg015 = require('./lib/examples/eg015EnvelopeTabData')
     , eg016 = require('./lib/examples/eg016SetTabValues')
+    , eg017 = require('./lib/examples/eg017SetTemplateTabValues')
     , eg018 = require('./lib/examples/eg018EnvelopeCustomFieldData')
     ;
 
@@ -138,6 +139,8 @@ let app = express()
   .post('/eg015', eg015.createController)
   .get('/eg016', eg016.getController)
   .post('/eg016', eg016.createController)
+  .get('/eg017', eg017.getController)
+  .post('/eg017', eg017.createController)
   .get('/eg018', eg018.getController)
   .post('/eg018', eg018.createController)
   ;
