@@ -52,6 +52,22 @@ The **refresh token** is not used in this example.
    feature.
 1. **Payments example: an order form, with online payment by credit card.**
    [Source.](https://github.com/docusign/eg-03-node-auth-code-grant/blob/master/lib/examples/eg014CollectPayment.js)
+1. **Get the envelope tab data.**
+   Retrieve the tab (field) values for all of the envelope's recipients.
+   [Source.](https://github.com/docusign/eg-03-node-auth-code-grant/blob/master/lib/examples/eg015EnvelopeTabData.js)
+1. **Set envelope tab values.**
+   The example creates an envelope and sets the initial values for its tabs (fields). Some of the tabs
+   are set to be read-only, others can be updated by the recipient. The example also stores
+   metadata with the envelope.
+   [Source.](https://github.com/docusign/eg-03-node-auth-code-grant/blob/master/lib/examples/eg016SetTabValues.js)
+1. **Set template tab values.**
+   The example creates an envelope using a template and sets the initial values for its tabs (fields).
+   The example also stores metadata with the envelope.
+   [Source.](https://github.com/docusign/eg-03-node-auth-code-grant/blob/master/lib/examples/eg017SetTemplateTabValues.js)
+1. **Get the envelope custom field data (metadata).**
+   The example retrieves the custom metadata (custom data fields) stored with the envelope.
+   [Source.](https://github.com/docusign/eg-03-node-auth-code-grant/blob/master/lib/examples/eg018EnvelopeCustomFieldData.js)
+
 
 ## Installation
 
