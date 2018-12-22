@@ -11,6 +11,8 @@
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/default.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/darcula.min.css">
     <!-- Custom styles for this template -->
     <link href="/assets/css.css" rel="stylesheet">
   </head>
@@ -51,27 +53,27 @@
     </nav>
 
     <div class="container">
-    <!-- The closing div is in foot.ejs -->
-    <% if (locals.session.accountName) { %>
-      <p>
-        DocuSign Account: <%= locals.session.accountName %>.
-      </p>
-    <% } %>
+      <!-- The closing div is in foot.ejs -->
+      <% if (locals.session.accountName) { %>
+        <p>
+          DocuSign Account: <%= locals.session.accountName %>.
+        </p>
+      <% } %>
 
 
-    <div class="col-md-12 feedback" id="feedback">
-        <h3>Working...&nbsp;&nbsp;&nbsp;<span></span></h3>
-    </div>
-
-    <section id="busy" class="feedback"><div class="spinner">
-      <div class="rect1"></div>
-      <div class="rect2"></div>
-      <div class="rect3"></div>
-      <div class="rect4"></div>
-      <div class="rect5"></div>
+      <div class="col-md-12 feedback" id="feedback">
+          <h3>Working...&nbsp;&nbsp;&nbsp;<span></span></h3>
       </div>
-    </section>
 
-    <p id="download-continue" class="feedback"><a href="/">Continue</a></p>
+      <section id="busy" class="feedback"><div class="spinner">
+        <div class="rect1"></div>
+        <div class="rect2"></div>
+        <div class="rect3"></div>
+        <div class="rect4"></div>
+        <div class="rect5"></div>
+        </div>
+      </section>
 
-    <section id="content">
+      <p id="download-continue" class="feedback"><a href="/">Continue</a></p>
+    </div> <!-- container -->
+  

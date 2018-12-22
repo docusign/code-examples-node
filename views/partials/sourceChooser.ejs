@@ -1,0 +1,42 @@
+
+<% if (locals.dsConfig.multiSourceChooser) {
+    // Get list of potential languages
+    let languages = locals.dsConfig.docOptions.map (item => item.langCode);
+    // Filter out languages that don't have source for this example
+    languages = languages.filter(langCode =>
+        locals.dsConfig.docNames[langCode][eg]);
+    // Create sources object for client side:
+    // [ {langCode, url} ]
+    let sources = languages.map( langCode => {
+        let info = locals.dsConfig.docOptions.find(item => item.langCode == langCode);
+        let docName = locals.dsConfig.docNames[langCode][eg];
+        return {langCode: langCode, name: info.name, 
+                url: info.githubExampleUrl + docName,
+                docName: docName}});
+    sourcesJson = JSON.stringify(sources, null, "   ");
+    %>
+    <div class="">
+        <h4>View the source</h4>
+        <div class="form-check form-check-inline">
+            <% sources.forEach(source => { 
+                let active  = source.langCode == "node" ? "active" : "";
+                let checked = source.langCode == "node" ? "checked" : "";
+            %>
+                <input class="form-check-input"  type="radio" name="radioSource" 
+                    id="radio_<%= source.langCode %>"
+                    value="<%= source.url %>"
+                    x-docName="<%= source.docName %>"
+                    x-langCode="<%= source.langCode %>"
+                    autocomplete="off" 
+                    <%= checked %> >
+                <label class="form-check-label mr-3"><%= source.name %></label>
+            <% }) %>
+        </div>
+        <p id="sourceUrl">Github: <a target="_blank" href='<%= sourceUrl %>'><%= sourceFile %></a>
+        <div id="source"></div>
+    </div>
+<% } else { %> 
+    <p>
+        View source file <a target="_blank" href="<%= sourceUrl %>"><%= sourceFile %></a> on GitHub.
+    </p>
+<% } %>
