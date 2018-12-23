@@ -16,6 +16,11 @@ let DS_SC = (function(){
   function add_listeners(){
     $('input[name="radioSource"]').change(sourceChanged);
     $(window).resize(onResize);
+
+    // Show the node source
+    if(document.getElementById("radio_node") !== null) {
+      sourceChanged({target: $("#radio_node")[0]})
+    }
   }
 
   let sourceChanged = function _sourceChanged(e){
@@ -51,17 +56,20 @@ let DS_SC = (function(){
       $(window).trigger('resize');
   }
 
-  let splitobj = Split(["#lcolumn","#rcolumn"], {
-      elementStyle: function (dimension, size, gutterSize) { 
-        $(window).trigger('resize'); // Optional
-        return {'flex-basis': 'calc(' + size + '% - ' + gutterSize + 'px)'}
-      },  
-      gutterStyle: function (dimension, gutterSize) { return {'flex-basis':  gutterSize + 'px'} },
-      sizes: [50,50],
-      minSize: 10,
-      gutterSize: 6,
-      cursor: 'col-resize'
-    });
+  // Split the window and make it adjustable
+  if(document.getElementById("lcolumn") !== null) {
+    let splitobj = Split(["#lcolumn","#rcolumn"], {
+          elementStyle: function (dimension, size, gutterSize) { 
+            $(window).trigger('resize'); // Optional
+            return {'flex-basis': 'calc(' + size + '% - ' + gutterSize + 'px)'}
+          },  
+          gutterStyle: function (dimension, gutterSize) { return {'flex-basis':  gutterSize + 'px'} },
+          sizes: [50,50],
+          minSize: 10,
+          gutterSize: 6,
+          cursor: 'col-resize'
+        })
+    }
 
   let start_up = function(){
     add_listeners();

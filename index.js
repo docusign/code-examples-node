@@ -14,7 +14,6 @@ const express = require('express')
     , flash = require('express-flash')
     , helmet = require('helmet') // https://expressjs.com/en/advanced/best-practice-security.html
     , moment = require('moment')
-    , csp = require('helmet-csp')
     , csrf = require('csurf') // https://www.npmjs.com/package/csurf
     , eg001 = require('./lib/examples/eg001EmbeddedSigning')
     , eg002 = require('./lib/examples/eg002SigningViaEmail')
@@ -68,32 +67,6 @@ let app = express()
     res.locals.hostUrl = hostUrl; // Used by DSAuthCodeGrant#logout
     next()})) // Send user info to views
   .use(flash())
-  .use(csp({
-    // Specify directives as normal.
-    directives: {
-      defaultSrc: ["'none'"],
-      scriptSrc: ["'self'", "https://code.jquery.com","https://cdnjs.cloudflare.com",
-        "https://stackpath.bootstrapcdn.com", "https://cdn.jsdelivr.net",
-        "'sha256-0NW9KKBQYh2Iv0XLsH/B9LSOfn2Z00m55p5eKSUlikE='"], // hash is for inline script for anchor lib on index page.
-      styleSrc: ["'self'", "'unsafe-inline'", "https://stackpath.bootstrapcdn.com"],
-      imgSrc: ["'self'", "data:"],
-      //sandbox: ['allow-forms', 'allow-scripts', 'allow-modals',
-      //  'allow-popups', 'allow-same-origin'], // Sandboxing does not allow PDF viewer plugin...
-      objectSrc: ["'self'"],
-      fontSrc: ["data:"],
-      // Don't set the following
-      upgradeInsecureRequests: false,
-      workerSrc: false
-    },
-    // This module will detect common mistakes in your directives and throw errors
-    // if it finds any. To disable this, enable "loose mode".
-    loose: false,
-    reportOnly: false,
-    setAllHeaders: false,
-    // Set to true if you want to disable CSP on Android where it can be buggy.
-    disableAndroid: true,
-    browserSniff: true
-  }))
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   // Add an instance of DSAuthCodeGrant to req

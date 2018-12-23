@@ -1,46 +1,31 @@
-<% include ../../partials/head %>
-<div class="container-fluid">
-  <section id="content">
-    <!-- adjustable columns. See https://stackoverflow.com/a/49606648/64904 -->
-    <div class="row colDivider">
-      <div id="lcolumn" class="col pl-4">
-      
-        <h4>1. Embedded Signing Ceremony</h4>
-        <p>This example sends an envelope, and then uses an embedded signing ceremony for the first signer.</p> 
-        <p>Embedded signing provides a smoother user experience for the signer: the DocuSign signing ceremony is initiated from your website.</p>
+<% include ../../partials/examplesHead %>
+<h4>1. Embedded Signing Ceremony</h4>
+<p>This example sends an envelope, and then uses an embedded signing ceremony for the first signer.</p>
+<p>Embedded signing provides a smoother user experience for the signer: the DocuSign signing ceremony is initiated from your website.</p>
 
-        <% if (showDoc) { %>
-          <p><a target='_blank' href='<%= documentation %>'>Documentation</a> about this example.</p>
-        <% } %>
+<% if (showDoc) { %>
+  <p><a target='_blank' href='<%= documentation %>'>Documentation</a> about this example.</p>
+<% } %>
 
-        <p>API methods used: 
-          <a target ='_blank' href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/create">Envelopes::create</a> and 
-          <a target ='_blank' href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/EnvelopeViews/createRecipient">EnvelopeViews::createRecipient</a>.
-        </p>
-        <form class="eg" action="" method="post" data-busy="form">
-          <div class="form-group">
-            <label for="signerEmail">Signer Email</label>
-            <input type="email" class="form-control" id="signerEmail" name="signerEmail"
-                  aria-describedby="emailHelp" placeholder="pat@example.com" required
-                  value="<%= locals.dsConfig.signerEmail %>">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-          </div>
-          <div class="form-group">
-            <label for="signerName">Signer Name</label>
-            <input type="text" class="form-control" id="signerName" placeholder="Pat Johnson" name="signerName"
-                  value="<%= locals.dsConfig.signerName %>" required>
-          </div>
-          <input type="hidden" name="_csrf" value="<%- csrfToken %>">
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-      </div> <!-- lcolumn -->
-      <div id="rcolumn" class="col">
-        <% include ../../partials/sourceChooser %>
-      </div>
-    </div> <!-- row -->
-  </section>
-</div> <!-- container -->
-
-
-
-<% include ../../partials/foot %>
+<p>API methods used:
+  <a target ='_blank' href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/create">Envelopes::create</a> and
+  <a target ='_blank' href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/EnvelopeViews/createRecipient">EnvelopeViews::createRecipient</a>.
+</p>
+<% include ../../partials/gitSource %>
+<form class="eg" action="" method="post" data-busy="form">
+  <div class="form-group">
+    <label for="signerEmail">Signer Email</label>
+    <input type="email" class="form-control" id="signerEmail" name="signerEmail"
+          aria-describedby="emailHelp" placeholder="pat@example.com" required
+          value="<%= locals.dsConfig.signerEmail %>">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="signerName">Signer Name</label>
+    <input type="text" class="form-control" id="signerName" placeholder="Pat Johnson" name="signerName"
+          value="<%= locals.dsConfig.signerName %>" required>
+  </div>
+  <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<% include ../../partials/examplesFoot.ejs %>
