@@ -26,7 +26,8 @@ exports.config = {
   , githubExampleUrl: 'https://github.com/docusign/eg-03-node-auth-code-grant/tree/master/lib/examples/'
   , documentation: null
   //, documentation: 'https://developers.docusign.com/esign-rest-api/code-examples/'
-  // Should source files for different software languages be shown?
+  // Should source files for different software languages be shown
+  // NOTE: Only set multiSourceChooser to true if you have added files to the /public/source directory
   , multiSourceChooser: true
   , docOptions: [
       {langCode: 'node', name: 'Node.js',
@@ -88,6 +89,10 @@ exports.config = {
           , eg014: 'eg014CollectPayment.sh'
       }
   }
+  // The gitHub settings are for the lib/utilities software.
+  // They are reserved for use by DocuSign.
+  , gitHubAppId: false
+  , gitHubPrivateKey: false
 }
 
 exports.config.dsOauthServer = exports.config.production ? 

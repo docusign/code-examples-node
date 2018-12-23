@@ -76,7 +76,18 @@ pre.json-display {
   color: olive;
   }
 
+/********************************************************************/
+/* index page tabs */
+#index-page a.nav-link {
+  background: #007bff;
+  color: white;
+  margin-right: 3em;
+  opacity: .60;
+}
 
+#index-page a.nav-link.active {
+  opacity: unset;
+}
 
 
 /* From http://tobiasahlin.com/spinkit/ */
