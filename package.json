@@ -6,7 +6,10 @@
   "scripts": {
     "debug": "node  --inspect-brk index.js",
     "start": "node index.js",
-    "test": "mocha"
+    "test": "mocha",
+    "update-sources": "node lib/utilities/updateSources.js",
+    "update-sources-debug": "node --inspect-brk lib/utilities/updateSources.js"
+
   },
   "directories": {
     "test": "test"
@@ -36,9 +39,9 @@
     "fs": "0.0.1-security",
     "fs-extra": "^6.0.1",
     "helmet": "^3.15.0",
-    "helmet-csp": "^2.7.1",
+    "jsonwebtoken": "^8.4.0",
     "memorystore": "^1.6.0",
-    "moment": "^2.22.0",
+    "moment": "^2.23.0",
     "passport": "^0.4.0",
     "passport-docusign": "^1.0.0",
     "path": "^0.12.7",

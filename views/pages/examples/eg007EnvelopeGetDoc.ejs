@@ -1,4 +1,4 @@
-<% include ../../partials/head %>
+<% include ../../partials/examplesHead %>
 
 <h4>7. Download a document from an envelope</h4>
 <p>An envelope's documents can be downloaded one by one or as a complete set.</p>
@@ -20,10 +20,7 @@
    <a target='_blank' href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/EnvelopeDocuments/get">EnvelopeDocuments::get</a>.
 </p>
 
-<p>
-    View source file <a target="_blank" href="<%= sourceUrl %>"><%= sourceFile %></a> on GitHub.
-</p>
-
+<% include ../../partials/gitSource %>
 <% if (! envelopeOk) { %>
   <p>Problem: please first create an envelope using <a href="eg002">example 2.</a> <br/>
     You will then need to use example 6 to create the list of documents.<br/>
@@ -59,4 +56,4 @@
   </form>
 <% } %>
 
-<% include ../../partials/foot %>
+<% include ../../partials/examplesFoot %>

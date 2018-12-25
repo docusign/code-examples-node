@@ -1,0 +1,12 @@
+<% include head %>
+
+<% if (locals.dsConfig.multiSourceChooser) { %>
+    <div class="container-fluid">
+        <section id="content">
+            <!-- adjustable columns. See https://stackoverflow.com/a/49606648/64904 -->
+            <div class="row colDivider">
+                <div id="lcolumn" class="col pl-4">
+<% } else { %>
+    <div class="container">
+        <section id="content">
+<% } %>
