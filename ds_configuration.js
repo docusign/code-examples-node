@@ -26,18 +26,32 @@ exports.config = {
   , githubExampleUrl: 'https://github.com/docusign/eg-03-node-auth-code-grant/tree/master/lib/examples/'
   , documentation: null
   //, documentation: 'https://developers.docusign.com/esign-rest-api/code-examples/'
-  // Should source files for different software languages be shown
-  // NOTE: Only set multiSourceChooser to true if you have added files to the /public/source directory
-  , multiSourceChooser: true
+  // Should source files for different software languages be shown?
+  , multiSourceChooser: false
   , docOptions: [
       {langCode: 'node', name: 'Node.js',
           githubExampleUrl: 'https://github.com/docusign/eg-03-node-auth-code-grant/tree/master/lib/examples/',
+          owner: 'docusign', repo: 'eg-03-node-auth-code-grant', pathPrefix: 'lib/examples/'
       },
       {langCode: 'java', name: 'Java',
           githubExampleUrl: 'https://github.com/docusign/eg-03-java-auth-code-grant/tree/master/src/main/java/com/docusign/controller/examples/',
+          owner: 'docusign', repo: 'eg-03-java-auth-code-grant', pathPrefix: 'src/main/java/com/docusign/controller/examples/'
       },
       {langCode: 'curl', name: 'API / curl',
           githubExampleUrl: 'https://github.com/docusign/eg-03-curl/tree/master/examples/',
+          owner: 'docusign', repo: 'eg-03-curl', pathPrefix: 'examples/'
+      },
+      {langCode: 'php', name: 'PHP',
+          githubExampleUrl: 'https://github.com/docusign/eg-03-php-auth-code-grant/blob/master/src/',
+          owner: 'docusign', repo: 'eg-03-php-auth-code-grant', pathPrefix: 'src/'
+      },
+      {langCode: 'python', name: 'Python',
+          githubExampleUrl: 'https://github.com/docusign/eg-03-python-auth-code-grant/tree/master/app/',
+          owner: 'docusign', repo: 'eg-03-python-auth-code-grant', pathPrefix: 'app/'
+      },
+      {langCode: 'csharp', name: 'C#',
+          githubExampleUrl: 'https://github.com/docusign/eg-03-csharp-auth-code-grant-core/tree/master/eg-03-csharp-auth-code-grant-core/Controllers/',
+          owner: 'docusign', repo: 'eg-03-csharp-auth-code-grant-core', pathPrefix: 'eg-03-csharp-auth-code-grant-core/Controllers/'
       },
   ]
   , docNames: {
@@ -56,6 +70,10 @@ exports.config = {
           , eg012: 'eg012EmbeddedConsole.js'
           , eg013: 'eg013AddDocToTemplate.js'
           , eg014: 'eg014CollectPayment.js'
+          , eg015: 'eg015EnvelopeTabData.js'
+          , eg016: 'eg016SetTabValues.js'
+          , eg017: 'eg017SetTemplateTabValues.js'
+          , eg018: 'eg018EnvelopeCustomFieldData.js'
       },
       java: {
           eg001: 'EG001ControllerEmbeddedSigning.java'
@@ -87,14 +105,68 @@ exports.config = {
           , eg012: 'eg012EmbeddedConsole.sh'
           , eg013: 'eg013AddDocToTemplate.sh'
           , eg014: 'eg014CollectPayment.sh'
+      },
+      php: {
+          eg001: 'EG001EmbeddedSigning.php'
+          , eg002: 'EG002SigningViaEmail.php'
+          , eg003: 'EG003ListEnvelopes.php'
+          , eg004: 'EG004EnvelopeInfo.php'
+          , eg005: 'EG005EnvelopeRecipients.php'
+          , eg006: 'EG006EnvelopeDocs.php'
+          , eg007: 'EG007EnvelopeGetDoc.php'
+          , eg008: 'EG008CreateTemplate.php'
+          , eg009: 'EG009UseTemplate.php'
+          , eg010: 'EG010SendBinaryDocs.php'
+          , eg011: 'EG011EmbeddedSending.php'
+          , eg012: 'EG012EmbeddedConsole.php'
+          , eg013: 'EG013AddDocToTemplate.php'
+          , eg014: 'EG014CollectPayment.php'
+          , eg015: 'EG015EnvelopeTabData.php'
+          , eg016: 'EG016SetTabValues.php'
+          , eg017: 'EG017SetTemplateTabValues.php'
+          , eg018: 'EG018EnvelopeCustomFieldData.php'
+      },
+      python: {
+          eg001: 'eg001_embedded_signing.py'
+          , eg002: 'eg002_signing_via_email.py'
+          , eg003: 'eg003_list_envelopes.py'
+          , eg004: 'eg004_envelope_info.py'
+          , eg005: 'eg005_envelope_recipients.py'
+          , eg006: 'eg006_envelope_docs.py'
+          , eg007: 'eg007_envelope_get_doc.py'
+          , eg008: 'eg008_create_template.py'
+          , eg009: 'eg009_use_template.py'
+          , eg010: 'eg010_send_binary_docs.py'
+          , eg011: 'eg011_embedded_sending.py'
+          , eg012: 'eg012_embedded_console.py'
+          , eg013: 'eg013_add_doc_to_template.py'
+          , eg014: 'eg014_collect_payment.py'
+      },
+      csharp: {
+          eg001: 'Eg001EmbeddedSigningController.cs'
+          , eg002: 'Eg002SigningViaEmailController.cs'
+          , eg003: 'Eg003ListEnvelopesController.cs'
+          , eg004: 'Eg004EnvelopeInfoController.cs'
+          , eg005: 'Eg005EnvelopeRecipientsController.cs'
+          , eg006: 'Eg006EnvelopeDocsController.cs'
+          , eg007: 'Eg007EnvelopeGetDocController.cs'
+          , eg008: 'Eg008CreateTemplateController.cs'
+          , eg009: 'Eg009UseTemplateController.cs'
+          , eg010: 'Eg010SendBinaryDocsController.cs'
+          , eg011: 'Eg011EmbeddedSendingController.cs'
+          , eg012: 'Eg012EmbeddedConsoleController.cs'
+          , eg013: 'Eg013AddDocToTemplateController.cs'
+          , eg014: 'Eg014CollectPaymentController.cs'
       }
   }
   // The gitHub settings are for the lib/utilities software.
   // They are reserved for use by DocuSign.
-  , gitHubAppId: false
-  , gitHubPrivateKey: false
+  , ghUserAgent: 'Example Source Updater'
+  , gitHubAppId: 0
+  , gitHubInstallationId: 0
+  , gitHubPrivateKey: ``
 }
 
-exports.config.dsOauthServer = exports.config.production ? 
-  'https://account.docusign.com' : 'https://account-d.docusign.com';
+exports.config.dsOauthServer = exports.config.production ?
+    'https://account.docusign.com' : 'https://account-d.docusign.com';
 
