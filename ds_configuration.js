@@ -89,6 +89,7 @@ exports.config = {
           , eg011: 'EG011ControllerEmbeddedSending.java'
           , eg012: 'EG012ControllerEmbeddedConsole.java'
           , eg013: 'EG013ControllerAddDocToTemplate.java'
+          , eg014: 'EG014ControllerCollectPayment.java'
       },
       curl: {
           eg001: 'eg001EmbeddedSigning.sh'
