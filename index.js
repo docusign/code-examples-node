@@ -124,10 +124,9 @@ function dsLoginCB2 (req, res, next) {req.dsAuthCodeGrant.oauth_callback2(req, r
 /* Start the web server */
 if (dsConfig.dsClientId && dsConfig.dsClientId !== '{CLIENT_ID}' &&
     dsConfig.dsClientSecret && dsConfig.dsClientSecret !== '{CLIENT_SECRET}') {
-  app.listen(PORT, HOST, function (err) {
-    if (err) {throw err}
+    app.listen(PORT)
+    console.log(`Listening on ${PORT}`);
     console.log(`Ready! Open ${hostUrl}`);
-  })
 } else {
   console.log(`PROBLEM: You need to set the clientId (Integrator Key), and perhaps other settings as well. 
 You can set them in the source file ds_configuration.js or set environment variables.\n`);
