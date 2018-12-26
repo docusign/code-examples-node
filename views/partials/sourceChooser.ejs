@@ -32,8 +32,9 @@
                 <label class="form-check-label mr-3"><%= source.name %></label>
             <% }) %>
         </div>
-        <p id="sourceUrl">Github: <a target="_blank" href='<%= sourceUrl %>'><%= sourceFile %></a>
-        <div id="source"></div>
+        <p id="sourceUrl" class="mb-0">Github: <a target="_blank" href='<%= sourceUrl %>'><%= sourceFile %></a></p>
+        <p><b style="font-size: 200%">←</b> Adjust the column width by dragging the column divider.</p>
+        <div><pre class="preWrap"><code id="source"></code></pre></div>
     </div>
 <% } else { %> 
     <p>
