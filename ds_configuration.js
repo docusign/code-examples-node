@@ -121,7 +121,7 @@ exports.config = {
           , eg011: 'EG011EmbeddedSending.php'
           , eg012: 'EG012EmbeddedConsole.php'
           , eg013: 'EG013AddDocToTemplate.php'
-          , eg014: 'EG014CollectPayment.php'
+          //, eg014: 'EG014CollectPayment.php'
           , eg015: 'EG015EnvelopeTabData.php'
           , eg016: 'EG016SetTabValues.php'
           , eg017: 'EG017SetTemplateTabValues.php'
