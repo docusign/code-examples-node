@@ -29,29 +29,29 @@ exports.config = {
   // Should source files for different software languages be shown?
   , multiSourceChooser: false
   , docOptions: [
-      {langCode: 'node', name: 'Node.js',
-          githubExampleUrl: 'https://github.com/docusign/eg-03-node-auth-code-grant/tree/master/lib/examples/',
-          owner: 'docusign', repo: 'eg-03-node-auth-code-grant', pathPrefix: 'lib/examples/'
+      {langCode: 'csharp', name: 'C#',
+          githubExampleUrl: 'https://github.com/docusign/eg-03-csharp-auth-code-grant-core/tree/master/eg-03-csharp-auth-code-grant-core/Controllers/',
+          owner: 'docusign', repo: 'eg-03-csharp-auth-code-grant-core', pathPrefix: 'eg-03-csharp-auth-code-grant-core/Controllers/'
       },
+        {langCode: 'php', name: 'PHP',
+            githubExampleUrl: 'https://github.com/docusign/eg-03-php-auth-code-grant/blob/master/src/',
+            owner: 'docusign', repo: 'eg-03-php-auth-code-grant', pathPrefix: 'src/'
+        },
       {langCode: 'java', name: 'Java',
           githubExampleUrl: 'https://github.com/docusign/eg-03-java-auth-code-grant/tree/master/src/main/java/com/docusign/controller/examples/',
           owner: 'docusign', repo: 'eg-03-java-auth-code-grant', pathPrefix: 'src/main/java/com/docusign/controller/examples/'
       },
+        {langCode: 'node', name: 'Node.js',
+            githubExampleUrl: 'https://github.com/docusign/eg-03-node-auth-code-grant/tree/master/lib/examples/',
+            owner: 'docusign', repo: 'eg-03-node-auth-code-grant', pathPrefix: 'lib/examples/'
+        },
       {langCode: 'curl', name: 'API / curl',
           githubExampleUrl: 'https://github.com/docusign/eg-03-curl/tree/master/examples/',
           owner: 'docusign', repo: 'eg-03-curl', pathPrefix: 'examples/'
       },
-      {langCode: 'php', name: 'PHP',
-          githubExampleUrl: 'https://github.com/docusign/eg-03-php-auth-code-grant/blob/master/src/',
-          owner: 'docusign', repo: 'eg-03-php-auth-code-grant', pathPrefix: 'src/'
-      },
       {langCode: 'python', name: 'Python',
           githubExampleUrl: 'https://github.com/docusign/eg-03-python-auth-code-grant/tree/master/app/',
           owner: 'docusign', repo: 'eg-03-python-auth-code-grant', pathPrefix: 'app/'
-      },
-      {langCode: 'csharp', name: 'C#',
-          githubExampleUrl: 'https://github.com/docusign/eg-03-csharp-auth-code-grant-core/tree/master/eg-03-csharp-auth-code-grant-core/Controllers/',
-          owner: 'docusign', repo: 'eg-03-csharp-auth-code-grant-core', pathPrefix: 'eg-03-csharp-auth-code-grant-core/Controllers/'
       },
   ]
   , docNames: {
