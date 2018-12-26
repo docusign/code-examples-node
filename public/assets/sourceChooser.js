@@ -49,8 +49,8 @@ let DS_SC = (function(){
 
   function ShowSource(langCode, source) {
     sources[langCode] = source;
-      $("#source").html('<pre class="preWrap"><code>' + source + '</code></pre>');
-      $("#source pre code").each(function(i, block) {
+      $("#source").text(source);
+      $("#source").each(function(i, block) {
         hljs.highlightBlock(block);
       });
       $(window).trigger('resize');
