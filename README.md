@@ -14,78 +14,78 @@ The **refresh token** is not used in this example.
 ## API version 2.1
 
 1. **Embedded Signing Ceremony.**
-   [Source.](./eg-03-node-auth-code-grant/blob/tree/master/lib/examples/eg001EmbeddedSigning.js)
+   [Source.](./lib/examples/eg001EmbeddedSigning.js)
    This example sends an envelope, and then uses an embedded signing ceremony for the first signer.
    With embedded signing, the DocuSign signing ceremony is initiated from your website.
 1. **Send an envelope with a remote (email) signer and cc recipient.**
-   [Source.](./eg-03-node-auth-code-grant/blob/tree/master/lib/examples/eg002SigningViaEmail.js)
+   [Source.](./lib/examples/eg002SigningViaEmail.js)
    The envelope includes a pdf, Word, and HTML document.
    Anchor text ([AutoPlace](https://support.docusign.com/en/guides/AutoPlace-New-DocuSign-Experience)) is used to position the signing fields in the documents.
 1. **List envelopes in the user's account.**
-   [Source.](./eg-03-node-auth-code-grant/blob/tree/master/lib/examples/eg003ListEnvelopes.js)
+   [Source.](./lib/examples/eg003ListEnvelopes.js)
 1. **Get an envelope's basic information.**
-   [Source.](./eg-03-node-auth-code-grant/blob/tree/master/lib/examples/eg004EnvelopeInfo.js)
+   [Source.](./lib/examples/eg004EnvelopeInfo.js)
    The example lists the basic information about an envelope, including its overall status.
 1. **List an envelope's recipients** 
-   [Source.](./eg-03-node-auth-code-grant/blob/tree/master/lib/examples/eg005EnvelopeRecipients.js)
+   [Source.](./lib/examples/eg005EnvelopeRecipients.js)
    Includes current recipient status.
 1. **List an envelope's documents.**
-   [Source.](./eg-03-node-auth-code-grant/blob/tree/master/lib/examples/eg006EnvelopeDocs.js)
+   [Source.](./lib/examples/eg006EnvelopeDocs.js)
 1. **Download an envelope's documents.** 
-   [Source.](./eg-03-node-auth-code-grant/blob/tree/master/lib/examples/eg007EnvelopeGetDoc.js)
+   [Source.](./lib/examples/eg007EnvelopeGetDoc.js)
    The example can download individual
    documents, the documents concatenated together, or a zip file of the documents.
 1. **Programmatically create a template.**
-   [Source.](./eg-03-node-auth-code-grant/blob/tree/master/lib/examples/eg008CreateTemplate.js)
+   [Source.](./lib/examples/eg008CreateTemplate.js)
 1. **Send an envelope using a template.**
-   [Source.](./eg-03-node-auth-code-grant/blob/tree/master/lib/examples/eg009UseTemplate.js)
+   [Source.](./lib/examples/eg009UseTemplate.js)
 1. **Send an envelope and upload its documents with multpart binary transfer.**
-   [Source.](./eg-03-node-auth-code-grant/blob/tree/master/lib/examples/eg010SendBinaryDocs.js)
+   [Source.](./lib/examples/eg010SendBinaryDocs.js)
    Binary transfer is 33% more efficient than using Base64 encoding.
 1. **Embedded sending.**
-   [Source.](./eg-03-node-auth-code-grant/blob/tree/master/lib/examples/eg011EmbeddedSending.js)
+   [Source.](./lib/examples/eg011EmbeddedSending.js)
    Embeds the DocuSign web tool (NDSE) in your web app to finalize or update 
    the envelope and documents before they are sent.
 1. **Embedded DocuSign web tool (NDSE).**
-   [Source.](./eg-03-node-auth-code-grant/blob/tree/master/lib/examples/eg012EmbeddedConsole.js)
+   [Source.](./lib/examples/eg012EmbeddedConsole.js)
 1. **Embedded Signing Ceremony from a template with an added document.**
-   [Source.](./eg-03-node-auth-code-grant/blob/tree/master/lib/examples/eg013AddDocToTemplate.js)
+   [Source.](./lib/examples/eg013AddDocToTemplate.js)
    This example sends an envelope based on a template.
    In addition to the template's document(s), the example adds an
    additional document to the envelope by using the
    [Composite Templates](https://developers.docusign.com/esign-rest-api/guides/features/templates#composite-templates)
    feature.
 1. **Payments example: an order form, with online payment by credit card.**
-   [Source.](./eg-03-node-auth-code-grant/blob/tree/master/lib/examples/eg014CollectPayment.js)
+   [Source.](./lib/examples/eg014CollectPayment.js)
 1. **Get the envelope tab data.**
    Retrieve the tab (field) values for all of the envelope's recipients.
-   [Source.](./eg-03-node-auth-code-grant/blob/tree/master/lib/examples/eg015EnvelopeTabData.js)
+   [Source.](./lib/examples/eg015EnvelopeTabData.js)
 1. **Set envelope tab values.**
    The example creates an envelope and sets the initial values for its tabs (fields). Some of the tabs
    are set to be read-only, others can be updated by the recipient. The example also stores
    metadata with the envelope.
-   [Source.](./eg-03-node-auth-code-grant/blob/tree/master/lib/examples/eg016SetTabValues.js)
+   [Source.](./lib/examples/eg016SetTabValues.js)
 1. **Set template tab values.**
    The example creates an envelope using a template and sets the initial values for its tabs (fields).
    The example also stores metadata with the envelope.
-   [Source.](./eg-03-node-auth-code-grant/blob/tree/master/lib/examples/eg017SetTemplateTabValues.js)
+   [Source.](./lib/examples/eg017SetTemplateTabValues.js)
 1. **Get the envelope custom field data (metadata).**
    The example retrieves the custom metadata (custom data fields) stored with the envelope.
-   [Source.](./eg-03-node-auth-code-grant/blob/tree/master/lib/examples/eg018EnvelopeCustomFieldData.js)
+   [Source.](./lib/examples/eg018EnvelopeCustomFieldData.js)
 1. **Requiring an Access Code for a Recipient**
-   [Source.](./eg-03-node-auth-code-grant/blob/tree/master/lib/examples/Controllers/Eg019AccessCodeAuthentication.js)
+   [Source.](./lib/examples/Controllers/Eg019AccessCodeAuthentication.js)
    This example sends and envelope that requires an access-code for the purpose of multi-factor authentication.
 1. **Requiring SMS authentication for a recipient**
-   [Source.](./eg-03-node-auth-code-grant/blob/tree/master/lib/examples/Controllers/Eg020SmsAuthentication.js)
+   [Source.](./lib/examples/Controllers/Eg020SmsAuthentication.js)
    This example sends and envelope that requires entering in a six digit code from an text message for the purpose of multi-factor authentication.
 1. **Requiring Phone authentication for a recipient**
-   [Source.](./eg-03-node-auth-code-grant/blob/tree/master/lib/examples/Controllers/Eg021PhoneAuthentication.js)
+   [Source.](./lib/examples/Controllers/Eg021PhoneAuthentication.js)
    This example sends and envelope that requires entering in a voice-based response code for the purpose of multi-factor authentication.
 1. **Requiring Knowledge-Based Authentication (KBA) for a Recipient**
-   [Source.](./eg-03-node-auth-code-grant/blob/tree/master/lib/examples/Controllers/Eg022KbaAuthentication.js)
+   [Source.](./lib/examples/Controllers/Eg022KbaAuthentication.js)
    This example sends and envelope that requires passing a Public records check to validate identity for the purpose of multi-factor authentication.
 1. **Requiring ID Verification (IDV) for a recipient**
-   [Source.](./eg-03-node-auth-code-grant/blob/tree/master/lib/examples/Controllers/Eg023KbaAuthentication.js)
+   [Source.](./lib/examples/Controllers/Eg023KbaAuthentication.js)
    This example sends and envelope that requires the recipient to upload a government issued id.    
 
 
