@@ -1,0 +1,39 @@
+<% include ../../partials/examplesHead %>
+
+<h4>19. Send an envelope with recipient knowledged based authentication (KBA).</h4>
+<p>Anchor text 
+  (<a href="https://support.docusign.com/en/guides/AutoPlace-New-DocuSign-Experience">AutoPlace</a>)
+  is used to position the signing fields in the documents.
+</p>
+<p>This is a general example of creating an envelope (a signing request) with 
+  knowledge-based authentication using top of the mind questions.  The service 
+  queries public records information from Lexis Nexis and provides a form multi-factor verification for a recipient.</p>
+
+  <% if (showDoc) { %>
+    <p><a target='_blank' href='<%= documentation %>'>Documentation</a> about this example.</p>
+  <% } %>
+  
+  <p>API method used: 
+   <a target='_blank' href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/create">Envelopes::create</a>.
+</p>
+
+<p>The access-code to utilize the example provided is: <strong>NJ9@D1</strong></p>
+<% include ../../partials/gitSource %>
+<form class="eg" action="" method="post" data-busy="form">
+    <div class="form-group">
+      <label for="signerEmail">Signer Email</label>
+      <input type="email" class="form-control" id="signerEmail" name="signerEmail"
+             aria-describedby="emailHelp" placeholder="pat@example.com" required
+             value="<%= locals.dsConfig.signerEmail %>">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label for="signerName">Signer Name</label>
+      <input type="text" class="form-control" id="signerName" placeholder="Pat Johnson" name="signerName"
+             value="<%= locals.dsConfig.signerName %>" required>
+    </div>
+    <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+  
+<% include ../../partials/examplesFoot %>
