@@ -73,19 +73,19 @@ The **refresh token** is not used in this example.
    The example retrieves the custom metadata (custom data fields) stored with the envelope.
    [Source.](./lib/examples/eg018EnvelopeCustomFieldData.js)
 1. **Requiring an Access Code for a Recipient**
-   [Source.](./lib/examples/Controllers/Eg019AccessCodeAuthentication.js)
+   [Source.](./lib/examples/eg019AccessCodeAuthentication.js)
    This example sends and envelope that requires an access-code for the purpose of multi-factor authentication.
 1. **Requiring SMS authentication for a recipient**
-   [Source.](./lib/examples/Controllers/Eg020SmsAuthentication.js)
+   [Source.](./lib/examples/eg020SmsAuthentication.js)
    This example sends and envelope that requires entering in a six digit code from an text message for the purpose of multi-factor authentication.
 1. **Requiring Phone authentication for a recipient**
-   [Source.](./lib/examples/Controllers/Eg021PhoneAuthentication.js)
+   [Source.](./lib/examples/eg021PhoneAuthentication.js)
    This example sends and envelope that requires entering in a voice-based response code for the purpose of multi-factor authentication.
 1. **Requiring Knowledge-Based Authentication (KBA) for a Recipient**
-   [Source.](./lib/examples/Controllers/Eg022KbaAuthentication.js)
+   [Source.](https://github.com/docusign/eg-03-node-auth-code-grant/blob/master/lib/examples/eg022KbaAuthentication.js)
    This example sends and envelope that requires passing a Public records check to validate identity for the purpose of multi-factor authentication.
 1. **Requiring ID Verification (IDV) for a recipient**
-   [Source.](./lib/examples/Controllers/Eg023KbaAuthentication.js)
+   [Source.](./lib/examples/eg023IdvAuthentication.js)
    This example sends and envelope that requires the recipient to upload a government issued id.    
 
 
