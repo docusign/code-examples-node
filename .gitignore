@@ -60,3 +60,8 @@ typings/
 # dotenv environment variables file
 .env
 
+# ignore config file
+*/ds_configuration.js
+
+# ignore vs settings
+.vs
