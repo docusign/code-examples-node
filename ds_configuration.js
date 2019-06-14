@@ -2,10 +2,10 @@
 // Either fill in the data below or set the environment variables
 //
 exports.config = {
-    dsClientId: process.env.DS_CLIENT_ID || '1f68be38-xxxx-xxxx-xxxx-de399bef22b1' // The app's DocuSign integration key
-    , dsClientSecret: process.env.DS_CLIENT_SECRET || '45cebab4-xxxx-xxxx-xxxx-8bbe5ab49d49' // The app's DocuSign integration key's secret
-    , signerEmail: process.env.DS_SIGNER_EMAIL || 'aaron.wilde@docusign.com'
-    , signerName: process.env.DS_SIGNER_NAME || 'nodeJS user'
+     dsClientId: process.env.DS_CLIENT_ID || '{CLIENT_ID}' // The app's DocuSign integration key
+    , dsClientSecret: process.env.DS_CLIENT_SECRET || '{CLIENT_SECRET}' // The app's DocuSign integration key's secret
+    , signerEmail: process.env.DS_SIGNER_EMAIL || '{USER_EMAIL}'
+    , signerName: process.env.DS_SIGNER_NAME || '{USER_FULLNAME}'
     , appUrl: process.env.DS_APP_URL || 'http://localhost:5000' // The url of the application. Eg http://localhost:5000
     // NOTE: You must add a Redirect URI of appUrl/ds/callback to your Integration Key.
     // Example: http://localhost:5000/ds/callback
