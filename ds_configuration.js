@@ -79,6 +79,7 @@ exports.config = {
     , eg022: 'eg022KbaAuthentication.js'
     , eg023: 'eg023IdvAuthentication.js'
     , eg024: 'eg024CreateBrand.js'
+    , eg026: 'eg026ApplyBrandToTemplate.js'
     },
     java: {
     eg001: 'EG001ControllerEmbeddedSigning.java'
