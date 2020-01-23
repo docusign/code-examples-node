@@ -17,7 +17,8 @@
 <p>The access-code to utilize the example provided is: <strong>NJ9@D1</strong></p>
 <% include ../../partials/gitSource %>
 
-<form class="eg" action="" method="post" data-busy="form">
+<% if (brands.length !== 0 && templates.length !== 0) { %>
+  <form class="eg" action="" method="post" data-busy="form">
     <div class="form-group">
         <label for="signerEmail">Signer Email</label>
         <input type="email" class="form-control" id="signerEmail" name="signerEmail"
@@ -60,5 +61,20 @@
     <input type="hidden" name="_csrf" value="<%- csrfToken %>">
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+<% } else if(brands.length === 0) { %>
+  <p>Problem: please first create the brand using <a href="eg024">example 24.</a> <br/>
+     Thank you.</p>
+     
+  <form class="eg" action="eg024" method="get">
+      <button type="submit" class="btn btn-primary">Continue</button>
+  </form>
+<% } else if(templates.length === 0) { %>
+  <p>Problem: please first create the template using <a href="eg008">example 8.</a> <br/>
+    Thank you.</p>
+    
+ <form class="eg" action="eg008" method="get">
+     <button type="submit" class="btn btn-primary">Continue</button>
+ </form>
+<% } %>
 
 <% include ../../partials/examplesFoot %>
