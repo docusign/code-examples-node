@@ -82,7 +82,7 @@ The **refresh token** is not used in this example.
    [Source.](./lib/examples/eg021PhoneAuthentication.js)
    This example sends and envelope that requires entering in a voice-based response code for the purpose of multi-factor authentication.
 1. **Requiring Knowledge-Based Authentication (KBA) for a Recipient**
-   [Source.](https://github.com/docusign/eg-03-node-auth-code-grant/blob/master/lib/examples/eg022KbaAuthentication.js)
+   [Source.](./lib/examples/eg022KbaAuthentication.js)
    This example sends and envelope that requires passing a Public records check to validate identity for the purpose of multi-factor authentication.
 1. **Requiring ID Verification (IDV) for a recipient**
    [Source.](./lib/examples/eg023IdvAuthentication.js)
@@ -134,7 +134,7 @@ To use the payments example, create a
 test payments gateway for your developer sandbox account. 
 
 See the 
-[PAYMENTS_INSTALLATION.md](./eg-03-node-auth-code-grant/blob/master/PAYMENTS_INSTALLATION.md)
+[PAYMENTS_INSTALLATION.md](./PAYMENTS_INSTALLATION.md)
 file for instructions.
    
 Then add the payment gateway account id to the **ds_configuration.js** file.
