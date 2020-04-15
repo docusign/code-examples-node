@@ -154,3 +154,10 @@ This repository uses the MIT License. See the LICENSE file for more information.
 ### Pull Requests
 Pull requests are welcomed. Pull requests will only be considered if their content
 uses the MIT License.
+
+### Additional Resources
+* [DocuSign Developer Center](https://developers.docusign.com)
+* [DocuSign API on Twitter](https://twitter.com/docusignapi)
+* [DocuSign For Developers on LinkedIn](https://www.linkedin.com/showcase/docusign-for-developers/)
+* [DocuSign For Developers on YouTube](https://www.youtube.com/channel/UCJSJ2kMs_qeQotmw4-lX2NQ)
+
