@@ -62,6 +62,7 @@ typings/
 
 # ignore config file
 */ds_configuration.js
+secret
 
 # ignore vs settings
 .vs

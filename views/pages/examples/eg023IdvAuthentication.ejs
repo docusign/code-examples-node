@@ -1,37 +1,42 @@
 <% include ../../partials/examplesHead %>
 
-<h4>19. Send an envelope with recipient Id Verification authentication.</h4>
-<p>Anchor text 
-  (<a href="https://support.docusign.com/en/guides/AutoPlace-New-DocuSign-Experience">AutoPlace</a>)
-  is used to position the signing fields in the documents.
+<h4>23. Requiring Id Verification for a Recipient</h4>
+<p>
+    The envelope includes a pdf document. Anchor text
+    (<a href="https://support.docusign.com/en/guides/AutoPlace-New-DocuSign-Experience">AutoPlace</a>)
+    is used to position the signing fields in the documents.
 </p>
-<p>This is an example of an envelope utilizing IDV authentication for multi-factor verification of a recipient. IDV is a service offered by DocuSign that allows your reicpient to upload a photo of a government issued id for verification.</p>
-
-  <% if (showDoc) { %>
-    <p><a target='_blank' href='<%= documentation %>'>Documentation</a> about this example.</p>
-  <% } %>
-  
-  <p>API method used: 
-   <a target='_blank' href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/create">Envelopes::create</a>.
+<p>
+    This is a general example of creating and sending an envelope (a signing request) using ID Verification for Recipient Authentication.
 </p>
 
-<p>The access-code to utilize the example provided is: <strong>NJ9@D1</strong></p>
+<% include ../../partials/docBody %>
+
+<p>
+    API method used:
+    <a target='_blank' href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/create">Envelopes::create</a>.
+</p>
+
 <% include ../../partials/gitSource %>
 <form class="eg" action="" method="post" data-busy="form">
-    <div class="form-group">
+  <p>
+      <strong>Note:</strong> The Access Code for this example is the Signer Name.
+  </p>
+
+  <div class="form-group">
       <label for="signerEmail">Signer Email</label>
       <input type="email" class="form-control" id="signerEmail" name="signerEmail"
              aria-describedby="emailHelp" placeholder="pat@example.com" required
              value="<%= locals.dsConfig.signerEmail %>">
       <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-    </div>
-    <div class="form-group">
+  </div>
+  <div class="form-group">
       <label for="signerName">Signer Name</label>
       <input type="text" class="form-control" id="signerName" placeholder="Pat Johnson" name="signerName"
-             value="<%= locals.dsConfig.signerName %>" required>
-    </div>
-    <input type="hidden" name="_csrf" value="<%- csrfToken %>">
-    <button type="submit" class="btn btn-primary">Submit</button>
+             value="<%= locals.dsConfig.signerName %>"  required>
+  </div>
+  <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+  <button type="submit" class="btn btn-primary">Submit</button>
 </form>
-  
+
 <% include ../../partials/examplesFoot %>
