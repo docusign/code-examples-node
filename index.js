@@ -38,6 +38,14 @@ const express = require('express')
     , eg021 = require('./lib/examples/eg021PhoneAuthentication')
     , eg022 = require('./lib/examples/eg022KbaAuthentication')
     , eg023 = require('./lib/examples/eg023IdvAuthentication')
+    , eg024 = require('./lib/examples/eg024CreatePermission')
+    , eg025 = require('./lib/examples/eg025PermissionSetUserGroup')
+    , eg026 = require('./lib/examples/eg026PermissionChangeSingleSetting')
+    , eg027 = require('./lib/examples/eg027DeletePermission')
+    , eg028 = require('./lib/examples/eg028CreateBrand')
+    , eg029 = require('./lib/examples/eg029ApplyBrandToEnvelope')
+    , eg030 = require('./lib/examples/eg030ApplyBrandToTemplate')
+    , eg031 = require('./lib/examples/eg031BulkSendEnvelopes')
     ;
 
 const PORT = process.env.PORT || 5000
@@ -131,6 +139,22 @@ let app = express()
   .post('/eg022', eg022.createController)
   .get('/eg023', eg023.getController)
   .post('/eg023', eg023.createController)
+  .get('/eg024', eg024.getController)
+  .post('/eg024', eg024.createController)
+  .get('/eg025', eg025.getController)
+  .post('/eg025', eg025.createController)
+  .get('/eg026', eg026.getController)
+  .post('/eg026', eg026.createController)
+  .get('/eg027', eg027.getController)
+  .post('/eg027', eg027.createController)
+  .get('/eg028', eg028.getController)
+  .post('/eg028', eg028.createController)
+  .get('/eg029', eg029.getController)
+  .post('/eg029', eg029.createController)
+  .get('/eg030', eg030.getController)
+  .post('/eg030', eg030.createController)
+  .get('/eg031', eg031.getController)
+  .post('/eg031', eg031.createController)
   ;
 
 function dsLoginCB1 (req, res, next) {req.dsAuthCodeGrant.oauth_callback1(req, res, next)}
@@ -187,7 +211,7 @@ let docusignStrategy = new DocusignStrategy({
  * An additional OAuth query parameter is used to not allow silent authentication
  */
 if (!dsConfig.allowSilentAuthentication) {
-  // See https://stackoverflow.com/a/32877712/64904 
+  // See https://stackoverflow.com/a/32877712/64904
   docusignStrategy.authorizationParams = function(options) {
     return {prompt: 'login'};
   }

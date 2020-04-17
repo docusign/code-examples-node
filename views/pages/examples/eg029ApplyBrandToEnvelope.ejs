@@ -1,20 +1,32 @@
 <% include ../../partials/examplesHead %>
 
-<h4>2. Send an envelope with a remote (email) signer and cc recipient</h4>
-<p>The envelope includes a pdf, Word, and HTML document. Anchor text 
-  (<a href="https://support.docusign.com/en/guides/AutoPlace-New-DocuSign-Experience">AutoPlace</a>)
-  is used to position the signing fields in the documents.
-</p>
-<p>This is a general example of creating and sending an envelope (a signing request) to multiple recipients,
-  with multiple documents, and with signature fields for the documents.</p>
+<h4>29. Applying a brand to an envelope.</h4>
 
-  <% include ../../partials/docBody %>
-  
-  <p>API method used: 
+<p>
+    The envelope includes a pdf document. Anchor text
+    (<a href="https://support.docusign.com/en/guides/AutoPlace-New-DocuSign-Experience">AutoPlace</a>)
+    is used to position the signing fields in the documents.
+</p>
+<p>
+    This code example demonstrates how to apply a brand to an envelope.
+</p>
+
+<% include ../../partials/docBody %>
+
+  <p>API method used:
    <a target='_blank' href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/create">Envelopes::create</a>.
 </p>
 
 <% include ../../partials/gitSource %>
+
+<% if (brands.length == 0) { %>
+<p>Problem: please first create the brand using <a href="eg028">example 28.</a> <br/>
+    Thank you.</p>
+
+ <form class="eg" action="eg028" method="get">
+     <button type="submit" class="btn btn-primary">Continue</button>
+ </form>
+<% } else { %>
 <form class="eg" action="" method="post" data-busy="form">
     <div class="form-group">
       <label for="signerEmail">Signer Email</label>
@@ -29,18 +41,17 @@
              value="<%= locals.dsConfig.signerName %>" required>
     </div>
     <div class="form-group">
-      <label for="ccEmail">CC Email</label>
-      <input type="email" class="form-control" id="ccEmail" name="ccEmail"
-             aria-describedby="emailHelp" placeholder="pat@example.com" required
-      <small id="emailHelp" class="form-text text-muted">The email for the cc recipient must be different from the signer's email.</small>
+        <label for="brandId">Brand</label>
+        <select id="brandId" name="brandId" class="form-control">
+          <% brands.forEach( brand => { %>
+            <option value="<%= brand.brandId %>" selected> <%= brand.brandName %> </option>
+          <% }) %>
+        </select>
     </div>
-    <div class="form-group">
-      <label for="ccName">CC Name</label>
-      <input type="text" class="form-control" id="ccName" placeholder="Pat Johnson" name="ccName"
-             required>
-    </div>
+
     <input type="hidden" name="_csrf" value="<%- csrfToken %>">
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
-  
+<% } %>
+
 <% include ../../partials/examplesFoot %>

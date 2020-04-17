@@ -7,7 +7,7 @@
  <% } else { %>
  <h3 class="mt-4">Code Examples</h3>
  <% } %>
- 
+
  <h4 id="example001">1. <a href="eg001">Embedded Signing Ceremony</a></h4>
   <p>This example sends an envelope, and then uses an embedded signing ceremony for the first signer.
     With embedded signing, the DocuSign signing ceremony is initiated from your website.
@@ -152,28 +152,84 @@
   <p>API method used:
    <a target ='_blank' href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/create">Envelopes::create</a>.
   </p>
-  
+
   <h4 id="example020">20. <a href="eg020">SMS Authentication</a></h4>
   <p>This is an example of an envelope utilizing SMS authentication for multi-factor verification of a recipient.</p>
   <p>API method used:
    <a target ='_blank' href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/create">Envelopes::create</a>.
   </p>
-  
+
   <h4 id="example021">21. <a href="eg021">Phone Authentication</a></h4>
   <p>This is an example of an envelope utilizing phone authentication for multi-factor verification of a recipient.</p>
   <p>API method used:
    <a target ='_blank' href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/create">Envelopes::create</a>.
   </p>
-  
+
   <h4 id="example022">22. <a href="eg022">KBA Authentication</a></h4>
   <p>This is an example of an envelope utilizing Knowledge based authentication for multi-factor verification of a recipient.</p>
   <p>API method used:
    <a target ='_blank' href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/create">Envelopes::create</a>.
   </p>
-  
+
   <h4 id="example023">23. <a href="eg023">IDV Authentication</a></h4>
   <p>This is an example of an envelope utilizing Id verification authentication for a recipient.</p>
   <p>API methods used:
    <a target ='_blank' href="https://developers.docusign.com/esign-rest-api/reference/Accounts/IdentityVerifications/list">Accounts::getAccountIdentityVerificationsList</a>.
-   <a target ='_blank' href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/create">Envelopes::create</a>.   
+   <a target ='_blank' href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/create">Envelopes::create</a>.
+  </p>
+
+  <h4 id="example024">24. <a href="eg024">Creating a permission</a></h4>
+  <p>This code example demonstrates how to create a permission profile with the eSignature REST API. </p>
+  <p>API methods used:
+   <a target ='_blank' href="https://developers.docusign.com/esign-rest-api/reference/Accounts/AccountPermissionProfiles/create">AccountPermissionProfiles::create</a>.
+  </p>
+
+  <h4 id="example025">25. <a href="eg025">Setting a permission profile</a></h4>
+  <p>This code example demonstrates how to set a permission profile with the eSignature REST API. </p>
+  <p>API methods used:
+   <a target="_blank" href="https://developers.docusign.com/esign-rest-api/reference/UserGroups/Groups/update">Groups::update</a>.
+  </p>
+
+  <h4 id="example026">26. <a href="eg026">Updates the permission profile.</a></h4>
+  <p>This code example demonstrates how to update a permission profile with the eSignature REST API. </p>
+  <p>API method used:
+   <a target='_blank' href="https://developers.docusign.com/esign-rest-api/reference/Accounts/AccountPermissionProfiles/update">AccountPermissionProfiles::update</a>.
+  </p>
+
+  <h4 id="example027">27. <a href="eg027">Deleting a permission</a></h4>
+  <p>This code example demonstrates how to delete a permission profile with the eSignature REST API. </p>
+  <p>API methods used:
+   <a target ='_blank' href="https://developers.docusign.com/esign-rest-api/code-examples/permission-profile-deleting">AccountPermissionProfiles::delete</a>.
+  </p>
+
+  <h4 id="example028">28. <a href="eg028">Creating a brand</a></h4>
+  <p>This code example demonstrates how to create a brand with the eSignature REST API. </p>
+  <p>API methods used:
+   <a target='_blank' href="https://developers.docusign.com/esign-rest-api/reference/Accounts/AccountBrands/create">AccountBrands::create</a>.
+  </p>
+
+  <h4 id="example029">29. <a href="eg029">Applying a brand to an envelope</a></h4>
+  <p>This code example demonstrates how to apply a brand to an envelope with the eSignature REST API.</p>
+  <p>API methods used:
+   <a target='_blank' href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/create">Envelopes::create</a>
+  </p>
+
+  <h4 id="example030">30. <a href="eg030">Applying a brand to a template</a></h4>
+  <p>This code example demonstrates how to apply a brand to a template with the eSignature REST API. </p>
+  <p>API methods used:
+   <a target ='_blank' href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/create">Envelopes::create</a>.
+  </p>
+
+  <h4 id="example031">31. <a href="eg031">Bulk sending envelopes to multiple recipients.</a></h4>
+  <p>
+   Method BulkSend::createBulkSendList creates a bulk send list that you can use to send an envelope to up to 1,000 recipients at once.
+   </p>
+   <p>
+      API methods used:
+      <a target="_blank" href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/EnvelopeRecipients/create">EnvelopeRecipients::create</a>,
+      <a target="_blank" href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/create">Envelopes::create</a>,
+      <a target="_blank" href="https://developers.docusign.com/esign-rest-api/reference/BulkEnvelopes/BulkEnvelopes/get">BulkEnvelopes::get</a>,
+      <a target="_blank" href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/EnvelopeCustomFields/create">EnvelopeCustomFields::create</a>,
+      <a target="_blank" href="https://developers.docusign.com/esign-rest-api/reference/BulkEnvelopes/BulkSend/createBulkSendList">BulkSend::createBulkSendList</a>
+      <a target="_blank" href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/EnvelopeRecipients/create">EnvelopeRecipients::create</a>.
   </p>

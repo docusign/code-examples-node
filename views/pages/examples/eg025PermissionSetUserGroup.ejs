@@ -1,0 +1,42 @@
+<% include ../../partials/examplesHead %>
+
+<h4>25.  Setting a permission profile.</h4>
+
+<p>
+    Updates the group name and modifies, or sets, the permission profile for the group.
+</p>
+
+<% include ../../partials/docBody %>
+
+<p>
+    API method used:
+    <a target="_blank" href="https://developers.docusign.com/esign-rest-api/reference/UserGroups/Groups/update">Groups::update</a>.
+</p>
+
+
+<% include ../../partials/gitSource %>
+
+<form action="" class="eg" method="post" data-busy="form">
+    <div class="form-group">
+        <label for="permissionProfileId">Permission profile</label>
+        <select id="permissionProfileId" name="permissionProfileId" class="form-control">
+          <% permissions.forEach( permission => { %>
+            <option value="<%= permission.permissionProfileId %>" selected> <%= permission.permissionProfileName %> </option>
+          <% }) %>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="userGroupId">User group</label>
+        <select id="userGroupId" name="userGroupId" class="form-control">
+          <% groups.forEach( group => { %>
+            <option value="<%= group.groupId %>" selected> <%= group.groupName %> </option>
+          <% }) %>
+        </select>
+    </div>
+
+    <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<% include ../../partials/examplesFoot %>

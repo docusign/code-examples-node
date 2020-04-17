@@ -78,6 +78,14 @@ exports.config = {
     , eg021: 'eg021PhoneAuthentication.js'
     , eg022: 'eg022KbaAuthentication.js'
     , eg023: 'eg023IdvAuthentication.js'
+    , eg024: 'eg024CreatePermission.js'
+    , eg025: 'eg025PermissionSetUserGroup.js'
+    , eg026: 'eg026PermissionChangeSingleSetting.js'
+    , eg027: 'eg027DeletePermission.js'
+    , eg028: 'eg028CreateBrand.js'
+    , eg029: 'eg029ApplyBrandToEnvelope.js'
+    , eg030: 'eg030ApplyBrandToTemplate.js'
+    , eg031: 'eg031BulkSendEnvelopes.js'
     },
     java: {
     eg001: 'EG001ControllerEmbeddedSigning.java'
@@ -125,7 +133,7 @@ exports.config = {
     , eg011: 'EG011EmbeddedSending.php'
     , eg012: 'EG012EmbeddedConsole.php'
     , eg013: 'EG013AddDocToTemplate.php'
-    //, eg014: 'EG014CollectPayment.php'
+    , eg014: 'EG014CollectPayment.php'
     , eg015: 'EG015EnvelopeTabData.php'
     , eg016: 'EG016SetTabValues.php'
     , eg017: 'EG017SetTemplateTabValues.php'

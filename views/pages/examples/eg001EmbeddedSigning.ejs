@@ -3,9 +3,7 @@
 <p>This example sends an envelope, and then uses an embedded signing ceremony for the first signer.</p>
 <p>Embedded signing provides a smoother user experience for the signer: the DocuSign signing ceremony is initiated from your website.</p>
 
-<% if (showDoc) { %>
-  <p><a target='_blank' href='<%= documentation %>'>Documentation</a> about this example.</p>
-<% } %>
+<% include ../../partials/docBody %>
 
 <p>API methods used:
   <a target ='_blank' href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/create">Envelopes::create</a> and
