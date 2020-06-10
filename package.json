@@ -15,14 +15,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/docusign/code-examples-nodejs"
+    "url": "https://github.com/docusign/code-examples-node"
   },
   "author": "DocuSign, Inc",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/docusign/code-examples-nodejs/issues"
+    "url": "https://github.com/docusign/code-examples-node/issues"
   },
-  "homepage": "https://github.com/docusign/code-examples-nodejs#readme",
+  "homepage": "https://github.com/docusign/code-examples-node#readme",
   "engines": {
     "node": ">=8.10"
   },
