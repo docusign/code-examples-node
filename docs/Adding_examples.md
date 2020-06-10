@@ -87,7 +87,7 @@ see lib/examples/eg002.js and its use of the example_done.ejs view.
 
 ### Configuration information
 If additional configuration settings are needed, update the
-`ds_configuration.js` file. 
+`config/appsettings.json` file. 
 
 While developing and testing, be careful not to let any of your
 private information become stored in your repo.

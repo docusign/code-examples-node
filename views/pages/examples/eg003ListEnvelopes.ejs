@@ -4,9 +4,7 @@
 <p>List the envelopes whose status has changed in the last 30 days.</p>
 <p>This example demonstrates how to query DocuSign about envelopes sent by the current user.</p>
 
-<% if (showDoc) { %>
-    <p><a target='_blank' href='<%= documentation %>'>Documentation</a> about this example.</p>
-  <% } %>
+<% include ../../partials/docBody %>
   
   <p>API method used: 
    <a target='_blank' href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/listStatusChanges">Envelopes::listStatusChanges</a>.

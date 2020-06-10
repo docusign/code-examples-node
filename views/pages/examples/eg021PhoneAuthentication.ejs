@@ -1,18 +1,21 @@
 <% include ../../partials/examplesHead %>
 
-<h4>19. Send an envelope with recipient phone authentication.</h4>
-<p>Anchor text 
-  (<a href="https://support.docusign.com/en/guides/AutoPlace-New-DocuSign-Experience">AutoPlace</a>)
-  is used to position the signing fields in the documents.
+<h4>21. Requiring an Phone Authentication for a Recipient</h4>
+<p>
+    The envelope includes a pdf document. Anchor text
+    (<a href="https://support.docusign.com/en/guides/AutoPlace-New-DocuSign-Experience">AutoPlace</a>)
+    is used to position the signing fields in the documents.
 </p>
-<p>This is a general example of creating an envelope (a signing request) with phone authentication for multi-factor verification of a recipient.</p>
+<p>
+    This is a general example of creating and sending an envelope (a signing request) using a phone call for Recipient Authentication.
+</p>
 
-  <% if (showDoc) { %>
-    <p><a target='_blank' href='<%= documentation %>'>Documentation</a> about this example.</p>
-  <% } %>
-  
-  <p>API method used: 
-   <a target='_blank' href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/create">Envelopes::create</a>.
+
+<% include ../../partials/docBody %>
+
+<p>
+  API method used:
+  <a target='_blank' href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/create">Envelopes::create</a>.
 </p>
 
 <p>The phone-number to utilize the example provided is: <strong>415-555-1212</strong></p>
@@ -33,5 +36,5 @@
     <input type="hidden" name="_csrf" value="<%- csrfToken %>">
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
-  
+
 <% include ../../partials/examplesFoot %>

@@ -1,7 +1,7 @@
 {
-  "name": "docusign_eg03_oauth_authorization_code_grant",
+  "name": "Docusign code examples Nodejs",
   "version": "1.0.0",
-  "description": "DocuSign Example 03 Node: OAuth Authorization Code Grant",
+  "description": "DocuSign eSignature Code examples using either Authorization Code Grant and JWT OAuth",
   "main": "index.js",
   "scripts": {
     "debug": "node  --inspect-brk index.js",
@@ -15,14 +15,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/docusign/eg-03-node-auth-code-grant"
+    "url": "https://github.com/docusign/code-examples-nodejs"
   },
   "author": "DocuSign, Inc",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/docusign/eg-03-node-auth-code-grant/issues"
+    "url": "https://github.com/docusign/code-examples-nodejs/issues"
   },
-  "homepage": "https://github.com/docusign/eg-03-node-auth-code-grant#readme",
+  "homepage": "https://github.com/docusign/code-examples-nodejs#readme",
   "engines": {
     "node": ">=8.10"
   },
@@ -30,7 +30,7 @@
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.4",
     "csurf": "^1.10.0",
-    "docusign-esign": "^5.0.1",
+    "docusign-esign": "^5.3.0",
     "ejs": "^2.6.2",
     "express": "^4.17.1",
     "express-flash": "0.0.2",

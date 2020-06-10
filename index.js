@@ -7,9 +7,12 @@ const express = require('express')
     , MemoryStore = require('memorystore')(session) // https://github.com/roccomuso/memorystore
     , path = require('path')
     , DSAuthCodeGrant = require('./lib/DSAuthCodeGrant')
+    , DsJwtAuth = require('./lib/dsJwtAuth')
     , passport = require('passport')
     , DocusignStrategy = require('passport-docusign')
-    , dsConfig = require('./ds_configuration.js').config
+    , docOptions = require('./config/documentOptions.json')
+    , docNames = require('./config/documentNames.json')
+    , dsConfig = require('./config/index.js').config
     , commonControllers = require('./lib/commonControllers')
     , flash = require('express-flash')
     , helmet = require('helmet') // https://expressjs.com/en/advanced/best-practice-security.html
@@ -38,6 +41,14 @@ const express = require('express')
     , eg021 = require('./lib/examples/eg021PhoneAuthentication')
     , eg022 = require('./lib/examples/eg022KbaAuthentication')
     , eg023 = require('./lib/examples/eg023IdvAuthentication')
+    , eg024 = require('./lib/examples/eg024CreatePermission')
+    , eg025 = require('./lib/examples/eg025PermissionSetUserGroup')
+    , eg026 = require('./lib/examples/eg026PermissionChangeSingleSetting')
+    , eg027 = require('./lib/examples/eg027DeletePermission')
+    , eg028 = require('./lib/examples/eg028CreateBrand')
+    , eg029 = require('./lib/examples/eg029ApplyBrandToEnvelope')
+    , eg030 = require('./lib/examples/eg030ApplyBrandToTemplate')
+    , eg031 = require('./lib/examples/eg031BulkSendEnvelopes')
     ;
 
 const PORT = process.env.PORT || 5000
@@ -68,20 +79,28 @@ let app = express()
   .use(((req, res, next) => {
     res.locals.user = req.user;
     res.locals.session = req.session;
-    res.locals.dsConfig = dsConfig;
+    res.locals.dsConfig = { ...dsConfig, docOptions: docOptions, docNames: docNames };
     res.locals.hostUrl = hostUrl; // Used by DSAuthCodeGrant#logout
     next()})) // Send user info to views
   .use(flash())
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   // Add an instance of DSAuthCodeGrant to req
-  .use((req, res, next) => {req.dsAuthCodeGrant = new DSAuthCodeGrant(req); next()})
+  .use((req, res, next) => {
+      req.dsAuthCodeGrant = new DSAuthCodeGrant(req);
+      req.dsAuthJwt = new DsJwtAuth(req);
+      req.dsAuth = req.dsAuthCodeGrant;
+      if(req.session.authMethod === 'jwt-auth') {
+          req.dsAuth = req.dsAuthJwt;
+      }
+      next()
+  })
   // Routes
   .get('/', commonControllers.indexController)
-  .get('/ds/login', (req, res, next) => {req.dsAuthCodeGrant.login(req, res, next)})
+  .get('/ds/login', commonControllers.login)
   .get('/ds/callback', [dsLoginCB1, dsLoginCB2]) // OAuth callbacks. See below
-  .get('/ds/logout', (req, res) => {req.dsAuthCodeGrant.logout(req, res)})
-  .get('/ds/logoutCallback', (req, res) => {req.dsAuthCodeGrant.logoutCallback(req, res)})
+  .get('/ds/logout', commonControllers.logout)
+  .get('/ds/logoutCallback', commonControllers.logoutCallback)
   .get('/ds/mustAuthenticate', commonControllers.mustAuthenticateController)
   .get('/ds-return', commonControllers.returnController)
   .use(csrfProtection) // CSRF protection for the following routes
@@ -131,6 +150,22 @@ let app = express()
   .post('/eg022', eg022.createController)
   .get('/eg023', eg023.getController)
   .post('/eg023', eg023.createController)
+  .get('/eg024', eg024.getController)
+  .post('/eg024', eg024.createController)
+  .get('/eg025', eg025.getController)
+  .post('/eg025', eg025.createController)
+  .get('/eg026', eg026.getController)
+  .post('/eg026', eg026.createController)
+  .get('/eg027', eg027.getController)
+  .post('/eg027', eg027.createController)
+  .get('/eg028', eg028.getController)
+  .post('/eg028', eg028.createController)
+  .get('/eg029', eg029.getController)
+  .post('/eg029', eg029.createController)
+  .get('/eg030', eg030.getController)
+  .post('/eg030', eg030.createController)
+  .get('/eg031', eg031.getController)
+  .post('/eg031', eg031.createController)
   ;
 
 function dsLoginCB1 (req, res, next) {req.dsAuthCodeGrant.oauth_callback1(req, res, next)}
@@ -144,7 +179,7 @@ if (dsConfig.dsClientId && dsConfig.dsClientId !== '{CLIENT_ID}' &&
     console.log(`Ready! Open ${hostUrl}`);
 } else {
   console.log(`PROBLEM: You need to set the clientId (Integrator Key), and perhaps other settings as well. 
-You can set them in the source file ds_configuration.js or set environment variables.\n`);
+You can set them in the configuration file config/appsettings.json or set environment variables.\n`);
   process.exit(); // We're not using exit code of 1 to avoid extraneous npm messages.
 }
 
@@ -187,7 +222,7 @@ let docusignStrategy = new DocusignStrategy({
  * An additional OAuth query parameter is used to not allow silent authentication
  */
 if (!dsConfig.allowSilentAuthentication) {
-  // See https://stackoverflow.com/a/32877712/64904 
+  // See https://stackoverflow.com/a/32877712/64904
   docusignStrategy.authorizationParams = function(options) {
     return {prompt: 'login'};
   }

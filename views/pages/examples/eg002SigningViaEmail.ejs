@@ -8,9 +8,7 @@
 <p>This is a general example of creating and sending an envelope (a signing request) to multiple recipients,
   with multiple documents, and with signature fields for the documents.</p>
 
-  <% if (showDoc) { %>
-    <p><a target='_blank' href='<%= documentation %>'>Documentation</a> about this example.</p>
-  <% } %>
+  <% include ../../partials/docBody %>
   
   <p>API method used: 
    <a target='_blank' href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/create">Envelopes::create</a>.

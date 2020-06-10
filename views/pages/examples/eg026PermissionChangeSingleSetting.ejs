@@ -1,0 +1,104 @@
+<% include ../../partials/examplesHead %>
+
+<h4>26. Updating individual permission settings</h4>
+<p>
+  This code example demonstrates how to edit individual permission settings on a permissions profile with the eSignature REST API.
+</p>
+
+<% include ../../partials/docBody %>
+
+<p>
+    API method used:
+    <a target='_blank' href="https://developers.docusign.com/esign-rest-api/code-examples/permission-profile-updating">AccountPermissionProfiles::update</a>.
+</p>
+
+<% include ../../partials/gitSource %>
+
+<form class="eg" action="" method="post" data-busy="form">
+  <div class="form-group">
+
+    <div class="form-group">
+      <label for="profiles">Permission profiles</label>
+      <select id="profileId" name="profileId" class="form-control">
+          <% profiles.forEach( profile => { %>
+          <option value="<%= profile.permissionProfileId %>" selected> <%= profile.permissionProfileName %> </option>
+          <% }) %>
+      </select>
+    </div>
+
+
+    <!-- TODO:  controller needs to accept these values to update the profle: https://github.com/SergiiKatruk/eg-03-csharp-auth-code-grant-core/blob/master/eg-03-csharp-auth-code-grant-core/Controllers/Eg027PermissionChangeSingleSettingController.cs#L115 -->
+
+       <div class="form-group" >
+          <input type="checkbox" name="enableSequentialSigningInterface" value="true" checked> Allow sequential signing <br>
+          <input type="checkbox" name="allowBulkSending" value="true" checked> Allow sending to bulk list <br>
+          <input type="checkbox" name="allowEnvelopeSending" value="true" checked> Can send envelope <br>
+          <input type="checkbox" name="allowSignerAttachments" value="true" checked> Allow signer attachments <br>
+          <input type="checkbox" name="allowTaggingInSendAndCorrect" value="true" checked> Allow tagging in send and correct <br>
+          <input type="checkbox" name="allowWetSigningOverride" value="true" checked> Allow signing override
+          <br>
+          <br>
+
+          <label for="allowAddressBookAccess">Address book</label> <br>
+          <select id="allowAddressBookAccess" name="allowedAddressBookAccess">
+              <option value="personal">Use personal only</option>
+              <option value="useShared">Use shared only</option>
+              <option value="usePersonalAndShared">Use shared and personal</option>
+              <option value="personalAndShared">Share</option>
+          </select>
+          <br>
+          <br>
+
+          <label for="allowedTemplateAccess">Allowed template access</label> <br>
+          <select id="allowedTemplateAccess" name="allowedTemplateAccess">
+              <option value="none">None</option>
+              <option value="use">Use</option>
+              <option value="create">Create</option>
+              <option value="share">Share</option>
+          </select>
+          <br>
+          <br>
+
+          <input type="checkbox" name="enableRecipientViewingNotifications" value="true" checked> Allow recipient viewed notifications <br>
+          <input type="checkbox" name="enableSequentialSigningInterface" value="true" checked> Enable sequential signing interface <br>
+          <input type="checkbox" name="receiveCompletedSelfSignedDocumentsAsEmailLinks" value="true"> Self-signed email notification
+          <br>
+          <br>
+
+          <label for="signingUiVersion">Signing UI version</label> <br>
+          <select id="signingUiVersion" name="signingUiVersion">
+              <option value="v1">v1</option>
+              <option value="v2">v2</option>
+          </select>
+          <br>
+          <br>
+
+          <input type="checkbox" name="useNewSendingInterface" value="true" checked> Use new sending interface <br>
+          <input type="checkbox" name="allowApiAccess" value="true" checked> Allow API access <br>
+          <input type="checkbox" name="allowApiAccessToAccount" value="true" checked> Allow view and manage envelope rights through API <br>
+          <input type="checkbox" name="allowApiSendingOnBehalfOfOthers" value="true" checked> Allow send on behalf of other users through API <br>
+          <input type="checkbox" name="allowApiSequentialSigning" value="true" checked> Allow API sequential signing <br>
+          <input type="checkbox" name="enableApiRequestLogging" value="true" checked> Enable API request logging <br>
+          <input type="checkbox" name="allowDocuSignDesktopClient" value="true"> Allow DocuSign desktop client <br>
+          <input type="checkbox" name="allowSendersToSetRecipientEmailLanguage" value="true" checked> Allow senders to set recipient email language <br>
+          <input type="checkbox" name="allowVaulting" value="true"> Allow vaulting <br>
+          <input type="checkbox" name="allowedToBeEnvelopeTransferRecipient" value="true" checked> Allow receipt of transferred envelopes <br>
+          <input type="checkbox" name="enableTransactionPointIntegration" value="true"> Enable transaction point integration
+          <br>
+          <br>
+
+          <label for="powerFormRole">Power forms</label> <br>
+          <select id="powerFormRole" name="powerFormRole">
+              <option value="none">None</option>
+              <option value="user">User</option>
+              <option value="admin">Admin</option>
+          </select>
+      </div>
+
+
+  <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+  <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
+
+<% include ../../partials/examplesFoot %>

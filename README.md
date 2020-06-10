@@ -1,17 +1,8 @@
-# Node.JS: Authorization Code Grant Examples
+# Node.JS Launcher Code Examples
 
-### Github repo: eg-03-node-auth-code-grant
+### Github repo: [code-examples-nodejs](./)
 ## Introduction
 This repo is a Node.JS application that demonstrates:
-
-* Authentication with DocuSign via the
-[Authorization Code Grant flow](https://developers.docusign.com/esign-rest-api/guides/authentication/oauth2-code-grant).
-When the token expires, the user is asked to re-authenticate.
-The **refresh token** is not used in this example.
-
-
-
-## API version 2.1
 
 1. **Embedded Signing Ceremony.**
    [Source.](./lib/examples/eg001EmbeddedSigning.js)
@@ -87,16 +78,58 @@ The **refresh token** is not used in this example.
 1. **Requiring ID Verification (IDV) for a recipient**
    [Source.](./lib/examples/eg023IdvAuthentication.js)
    This example sends and envelope that requires the recipient to upload a government issued id.    
+1. **Creating a permission profile**
+   [Source.](./lib/examples/eg024CreatePermission.js)
+   This code example demonstrates how to create a permission profile using the [Create Permission Profile](https://developers.docusign.com/esign-rest-api/reference/Accounts/AccountPermissionProfiles/create) method.
+1. **Setting a permission profile**
+   [Source.](./lib/examples/eg025PermissionSetUserGroup.js)
+   This code example demonstrates how to set a user group's permission profile using the [Update Group](https://developers.docusign.com/esign-rest-api/reference/UserGroups/Groups/update) method. 
+   You must have already created permissions profile and group of users.
+1. **Updating individual permission settings**
+   [Source.](./lib/examples/eg026PermissionChangeSingleSetting.js)
+   This code example demonstrates how to edit individual permission settings on a permissions profile using the [Update Permission Profile](https://developers.docusign.com/esign-rest-api/reference/Accounts/AccountPermissionProfiles/update) method.
+1. **Deleting a permission profile**
+   [Source.](./lib/examples/eg027DeletePermission.js)
+   This code example demonstrates how to delete a permission profile using the [Delete Permission Profile](https://developers.docusign.com/esign-rest-api/reference/Accounts/AccountPermissionProfiles/create) method.
+1. **Creating a brand**
+   [Source.](./lib/examples/eg028CreateBrand.js)
+   This example creates brand profile for an account using the [Create Brand](https://developers.docusign.com/esign-rest-api/reference/Accounts/AccountBrands/create) method.
+1. **Applying a brand to an envelope**
+   [Source.](./lib/examples/eg029ApplyBrandToEnvelope.js)
+   This code example demonstrates how to apply a brand you've created to an envelope using the [Create Envelope](https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/create) method. 
+   First, creates the envelope and then applies brand to it.
+   Anchor text ([AutoPlace](https://support.docusign.com/en/guides/AutoPlace-New-DocuSign-Experience)) is used to position the signing fields in the documents.
+1. **Applying a brand to a template**
+   [Source.](./lib/examples/eg030ApplyBrandToTemplate.js)
+   This code example demonstrates how to apply a brand you've created to a template using using the [Create Envelope](https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/create) method. 
+   You must have at least one created template and brand.
+   Anchor text ([AutoPlace](https://support.docusign.com/en/guides/AutoPlace-New-DocuSign-Experience)) is used to position the signing fields in the documents.
+1. **Bulk sending envelopes to multiple recipients**
+   [Source.](./lib/examples/eg031BulkSendEnvelopes.js)
+   This code example demonstrates how to send envelopes in bulk to multiple recipients using these methods:
+   [Create Bulk Send List](https://developers.docusign.com/esign-rest-api/reference/BulkEnvelopes/BulkSend/createBulkSendList), 
+   [Create Bulk Send Request](https://developers.docusign.com/esign-rest-api/reference/BulkEnvelopes/BulkSend/createBulkSendRequest).
+   Firstly, creates a bulk send recipients list, and then creates an envelope. 
+   After that, initiates bulk envelope sending.
 
+
+
+## Included OAuth grant types:
+
+* Authentication with Docusign via [Authorization Code Grant flow](https://developers.docusign.com/esign-rest-api/guides/authentication/oauth2-code-grant) .
+When the token expires, the user is asked to re-authenticate.
+The **refresh token** is not used in this example.
+
+* Authentication with DocuSign via the [JSON Web Token (JWT) Grant](https://developers.docusign.com/esign-rest-api/guides/authentication/oauth2-jsonwebtoken).
+When the token expires, it updates automatically.
 
 ## Installation
 
 ### Prerequisites
 1. A DocuSign Developer Sandbox account (email and password) on [demo.docusign.net](https://demo.docusign.net).
    Create a [free account](https://go.docusign.com/sandbox/productshot/?elqCampaignId=16534).
-1. A DocuSign Integration Key (a client ID) that is configured to use the
-   OAuth Authorization Code flow.
-   You will need the **Integration Key** itself, and its **secret**.
+
+1. A DocuSign Integration Key (a client ID). To use Authorization code grant, you will need the **Integration Key** itself, and its **secret**. To use JSON Web token, you will need the **Integration Key** itself, the **RSA Secret Key** and an API user ID for the user you are impersonating.  
 
    If you use this example on your own workstation,
    the Integration key must include a **Redirect URI** of `http://localhost:5000/ds/callback`
@@ -109,35 +142,47 @@ The **refresh token** is not used in this example.
    The signer and the cc email cannot be the same.
 
 ### Installation steps
-1. Download or clone this repository to your workstation to directory **eg-03-node-auth-code-grant**
-1. **cd eg-03-node-auth-code-grant**
+1. Download or clone this repository to your workstation to directory **code-examples-nodejs**
+1. **cd code-examples-nodejs**
 1. **npm install**
 1. *Either:*
 
-   * Update the file **ds_configuration.js** in the project's root directory
+   * Update the file **config/appsettings.json** in the project's root directory
      with the Integration Key
      and other settings, *or*
    * Create and export environment variables for the settings.
-     See the **ds_configuration.js** file
+     See the **config/appsettings.json** file
      for the names of the environment variables.
 
    **Note:** Protect your Integration Key and secret--If you update
-   the ds_configuration.js file, then you
+   the config/appsettings.json file, then you
    should ensure that it will not be stored in your source code
    repository.
 
 1. **npm start**
 1. Open a browser to **http://localhost:5000**
 
+### Configuring JWT
+
+1. Create a developer sandbox account on developers.docusign.com if you don't already have one.
+2. Create a new API key in the Admin panel: https://admindemo.docusign.com/api-integrator-key, take note of the public key.
+3. Set a redirect URI of `http://localhost:5000/ds/callback` as mentioned in the installation steps above for the API key you make in step 2.
+4. Generate an RSA keypair in the administrator console on the DocuSign developer sandbox and copy the private key to a secure location.
+5. Create a new file in your repo source folder named **private.key**, and paste in that copied RSA private key, then save it.
+6. Update the file **config/appsettings.json** and include the newly created API key from step 2 as well as your account user id GUID which is also found on the Admin panel: `https://admindemo.docusign.com/api-integrator-key`.
+
+From there you should be able to run the launcher using **npm start** then selecting **JSON Web Token** when authenticaing your account.
+
+
 #### Payments code example
 To use the payments example, create a 
 test payments gateway for your developer sandbox account. 
 
 See the 
-[PAYMENTS_INSTALLATION.md](./PAYMENTS_INSTALLATION.md)
+[PAYMENTS_INSTALLATION.md](./eg-03-node-auth-code-grant/blob/master/PAYMENTS_INSTALLATION.md)
 file for instructions.
    
-Then add the payment gateway account id to the **ds_configuration.js** file.
+Then add the payment gateway account id to the **config/appsettings.json** file.
 
 ## Using the examples with other authentication flows
 
@@ -154,10 +199,3 @@ This repository uses the MIT License. See the LICENSE file for more information.
 ### Pull Requests
 Pull requests are welcomed. Pull requests will only be considered if their content
 uses the MIT License.
-
-### Additional Resources
-* [DocuSign Developer Center](https://developers.docusign.com)
-* [DocuSign API on Twitter](https://twitter.com/docusignapi)
-* [DocuSign For Developers on LinkedIn](https://www.linkedin.com/showcase/docusign-for-developers/)
-* [DocuSign For Developers on YouTube](https://www.youtube.com/channel/UCJSJ2kMs_qeQotmw4-lX2NQ)
-
