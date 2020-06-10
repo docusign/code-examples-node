@@ -73,7 +73,7 @@ This repo is a Node.JS application that demonstrates:
    [Source.](./lib/examples/eg021PhoneAuthentication.js)
    This example sends and envelope that requires entering in a voice-based response code for the purpose of multi-factor authentication.
 1. **Requiring Knowledge-Based Authentication (KBA) for a Recipient**
-   [Source.](./lib/examples/eg022KbaAuthentication.js)
+   [Source.](https://github.com/docusign/eg-03-node-auth-code-grant/blob/master/lib/examples/eg022KbaAuthentication.js)
    This example sends and envelope that requires passing a Public records check to validate identity for the purpose of multi-factor authentication.
 1. **Requiring ID Verification (IDV) for a recipient**
    [Source.](./lib/examples/eg023IdvAuthentication.js)
@@ -111,8 +111,6 @@ This repo is a Node.JS application that demonstrates:
    [Create Bulk Send Request](https://developers.docusign.com/esign-rest-api/reference/BulkEnvelopes/BulkSend/createBulkSendRequest).
    Firstly, creates a bulk send recipients list, and then creates an envelope. 
    After that, initiates bulk envelope sending.
-
-
 
 ## Included OAuth grant types:
 
