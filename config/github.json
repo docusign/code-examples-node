@@ -1,0 +1,7 @@
+{
+  "UserAgent": "Example Source Updater",
+  "AppId": 0,
+  "ApiUrl": "https://api.github.com/",
+  "InstallationId": 0,
+  "PrivateKey": ""
+}

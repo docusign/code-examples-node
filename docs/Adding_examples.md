@@ -8,8 +8,8 @@ All contributions must use the MIT License.
 First, discuss your plans with the DevCenter Examples Manager 
 (Larry Kluger) via apihelp@docusign.com. He'll assign you an example number.
 
-A new example can be added to any of the `eg-03-` series of 
-launchers, except for the curl repo.
+A new example can be added to any of the `code-examples` series of 
+launchers.
 
 After your new example has been accepted, the DevCenter team will
 arrange to have it ported to the other SDK examples.
@@ -87,7 +87,7 @@ see lib/examples/eg002.js and its use of the example_done.ejs view.
 
 ### Configuration information
 If additional configuration settings are needed, update the
-`ds_configuration.js` file. 
+`config/appsettings.json` file. 
 
 While developing and testing, be careful not to let any of your
 private information become stored in your repo.

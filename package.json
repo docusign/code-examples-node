@@ -1,7 +1,7 @@
 {
-  "name": "docusign_eg03_oauth_authorization_code_grant",
+  "name": "Docusign code examples Nodejs",
   "version": "1.0.0",
-  "description": "DocuSign Example 03 Node: OAuth Authorization Code Grant",
+  "description": "DocuSign eSignature Code examples using either Authorization Code Grant and JWT OAuth",
   "main": "index.js",
   "scripts": {
     "debug": "node  --inspect-brk index.js",
@@ -15,14 +15,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/docusign/eg-03-node-auth-code-grant"
+    "url": "https://github.com/docusign/code-examples-nodejs"
   },
   "author": "DocuSign, Inc",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/docusign/eg-03-node-auth-code-grant/issues"
+    "url": "https://github.com/docusign/code-examples-nodejs/issues"
   },
-  "homepage": "https://github.com/docusign/eg-03-node-auth-code-grant#readme",
+  "homepage": "https://github.com/docusign/code-examples-nodejs#readme",
   "engines": {
     "node": ">=8.10"
   },
@@ -37,7 +37,7 @@
     "express-session": "^1.16.2",
     "fs": "0.0.1-security",
     "fs-extra": "^6.0.1",
-    "helmet": "^3.22.0",
+    "helmet": "^3.18.0",
     "jsonwebtoken": "^8.5.1",
     "memorystore": "^1.6.1",
     "moment": "^2.24.0",
@@ -51,6 +51,6 @@
   },
   "devDependencies": {
     "chai": "^4.2.0",
-    "mocha": "^7.1.2"
+    "mocha": "^5.0.4"
   }
 }

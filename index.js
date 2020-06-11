@@ -7,9 +7,12 @@ const express = require('express')
     , MemoryStore = require('memorystore')(session) // https://github.com/roccomuso/memorystore
     , path = require('path')
     , DSAuthCodeGrant = require('./lib/DSAuthCodeGrant')
+    , DsJwtAuth = require('./lib/dsJwtAuth')
     , passport = require('passport')
     , DocusignStrategy = require('passport-docusign')
-    , dsConfig = require('./ds_configuration.js').config
+    , docOptions = require('./config/documentOptions.json')
+    , docNames = require('./config/documentNames.json')
+    , dsConfig = require('./config/index.js').config
     , commonControllers = require('./lib/commonControllers')
     , flash = require('express-flash')
     , helmet = require('helmet') // https://expressjs.com/en/advanced/best-practice-security.html
@@ -63,7 +66,7 @@ let app = express()
   .use(cookieParser())
   .use(session({
     secret: dsConfig.sessionSecret,
-    name: 'ds-eg03-session',
+    name: 'ds-launcher-session',
     cookie: {maxAge: max_session_min * 60000},
     saveUninitialized: true,
     resave: true,
@@ -76,20 +79,28 @@ let app = express()
   .use(((req, res, next) => {
     res.locals.user = req.user;
     res.locals.session = req.session;
-    res.locals.dsConfig = dsConfig;
+    res.locals.dsConfig = { ...dsConfig, docOptions: docOptions, docNames: docNames };
     res.locals.hostUrl = hostUrl; // Used by DSAuthCodeGrant#logout
     next()})) // Send user info to views
   .use(flash())
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   // Add an instance of DSAuthCodeGrant to req
-  .use((req, res, next) => {req.dsAuthCodeGrant = new DSAuthCodeGrant(req); next()})
+  .use((req, res, next) => {
+      req.dsAuthCodeGrant = new DSAuthCodeGrant(req);
+      req.dsAuthJwt = new DsJwtAuth(req);
+      req.dsAuth = req.dsAuthCodeGrant;
+      if(req.session.authMethod === 'jwt-auth') {
+          req.dsAuth = req.dsAuthJwt;
+      }
+      next()
+  })
   // Routes
   .get('/', commonControllers.indexController)
-  .get('/ds/login', (req, res, next) => {req.dsAuthCodeGrant.login(req, res, next)})
+  .get('/ds/login', commonControllers.login)
   .get('/ds/callback', [dsLoginCB1, dsLoginCB2]) // OAuth callbacks. See below
-  .get('/ds/logout', (req, res) => {req.dsAuthCodeGrant.logout(req, res)})
-  .get('/ds/logoutCallback', (req, res) => {req.dsAuthCodeGrant.logoutCallback(req, res)})
+  .get('/ds/logout', commonControllers.logout)
+  .get('/ds/logoutCallback', commonControllers.logoutCallback)
   .get('/ds/mustAuthenticate', commonControllers.mustAuthenticateController)
   .get('/ds-return', commonControllers.returnController)
   .use(csrfProtection) // CSRF protection for the following routes
@@ -168,7 +179,7 @@ if (dsConfig.dsClientId && dsConfig.dsClientId !== '{CLIENT_ID}' &&
     console.log(`Ready! Open ${hostUrl}`);
 } else {
   console.log(`PROBLEM: You need to set the clientId (Integrator Key), and perhaps other settings as well. 
-You can set them in the source file ds_configuration.js or set environment variables.\n`);
+You can set them in the configuration file config/appsettings.json or set environment variables.\n`);
   process.exit(); // We're not using exit code of 1 to avoid extraneous npm messages.
 }
 
