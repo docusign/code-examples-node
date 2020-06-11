@@ -13,6 +13,8 @@ settings.signerEmail = process.env.DS_SIGNER_EMAIL || settings.signerEmail;
 settings.signerName = process.env.DS_SIGNER_NAME || settings.signerName;
 settings.dsClientId = process.env.DS_CLIENT_ID || settings.dsClientId;
 settings.appUrl = process.env.DS_APP_URL || settings.appUrl;
+settings.privateKey = process.env.DS_PRIVATE_KEY  || settings.privateKey;
+settings.impersonatedUserGuid =  process.env.DS_IMPERSONATED_USER_GUID || settings.impersonatedUserGuid;
 
 exports.config = {
   dsOauthServer,

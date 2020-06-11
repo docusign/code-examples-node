@@ -1,6 +1,6 @@
-# Docusign eSignature Node.js Code Examples
+# Node.JS Launcher Code Examples
 
-### Github repo: [code-examples-node](./)
+### Github repo: [code-examples-nodejs](./)
 ## Introduction
 This repo is a Node.JS application that demonstrates:
 
@@ -73,7 +73,7 @@ This repo is a Node.JS application that demonstrates:
    [Source.](./lib/examples/eg021PhoneAuthentication.js)
    This example sends and envelope that requires entering in a voice-based response code for the purpose of multi-factor authentication.
 1. **Requiring Knowledge-Based Authentication (KBA) for a Recipient**
-   [Source.](https://github.com/docusign/eg-03-node-auth-code-grant/blob/master/lib/examples/eg022KbaAuthentication.js)
+   [Source.](./lib/examples/eg022KbaAuthentication.js)
    This example sends and envelope that requires passing a Public records check to validate identity for the purpose of multi-factor authentication.
 1. **Requiring ID Verification (IDV) for a recipient**
    [Source.](./lib/examples/eg023IdvAuthentication.js)
@@ -112,9 +112,11 @@ This repo is a Node.JS application that demonstrates:
    Firstly, creates a bulk send recipients list, and then creates an envelope. 
    After that, initiates bulk envelope sending.
 
+
+
 ## Included OAuth grant types:
 
-* Authentication with Docusign via [Authorization Code Grant flow](https://developers.docusign.com/esign-rest-api/guides/authentication/oauth2-code-grant).
+* Authentication with Docusign via [Authorization Code Grant flow](https://developers.docusign.com/esign-rest-api/guides/authentication/oauth2-code-grant) .
 When the token expires, the user is asked to re-authenticate.
 The **refresh token** is not used in this example.
 
@@ -140,17 +142,16 @@ When the token expires, it updates automatically.
    The signer and the cc email cannot be the same.
 
 ### Installation steps
-1. Download or clone this repository to your workstation to directory **code-examples-node**
-1. **cd code-examples-node**
+1. Download or clone this repository to your workstation to directory **code-examples-nodejs**
+1. **cd code-examples-nodejs**
 1. **npm install**
 1. *Either:*
 
-   * Copy the the file **config/appsettings.example.json** to **config/appsettings.json** with the Integration Key and other settings, 
-     
-     *or*
-
+   * Update the file **config/appsettings.json** in the project's root directory
+     with the Integration Key
+     and other settings, *or*
    * Create and export environment variables for the settings.
-     See the **config/appsettings.example.json** file
+     See the **config/appsettings.json** file
      for the names of the environment variables.
 
    **Note:** Protect your Integration Key and secret--If you update
@@ -165,16 +166,10 @@ When the token expires, it updates automatically.
 
 1. Create a developer sandbox account on developers.docusign.com if you don't already have one.
 2. Create a new API key in the Admin panel: https://admindemo.docusign.com/api-integrator-key, take note of the public key.
-3. Generate an RSA keypair in the administrator console on the DocuSign developer sandbox and copy the private key to a secure location.
-4.  * Copy the the file **config/appsettings.example.json** to **config/appsettings.json** with the Integration Key and other settings, NOTE, your IDE may automatically insert indentation spaces... delete those automatically formatted strings as they will break your RSA private key.
-     
-     *or*
-
-   * Create and export environment variables for the settings.
-     See the **config/appsettings.example.json** file
-     for the names of the environment variables.
-
-5. Update the file **config/appsettings.json** and include the newly created API key from step 2 as well as your account user id GUID which is also found on the Admin panel: `https://admindemo.docusign.com/api-integrator-key`.
+3. Set a redirect URI of `http://localhost:5000/ds/callback` as mentioned in the installation steps above for the API key you make in step 2.
+4. Generate an RSA keypair in the administrator console on the DocuSign developer sandbox and copy the private key to a secure location.
+5. Create a new file in your repo source folder named **private.key**, and paste in that copied RSA private key, then save it.
+6. Update the file **config/appsettings.json** and include the newly created API key from step 2 as well as your account user id GUID which is also found on the Admin panel: `https://admindemo.docusign.com/api-integrator-key`.
 
 From there you should be able to run the launcher using **npm start** then selecting **JSON Web Token** when authenticaing your account.
 

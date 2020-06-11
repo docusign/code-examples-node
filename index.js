@@ -66,7 +66,7 @@ let app = express()
   .use(cookieParser())
   .use(session({
     secret: dsConfig.sessionSecret,
-    name: 'ds-eg03-session',
+    name: 'ds-launcher-session',
     cookie: {maxAge: max_session_min * 60000},
     saveUninitialized: true,
     resave: true,
