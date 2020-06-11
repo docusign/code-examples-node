@@ -1,8 +1,8 @@
-# Node.JS Launcher Code Examples
+# Node.js Launcher Code Examples
 
-### Github repo: [code-examples-nodejs](./)
+### Github repo: [code-examples-node](./)
 ## Introduction
-This repo is a Node.JS application that demonstrates:
+This repo is a Node.js application that demonstrates:
 
 1. **Embedded Signing Ceremony.**
    [Source.](./lib/examples/eg001EmbeddedSigning.js)
