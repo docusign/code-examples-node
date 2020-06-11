@@ -114,7 +114,7 @@ This repo is a Node.JS application that demonstrates:
 
 
 
-## Included OAuth grant types:
+## Authentication types:
 
 * Authentication with Docusign via [Authorization Code Grant flow](https://developers.docusign.com/esign-rest-api/guides/authentication/oauth2-code-grant) .
 When the token expires, the user is asked to re-authenticate.
