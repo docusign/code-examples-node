@@ -1,5 +1,5 @@
 {
-  "name": "Docusign code examples Nodejs",
+  "name": "docusign-code-examples",
   "version": "1.0.0",
   "description": "DocuSign eSignature Code examples using either Authorization Code Grant and JWT OAuth",
   "main": "index.js",
