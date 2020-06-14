@@ -2,49 +2,49 @@
   {
     "langCode": "csharp",
     "name": "C#",
-    "githubExampleUrl": "https://github.com/docusign/eg-03-csharp-auth-code-grant-core/tree/master/eg-03-csharp-auth-code-grant-core/Controllers/",
+    "githubExampleUrl": "https://github.com/docusign/code-examples-csharp-core/tree/master/code-examples-csharp-core/Controllers/",
     "owner": "docusign",
-    "repo": "eg-03-csharp-auth-code-grant-core",
-    "pathPrefix": "eg-03-csharp-auth-code-grant-core/Controllers/"
+    "repo": "code-examples-csharp-core",
+    "pathPrefix": "code-examples-csharp-core/Controllers/"
   },
   {
     "langCode": "php",
     "name": "PHP",
-    "githubExampleUrl": "https://github.com/docusign/eg-03-php-auth-code-grant/blob/master/src/",
+    "githubExampleUrl": "https://github.com/docusign/code-examples-php/blob/master/src/",
     "owner": "docusign",
-    "repo": "eg-03-php-auth-code-grant",
+    "repo": "code-examples-php",
     "pathPrefix": "src/"
   },
   {
     "langCode": "java",
     "name": "Java",
-    "githubExampleUrl": "https://github.com/docusign/eg-03-java-auth-code-grant/tree/master/src/main/java/com/docusign/controller/examples/",
+    "githubExampleUrl": "https://github.com/docusign/code-examples-java/tree/master/src/main/java/com/docusign/controller/examples/",
     "owner": "docusign",
-    "repo": "eg-03-java-auth-code-grant",
+    "repo": "code-examples-java",
     "pathPrefix": "src/main/java/com/docusign/controller/examples/"
   },
   {
     "langCode": "node",
     "name": "Node.js",
-    "githubExampleUrl": "https://github.com/docusign/eg-03-node-auth-code-grant/tree/master/lib/examples/",
+    "githubExampleUrl": "https://github.com/docusign/code-examples-node/tree/master/lib/examples/",
     "owner": "docusign",
-    "repo": "eg-03-node-auth-code-grant",
+    "repo": "code-examples-node",
     "pathPrefix": "lib/examples/"
   },
   {
-    "langCode": "curl",
-    "name": "API / curl",
-    "githubExampleUrl": "https://github.com/docusign/eg-03-curl/tree/master/examples/",
+    "langCode": "bash",
+    "name": "API / bash",
+    "githubExampleUrl": "https://github.com/docusign/code-examples-bash/tree/master/examples/",
     "owner": "docusign",
-    "repo": "eg-03-curl",
+    "repo": "code-examples-bash",
     "pathPrefix": "examples/"
   },
   {
     "langCode": "python",
     "name": "Python",
-    "githubExampleUrl": "https://github.com/docusign/eg-03-python-auth-code-grant/tree/master/app/",
+    "githubExampleUrl": "https://github.com/docusign/code-examples-python/tree/master/app/",
     "owner": "docusign",
-    "repo": "eg-03-python-auth-code-grant",
+    "repo": "code-examples-python",
     "pathPrefix": "app/"
   }
 ]
