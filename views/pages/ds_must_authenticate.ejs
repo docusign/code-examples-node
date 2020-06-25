@@ -5,9 +5,10 @@
   <p class="lead">
   <form class="eg" action="/ds/login" method="get" data-busy="form">
     <div class="form-group">
+      <label>Please choose your authentication type</label>
       <select id="auth" name="auth" class="form-control">
-        <option value="grand-auth" selected>Authorization Code grant</option>
-        <option value="jwt-auth">JSON Web Token grant</option>
+        <option value="grand-auth" selected>Authorization Code Grant</option>
+        <option value="jwt-auth">JWT (JSON Web Token)</option>
       </select><br>
       <button class="btn btn-primary btn-lg">Authenticate with DocuSign</button>
     </div>
