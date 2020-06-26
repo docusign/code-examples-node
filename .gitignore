@@ -61,7 +61,7 @@ typings/
 .env
 
 # ignore config file
-*/ds_configuration.js
+*/app_settings.json
 secret
 
 # ignore vs settings
