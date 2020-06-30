@@ -26,6 +26,20 @@ body {
   pointer-events: none;
 }
 
+.btn-docu {
+  
+  background-color: #00BAA1;
+  color:#FFF;
+  border-color: #121517;
+}
+
+.btn-docu:hover, .btn-docu:focus, .btn-docu:active, .btn-docu.active, .open .dropdown-toggle.btn-docu {
+  background-color: #02d6ba;
+  color:#FFF;
+  border-color: #050607;
+}
+
+
 .jumbotron {
 
   background: #000 !important;
@@ -40,7 +54,6 @@ body {
 
 .jumbotron p {
     font-size: 1.45em;
-    padding:0 !important;
 }
 
 hr.styled {
