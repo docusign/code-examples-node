@@ -27,22 +27,28 @@ body {
 }
 
 .jumbotron {
-  background: #888888;
-  padding: 3em;
+
+  background: #000 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  padding-left: 30px !important;
+  padding-right: 30px !important;
+  margin: 0 !important;
   color: white;
-  margin: 1em auto 1.5em; }
+
+}
 
 .jumbotron p {
-  margin-top: 1em;
-  font-size: 1.45em;
+    font-size: 1.45em;
+    padding:0 !important;
 }
 
 hr.styled {
   overflow: visible; /* For IE */
   padding: 0;
   border: none;
-  border-top: medium double #333;
-  color: #333;
+  border-top: medium double 0;
+  color: #000;
   text-align: center;
 }
 hr.styled:after {

@@ -66,3 +66,6 @@ secret
 
 # ignore vs settings
 .vs
+
+# ignore RSA keys
+private.key
