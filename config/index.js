@@ -1,6 +1,6 @@
 exports.docOptions = require('./documentOptions.json');
 exports.docNames = require('./documentNames.json');
-const settings = require('./appsettings.json');
+const settings = require('./appsettings.example.json');
 const jwt = require('./jwtsettings.json');
 exports.github = require('./github.json');
 
