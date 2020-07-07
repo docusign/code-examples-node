@@ -57,21 +57,21 @@
         </select>
     </div>
     <input type="hidden" name="_csrf" value="<%- csrfToken %>">
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-docu">Submit</button>
 </form>
 <% } else if(brands.length === 0) { %>
   <p>Problem: please first create the brand using <a href="eg028">example 28.</a> <br/>
      Thank you.</p>
 
   <form class="eg" action="eg028" method="get">
-      <button type="submit" class="btn btn-primary">Continue</button>
+      <button type="submit" class="btn btn-docu">Continue</button>
   </form>
 <% } else if(templates.length === 0) { %>
   <p>Problem: please first create the template using <a href="eg008">example 8.</a> <br/>
     Thank you.</p>
 
  <form class="eg" action="eg008" method="get">
-     <button type="submit" class="btn btn-primary">Continue</button>
+     <button type="submit" class="btn btn-docu">Continue</button>
  </form>
 <% } %>
 
