@@ -142,8 +142,8 @@ When the token expires, it updates automatically.
    The signer and the cc email cannot be the same.
 
 ### Installation steps
-1. Download or clone this repository to your workstation to directory **code-examples-nodejs**
-1. **cd code-examples-nodejs**
+1. Download or clone this repository to your workstation to directory **code-examples-node**
+1. **cd code-examples-node**
 1. **npm install**
 1. Copy the file **config/appsettings.example.json** into a file **config/appsettings.json** 
 1. *Either:*
