@@ -1,6 +1,6 @@
 # Node.js Launcher Code Examples
 
-### Github repo: [code-examples-node](./)
+### Github repo: [code-examples-node](../../)
 ## Introduction
 This repo is a Node.js application that demonstrates:
 
