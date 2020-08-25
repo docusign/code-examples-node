@@ -8,7 +8,7 @@ const path = require('path')
     , fs = require('fs-extra')
     , docusign = require('docusign-esign')
     , validator = require('validator')
-    , dsConfig = require('../../config/index.js').config
+    , dsConfig = require('./config/index.js').config
     ;
 
 const eg001EmbeddedSigning = exports
@@ -16,7 +16,7 @@ const eg001EmbeddedSigning = exports
     , mustAuthenticate = '/ds/mustAuthenticate'
     , minimumBufferMin = 3
     , signerClientId = 1000 // The id of the signer within this application.
-    , demoDocsPath = path.resolve(__dirname, '../../demo_documents')
+    , demoDocsPath = path.resolve(__dirname, 'demo_documents')
     , pdf1File = 'World_Wide_Corp_lorem.pdf'
     , dsReturnUrl = dsConfig.appUrl + '/ds-return'
     , dsPingUrl = dsConfig.appUrl + '/' // Url that will be pinged by the DocuSign Signing Ceremony via Ajax

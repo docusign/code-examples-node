@@ -7,7 +7,7 @@ const chai = require('chai')
     , fs = require('fs')
     , path = require('path')
     , helpers = require('./testHelpers')
-    , eg001 = require('../lib/examples/eg001EmbeddedSigning')
+    , eg001 = require('..eg001EmbeddedSigning')
     ;
 
 describe ('eg001', function(){
