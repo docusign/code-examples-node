@@ -1,3 +1,4 @@
+ <% if(locals.dsConfig.examplesApi !== 'rooms') { %>
  <% if (showDoc) { %>
     <p><a target='_blank' href='<%= documentation %>'>Documentation</a> on using OAuth Authorization Code Grant and JWT from a Node Express application.</p>
   <% } %>
@@ -233,3 +234,9 @@
       <a target="_blank" href="https://developers.docusign.com/esign-rest-api/reference/BulkEnvelopes/BulkSend/createBulkSendList">BulkSend::createBulkSendList</a>
       <a target="_blank" href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/EnvelopeRecipients/create">EnvelopeRecipients::create</a>.
   </p>
+
+<% } %>
+
+<% if(locals.dsConfig.examplesApi === 'rooms') { %>
+   <% include index_rooms_examples %>
+<% } %>

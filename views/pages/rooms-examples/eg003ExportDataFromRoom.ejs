@@ -1,0 +1,34 @@
+<% include ../../partials/examplesHead %>
+<h4>3. Export data from a room.</h4>
+<p>This example exports data from a room</p>
+
+<% include ../../partials/docBody %>
+
+<p>API methods used:
+  <a target ='_blank' href="https://developers.docusign.com/rooms-api/reference/Rooms/Rooms/GetRooms">Rooms::GetRooms</a> and
+  <a target ='_blank' href="https://developers.docusign.com/rooms-api/reference/Rooms/Rooms/GetRoomFieldData">Rooms::GetRoomFieldData</a>.
+</p>
+<% include ../../partials/gitSource %>
+<% if (rooms) { %>
+<form class="eg" action="" method="post" data-busy="form">
+  
+  <div class="form-group">
+    <label for="roomId">Room</label>
+    <select id="roomId" name="roomId" class="form-control">
+      <% rooms.forEach( room => { %>
+        <option value="<%= room.roomId %>" selected> <%= room.name %> </option>
+      <% }) %>
+    </select>
+</div>
+  <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+  <button type="submit" class="btn btn-docu">Submit</button>
+</form>
+<% } else { %>
+  <p>Problem: please first create a room using <a href="eg001rooms">example 1.</a> <br/>
+   Thank you.</p>
+   
+<form class="eg" action="eg001rooms" method="get">
+    <button type="submit" class="btn btn-docu">Continue</button>
+</form>
+<% } %>
+<% include ../../partials/examplesFoot.ejs %>
