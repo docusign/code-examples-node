@@ -32,7 +32,8 @@
       "eg030": "eg030PermissionSetUserGroup.js",
       "eg031": "eg031BulkSendEnvelopes.js",
       "eg001rooms": "eg001CreateRoomWithData.js",
-      "eg003rooms": "eg003ExportDataFromRoom.js"
+      "eg003rooms": "eg003ExportDataFromRoom.js",
+      "eg005rooms": "eg005GetRoomsWithFilters.js"
   },
   "java": {
       "eg001": "EG001ControllerEmbeddedSigning.java",

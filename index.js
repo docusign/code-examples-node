@@ -51,6 +51,7 @@ const express = require('express')
   , eg031 = require('./lib/examples/eg031BulkSendEnvelopes')
   , eg001rooms = require('./lib/rooms-examples/eg001CreateRoomWithData')
   , eg003rooms = require('./lib/rooms-examples/eg003ExportDataFromRoom')
+  , eg005rooms = require('./lib/rooms-examples/eg005GetRoomsWithFilters')
   ;
 
 const PORT = process.env.PORT || 5000
@@ -178,6 +179,8 @@ if (dsConfig.examplesApi !== 'rooms') {
   .post('/eg001rooms', eg001rooms.createController)
   .get('/eg003rooms', eg003rooms.getController)
   .post('/eg003rooms', eg003rooms.createController)
+  .get('/eg005rooms', eg005rooms.getController)
+  .post('/eg005rooms', eg005rooms.createController)
 }
 
 function dsLoginCB1(req, res, next) { req.dsAuthCodeGrant.oauth_callback1(req, res, next) }
