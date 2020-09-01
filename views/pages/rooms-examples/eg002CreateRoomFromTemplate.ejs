@@ -1,0 +1,43 @@
+<% include ../../partials/examplesHead %>
+<h4>2. Create a room from template.</h4>
+<p>Create a room from template.</p>
+
+<% include ../../partials/docBody %>
+
+<p>API methods used:
+  <a target='_blank' href="https://developers.docusign.com/rooms-api/reference/Roles/Roles/GetRoles">Roles::GetRoles</a>
+  and
+  <a target='_blank'
+    href="https://developers.docusign.com/rooms-api/reference/Rooms/Rooms/CreateRoom">Rooms::CreateRoom</a>
+  <a target='_blank'
+    href="https://developers.docusign.com/rooms-api/reference/RoomTemplates/RoomTemplates/GetRoomTemplates">RoomTemplates::GetRoomTemplates</a>
+</p>
+<% include ../../partials/gitSource %>
+<% if (templates && templates.length > 0) { %>
+  <form class="eg" action="" method="post" data-busy="form">
+    <div class="form-group">
+      <label for="roomName">Room Name</label>
+      <input type="text" class="form-control" id="roomName" placeholder="Sample Room Name" name="roomName"
+        value="<%= locals.dsConfig.roomName %>" required>
+    </div>
+    <div class="form-group">
+      <label for="templateId">Template</label>
+      <select id="templateId" name="templateId" class="form-control">
+        <% templates.forEach( template => { %>
+        <option value="<%= template.templateId %>" selected> <%= template.name %> </option>
+        <% }) %>
+      </select>
+    </div>
+    <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+    <button type="submit" class="btn btn-docu">Submit</button>
+  </form>
+  <% } else { %>
+    <p>Problem: you don't have any templates. Please first create a form template using <a href="https://demo.rooms.docusign.com/admin/company/roomtemplates">Docusign Admin</a> <br/>
+     Thank you.</p>
+     
+  <form class="eg" action="eg002rooms" method="get">
+      <button type="submit" class="btn btn-docu">Continue</button>
+  </form>
+  <% } %>
+
+<% include ../../partials/examplesFoot.ejs %>

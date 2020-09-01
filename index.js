@@ -50,8 +50,11 @@ const express = require('express')
   , eg030 = require('./lib/examples/eg030ApplyBrandToTemplate')
   , eg031 = require('./lib/examples/eg031BulkSendEnvelopes')
   , eg001rooms = require('./lib/rooms-examples/eg001CreateRoomWithData')
+  , eg002rooms = require('./lib/rooms-examples/eg002CreateRoomFromTemplate')
   , eg003rooms = require('./lib/rooms-examples/eg003ExportDataFromRoom')
+  , eg004rooms = require('./lib/rooms-examples/eg004AddingFormToRoom')
   , eg005rooms = require('./lib/rooms-examples/eg005GetRoomsWithFilters')
+  , eg006rooms = require('./lib/rooms-examples/eg006CreateExternalFormFillSession')
   ;
 
 const PORT = process.env.PORT || 5000
@@ -177,10 +180,16 @@ if (dsConfig.examplesApi !== 'rooms') {
 } else {
   app.get('/eg001rooms', eg001rooms.getController)
   .post('/eg001rooms', eg001rooms.createController)
+  .get('/eg002rooms', eg002rooms.getController)
+  .post('/eg002rooms', eg002rooms.createController)
   .get('/eg003rooms', eg003rooms.getController)
   .post('/eg003rooms', eg003rooms.createController)
+  .get('/eg004rooms', eg004rooms.getController)
+  .post('/eg004rooms', eg004rooms.createController)
   .get('/eg005rooms', eg005rooms.getController)
   .post('/eg005rooms', eg005rooms.createController)
+  .get('/eg006rooms', eg006rooms.getController)
+  .post('/eg006rooms', eg006rooms.createController)
 }
 
 function dsLoginCB1(req, res, next) { req.dsAuthCodeGrant.oauth_callback1(req, res, next) }
@@ -212,6 +221,7 @@ passport.deserializeUser(function (obj, done) { done(null, obj) });
 let docusignStrategy = new DocusignStrategy({
   production: dsConfig.production,
   clientID: dsConfig.dsClientId,
+  scope: "signature dtr.rooms.read dtr.rooms.write dtr.documents.read dtr.documents.write dtr.profile.read dtr.profile.write dtr.company.read dtr.company.write room_forms",
   clientSecret: dsConfig.dsClientSecret,
   callbackURL: hostUrl + '/ds/callback',
   state: true // automatic CSRF protection.
