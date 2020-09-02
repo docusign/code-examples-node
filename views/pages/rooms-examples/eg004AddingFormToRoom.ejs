@@ -22,10 +22,10 @@
     </select>
   </div>
   <div class="form-group">
-    <label for="formId">Form</label>
-    <select id="formId" name="formId" class="form-control" required>
+    <label for="libraryFormId">Form</label>
+    <select id="libraryFormId" name="libraryFormId" class="form-control" required>
       <% forms.forEach( form => { %>
-        <option value="<%= form.formId %>" selected> <%= form.name %> </option>
+        <option value="<%= form.libraryFormId %>" selected> <%= form.name %> </option>
       <% }) %>
     </select>
 </div>
