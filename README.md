@@ -126,6 +126,8 @@ When the token expires, it updates automatically.
 ## Installation
 
 ### Prerequisites
+**Note: If you downloaded this code using Quickstart from the DocuSign Developer Center, skip steps 1 and 2 below as they're automatically performed for you.**
+
 1. A DocuSign Developer Sandbox account (email and password) on [demo.docusign.net](https://demo.docusign.net).
    Create a [free account](https://go.docusign.com/sandbox/productshot/?elqCampaignId=16534).
 
@@ -144,7 +146,9 @@ When the token expires, it updates automatically.
 ### Installation steps
 1. Download or clone this repository to your workstation to directory **code-examples-node**
 1. **cd code-examples-node**
-1. **npm install**
+1. **npm install**   
+**Note: If you downloaded this code using Quickstart from the DocuSign Developer Center, skip steps 4 and 5 below as they're automatically performed for you.**
+
 1. Copy the file **config/appsettings.example.json** into a file **config/appsettings.json** 
 1. *Either:*
 
