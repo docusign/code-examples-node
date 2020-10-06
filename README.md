@@ -1,111 +1,111 @@
 # Node.js Launcher Code Examples
 
-### Github repo: [code-examples-node](./)
+### Github repo: [code-examples-node](../../)
 ## Introduction
 This repo is a Node.js application that demonstrates:
 
 1. **Embedded Signing Ceremony.**
-   [Source.](./lib/examples/eg001EmbeddedSigning.js)
+   [Source.](./eg001EmbeddedSigning.js)
    This example sends an envelope, and then uses an embedded signing ceremony for the first signer.
    With embedded signing, the DocuSign signing ceremony is initiated from your website.
 1. **Send an envelope with a remote (email) signer and cc recipient.**
-   [Source.](./lib/examples/eg002SigningViaEmail.js)
+   [Source.](./lib/eSignature/eg002SigningViaEmail.js)
    The envelope includes a pdf, Word, and HTML document.
    Anchor text ([AutoPlace](https://support.docusign.com/en/guides/AutoPlace-New-DocuSign-Experience)) is used to position the signing fields in the documents.
 1. **List envelopes in the user's account.**
-   [Source.](./lib/examples/eg003ListEnvelopes.js)
+   [Source.](./lib/eSignature/eg003ListEnvelopes.js)
 1. **Get an envelope's basic information.**
-   [Source.](./lib/examples/eg004EnvelopeInfo.js)
+   [Source.](./lib/eSignature/eg004EnvelopeInfo.js)
    The example lists the basic information about an envelope, including its overall status.
 1. **List an envelope's recipients** 
-   [Source.](./lib/examples/eg005EnvelopeRecipients.js)
+   [Source.](./lib/eSignature/eg005EnvelopeRecipients.js)
    Includes current recipient status.
 1. **List an envelope's documents.**
-   [Source.](./lib/examples/eg006EnvelopeDocs.js)
+   [Source.](./lib/eSignature/eg006EnvelopeDocs.js)
 1. **Download an envelope's documents.** 
-   [Source.](./lib/examples/eg007EnvelopeGetDoc.js)
+   [Source.](./lib/eSignature/eg007EnvelopeGetDoc.js)
    The example can download individual
    documents, the documents concatenated together, or a zip file of the documents.
 1. **Programmatically create a template.**
-   [Source.](./lib/examples/eg008CreateTemplate.js)
+   [Source.](./lib/eSignature/eg008CreateTemplate.js)
 1. **Send an envelope using a template.**
-   [Source.](./lib/examples/eg009UseTemplate.js)
+   [Source.](./lib/eSignature/eg009UseTemplate.js)
 1. **Send an envelope and upload its documents with multpart binary transfer.**
-   [Source.](./lib/examples/eg010SendBinaryDocs.js)
+   [Source.](./lib/eSignature/eg010SendBinaryDocs.js)
    Binary transfer is 33% more efficient than using Base64 encoding.
 1. **Embedded sending.**
-   [Source.](./lib/examples/eg011EmbeddedSending.js)
+   [Source.](./lib/eSignature/eg011EmbeddedSending.js)
    Embeds the DocuSign web tool (NDSE) in your web app to finalize or update 
    the envelope and documents before they are sent.
 1. **Embedded DocuSign web tool (NDSE).**
-   [Source.](./lib/examples/eg012EmbeddedConsole.js)
+   [Source.](./lib/eSignature/eg012EmbeddedConsole.js)
 1. **Embedded Signing Ceremony from a template with an added document.**
-   [Source.](./lib/examples/eg013AddDocToTemplate.js)
+   [Source.](./lib/eSignature/eg013AddDocToTemplate.js)
    This example sends an envelope based on a template.
    In addition to the template's document(s), the example adds an
    additional document to the envelope by using the
    [Composite Templates](https://developers.docusign.com/esign-rest-api/guides/features/templates#composite-templates)
    feature.
 1. **Payments example: an order form, with online payment by credit card.**
-   [Source.](./lib/examples/eg014CollectPayment.js)
+   [Source.](./lib/eSignature/eg014CollectPayment.js)
 1. **Get the envelope tab data.**
    Retrieve the tab (field) values for all of the envelope's recipients.
-   [Source.](./lib/examples/eg015EnvelopeTabData.js)
+   [Source.](./lib/eSignature/eg015EnvelopeTabData.js)
 1. **Set envelope tab values.**
    The example creates an envelope and sets the initial values for its tabs (fields). Some of the tabs
    are set to be read-only, others can be updated by the recipient. The example also stores
    metadata with the envelope.
-   [Source.](./lib/examples/eg016SetTabValues.js)
+   [Source.](./lib/eSignature/eg016SetTabValues.js)
 1. **Set template tab values.**
    The example creates an envelope using a template and sets the initial values for its tabs (fields).
    The example also stores metadata with the envelope.
-   [Source.](./lib/examples/eg017SetTemplateTabValues.js)
+   [Source.](./lib/eSignature/eg017SetTemplateTabValues.js)
 1. **Get the envelope custom field data (metadata).**
    The example retrieves the custom metadata (custom data fields) stored with the envelope.
-   [Source.](./lib/examples/eg018EnvelopeCustomFieldData.js)
+   [Source.](./lib/eSignature/eg018EnvelopeCustomFieldData.js)
 1. **Requiring an Access Code for a Recipient**
-   [Source.](./lib/examples/eg019AccessCodeAuthentication.js)
+   [Source.](./lib/eSignature/eg019AccessCodeAuthentication.js)
    This example sends and envelope that requires an access-code for the purpose of multi-factor authentication.
 1. **Requiring SMS authentication for a recipient**
-   [Source.](./lib/examples/eg020SmsAuthentication.js)
+   [Source.](./lib/eSignature/eg020SmsAuthentication.js)
    This example sends and envelope that requires entering in a six digit code from an text message for the purpose of multi-factor authentication.
 1. **Requiring Phone authentication for a recipient**
-   [Source.](./lib/examples/eg021PhoneAuthentication.js)
+   [Source.](./lib/eSignature/eg021PhoneAuthentication.js)
    This example sends and envelope that requires entering in a voice-based response code for the purpose of multi-factor authentication.
 1. **Requiring Knowledge-Based Authentication (KBA) for a Recipient**
-   [Source.](./lib/examples/eg022KbaAuthentication.js)
+   [Source.](./lib/eSignature/eg022KbaAuthentication.js)
    This example sends and envelope that requires passing a Public records check to validate identity for the purpose of multi-factor authentication.
 1. **Requiring ID Verification (IDV) for a recipient**
-   [Source.](./lib/examples/eg023IdvAuthentication.js)
+   [Source.](./lib/eSignature/eg023IdvAuthentication.js)
    This example sends and envelope that requires the recipient to upload a government issued id.    
 1. **Creating a permission profile**
-   [Source.](./lib/examples/eg024CreatePermission.js)
+   [Source.](./lib/eSignature/eg024CreatePermission.js)
    This code example demonstrates how to create a permission profile using the [Create Permission Profile](https://developers.docusign.com/esign-rest-api/reference/Accounts/AccountPermissionProfiles/create) method.
 1. **Setting a permission profile**
-   [Source.](./lib/examples/eg025PermissionSetUserGroup.js)
+   [Source.](./lib/eSignature/eg025PermissionSetUserGroup.js)
    This code example demonstrates how to set a user group's permission profile using the [Update Group](https://developers.docusign.com/esign-rest-api/reference/UserGroups/Groups/update) method. 
    You must have already created permissions profile and group of users.
 1. **Updating individual permission settings**
-   [Source.](./lib/examples/eg026PermissionChangeSingleSetting.js)
+   [Source.](./lib/eSignature/eg026PermissionChangeSingleSetting.js)
    This code example demonstrates how to edit individual permission settings on a permissions profile using the [Update Permission Profile](https://developers.docusign.com/esign-rest-api/reference/Accounts/AccountPermissionProfiles/update) method.
 1. **Deleting a permission profile**
-   [Source.](./lib/examples/eg027DeletePermission.js)
+   [Source.](./lib/eSignature/eg027DeletePermission.js)
    This code example demonstrates how to delete a permission profile using the [Delete Permission Profile](https://developers.docusign.com/esign-rest-api/reference/Accounts/AccountPermissionProfiles/create) method.
 1. **Creating a brand**
-   [Source.](./lib/examples/eg028CreateBrand.js)
+   [Source.](./lib/eSignature/eg028CreateBrand.js)
    This example creates brand profile for an account using the [Create Brand](https://developers.docusign.com/esign-rest-api/reference/Accounts/AccountBrands/create) method.
 1. **Applying a brand to an envelope**
-   [Source.](./lib/examples/eg029ApplyBrandToEnvelope.js)
+   [Source.](./lib/eSignature/eg029ApplyBrandToEnvelope.js)
    This code example demonstrates how to apply a brand you've created to an envelope using the [Create Envelope](https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/create) method. 
    First, creates the envelope and then applies brand to it.
    Anchor text ([AutoPlace](https://support.docusign.com/en/guides/AutoPlace-New-DocuSign-Experience)) is used to position the signing fields in the documents.
 1. **Applying a brand to a template**
-   [Source.](./lib/examples/eg030ApplyBrandToTemplate.js)
+   [Source.](./lib/eSignature/eg030ApplyBrandToTemplate.js)
    This code example demonstrates how to apply a brand you've created to a template using using the [Create Envelope](https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/create) method. 
    You must have at least one created template and brand.
    Anchor text ([AutoPlace](https://support.docusign.com/en/guides/AutoPlace-New-DocuSign-Experience)) is used to position the signing fields in the documents.
 1. **Bulk sending envelopes to multiple recipients**
-   [Source.](./lib/examples/eg031BulkSendEnvelopes.js)
+   [Source.](./lib/eSignature/eg031BulkSendEnvelopes.js)
    This code example demonstrates how to send envelopes in bulk to multiple recipients using these methods:
    [Create Bulk Send List](https://developers.docusign.com/esign-rest-api/reference/BulkEnvelopes/BulkSend/createBulkSendList), 
    [Create Bulk Send Request](https://developers.docusign.com/esign-rest-api/reference/BulkEnvelopes/BulkSend/createBulkSendRequest).
@@ -116,16 +116,18 @@ This repo is a Node.js application that demonstrates:
 
 ## Authentication types:
 
-* Authentication with Docusign via [Authorization Code Grant flow](https://developers.docusign.com/esign-rest-api/guides/authentication/oauth2-code-grant) .
+* Authentication with Docusign via [Authorization Code Grant flow](https://developers.docusign.com/platform/auth/authcode) .
 When the token expires, the user is asked to re-authenticate.
 The **refresh token** is not used in this example.
 
-* Authentication with DocuSign via the [JSON Web Token (JWT) Grant](https://developers.docusign.com/esign-rest-api/guides/authentication/oauth2-jsonwebtoken).
+* Authentication with DocuSign via the [JSON Web Token (JWT) Grant](https://developers.docusign.com/platform/auth/jwt/).
 When the token expires, it updates automatically.
 
 ## Installation
 
 ### Prerequisites
+**Note: If you downloaded this code using Quickstart from the DocuSign Developer Center, skip steps 1 and 2 below as they're automatically performed for you.**
+
 1. A DocuSign Developer Sandbox account (email and password) on [demo.docusign.net](https://demo.docusign.net).
    Create a [free account](https://go.docusign.com/sandbox/productshot/?elqCampaignId=16534).
 
@@ -142,9 +144,11 @@ When the token expires, it updates automatically.
    The signer and the cc email cannot be the same.
 
 ### Installation steps
-1. Download or clone this repository to your workstation to directory **code-examples-nodejs**
-1. **cd code-examples-nodejs**
-1. **npm install**
+1. Download or clone this repository to your workstation to directory **code-examples-node**
+1. **cd code-examples-node**
+1. **npm install**   
+**Note: If you downloaded this code using Quickstart from the DocuSign Developer Center, skip steps 4 and 5 below as they're automatically performed for you.**
+
 1. Copy the file **config/appsettings.example.json** into a file **config/appsettings.json** 
 1. *Either:*
 

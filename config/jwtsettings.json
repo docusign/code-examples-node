@@ -1,5 +1,0 @@
-{
-  "dsJWTClientId": "{DS_INTEGRATION_KEY}",
-  "privateKeyLocation":  "private.key",
-  "impersonatedUserGuid": "{IMPERSONATION_USER_GUID}"
-}

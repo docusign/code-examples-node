@@ -1,3 +1,8 @@
 <% include head %>
-<div class="container-full-bg">
-    <section id="content" style="margin-top:-60px!important; padding-top:30px!important;">
+
+<% if (locals.user) { %>
+<div class="container" style="padding-top:30px">
+    <% } else { %>
+        <div class="container-full-bg">
+<% } %>
+<section id="content" style="margin-top:-60px!important; padding-top:30px!important;">
