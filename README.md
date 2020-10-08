@@ -1,8 +1,13 @@
 # Node.js Launcher Code Examples
+This GitHub repo includes code example for both the DocuSign eSignature REST API as well as the DocuSign Rooms API. To use the Rooms API code example, modify the **exampleAPI** settings at the end of the appsettings.json file from eSignature to rooms.
+
+**Note:** to use the Rooms API you must also [create your DocuSign Developer Account for Rooms](https://developers.docusign.com/docs/rooms-api/rooms101/create-account). 
 
 ### Github repo: [code-examples-node](../../)
 ## Introduction
 This repo is a Node.js application that demonstrates:
+
+## eSignature API
 
 1. **Embedded Signing Ceremony.**
    [Source.](./eg001EmbeddedSigning.js)
@@ -112,6 +117,28 @@ This repo is a Node.js application that demonstrates:
    Firstly, creates a bulk send recipients list, and then creates an envelope. 
    After that, initiates bulk envelope sending.
 
+## Rooms API 
+**Note:** to use the Rooms API you must also [create your DocuSign Developer Account for Rooms](https://developers.docusign.com/docs/rooms-api/rooms101/create-account). 
+
+
+1. **Create room with Data.**
+   [Source.](./launcher-csharp/Rooms/Controllers/Eg01CreateRoomWithDataController.cs)
+   This example creates a new room in your DocuSign Rooms account to be used for a transaction.
+1. **Create a room from a template.**
+   [Source.](./launcher-csharp/Rooms/Controllers/Eg02CreateRoomFromTemplateController.cs)
+   This example creates a new room using a template.
+1. **Create room with Data.**
+   [Source.](./launcher-csharp/Rooms/Controllers/Eg03ExportDataFromRoomController.cs)
+   This example exports all the avialalble data from a specific room in your DocuSign Rooms account.
+1. **Add forms to a room.**
+   [Source.](./launcher-csharp/Rooms/Controllers/Eg04AddingFormToRoomController.cs)
+   This example adds a standard real estate related form to a specific room in your DocuSign Rooms account.
+1. **How to search for rooms with filters.**
+   [Source.](./launcher-csharp/Rooms/Controllers/Eg05GetRoomsWithFiltersController.cs)
+   This example searches for rooms in your DocuSign Rooms account using a specific filter. 
+1. **Create an external form fillable session.**
+   [Source.](./launcher-csharp/Rooms/Controllers/Eg06CreateExternalFormFillSessionController.cs)
+   This example create an external form that can be filled using DocuSign for a specific room in your DocuSign Rooms account.
 
 
 ## Authentication types:
