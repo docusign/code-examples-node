@@ -61,7 +61,7 @@ typings/
 .env
 
 # ignore config file
-*/app_settings.json
+appsettings.json
 secret
 
 # ignore vs settings
