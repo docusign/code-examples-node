@@ -122,7 +122,7 @@ This repo is a Node.js application that demonstrates:
 
 
 1. **Create room with Data.**
-   [Source.](./launcher-csharp/Rooms/Controllers/Eg01CreateRoomWithDataController.cs)
+   [Source.](./lib/rooms/eg001CreateRoomWithData.js)
    This example creates a new room in your DocuSign Rooms account to be used for a transaction.
 1. **Create a room from a template.**
    [Source.](./launcher-csharp/Rooms/Controllers/Eg02CreateRoomFromTemplateController.cs)
