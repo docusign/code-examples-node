@@ -49,12 +49,12 @@ const express = require('express')
     , eg029 = require('./lib/eSignature/eg029ApplyBrandToEnvelope')
     , eg030 = require('./lib/eSignature/eg030ApplyBrandToTemplate')
     , eg031 = require('./lib/eSignature/eg031BulkSendEnvelopes')
-  , eg001rooms = require('./lib/rooms-examples/eg001CreateRoomWithData')
-  , eg002rooms = require('./lib/rooms-examples/eg002CreateRoomFromTemplate')
-  , eg003rooms = require('./lib/rooms-examples/eg003ExportDataFromRoom')
-  , eg004rooms = require('./lib/rooms-examples/eg004AddingFormToRoom')
-  , eg005rooms = require('./lib/rooms-examples/eg005GetRoomsWithFilters')
-  , eg006rooms = require('./lib/rooms-examples/eg006CreateExternalFormFillSession')
+  , eg001rooms = require('./lib/rooms/eg001CreateRoomWithData')
+  , eg002rooms = require('./lib/rooms/eg002CreateRoomFromTemplate')
+  , eg003rooms = require('./lib/rooms/eg003ExportDataFromRoom')
+  , eg004rooms = require('./lib/rooms/eg004AddingFormToRoom')
+  , eg005rooms = require('./lib/rooms/eg005GetRoomsWithFilters')
+  , eg006rooms = require('./lib/rooms/eg006CreateExternalFormFillSession')
   ;
 
 const PORT = process.env.PORT || 5000
