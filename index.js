@@ -217,11 +217,15 @@ You can set them in the configuration file config/appsettings.json or set enviro
 passport.serializeUser(function (user, done) { done(null, user) });
 passport.deserializeUser(function (obj, done) { done(null, obj) });
 
+let scope = "signature";
+if (dsConfig.examplesApi === 'rooms') {
+  scope += " dtr.rooms.read dtr.rooms.write dtr.documents.read dtr.documents.write dtr.profile.read dtr.profile.write dtr.company.read dtr.company.write room_forms";
+}
 // Configure passport for DocusignStrategy
 let docusignStrategy = new DocusignStrategy({
   production: dsConfig.production,
   clientID: dsConfig.dsClientId,
-  scope: "signature dtr.rooms.read dtr.rooms.write dtr.documents.read dtr.documents.write dtr.profile.read dtr.profile.write dtr.company.read dtr.company.write room_forms",
+  scope: scope,
   clientSecret: dsConfig.dsClientSecret,
   callbackURL: hostUrl + '/ds/callback',
   state: true // automatic CSRF protection.
