@@ -1,0 +1,60 @@
+<% if (showDoc) { %>
+<p><a target='_blank' href='<%= documentation %>'>Documentation</a> on using OAuth Authorization Code Grant and JWT from
+   a Node Express application.</p>
+<% } %>
+
+<% if (locals.dsConfig.multiSourceChooser) { %>
+<h3 class="mt-4">Rooms API Code Examples for C#, PHP, Java, Node.js, Python, and Curl</h3>
+<% } else { %>
+<h3 class="mt-4">Rooms API Code Examples</h3>
+<% } %>
+
+<h4 id="example001">1. <a href="eg001rooms">Creates a new room from data.</a></h4>
+<p>This is a general example of creating a room.</p>
+<p>API methods used:
+   <a target='_blank'
+      href="https://developers.docusign.com/rooms-api/reference/Roles/Roles/GetRoles">Roles::GetRoles</a> and
+   <a target='_blank'
+      href="https://developers.docusign.com/rooms-api/reference/Rooms/Rooms/CreateRoom">Rooms::CreateRoom</a>.
+</p>
+
+<h4 id="example002">2. <a href="eg002rooms">Create a room from template.</a></h4>
+<p>Create a room from template.</p>
+<p>API methods used:
+   <a target ='_blank' href="https://developers.docusign.com/rooms-api/reference/Roles/Roles/GetRoles">Roles::GetRoles</a> and
+   <a target ='_blank' href="https://developers.docusign.com/rooms-api/reference/Rooms/Rooms/CreateRoom">Rooms::CreateRoom</a>
+   <a target ='_blank' href="https://developers.docusign.com/rooms-api/reference/RoomTemplates/RoomTemplates/GetRoomTemplates">RoomTemplates::GetRoomTemplates</a>.
+</p>
+
+<h4 id="example003">3. <a href="eg003rooms">Export data from a room.</a></h4>
+<p>This example exports data from a room.</p>
+<p>API methods used:
+   <a target='_blank'
+      href="https://developers.docusign.com/rooms-api/reference/Rooms/Rooms/GetRooms">Rooms::GetRooms</a> and
+   <a target='_blank'
+      href="https://developers.docusign.com/rooms-api/reference/Rooms/Rooms/GetRoomFieldData">Rooms::GetRoomFieldData</a>.
+</p>
+
+<h4 id="example004">4. <a href="eg004rooms">Add form to a room.</a></h4>
+<p>This example adds form to a room.</p>
+<p>API methods used:
+    <a target='_blank' href="https://developers.docusign.com/rooms-api/reference/Rooms/Rooms/GetRooms">Rooms: GetRooms</a>,
+    <a target='_blank' href="https://developers.docusign.com/rooms-api/reference/Forms/FormLibraries/GetFormLibraries">FormLibraries: GetFormLibraries</a>,
+    <a target='_blank' href="https://developers.docusign.com/rooms-api/reference/Forms/FormLibraries/GetFormLibraryForms">FormLibraries: GetFormLibraryForms</a> and
+    <a target='_blank' href="https://developers.docusign.com/rooms-api/reference/Rooms/Rooms/AddFormToRoom">Rooms: AddFormToRoom</a>.
+</p>
+
+<h4 id="example005">5. <a href="eg005rooms">Get filtered rooms.</a></h4>
+<p>This example returns rooms by filter.</p>
+<p>API methods used:
+   <a target='_blank' href="https://developers.docusign.com/rooms-api/reference/Rooms/Rooms/GetRooms">Rooms: GetRooms</a>.
+</p>
+
+<h4 id="example006">6. <a href="eg006rooms">Creates external form fill session.</a></h4>
+<p>This is an example of creating external form fill session.</p>
+<p>API methods used:
+   <a target='_blank'
+      href="https://developers.docusign.com/rooms-api/reference/Rooms/Rooms/GetRooms">Rooms::GetRooms</a>,
+   <a target='_blank'
+      href="https://developers.docusign.com/rooms-api/reference/Rooms/Rooms/GetDocuments">Rooms::GetDocuments</a>.
+</p>
