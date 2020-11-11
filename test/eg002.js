@@ -3,11 +3,8 @@
 // See https://mochajs.org/
 const chai = require('chai')
     , expect = chai.expect
-    , should = chai.should()
-    , fs = require('fs')
-    , path = require('path')
     , helpers = require('./testHelpers')
-    , eg002 = require('../lib/examples/eg002SigningViaEmail')
+    , eg002 = require('../lib/eSignature/eg002SigningViaEmail')
     ;
 
 describe ('eg002 (test takes a long time to create an envelope with 3 documents)', function(){
@@ -22,7 +19,8 @@ describe ('eg002 (test takes a long time to create an envelope with 3 documents)
             status: "sent"
         }
       , args = {
-            dsAPIclient: helpers.dsAPIclient,
+            accessToken: helpers.accessToken,
+            basePath: helpers.basePath,
             accountId: helpers.accountId,
             envelopeArgs: envelopeArgs
         }
