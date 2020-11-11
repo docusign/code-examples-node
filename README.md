@@ -223,6 +223,19 @@ Implicit Grant or JWT OAuth flows.
 See the [Authentication guide](https://developers.docusign.com/esign-rest-api/guides/authentication)
 for information on choosing the right authentication flow for your application.
 
+## Unit Testing
+
+1. Before running the unit tests you will need to [obtain an Access Token](https://developers.docusign.com/platform/auth/authcode/authcode-get-token/)
+and you will need an API Account ID.
+
+2. *Either:*
+
+   * Update the file **test/testHelpers.js** in the project's root directory
+     with the Access Token, API Account ID, signer and cc information *or*
+   * Create and export this information as the environment variables named in that file.
+
+3. npm test
+
 ## License and additional information
 
 ### License

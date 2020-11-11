@@ -2,21 +2,15 @@
 
 // See https://mochajs.org/
 const helpers = exports;
-const {promisify} = require('util') // http://2ality.com/2017/05/util-promisify.html
-    , docusign = require('docusign-esign');
+const settings = require('../config/appsettings.json');
 
-helpers.accessToken =  process.env.DS_TEST_ACCESS_TOKEN; // An access token
-helpers.accountId = process.env.DS_TEST_ACCOUNT_ID;
+helpers.accessToken = process.env.DS_TEST_ACCESS_TOKEN; // An access token
+helpers.accountId = process.env.DS_TEST_ACCOUNT_ID; //An API Account ID
 helpers.basePath = 'https://demo.docusign.net/restapi';
-helpers.signerEmail = 'ds_test@mailinator.com';
-helpers.signerName = 'Mocha Tester';
-helpers.ccEmail = 'ds_test_cc@mailinator.com';
-helpers.ccName = 'Mocha CC Tester';
-helpers.signerClientId = 1000;
-
-helpers.dsAPIclient = new docusign.ApiClient();
-helpers.dsAPIclient.addDefaultHeader('Authorization', 'Bearer ' + helpers.accessToken);
-helpers.dsAPIclient.setBasePath(helpers.basePath);
+helpers.signerEmail = settings.signerEmail || process.env.DS_TEST_SIGNER_EMAIL;
+helpers.signerName = settings.signerName || process.env.DS_TEST_SIGNER_NAME;
+helpers.ccEmail = process.env.DS_TEST_CC_EMAIL;
+helpers.ccName = process.env.DS_TEST_CC_NAME;
 
 helpers.catchMethod = (error) => {
     // This catch statement provides more info on an API problem.

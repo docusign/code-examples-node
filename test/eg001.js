@@ -1,13 +1,11 @@
 // Test for eg001
+const settings = require('../config/appsettings.json');
 
 // See https://mochajs.org/
 const chai = require('chai')
     , expect = chai.expect
-    , should = chai.should()
-    , fs = require('fs')
-    , path = require('path')
     , helpers = require('./testHelpers')
-    , eg001 = require('..eg001EmbeddedSigning')
+    , eg001 = require('../eg001EmbeddedSigning')
     ;
 
 describe ('eg001', function(){
@@ -18,11 +16,12 @@ describe ('eg001', function(){
             signerEmail: helpers.signerEmail, 
             signerName: helpers.signerName, 
             signerClientId: helpers.signerClientId,
-            dsReturnUrl: "http://example.com",
-            dsPingUrl: "http://example.com"
+            dsReturnUrl: settings.appUrl + '/ds-return',
+            dsPingUrl: settings.appUrl + '/'
         }
       , args = {
-            dsAPIclient: helpers.dsAPIclient,
+            accessToken: helpers.accessToken,
+            basePath: helpers.basePath,
             accountId: helpers.accountId,
             envelopeArgs: envelopeArgs
         }
@@ -32,9 +31,9 @@ describe ('eg001', function(){
     try {results = await eg001.worker(args)} 
     catch (error) {helpers.catchMethod(error)};
     
-    // eg redirectUrl = https://demo.docusign.net/Signing/StartInSession.aspx?t=914f97b8-060a-421c-8794-391513e9e780
+    // eg redirectUrl = https://demo.docusign.net/Signing/StartInSession.aspx?t=914f97b8-xxxx-xxxx-xxxx-391513e9e780
     let worked = results && 
-      results.redirectUrl.indexOf('.docusign.net/Signing/StartInSession') > 0 && 
+      results.redirectUrl.indexOf('.docusign.net/Signing') > 0 && 
       results.envelopeId.length > 10;
     expect(worked).to.equal(true);
   })
