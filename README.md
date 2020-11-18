@@ -1,11 +1,14 @@
 # Node.js Launcher Code Examples
 This GitHub repo includes code example for both the DocuSign eSignature REST API as well as the DocuSign Rooms API. To use the Rooms API code example, modify the **exampleAPI** settings at the end of the appsettings.json file from eSignature to rooms.
 
-**Note:** to use the Rooms API you must also [create your DocuSign Developer Account for Rooms](https://developers.docusign.com/docs/rooms-api/rooms101/create-account). 
+**Note:** To use the Rooms API you must also [create your DocuSign developer account for Rooms](https://developers.docusign.com/docs/rooms-api/rooms101/create-account). 
 
 ### Github repo: [code-examples-node](../../)
+
+
 ## Introduction
 This repo is a Node.js application that demonstrates:
+
 
 ## eSignature API
 
@@ -92,27 +95,21 @@ This repo is a Node.js application that demonstrates:
    First, the code creates a bulk-send recipients list, and then creates an envelope. 
    After that, initiates bulk envelope sending.
 
+
 ## Rooms API 
-**Note:** to use the Rooms API you must also [create your DocuSign Developer Account for Rooms](https://developers.docusign.com/docs/rooms-api/rooms101/create-account). 
+**Note:** To use the Rooms API, you must also [create your DocuSign developer account for Rooms](https://developers.docusign.com/docs/rooms-api/rooms101/create-account). 
 
-
-1. **Create room with Data.**
-   [Source.](./lib/rooms/eg001CreateRoomWithData.js)
+1. **Create room with Data.** [Source](./lib/rooms/eg001CreateRoomWithData.js)<br />
    This example creates a new room in your DocuSign Rooms account to be used for a transaction.
-1. **Create a room from a template.**
-   [Source.](./lib/rooms/eg002CreateRoomFromTemplate.js)
+1. **Create a room from a template.** [Source](./lib/rooms/eg002CreateRoomFromTemplate.js)<br />
    This example creates a new room using a template.
-1. **Create room with Data.**
-   [Source.](./lib/rooms/eg003ExportDataFromRoom.js)
+1. **Create room with Data.** [Source](./lib/rooms/eg003ExportDataFromRoom.js)<br />
    This example exports all the avialalble data from a specific room in your DocuSign Rooms account.
-1. **Add forms to a room.**
-   [Source.](./lib/rooms/eg004AddingFormToRoom.js)
+1. **Add forms to a room.** [Source](./lib/rooms/eg004AddingFormToRoom.js)<br />
    This example adds a standard real estate related form to a specific room in your DocuSign Rooms account.
-1. **How to search for rooms with filters.**
-   [Source.](./lib/rooms/eg005GetRoomsWithFilters.js)
+1. **How to search for rooms with filters.** [Source](./lib/rooms/eg005GetRoomsWithFilters.js)<br />
    This example searches for rooms in your DocuSign Rooms account using a specific filter. 
-1. **Create an external form fillable session.**
-   [Source.](./lib/rooms/eg006CreateExternalFormFillSession.js)
+1. **Create an external form fillable session.** [Source](./lib/rooms/eg006CreateExternalFormFillSession.js)<br />
    This example create an external form that can be filled using DocuSign for a specific room in your DocuSign Rooms account.
 
 
@@ -130,8 +127,8 @@ When the token expires, it updates automatically.
 ### Prerequisites
 **Note: If you downloaded this code using Quickstart from the DocuSign Developer Center, skip items 1 and 2 below as they're automatically performed for you.**
 
-1. A DocuSign Developer account (email and password) on [demo.docusign.net](https://demo.docusign.net). 
-   If you don't already have one, create a [free account](https://go.docusign.com/sandbox/productshot/?elqCampaignId=16534).
+1. A DocuSign developer account (email and password) on [demo.docusign.net](https://demo.docusign.net). 
+  If you don't already have one, create a [free account](https://go.docusign.com/sandbox/productshot/?elqCampaignId=16534).
 
 1. A DocuSign integration key (client ID). To use [Authorization Code Grant](https://developers.docusign.com/platform/auth/authcode/), you will need an integration key and its secret key. To use [JSON Web Token (JWT)](https://developers.docusign.com/platform/auth/jwt/), you will need an integration key, an RSA key pair, and an account ID for the user you are impersonating.  
 
