@@ -143,19 +143,17 @@ When the token expires, it updates automatically.
    The signer and the cc email cannot be the same.
 
 ### Installation steps
-**Note:** If you downloaded this code using Quickstart from the DocuSign Developer Center, skip items 1, 4, and 5 below as they're automatically performed for you.
+**Note:** If you downloaded this code using Quickstart from the DocuSign Developer Center, skip items 1 and 4 below as they're automatically performed for you.
 
 1. Download or clone this repository to your workstation to directory **code-examples-node**
 1. Switch to the folder: `cd <Quickstart_folder_name>` or `cd code-examples-node`
 1. `npm install`   
 1. Copy the file config/appsettings.example.json into a file config/appsettings.json 
-1. *Either:*
-
+   *Either:*
    * Update the file config/appsettings.json in the project's root directory
      with the Integration Key and other settings, *or*
    * Create and export environment variables for the settings. See the config/appsettings.json file
      for the names of the environment variables.
-
    **Note:** Protect your integration key and secret--If you update the config/appsettings.json file, then you
    should ensure that it will not be stored in your source code repository.
 1. `npm start`
