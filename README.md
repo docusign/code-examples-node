@@ -148,7 +148,7 @@ When the token expires, it updates automatically.
 1. Download or clone this repository to your workstation to directory **code-examples-node**
 1. Switch to the folder: `cd <Quickstart_folder_name>` or `cd code-examples-node`
 1. `npm install`   
-1. Copy the file config/appsettings.example.json into a file config/appsettings.json 
+1. Copy the file config/appsettings.example.json into a file config/appsettings.json<br /> 
    *Either:*
    * Update the file config/appsettings.json in the project's root directory
      with the Integration Key and other settings, *or*
