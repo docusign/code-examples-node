@@ -56,15 +56,15 @@ This repo is a Node.js application that demonstrates:
    The example also stores metadata with the envelope.
 1. **Get the envelope custom field data (metadata).** [Source](./lib/eSignature/eg018EnvelopeCustomFieldData.js)<br />
    The example retrieves the custom metadata (custom data fields) stored with the envelope.
-1. **Requiring an Access Code for a Recipient** [Source](./lib/eSignature/eg019AccessCodeAuthentication.js)<br />
+1. **Requiring an access code for a Recipient** [Source](./lib/eSignature/eg019AccessCodeAuthentication.js)<br />
    This example sends and envelope that requires an access-code for the purpose of multi-factor authentication.
 1. **Requiring SMS authentication for a recipient** [Source](./lib/eSignature/eg020SmsAuthentication.js)<br />
    This example sends and envelope that requires entering in a six digit code from an text message 
    for the purpose of multi-factor authentication.
-1. **Requiring Phone authentication for a recipient** [Source](./lib/eSignature/eg021PhoneAuthentication.js)<br />
+1. **Requiring phone authentication for a recipient** [Source](./lib/eSignature/eg021PhoneAuthentication.js)<br />
    This example sends and envelope that requires entering in a voice-based response code for the purpose of 
    multi-factor authentication.
-1. **Requiring Knowledge-Based Authentication (KBA) for a Recipient** [Source](./lib/eSignature/eg022KbaAuthentication.js)<br />
+1. **Requiring knowledge-based authentication (KBA) for a Recipient** [Source](./lib/eSignature/eg022KbaAuthentication.js)<br />
    This example sends and envelope that requires passing a public records check to validate identity for the purpose 
    of multi-factor authentication.
 1. **Requiring ID Verification (IDV) for a recipient** [Source](./lib/eSignature/eg023IdvAuthentication.js)<br />
