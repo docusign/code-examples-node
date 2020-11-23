@@ -9,7 +9,7 @@ const chai = require('chai')
     ;
 
 describe ('eg001', function(){
-  it('create envelope and Signing Ceremony URL should work', async function(){
+  it('create envelope and embedded signing URL should work', async function(){
     this.timeout(30000); // 30 sec allows for the envelope to be created
 
     let envelopeArgs = {
