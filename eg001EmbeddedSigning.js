@@ -1,6 +1,6 @@
 /**
  * @file
- * Example 001: Embedded Signing Ceremony
+ * Example 001: Use embedded signing
  * @author DocuSign
  */
 
@@ -19,12 +19,12 @@ const eg001EmbeddedSigning = exports
     , demoDocsPath = path.resolve(__dirname, 'demo_documents')
     , pdf1File = 'World_Wide_Corp_lorem.pdf'
     , dsReturnUrl = dsConfig.appUrl + '/ds-return'
-    , dsPingUrl = dsConfig.appUrl + '/' // Url that will be pinged by the DocuSign Signing Ceremony via Ajax
+    , dsPingUrl = dsConfig.appUrl + '/' // Url that will be pinged by the DocuSign signing via Ajax
     ;
 
 
 /**
- * Create the envelope, the Signing Ceremony, and then redirect to the Signing Ceremony
+ * Create the envelope, the embedded signing, and then redirect to the DocuSign signing
  * @param {object} req Request obj
  * @param {object} res Response obj
  */
@@ -79,7 +79,7 @@ eg001EmbeddedSigning.createController = async (req, res) => {
         res.render('pages/error', {err: error, errorCode: errorCode, errorMessage: errorMessage});
     }
     if (results) {
-        // Redirect the user to the Signing Ceremony
+        // Redirect the user to the embedded signing
         // Don't use an iFrame!
         // State can be stored/recovered using the framework's session or a
         // query parameter on the returnUrl (see the makeRecipientViewRequest method)
@@ -90,7 +90,7 @@ eg001EmbeddedSigning.createController = async (req, res) => {
 
 /**
  * This function does the work of creating the envelope and the
- * embedded Signing Ceremony
+ * embedded signing
  * @param {object} args
  */
 // ***DS.snippet.0.start
@@ -116,7 +116,7 @@ eg001EmbeddedSigning.worker = async (args) => {
     let envelopeId = results.envelopeId;
     console.log(`Envelope was created. EnvelopeId ${envelopeId}`);
 
-    // Step 3. create the recipient view, the Signing Ceremony
+    // Step 3. create the recipient view, the embedded signing
     let viewRequest = makeRecipientViewRequest(args.envelopeArgs);
     // Call the CreateRecipientView API
     // Exceptions will be caught by the calling function
@@ -220,7 +220,7 @@ function makeRecipientViewRequest(args) {
     // should typically be a callback route somewhere in your app.
     // The query parameter is included as an example of how
     // to save/recover state information during the redirect to
-    // the DocuSign signing ceremony. It's usually better to use
+    // the DocuSign signing. It's usually better to use
     // the session mechanism of your web framework. Query parameters
     // can be changed/spoofed very easily.
     viewRequest.returnUrl = args.dsReturnUrl + "?state=123";
@@ -237,9 +237,9 @@ function makeRecipientViewRequest(args) {
     viewRequest.clientUserId = args.signerClientId;
 
     // DocuSign recommends that you redirect to DocuSign for the
-    // Signing Ceremony. There are multiple ways to save state.
+    // embedded signing. There are multiple ways to save state.
     // To maintain your application's session, use the pingUrl
-    // parameter. It causes the DocuSign Signing Ceremony web page
+    // parameter. It causes the DocuSign signing web page
     // (not the DocuSign server) to send pings via AJAX to your
     // app,
     viewRequest.pingFrequency = 600; // seconds
@@ -263,7 +263,7 @@ eg001EmbeddedSigning.getController = (req, res) => {
     if (tokenOK) {
         res.render('pages/examples/eg001EmbeddedSigning', {
             eg: eg, csrfToken: req.csrfToken(),
-            title: "Embedded Signing Ceremony",
+            title: "Use embedded signing",
             sourceFile: path.basename(__filename),
             sourceUrl: dsConfig.githubExampleUrl + path.basename(__filename),
             documentation: dsConfig.documentation + eg,

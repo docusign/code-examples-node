@@ -9,10 +9,10 @@ This repo is a Node.js application that demonstrates:
 
 ## eSignature API
 
-1. **Embedded Signing Ceremony.**
+1. **Use embedded signing.**
    [Source.](./eg001EmbeddedSigning.js)
-   This example sends an envelope, and then uses an embedded signing ceremony for the first signer.
-   With embedded signing, the DocuSign signing ceremony is initiated from your website.
+   This example sends an envelope, and then uses embedded signing for the first signer.
+   With embedded signing, the DocuSign signing is initiated from your website.
 1. **Send an envelope with a remote (email) signer and cc recipient.**
    [Source.](./lib/eSignature/eg002SigningViaEmail.js)
    The envelope includes a pdf, Word, and HTML document.
@@ -38,13 +38,13 @@ This repo is a Node.js application that demonstrates:
 1. **Send an envelope and upload its documents with multpart binary transfer.**
    [Source.](./lib/eSignature/eg010SendBinaryDocs.js)
    Binary transfer is 33% more efficient than using Base64 encoding.
-1. **Embedded sending.**
+1. **Use embedded sending.**
    [Source.](./lib/eSignature/eg011EmbeddedSending.js)
    Embeds the DocuSign web tool (NDSE) in your web app to finalize or update 
    the envelope and documents before they are sent.
 1. **Embedded DocuSign web tool (NDSE).**
    [Source.](./lib/eSignature/eg012EmbeddedConsole.js)
-1. **Embedded Signing Ceremony from a template with an added document.**
+1. **Use embedded signing from a template with an added document.**
    [Source.](./lib/eSignature/eg013AddDocToTemplate.js)
    This example sends an envelope based on a template.
    In addition to the template's document(s), the example adds an
@@ -129,7 +129,7 @@ This repo is a Node.js application that demonstrates:
    This example creates a new room using a template.
 1. **Create room with Data.**
    [Source.](./lib/rooms/eg003ExportDataFromRoom.js)
-   This example exports all the avialalble data from a specific room in your DocuSign Rooms account.
+   This example exports all the available data from a specific room in your DocuSign Rooms account.
 1. **Add forms to a room.**
    [Source.](./lib/rooms/eg004AddingFormToRoom.js)
    This example adds a standard real estate related form to a specific room in your DocuSign Rooms account.
