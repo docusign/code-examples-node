@@ -36,7 +36,6 @@ This repo is a Node.js application that demonstrates:
 1. **Send an envelope and upload its documents with multpart binary transfer.** [Source]
    (./lib/eSignature/eg010SendBinaryDocs.js)<br />
    Binary transfer is 33% more efficient than using Base64 encoding.
-<<<<<<< HEAD
 1. **Use embedded sending.**
    [Source.](./lib/eSignature/eg011EmbeddedSending.js)
    Embeds the DocuSign web tool (NDSE) in your web app to finalize or update 
@@ -47,13 +46,6 @@ This repo is a Node.js application that demonstrates:
    [Source.](./lib/eSignature/eg013AddDocToTemplate.js)
    This example sends an envelope based on a template.
    In addition to the template's document(s), the example adds an
-=======
-1. **Use embedded sending.** [Source](./lib/eSignature/eg011EmbeddedSending.js)<br />
-   Embed the DocuSign UI in your web app to finalize or update the envelope and documents before they are sent.
-1. **Embed the DocuSign UI in your app.** [Source](./lib/eSignature/eg012EmbeddedConsole.js)
-1. **Use embedded signing from a template with an added document.** [Source](./lib/eSignature/eg013AddDocToTemplate.js)<br />
-   This example sends an envelope based on a template. In addition to the template's document(s), the example adds an
->>>>>>> e66c7b16d806818f1841e78824ac821b4f0d0112
    additional document to the envelope by using the
    [Composite Templates](https://developers.docusign.com/esign-rest-api/guides/features/templates#composite-templates)
    feature.
@@ -117,17 +109,11 @@ This repo is a Node.js application that demonstrates:
    This example creates a new room in your DocuSign Rooms account to be used for a transaction.
 1. **Create a room from a template.** [Source](./lib/rooms/eg002CreateRoomFromTemplate.js)<br />
    This example creates a new room using a template.
-<<<<<<< HEAD
 1. **Create room with Data.**
    [Source.](./lib/rooms/eg003ExportDataFromRoom.js)
    This example exports all the available data from a specific room in your DocuSign Rooms account.
 1. **Add forms to a room.**
    [Source.](./lib/rooms/eg004AddingFormToRoom.js)
-=======
-1. **Create room with Data.** [Source](./lib/rooms/eg003ExportDataFromRoom.js)<br />
-   This example exports all the avialalble data from a specific room in your DocuSign Rooms account.
-1. **Add forms to a room.** [Source](./lib/rooms/eg004AddingFormToRoom.js)<br />
->>>>>>> e66c7b16d806818f1841e78824ac821b4f0d0112
    This example adds a standard real estate related form to a specific room in your DocuSign Rooms account.
 1. **How to search for rooms with filters.** [Source](./lib/rooms/eg005GetRoomsWithFilters.js)<br />
    This example searches for rooms in your DocuSign Rooms account using a specific filter. 
