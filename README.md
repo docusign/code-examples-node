@@ -35,8 +35,7 @@ For more information about the scopes used for obtaining authorization to use th
    The example can download individual documents, the documents concatenated together, or a zip file of the documents.
 1. **Programmatically create a template.** [Source](./lib/eSignature/eg008CreateTemplate.js)
 1. **Send an envelope using a template.** [Source](./lib/eSignature/eg009UseTemplate.js)
-1. **Send an envelope and upload its documents with multpart binary transfer.** [Source]
-   (./lib/eSignature/eg010SendBinaryDocs.js)<br />
+1. **Send an envelope and upload its documents with multpart binary transfer.** [Source](./lib/eSignature/eg010SendBinaryDocs.js)<br />
    Binary transfer is 33% more efficient than using Base64 encoding.
 1. **Use embedded sending.**
    [Source.](./lib/eSignature/eg011EmbeddedSending.js)
