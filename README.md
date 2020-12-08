@@ -181,7 +181,7 @@ From there you should be able to run the launcher using `npm start` then selecti
 To use the payments example, create a test payments gateway for your DocuSign developer account. 
 
 See the 
-[PAYMENTS_INSTALLATION.md](./code-examples-node/blob/master/PAYMENTS_INSTALLATION.md)
+[PAYMENTS_INSTALLATION.md](./PAYMENTS_INSTALLATION.md)
 file for instructions.
    
 Then add the payment gateway account id to the config/appsettings.json file.
