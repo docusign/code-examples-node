@@ -12,6 +12,8 @@ This repo is a Node.js application that demonstrates:
 
 ## eSignature API
 
+For more information about the scopes used for obtaining authorization to use the eSignature API, see the [Required Scopes section](https://developers.docusign.com/docs/esign-rest-api/esign101/auth)
+
 1. **Use embedded signing.**
    [Source.](./eg001EmbeddedSigning.js)
    This example sends an envelope, and then uses embedded signing for the first signer.
@@ -101,9 +103,11 @@ This repo is a Node.js application that demonstrates:
    First, the code creates a bulk-send recipients list, and then creates an envelope. 
    After that, initiates bulk envelope sending.
 
-
 ## Rooms API 
-**Note:** To use the Rooms API, you must also [create your DocuSign developer account for Rooms](https://developers.docusign.com/docs/rooms-api/rooms101/create-account). 
+
+For more information about the scopes used for obtaining authorization to use the Rooms API, see the [Required Scopes section](https://developers.docusign.com/docs/rooms-api/rooms101/auth/)
+
+**Note:** to use the Rooms API you must also [create your DocuSign Developer Account for Rooms](https://developers.docusign.com/docs/rooms-api/rooms101/create-account). 
 
 1. **Create room with Data.** [Source](./lib/rooms/eg001CreateRoomWithData.js)<br />
    This example creates a new room in your DocuSign Rooms account to be used for a transaction.
@@ -177,12 +181,13 @@ When the token expires, it updates automatically.
 
 From there you should be able to run the launcher using `npm start` then selecting **JSON Web Token** when authenticating your account.
 
+**Note:** Before you can make any API calls using JWT Grant, you must get your user’s consent for your app to impersonate them. To do this, the `impersonation` scope is added when requesting a JSON Web Token.
 
 ## Payments code example
 To use the payments example, create a test payments gateway for your DocuSign developer account. 
 
 See the 
-[PAYMENTS_INSTALLATION.md](./code-examples-node/blob/master/PAYMENTS_INSTALLATION.md)
+[PAYMENTS_INSTALLATION.md](./PAYMENTS_INSTALLATION.md)
 file for instructions.
    
 Then add the payment gateway account id to the config/appsettings.json file.
