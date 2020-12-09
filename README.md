@@ -1,25 +1,32 @@
 # Node.js Launcher Code Examples
-This GitHub repo includes code example for both the DocuSign eSignature REST API as well as the DocuSign Rooms API. To use the Rooms API code example, modify the **exampleAPI** settings at the end of the appsettings.json file from eSignature to rooms.
 
-**Note:** To use the Rooms API you must also [create your DocuSign developer account for Rooms](https://developers.docusign.com/docs/rooms-api/rooms101/create-account). 
+### Github repo: https://github.com/docusign/code-examples-node
 
-### Github repo: [code-examples-node](../../)
+This GitHub repo includes code example for both the DocuSign eSignature REST API as well as the DocuSign Rooms API. To use the Rooms API code example, modify the `exampleAPI` settings at the end of the appsettings.json file to `rooms`.
+
+**Note:** To use the Rooms API, you must also [create your DocuSign developer account for Rooms](https://developers.docusign.com/docs/rooms-api/rooms101/create-account). 
 
 
 ## Introduction
-This repo is a Node.js application that demonstrates:
+
+This repo is a Node.js application that supports the following authentication workflows:
+
+* Authentication with Docusign via [Authorization Code Grant flow](https://developers.docusign.com/platform/auth/authcode).
+When the token expires, the user is asked to re-authenticate. The refresh token is not used.
+
+* Authentication with DocuSign via the [JSON Web Token (JWT) Grant](https://developers.docusign.com/platform/auth/jwt/).
+When the token expires, it updates automatically.
 
 
 ## eSignature API
 
 For more information about the scopes used for obtaining authorization to use the eSignature API, see the [Required Scopes section](https://developers.docusign.com/docs/esign-rest-api/esign101/auth)
 
-1. **Use embedded signing.**
-   [Source.](./eg001EmbeddedSigning.js)
+1. **Use embedded signing.** [Source](./eg001EmbeddedSigning.js)<br />
    This example sends an envelope, and then uses embedded signing for the first signer.
    With embedded signing, the DocuSign signing is initiated from your website.
-1. **Send an envelope with a remote (email) signer and cc recipient.**
-   [Source.](./lib/eSignature/eg002SigningViaEmail.js)
+1. **Send an envelope with a remote (email) signer and cc recipient.** [Source]
+   (./lib/eSignature/eg002SigningViaEmail.js)<br />
    The envelope includes a pdf, Word, and HTML document.
    Anchor text ([AutoPlace](https://support.docusign.com/en/guides/AutoPlace-New-DocuSign-Experience)) is used to position the signing fields in the documents.
 1. **List envelopes in the user's account.**
@@ -123,15 +130,6 @@ For more information about the scopes used for obtaining authorization to use th
 1. **Create an external form fillable session.** [Source](./lib/rooms/eg006CreateExternalFormFillSession.js)<br />
    This example create an external form that can be filled using DocuSign for a specific room in your DocuSign Rooms account.
 
-
-## Authentication types:
-
-* Authentication with Docusign via [Authorization Code Grant flow](https://developers.docusign.com/platform/auth/authcode) .
-When the token expires, the user is asked to re-authenticate.
-The **refresh token** is not used in this example.
-
-* Authentication with DocuSign via the [JSON Web Token (JWT) Grant](https://developers.docusign.com/platform/auth/jwt/).
-When the token expires, it updates automatically.
 
 ## Installation
 
