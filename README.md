@@ -4,7 +4,7 @@
 
 This GitHub repo includes code examples for both the DocuSign eSignature REST API and the DocuSign Rooms API. 
 
-To use the Rooms API code examples, modify the `exampleAPI` settings at the end of the config/appsettings.json file to `rooms`.
+To use the Rooms API code examples, modify the `exampleAPI` setting at the end of the config/appsettings.json file to `rooms`.
 
 **Note:** To use the Rooms API, you must also [create your DocuSign developer account for Rooms](https://developers.docusign.com/docs/rooms-api/rooms101/create-account). 
 
@@ -13,10 +13,10 @@ To use the Rooms API code examples, modify the `exampleAPI` settings at the end 
 
 This repo is a Node.js application that supports the following authentication workflows:
 
-* Authentication with Docusign via [Authorization Code Grant flow](https://developers.docusign.com/platform/auth/authcode).
+* Authentication with DocuSign via [Authorization Code Grant](https://developers.docusign.com/platform/auth/authcode).
 When the token expires, the user is asked to re-authenticate. The refresh token is not used.
 
-* Authentication with DocuSign via the [JSON Web Token (JWT) Grant](https://developers.docusign.com/platform/auth/jwt/).
+* Authentication with DocuSign via [JSON Web Token (JWT) Grant](https://developers.docusign.com/platform/auth/jwt/).
 When the token expires, it updates automatically.
 
 
