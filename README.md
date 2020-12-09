@@ -69,7 +69,7 @@ For more information about the scopes used for obtaining authorization to use th
 1. **Require knowledge-based authentication (KBA) for a recipient.** [Source](./lib/eSignature/eg022KbaAuthentication.js)<br />
    Sends an envelope that requires passing a public records check to validate identity for the purpose of multifactor authentication.
 1. **Require ID Verification (IDV) for a recipient.** [Source](./lib/eSignature/eg023IdvAuthentication.js)<br />
-   Sends an envelope that requires the recipient to upload a government issued ID for the purpose of multifactor authentication. 
+   Sends an envelope that requires the recipient to upload a government-issued ID for the purpose of multifactor authentication. 
 1. **Create a permission profile.** [Source](./lib/eSignature/eg024CreatePermission.js)<br />
 1. **Set a permission profile.** [Source](./lib/eSignature/eg025PermissionSetUserGroup.js)<br />
    Demonstrates how to set a user group's permission profile. You must have already created a permission profile and a group of users.
@@ -90,7 +90,7 @@ For more information about the scopes used for obtaining authorization to use th
 
 For more information about the scopes used for obtaining authorization to use the Rooms API, see the [Required Scopes section](https://developers.docusign.com/docs/rooms-api/rooms101/auth/).
 
-**Note:** To use the Rooms API you must also [create your DocuSign Developer Account for Rooms](https://developers.docusign.com/docs/rooms-api/rooms101/create-account). Examples 4 and 6 require that you have the DocuSign Forms feature enabled in your Rooms for Real Estate account.
+**Note:** To use the Rooms API, you must also [create your DocuSign Developer Account for Rooms](https://developers.docusign.com/docs/rooms-api/rooms101/create-account). Examples 4 and 6 require that you have the DocuSign Forms feature enabled in your Rooms for Real Estate account.
 
 1. **Create a room with data.** [Source](./lib/rooms/eg001CreateRoomWithData.js)<br />
    Creates a new room in your DocuSign Rooms account to be used for a transaction.
@@ -101,7 +101,7 @@ For more information about the scopes used for obtaining authorization to use th
 1. **Add a form to a room.** [Source.](./lib/rooms/eg004AddingFormToRoom.js)<br />
    Adds a standard real estate-related form to a specific room in your DocuSign Rooms account.
 1. **Search for a room with a filter.** [Source](./lib/rooms/eg005GetRoomsWithFilters.js)<br />
-   Searches for rooms in your DocuSign Rooms account using a specific filter. 
+   Searches for a room in your DocuSign Rooms account using a specific filter. 
 1. **Create an external form fillable session.** [Source](./lib/rooms/eg006CreateExternalFormFillSession.js)<br />
    Creates an external form that can be filled using DocuSign for a specific room in your DocuSign Rooms account.
 
