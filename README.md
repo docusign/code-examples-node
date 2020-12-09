@@ -61,15 +61,15 @@ For more information about the scopes used for obtaining authorization to use th
 1. **Get the envelope custom field data (metadata).** [Source](./lib/eSignature/eg018EnvelopeCustomFieldData.js)<br />
    Retrieves the custom metadata (custom data fields) stored with the envelope.
 1. **Require an access code for a recipient.** [Source](./lib/eSignature/eg019AccessCodeAuthentication.js)<br />
-   Sends an envelope that requires entering an access code for the purpose of multi-factor authentication.
+   Sends an envelope that requires entering an access code for the purpose of multifactor authentication.
 1. **Require SMS authentication for a recipient.** [Source](./lib/eSignature/eg020SmsAuthentication.js)<br />
-   Sends an envelope that requires entering a six digit code from an text message for the purpose of multi-factor authentication.
+   Sends an envelope that requires entering a six-digit code from an text message for the purpose of multifactor authentication.
 1. **Require phone authentication for a recipient.** [Source](./lib/eSignature/eg021PhoneAuthentication.js)<br />
-   Sends an envelope that requires entering a voice-based response code for the purpose of multi-factor authentication.
+   Sends an envelope that requires entering a voice-based response code for the purpose of multifactor authentication.
 1. **Require knowledge-based authentication (KBA) for a recipient.** [Source](./lib/eSignature/eg022KbaAuthentication.js)<br />
-   Sends an envelope that requires passing a public records check to validate identity for the purpose of multi-factor authentication.
+   Sends an envelope that requires passing a public records check to validate identity for the purpose of multifactor authentication.
 1. **Require ID Verification (IDV) for a recipient.** [Source](./lib/eSignature/eg023IdvAuthentication.js)<br />
-   Sends an envelope that requires the recipient to upload a government issued id for the purpose of multi-factor authentication. 
+   Sends an envelope that requires the recipient to upload a government issued ID for the purpose of multifactor authentication. 
 1. **Create a permission profile.** [Source](./lib/eSignature/eg024CreatePermission.js)<br />
 1. **Set a permission profile.** [Source](./lib/eSignature/eg025PermissionSetUserGroup.js)<br />
    Demonstrates how to set a user group's permission profile. You must have already created a permission profile and a group of users.
