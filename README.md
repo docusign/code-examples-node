@@ -114,11 +114,11 @@ For more information about the scopes used for obtaining authorization to use th
 **Note: If you downloaded this code using [Quickstart](https://developers.docusign.com/docs/esign-rest-api/quickstart/) from the DocuSign Developer Center, skip items 1 and 2 below as they're automatically performed for you.**
 
 1. [Create a DocuSign developer account](https://go.docusign.com/o/sandbox/) if you don't already have one.
-1. A DocuSign integration key (client ID) that is configured for authentication to use either [Authorization Code Grant](https://developers.docusign.com/platform/auth/authcode/) or [JSON Web Token (JWT) Grant](https://developers.docusign.com/platform/auth/jwt/).
+1. A DocuSign integration key (client ID) that is configured for authentication to use either [Authorization Code Grant](https://developers.docusign.com/platform/auth/authcode/) or [JWT Grant](https://developers.docusign.com/platform/auth/jwt/).
 
    To use [Authorization Code Grant](https://developers.docusign.com/platform/auth/authcode/), you will need an integration key and its secret key. 
 
-   To use [JSON Web Token (JWT) Grant](https://developers.docusign.com/platform/auth/jwt/), you will need an integration key, an RSA key pair, and the **API Username** (GUID) of the impersonated user. See [Configure JWT](#configure-jwt) below for detailed steps.
+   To use [JWT Grant](https://developers.docusign.com/platform/auth/jwt/), you will need an integration key, an RSA key pair, and the **API Username** (GUID) of the impersonated user. See [Configure JWT](#configure-jwt) below for detailed steps.
 
    For both authentication flows:
    
