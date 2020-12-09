@@ -60,29 +60,29 @@ For more information about the scopes used for obtaining authorization to use th
    Creates an envelope using a template and sets the initial values for its tabs (fields). This example also stores metadata with the envelope.
 1. **Get the envelope custom field data (metadata).** [Source](./lib/eSignature/eg018EnvelopeCustomFieldData.js)<br />
    Retrieves the custom metadata (custom data fields) stored with the envelope.
-1. **Require an access code for a recipient** [Source](./lib/eSignature/eg019AccessCodeAuthentication.js)<br />
+1. **Require an access code for a recipient.** [Source](./lib/eSignature/eg019AccessCodeAuthentication.js)<br />
    Sends an envelope that requires entering an access code for the purpose of multi-factor authentication.
-1. **Require SMS authentication for a recipient** [Source](./lib/eSignature/eg020SmsAuthentication.js)<br />
+1. **Require SMS authentication for a recipient.** [Source](./lib/eSignature/eg020SmsAuthentication.js)<br />
    Sends an envelope that requires entering a six digit code from an text message for the purpose of multi-factor authentication.
-1. **Require phone authentication for a recipient** [Source](./lib/eSignature/eg021PhoneAuthentication.js)<br />
+1. **Require phone authentication for a recipient.** [Source](./lib/eSignature/eg021PhoneAuthentication.js)<br />
    Sends an envelope that requires entering a voice-based response code for the purpose of multi-factor authentication.
-1. **Require knowledge-based authentication (KBA) for a Recipient** [Source](./lib/eSignature/eg022KbaAuthentication.js)<br />
+1. **Require knowledge-based authentication (KBA) for a recipient.** [Source](./lib/eSignature/eg022KbaAuthentication.js)<br />
    Sends an envelope that requires passing a public records check to validate identity for the purpose of multi-factor authentication.
-1. **Require ID Verification (IDV) for a recipient** [Source](./lib/eSignature/eg023IdvAuthentication.js)<br />
+1. **Require ID Verification (IDV) for a recipient.** [Source](./lib/eSignature/eg023IdvAuthentication.js)<br />
    Sends an envelope that requires the recipient to upload a government issued id for the purpose of multi-factor authentication. 
-1. **Create a permission profile** [Source](./lib/eSignature/eg024CreatePermission.js)<br />
-1. **Set a permission profile** [Source](./lib/eSignature/eg025PermissionSetUserGroup.js)<br />
+1. **Create a permission profile.** [Source](./lib/eSignature/eg024CreatePermission.js)<br />
+1. **Set a permission profile.** [Source](./lib/eSignature/eg025PermissionSetUserGroup.js)<br />
    Demonstrates how to set a user group's permission profile. You must have already created a permission profile and a group of users.
-1. **Update individual permission settings** [Source](./lib/eSignature/eg026PermissionChangeSingleSetting.js)<br />
+1. **Update individual permission settings.** [Source](./lib/eSignature/eg026PermissionChangeSingleSetting.js)<br />
    Demonstrates how to edit individual permission settings on a permission profile.
-1. **Delete a permission profile** [Source](./lib/eSignature/eg027DeletePermission.js)<br />
-1. **Create a brand** [Source](./lib/eSignature/eg028CreateBrand.js)<br />
+1. **Delete a permission profile.** [Source](./lib/eSignature/eg027DeletePermission.js)<br />
+1. **Create a brand.** [Source](./lib/eSignature/eg028CreateBrand.js)<br />
    Creates a brand profile for an account.
-1. **Apply a brand to an envelope** [Source](./lib/eSignature/eg029ApplyBrandToEnvelope.js)<br />
+1. **Apply a brand to an envelope.** [Source](./lib/eSignature/eg029ApplyBrandToEnvelope.js)<br />
    Demonstrates how to apply a brand you've created to an envelope. First, this example creates the envelope, then applies the brand to it. [Anchor text](https://support.docusign.com/en/guides/AutoPlace-New-DocuSign-Experience) is used to position the signing fields in the documents.
-1. **Apply a brand to a template** [Source](./lib/eSignature/eg030ApplyBrandToTemplate.js)<br />
+1. **Apply a brand to a template.** [Source](./lib/eSignature/eg030ApplyBrandToTemplate.js)<br />
    Demonstrates how to apply a brand you've created to a template. You must have at least one created template and brand. [Anchor text](https://support.docusign.com/en/guides/AutoPlace-New-DocuSign-Experience) is used to position the signing fields in the documents.
-1. **Bulk-send envelopes to multiple recipients** [Source](./lib/eSignature/eg031BulkSendEnvelopes.js)<br />
+1. **Bulk-send envelopes to multiple recipients.** [Source](./lib/eSignature/eg031BulkSendEnvelopes.js)<br />
    Demonstrates how to send envelopes in bulk to multiple recipients. First, this example creates a bulk-send recipients list, then creates an envelope.  After that, it initiates bulk envelope sending.
 
 
