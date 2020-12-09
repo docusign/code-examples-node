@@ -162,7 +162,7 @@ Then add the payment **Gateway Account ID** to the config/appsettings.json file.
 
 ## Unit Testing
 
-1. Before running the unit tests you will need to [obtain an Access Token](https://developers.docusign.com/platform/auth/authcode/authcode-get-token/)
+1. Before running the unit tests you will need to [obtain an access token](https://developers.docusign.com/platform/auth/authcode/authcode-get-token/)
 and you will need an API Account ID.
 
 2. *Either:*
