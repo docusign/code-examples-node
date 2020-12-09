@@ -96,11 +96,9 @@ For more information about the scopes used for obtaining authorization to use th
    Creates a new room in your DocuSign Rooms account to be used for a transaction.
 1. **Create a room from a template.** [Source](./lib/rooms/eg002CreateRoomFromTemplate.js)<br />
    Creates a new room using a template.
-1. **Export data from a room.**
-   [Source.](./lib/rooms/eg003ExportDataFromRoom.js)
+1. **Export data from a room.** [Source.](./lib/rooms/eg003ExportDataFromRoom.js)<br />
    Exports all the available data from a specific room in your DocuSign Rooms account.
-1. **Add a form to a room.**
-   [Source.](./lib/rooms/eg004AddingFormToRoom.js)
+1. **Add a form to a room.** [Source.](./lib/rooms/eg004AddingFormToRoom.js)<br />
    Adds a standard real estate-related form to a specific room in your DocuSign Rooms account.
 1. **Search for a room with a filter.** [Source](./lib/rooms/eg005GetRoomsWithFilters.js)<br />
    Searches for rooms in your DocuSign Rooms account using a specific filter. 
