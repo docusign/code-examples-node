@@ -124,7 +124,7 @@ For more information about the scopes used for obtaining authorization to use th
 
    If you will not be running the example on your own workstation, use the appropriate DNS name and port instead of localhost.
 
-1. [Node.js version 8.10 or later with NPM version 5 or later](https://nodejs.org/en/download/).
+1. [Node.js version 8.10 or later with npm version 5 or later](https://nodejs.org/en/download/).
 1. A name and email for a signer, and a name and email for a cc recipient.
 
 
