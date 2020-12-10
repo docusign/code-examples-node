@@ -151,31 +151,25 @@ For more information about the scopes used for obtaining authorization to use th
 ### Configure JWT
 1. [Create a DocuSign developer account](https://go.docusign.com/o/sandbox/) if you don't already have one.
 1. Create a new integration key on the [Apps and Keys](https://admindemo.docusign.com/api-integrator-key) page and save the GUID to a secure location for step 6 below.
-1. Set a redirect URI of http://localhost:5000/ds/callback as mentioned in the [Installation Prerequisites](#prerequisites) item 2 above.
+1. Set a redirect URI of http://localhost:5000/ds/callback as mentioned in [Installation Prerequisites](#prerequisites) item 2 above.
 1. Generate an RSA key pair. Under **Apps and Integration Keys**, choose the integration key to use, then select **Actions**, then **Edit**. In the **Authentication** section, select **ADD RSA KEYPAIR**. Save the private key to a secure location for the next step.
-1. Create a new file config/private.key, then paste and save your RSA private key in it.
+1. Create a new file config/private.key, then save your RSA private key in it.
 1. Update the file config/appsettings.json with your integration key GUID from step 2 as your `dsJWTClientId` and your **API Username** from the [Apps and Keys](https://admindemo.docusign.com/api-integrator-key) page as your `impersonatedUserGuid`.
 1. Run the launcher using `npm start`, then select **JSON Web Token** when authenticating your account.
 
 
 ## Payments code example
-To use the payments example, create a test payments gateway for your DocuSign developer account. See the 
-[PAYMENTS_INSTALLATION.md](./PAYMENTS_INSTALLATION.md)
-file for instructions.
+To use the payments example, create a test payments gateway for your DocuSign developer account. See [PAYMENTS_INSTALLATION.md](./PAYMENTS_INSTALLATION.md) for instructions.
    
-Then add the payment **Gateway Account ID** to the config/appsettings.json file.
+Then add the **Gateway Account ID** to the config/appsettings.json file.
 
 
 ## Unit Testing
 
-1. Before running the unit tests you will need to [obtain an access token](https://developers.docusign.com/platform/auth/authcode/authcode-get-token/)
-and you will need an API Account ID.
-
+1. Before running the unit tests you will need to [obtain an access token](https://developers.docusign.com/platform/auth/authcode/authcode-get-token/) and an **API Account ID**.
 2. *Either:*
-
    * Update the file test/testHelpers.js in the project's root folder with the access token, **API Account ID**, signer and cc information *or*
    * Create and export this information as the environment variables named in that file.
-
 3. Run `npm test`
 
 
