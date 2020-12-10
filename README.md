@@ -136,7 +136,7 @@ For more information about the scopes used for obtaining authorization to use th
 1. Run `npm install`   
 1. Create a new file config/appsettings.json by using config/appsettings.example.json as your template and *either:*
    * Update config/appsettings.json in the project's root directory with the integration key and other settings, *or*
-   * Create and export environment variables for the settings. See config/appsettings.json for the names of the environment variables.
+   * Create and export environment variables for the settings. See config/appsettings.json for the names of the environment variables.<br />
    **Note:** Protect your integration key and secret and/or RSA private key pair; ensure that config/appsettings.json will not be stored in your source code repository.
 1. `npm start`
 1. Open a browser to http://localhost:5000
