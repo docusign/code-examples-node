@@ -116,7 +116,7 @@ For more information about the scopes used for obtaining authorization to use th
 
    To use [Authorization Code Grant](https://developers.docusign.com/platform/auth/authcode/), you will need an integration key and its secret key. 
 
-   To use [JWT Grant](https://developers.docusign.com/platform/auth/jwt/), you will need an integration key, an RSA key pair, and the **API Username** (GUID) of the impersonated user. See [Configure JWT](#configure-jwt) below for detailed steps.
+   To use [JWT Grant](https://developers.docusign.com/platform/auth/jwt/), you will need an integration key, an RSA key pair, and the **API Username** GUID of the impersonated user. See [Configure JWT](#configure-jwt) below for detailed steps.
 
    For both authentication flows:
    
@@ -147,12 +147,11 @@ For more information about the scopes used for obtaining authorization to use th
 
 
 ### Configure JWT
-1. [Create a DocuSign developer account](https://go.docusign.com/o/sandbox/) if you don't already have one.
-1. Create a new integration key on the [Apps and Keys](https://admindemo.docusign.com/api-integrator-key) page and save the GUID to a secure location for step 6 below.
-1. Set a redirect URI of http://localhost:5000/ds/callback as mentioned in [Installation Prerequisites](#prerequisites) item 2 above.
+1. Create a new integration key on the [Apps and Keys](https://admindemo.docusign.com/api-integrator-key) page and save the GUID to a secure location for step 5 below.
+1. Set a redirect URI of http://localhost:5000/ds/callback
 1. Generate an RSA key pair. Under **Apps and Integration Keys**, choose the integration key to use, then select **Actions**, then **Edit**. In the **Authentication** section, select **ADD RSA KEYPAIR**. Save the private key to a secure location for the next step.
 1. Create a new file config/private.key, then save your RSA private key in it.
-1. Update the file config/appsettings.json with your integration key GUID from step 2 as your `dsJWTClientId` and your **API Username** from the [Apps and Keys](https://admindemo.docusign.com/api-integrator-key) page as your `impersonatedUserGuid`.
+1. Update the file config/appsettings.json with your integration key GUID from step 1 as your `dsJWTClientId` and your **API Username** from the [Apps and Keys](https://admindemo.docusign.com/api-integrator-key) page as your `impersonatedUserGuid`.
 1. Run the launcher using `npm start`, then select **JSON Web Token** when authenticating your account.
 
 
