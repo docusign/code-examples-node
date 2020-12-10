@@ -137,9 +137,7 @@ For more information about the scopes used for obtaining authorization to use th
 
 1. Run `npm install`
 
-1. Create a new file config/appsettings.json by using config/appsettings.example.json as your template and *either:*
-   * Update config/appsettings.json in the project's root directory with the integration key and other settings, *or*
-   * Create and export environment variables for the settings. See config/appsettings.json for the names of the environment variables.<br />
+1. Create a new file config/appsettings.json by using config/appsettings.example.json as your template. Update config/appsettings.json with your integration key GUID and other settings.
    
    **Note:** Protect your integration key and secret and/or RSA private key pair; ensure that config/appsettings.json will not be stored in your source code repository.
    
@@ -168,7 +166,7 @@ Then add the **Gateway Account ID** to the config/appsettings.json file.
 
 1. Before running the unit tests you will need to [obtain an access token](https://developers.docusign.com/platform/auth/authcode/authcode-get-token/) and an **API Account ID**.
 2. *Either:*
-   * Update the file test/testHelpers.js in the project's root folder with the access token, **API Account ID**, signer and cc information *or*
+   * Update the file test/testHelpers.js in the project's root folder with the access token, **API Account ID**, signer and cc information, *or*
    * Create and export this information as the environment variables named in that file.
 3. Run `npm test`
 
