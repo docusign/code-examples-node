@@ -129,9 +129,9 @@ For more information about the scopes used for obtaining authorization to use th
 
 
 ### Installation steps
-**Note: If you downloaded this code using [Quickstart](https://developers.docusign.com/docs/esign-rest-api/quickstart/) from the DocuSign Developer Center, skip steps 1 and 4 below as they're automatically performed for you.**
+**Note: If you downloaded this code using [Quickstart](https://developers.docusign.com/docs/esign-rest-api/quickstart/) from the DocuSign Developer Center, skip step 4 below as it was automatically performed for you.**
 
-1. Download or clone the [code-examples-node](https://github.com/docusign/code-examples-node) repository.
+1. Unzip the [Quickstart](https://developers.docusign.com/docs/esign-rest-api/quickstart/) file or download or clone the [code-examples-node](https://github.com/docusign/code-examples-node) repository.
 
 1. Switch to the folder: `cd <Quickstart_folder_name>` or `cd code-examples-node`
 
