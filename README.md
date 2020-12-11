@@ -124,14 +124,14 @@ For more information about the scopes used for obtaining authorization to use th
 
    If you will not be running the example on your own workstation, use the appropriate DNS name and port instead of localhost.
 
-1. [Node.js version 8.10 or later with NPM version 5 or later](https://nodejs.org/en/download/).
+1. [Node.js version 8.10 or later with npm version 5 or later](https://nodejs.org/en/download/).
 1. A name and email for a signer, and a name and email for a cc recipient.
 
 
 ### Installation steps
-**Note: If you downloaded this code using [Quickstart](https://developers.docusign.com/docs/esign-rest-api/quickstart/) from the DocuSign Developer Center, skip steps 1 and 4 below as they're automatically performed for you.**
+**Note: If you downloaded this code using [Quickstart](https://developers.docusign.com/docs/esign-rest-api/quickstart/) from the DocuSign Developer Center, skip step 4 below as it was automatically performed for you.**
 
-1. Download or clone the [code-examples-node](https://github.com/docusign/code-examples-node) repository.
+1. Unzip the [Quickstart](https://developers.docusign.com/docs/esign-rest-api/quickstart/) file or download or clone the [code-examples-node](https://github.com/docusign/code-examples-node) repository.
 
 1. Switch to the folder: `cd <Quickstart_folder_name>` or `cd code-examples-node`
 
