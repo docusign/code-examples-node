@@ -1,24 +1,21 @@
-# Configuring a DocuSign payments gateway
+# Configure a DocuSign payments gateway
 
-DocuSign offers built-in connections to multiple payment
-gateways. The payments example uses a demo account via the Stripe
-gateway service.
+DocuSign offers built-in connections to multiple payment gateways. The payments code example uses a developer account via the Stripe gateway service.
 
-## Creating the payments gateway account
 
-1. Login to demo.docusign.net and go to the Admin Tool.
-1. On the Integrations / Payments screen, click Stripe.
-1. For development, you can skip the Stripe account application
-   by using the `Skip this account form` link:
+## Create a Stripe payment gateway
 
-   ![Skipping the Stripe account form](docs/stripe_skip_account_form_link.png)
-1. Next, the Admin Tool will show that an enabled Stripe
-   payment gateway account has been associated with your
-   DocuSign Developer account.
-1. Configure the example launcher with the gateway account id shown in the Admin tool.
+1. Select the Stripe button on the [**Payments**](https://admindemo.docusign.com/authenticate?goTo=payments) page in your developer account.
+
+1. For development, you can skip the Stripe account application by using the **Skip this account form** link at the top of the page.<br />
+
+   ![Skipping the Stripe account form](docs/stripe_skip_account_form_link.png) 
+
+   An enabled Stripe payment gateway is now associated with your DocuSign developer account and is shown under  **Payment Gateway**.
+
+1. Configure the code example launcher configuration file with the **Gateway Account ID**.
+
 
 ## Additional documentation
-See the 
-[Managing Payment Gateways](https://support.docusign.com/en/guides/managing-payment-gateways)
-documentation. 
-   
+* [Managing Payment Gateways](https://support.docusign.com/en/guides/managing-payment-gateways)
+* [How to send a request for payment](https://developers.docusign.com/docs/esign-rest-api/how-to/request-a-payment)  
