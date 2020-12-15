@@ -1,0 +1,58 @@
+<% include ../../partials/examplesHead %>
+
+<h4>32.  Pausing a signature workflow.</h4>
+<p>
+    This example demonstrates how to create an envelope where the workflow is paused before the envelope is sent to a second recipient.
+    The envelope includes a .txt document.
+    For resuming a workflow see <a href="eg033">example 33.</a>
+</p>
+
+<% include ../../partials/docBody %>
+
+<p>
+    API method used:
+    <a target='_blank'
+       href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">
+        Envelopes::create
+    </a>.
+</p>
+
+<% include ../../partials/gitSource %>
+
+<form action="" class="eg" method="post" data-busy="form">
+    <div>
+        <h5><i>Signer 1</i></h5>
+        <div class="form-group">
+            <label for="signer1_email">Email</label>
+            <input type="email" class="form-control" id="signer1Email" name="signer1Email"
+                   aria-describedby="emailHelp" placeholder="pat@example.com" required
+                   value="<%= locals.dsConfig.signerEmail %>" />
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+            <label for="signer1_name">Name</label>
+            <input type="text" class="form-control" id="signer1Name" placeholder="Pat Johnson" name="signer1Name"
+                   value="<%= locals.dsConfig.signerName %>" required />
+        </div>
+    </div>
+    <div>
+        <h5><i>Signer 2</i></h5>
+        <div class="form-group">
+            <label for="signer1_email">Email</label>
+            <input type="email" class="form-control" id="signer2Email" name="signer2Email"
+                   aria-describedby="emailHelp" placeholder="pat@example.com" required
+                   value="" />
+            <small id="emailHelp" class="form-text text-muted">The email for the second recipient must be different from the signer's email.</small>
+        </div>
+        <div class="form-group">
+            <label for="signer1_name">Name</label>
+            <input type="text" class="form-control" id="signer2Name" placeholder="Pat Johnson" name="signer2Name"
+                   value="" required />
+            <br/>
+        </div>
+    </div>
+    <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+    <button type="submit" class="btn btn-docu">Submit</button>
+</form>
+
+<% include ../../partials/examplesFoot %>
