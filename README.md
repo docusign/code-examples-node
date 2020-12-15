@@ -18,7 +18,10 @@ When the token expires, the user is asked to re-authenticate. The refresh token 
 
 * Authentication with DocuSign via [JSON Web Token (JWT) Grant](https://developers.docusign.com/platform/auth/jwt/).
 When the token expires, it updates automatically.
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0604fe495e40b720a0acdb3f3659840d59137df8
 
 
 ## eSignature API
@@ -175,7 +178,6 @@ Then add the **Gateway Account ID** to the config/appsettings.json file.
    * Update the file test/testHelpers.js in the project's root folder with the access token, **API Account ID**, signer and cc information, *or*
    * Create and export this information as the environment variables named in that file.
 3. Run `npm test`
-
 
 
 ## License and additional information
