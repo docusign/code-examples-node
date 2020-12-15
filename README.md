@@ -85,7 +85,13 @@ For more information about the scopes used for obtaining authorization to use th
    Demonstrates how to apply a brand you've created to a template. You must have at least one created template and brand. [Anchor text](https://support.docusign.com/en/guides/AutoPlace-New-DocuSign-Experience) is used to position the signing fields in the documents.
 1. **Bulk-send envelopes to multiple recipients.** [Source](./lib/eSignature/eg031BulkSendEnvelopes.js)<br />
    Demonstrates how to send envelopes in bulk to multiple recipients. First, this example creates a bulk-send recipients list, then creates an envelope.  After that, it initiates bulk envelope sending.
-
+1. **Pausing a signature workflow.** [Source](./lib/eSignature/eg032PauseSignatureWorkflow.js)<br />
+   Demonstrates how to create an envelope where the workflow is paused before the envelope is sent to a second recipient.
+1. **Unpausing a signature workflow.** [Source](./lib/eSignature/eg033UnpauseSignatureWorkflow.js)<br />
+   Demonstrates how to update an envelope to resume the workflow that has been paused using the [Update Envelope](https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/update) method.
+   You must have created at least one envelope with a paused signature workflow to run this example.
+1. **Using conditional recipients.** [Source](./lib/eSignature/eg034UseConditionalRecipients.js)<br />
+   Demonstrates how to create an envelope where the workflow is routed to different recipients based on the value of a transaction using the [Create Envelope](https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/create) method.
 
 ## Rooms API 
 

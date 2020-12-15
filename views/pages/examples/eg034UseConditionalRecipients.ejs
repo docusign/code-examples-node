@@ -1,0 +1,78 @@
+<% include ../../partials/examplesHead %>
+
+<h4>34. Using conditional recipients</h4>
+<p>
+    This example demonstrates how to create an envelope where the workflow
+    is routed to different recipients based on the value of a transaction.
+    The envelope includes a .txt document.
+</p>
+
+<% include ../../partials/docBody %>
+
+<p>
+    API method used:
+    <a target='_blank'
+       href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">
+        Envelopes::create
+    </a>.
+</p>
+
+<% include ../../partials/gitSource %>
+
+<form action="" class="eg" method="post" data-busy="form">
+    <div>
+        <h5><i>Signer 1</i></h5>
+        <div class="form-group">
+            <label for="signer1_email">Email</label>
+            <input type="email" class="form-control" id="signer1Email" name="signer1Email"
+                   aria-describedby="emailHelp" placeholder="pat@example.com" required
+                   value="<%= locals.dsConfig.signerEmail %>" />
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+            <label for="signer1_name">Name</label>
+            <input type="text" class="form-control" id="signer1Name" placeholder="Pat Johnson" name="signer1Name"
+                   value="<%= locals.dsConfig.signerName %>" required />
+        </div>
+    </div>
+    <div>
+        <h5><i>Conditional signer 2 (when not checked)</i></h5>
+        <div class="form-group">
+            <label for="signer2aEmail">Email</label>
+            <input type="email" class="form-control" id="signer2aEmail" name="signer2aEmail"
+                   aria-describedby="emailHelp" placeholder="pat@example.com" required
+                   value="" />
+            <small id="emailHelp" class="form-text text-muted">
+                The email for the second recipient must be different from the signer's email.
+            </small>
+        </div>
+        <div class="form-group">
+            <label for="signer2aName">Name</label>
+            <input type="text" class="form-control" id="signer2aName" placeholder="Pat Johnson" name="signer2aName"
+                   value="" required />
+            <br/>
+        </div>
+    </div>
+    <div>
+        <h5><i>Conditional signer 2 (when checked)</i></h5>
+        <div class="form-group">
+            <label for="signer2bEmail">Email</label>
+            <input type="email" class="form-control" id="signer2bEmail" name="signer2bEmail"
+                   aria-describedby="emailHelp" placeholder="pat@example.com" required
+                   value="" />
+            <small id="emailHelp" class="form-text text-muted">
+                The email for the second recipient must be different from the signer's email.
+            </small>
+        </div>
+        <div class="form-group">
+            <label for="signer2bName">Name</label>
+            <input type="text" class="form-control" id="signer2bName" placeholder="Pat Johnson" name="signer2bName"
+                   value="" required />
+            <br/>
+        </div>
+    </div>
+    <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+    <button type="submit" class="btn btn-docu">Submit</button>
+</form>
+
+<% include ../../partials/examplesFoot %>
