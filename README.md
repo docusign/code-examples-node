@@ -111,6 +111,25 @@ For more information about the scopes used for obtaining authorization to use th
 1. **Create an external form fillable session.** [Source](./lib/rooms/eg006CreateExternalFormFillSession.js)<br />
    Creates an external form that can be filled using DocuSign for a specific room in your DocuSign Rooms account.
 
+## Click API:
+
+For more information about the scopes used for obtaining authorization to use the Click API, see the [Required Scopes section](https://developers.docusign.com/docs/click-api/click101/auth).
+
+1. **Create a clickwrap.**
+   [Source.](./lib/click/eg001CreateClickwrap.js)
+   Demonstrates how to create a clickwrap that you can embed in your website or app.
+1. **Activate a clickwrap.**
+   [Source.](./lib/click/eg002ActivateClickwrap.js)
+   Demonstrates how to activate a new clickwrap. By default, new clickwraps are inactive. You must activate your clickwrap before you can use it.
+1. **Create a new clickwrap version.**
+   [Source.](./lib/click/eg003CreateNewClickwrapVersion.js)
+   Demonstrates how to use the Click API to create a new version of a clickwrap.
+1. **Get a list of clickwraps.**
+   [Source.](./lib/click/eg004ListClickwraps.js)
+   Demonstrates how to get a list of clickwraps associated with a specific DocuSign user.
+1. **Get clickwrap responses.**
+   [Source.](./lib/click/eg005ClickwrapResponses.js)
+   Demonstrates how to get user responses to your clickwrap agreements.
 
 ## Installation
 

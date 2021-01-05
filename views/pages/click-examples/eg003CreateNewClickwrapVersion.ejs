@@ -1,0 +1,39 @@
+<% include ../../partials/examplesHead %>
+
+<h4>3. Creating a new clickwrap version</h4>
+<p>
+    This example demonstrates how to use the Click API to create a new version
+    of a clickwrap.<br/>You can specify whether you require users who have
+    previously accepted the clickwrap to accept the new version when they
+    return to your website.
+</p>
+
+<% include ../../partials/docBody %>
+
+<p>API method used:
+    <a target='_blank'
+       href="https://developers.docusign.com/docs/click-api/reference/accounts/clickwraps/createclickwrapversion"
+    >
+        ClickWraps::createClickwrapVersion
+    </a>
+</p>
+
+<% include ../../partials/gitSource %>
+
+<% if (clickwrapOk) { %>
+    <p>The clickwrap you created via example 1 will be queried.</p>
+
+    <form class="eg" action="" method="post" data-busy="form">
+        <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+        <button type="submit" class="btn btn-docu">Continue</button>
+    </form>
+<% } else { %>
+    <p>Problem: please first create a clickwrap using
+        <a href="eg001">example 1.</a><br/>Thank you.
+    </p>
+    <form class="eg" action="eg001" method="get">
+        <button type="submit" class="btn btn-docu">Continue</button>
+    </form>
+<% } %>
+
+<% include ../../partials/examplesFoot %>
