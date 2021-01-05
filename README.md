@@ -115,19 +115,19 @@ For more information about the scopes used for obtaining authorization to use th
 For more information about the scopes used for obtaining authorization to use the Click API, see the [Required Scopes section](https://developers.docusign.com/docs/click-api/click101/auth).
 
 1. **Create a clickwrap.**
-   [Source.](./lib/click/eg001CreateClickwrap.js)
+   [Source](./lib/click/eg001CreateClickwrap.js)<br />
    Demonstrates how to create a clickwrap that you can embed in your website or app.
 1. **Activate a clickwrap.**
-   [Source.](./lib/click/eg002ActivateClickwrap.js)
+   [Source](./lib/click/eg002ActivateClickwrap.js)<br />
    Demonstrates how to activate a new clickwrap. By default, new clickwraps are inactive. You must activate your clickwrap before you can use it.
 1. **Create a new clickwrap version.**
-   [Source.](./lib/click/eg003CreateNewClickwrapVersion.js)
+   [Source](./lib/click/eg003CreateNewClickwrapVersion.js)<br />
    Demonstrates how to use the Click API to create a new version of a clickwrap.
 1. **Get a list of clickwraps.**
-   [Source.](./lib/click/eg004ListClickwraps.js)
+   [Source](./lib/click/eg004ListClickwraps.js)<br />
    Demonstrates how to get a list of clickwraps associated with a specific DocuSign user.
 1. **Get clickwrap responses.**
-   [Source.](./lib/click/eg005ClickwrapResponses.js)
+   [Source](./lib/click/eg005ClickwrapResponses.js)<br />
    Demonstrates how to get user responses to your clickwrap agreements.
 
 ## Installation
