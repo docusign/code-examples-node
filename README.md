@@ -19,7 +19,6 @@ When the token expires, the user is asked to re-authenticate. The refresh token 
 * Authentication with DocuSign via [JSON Web Token (JWT) Grant](https://developers.docusign.com/platform/auth/jwt/).
 When the token expires, it updates automatically.
 
-
 ## eSignature API
 
 For more information about the scopes used for obtaining authorization to use the eSignature API, see the [Required Scopes section](https://developers.docusign.com/docs/esign-rest-api/esign101/auth).
@@ -116,19 +115,19 @@ For more information about the scopes used for obtaining authorization to use th
 For more information about the scopes used for obtaining authorization to use the Click API, see the [Required Scopes section](https://developers.docusign.com/docs/click-api/click101/auth).
 
 1. **Create a clickwrap.**
-   [Source.](./lib/click/eg001CreateClickwrap.js)
+   [Source](./lib/click/eg001CreateClickwrap.js)<br />
    Demonstrates how to create a clickwrap that you can embed in your website or app.
 1. **Activate a clickwrap.**
-   [Source.](./lib/click/eg002ActivateClickwrap.js)
+   [Source](./lib/click/eg002ActivateClickwrap.js)<br />
    Demonstrates how to activate a new clickwrap. By default, new clickwraps are inactive. You must activate your clickwrap before you can use it.
 1. **Create a new clickwrap version.**
-   [Source.](./lib/click/eg003CreateNewClickwrapVersion.js)
+   [Source](./lib/click/eg003CreateNewClickwrapVersion.js)<br />
    Demonstrates how to use the Click API to create a new version of a clickwrap.
 1. **Get a list of clickwraps.**
-   [Source.](./lib/click/eg004ListClickwraps.js)
+   [Source](./lib/click/eg004ListClickwraps.js)<br />
    Demonstrates how to get a list of clickwraps associated with a specific DocuSign user.
 1. **Get clickwrap responses.**
-   [Source.](./lib/click/eg005ClickwrapResponses.js)
+   [Source](./lib/click/eg005ClickwrapResponses.js)<br />
    Demonstrates how to get user responses to your clickwrap agreements.
 
 ## Installation
@@ -156,7 +155,7 @@ For more information about the scopes used for obtaining authorization to use th
 ### Installation steps
 **Note: If you downloaded this code using [Quickstart](https://developers.docusign.com/docs/esign-rest-api/quickstart/) from the DocuSign Developer Center, skip step 4 below as it was automatically performed for you.**
 
-1. Unzip the [Quickstart](https://developers.docusign.com/docs/esign-rest-api/quickstart/) file or download or clone the [code-examples-node](https://github.com/docusign/code-examples-node) repository.
+1. Extract the [Quickstart](https://developers.docusign.com/docs/esign-rest-api/quickstart/) ZIP file or download or clone the [code-examples-node](https://github.com/docusign/code-examples-node) repository.
 
 1. Switch to the folder: `cd <Quickstart_folder_name>` or `cd code-examples-node`
 
