@@ -1,0 +1,39 @@
+<% include ../../partials/examplesHead %>
+
+<h4>2. Activating a clickwrap</h4>API 
+<p>API 
+    This example demonstrates how to use the Click API to activate a new
+    clickwrap that you have already created.<br/> By default, new
+    clickwraps are inactive. You must activate your clickwrap before
+    you can use it.
+</p>
+
+<% include ../../partials/docBody %>
+
+<p>API method used:
+    <a target='_blank'
+       href="https://developers.docusign.com/docs/click-api/reference/accounts/clickwraps/updateclickwrapversion"
+    >
+        ClickWraps::updateClickwrapVersion
+    </a>
+</p>
+
+<% include ../../partials/gitSource %>
+
+<% if (clickwrapOk) { %>
+    <p>The clickwrap you created via example 1 will be queried.</p>
+
+    <form class="eg" action="" method="post" data-busy="form">
+        <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+        <button type="submit" class="btn btn-docu">Continue</button>
+    </form>
+<% } else { %>
+    <p>Problem: please first create a clickwrap using
+        <a href="eg001">example 1.</a><br/>Thank you.
+    </p>
+    <form class="eg" action="eg001" method="get">
+        <button type="submit" class="btn btn-docu">Continue</button>
+    </form>
+<% } %>
+
+<% include ../../partials/examplesFoot %>

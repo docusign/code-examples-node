@@ -1,0 +1,45 @@
+<% include ../../partials/examplesHead %>
+
+<h4>5. Getting clickwrap responses</h4>
+<p>
+    This example demonstrates how to get user responses to your clickwrap agreements.
+</p>
+
+<% include ../../partials/docBody %>
+
+<p>API method used:
+    <a target='_blank'
+       href="https://developers.docusign.com/docs/click-api/reference/accounts/clickwraps/getclickwrapagreements"
+    >
+        ClickWraps::getClickwrapAgreements
+    </a>
+</p>
+
+<% include ../../partials/gitSource %>
+
+<% if (clickwrapOk) { %>
+    <p>
+        The clickwrap you created via example 1 will be queried.<br/>
+        Please enter a value that uniquely identifies a user, such as an email
+        address or employee ID
+    </p>
+
+    <form class="eg" action="" method="post" data-busy="form">
+        <div class="form-group">
+            <label for="clientUserId">User identifier</label>
+            <input type="text" class="form-control" id="clientUserId"
+                   name="clientUserId" required>
+        </div>
+        <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+        <button type="submit" class="btn btn-docu">Continue</button>
+    </form>
+<% } else { %>
+    <p>Problem: please first create a clickwrap using
+        <a href="eg001">example 1.</a><br/>Thank you.
+    </p>
+    <form class="eg" action="eg001" method="get">
+        <button type="submit" class="btn btn-docu">Continue</button>
+    </form>
+<% } %>
+
+<% include ../../partials/examplesFoot %>

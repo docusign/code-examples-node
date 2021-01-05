@@ -1,0 +1,62 @@
+<% if (showDoc) { %>
+    <p><a target='_blank' href='<%= documentation %>'>Documentation</a> on using OAuth Authorization Code Grant and JWT
+        from
+        a Node Express application.</p>
+<% } %>
+
+<% if (locals.dsConfig.multiSourceChooser) { %>
+    <h3 class="mt-4">Click API Code Examples for C#, PHP, Java, Node.js, Python, and Curl</h3>
+<% } else { %>
+    <h3 class="mt-4">Click API Code Examples</h3>
+<% } %>
+
+<h4 id="example001">1. <a href="eg001">Creating a clickwrap</a></h4>
+<p>
+    This example demonstrates how to use the Click API to create a
+    clickwrap that you can embed in your website or app.
+</p>
+<p>
+    API method used:
+    <a target='_blank'
+       href="https://developers.docusign.com/docs/click-api/reference/accounts/clickwraps/createclickwrap/">ClickWraps::createClickwrap</a>
+</p>
+
+<h4 id="example002">2. <a href="eg002">Activating a clickwrap</a></h4>
+<p>
+    This example demonstrates how to use the Click API to activate a
+    new clickwrap that you have already created.
+</p>
+<p>
+    API method used:
+    <a target='_blank'
+       href="https://developers.docusign.com/docs/click-api/reference/accounts/clickwraps/updateclickwrapversion">ClickWraps::updateClickwrapVersion</a>
+</p>
+
+<h4 id="example003">3. <a href="eg003">Creating a new clickwrap version</a></h4>
+<p>This example demonstrates how to use the Click API to
+    create a new version of a clickwrap.</p>
+<p>
+    API method used:
+    <a target='_blank'
+       href="https://developers.docusign.com/docs/click-api/reference/accounts/clickwraps/createclickwrapversion/">ClickWraps::createClickwrapVersion</a>
+</p>
+
+<h4 id="example004">4. <a href="eg004">Getting a list of clickwraps</a></h4>
+<p>
+    This example demonstrates how to use the Click API to get a list of
+    clickwraps associated with a specific DocuSign user.</p>
+<p>
+    API method used:
+    <a target='_blank'
+       href="https://developers.docusign.com/docs/click-api/reference/accounts/clickwraps/getclickwraps">ClickWraps::getClickwraps</a>
+</p>
+
+<h4 id="example005">5. <a href="eg005">Getting clickwrap responses</a></h4>
+<p>
+    This example demonstrates how to use the Click API to get user
+    responses to your clickwrap agreements.</p>
+<p>
+    API method used:
+    <a target='_blank'
+       href="https://developers.docusign.com/docs/click-api/reference/accounts/clickwraps/getclickwrapagreements">ClickWraps::getClickwrapAgreements</a>
+</p>

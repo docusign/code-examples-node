@@ -1,0 +1,31 @@
+<% include ../../partials/examplesHead %>
+
+<h4>1. Creating a clickwrap</h4>
+<p>
+    This example demonstrates how to use the Click API to create a
+    clickwrap that you can embed in your website or app.
+</p>
+
+<% include ../../partials/docBody %>
+
+<p>API method used:
+    <a target='_blank'
+       href="https://developers.docusign.com/docs/click-api/reference/accounts/clickwraps/createclickwrap/"
+    >
+        ClickWraps::createClickwrap
+    </a>
+</p>
+
+<% include ../../partials/gitSource %>
+
+<form class="eg" action="" method="post" data-busy="form">
+    <div class="form-group">
+        <label for="clickwrapName">Clickwrap name</label>
+        <input type="text" class="form-control" id="clickwrapName"
+               name="clickwrapName" required>
+    </div>
+    <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+    <button type="submit" class="btn btn-docu">Submit</button>
+</form>
+
+<% include ../../partials/examplesFoot %>

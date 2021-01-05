@@ -1,0 +1,26 @@
+<% include ../../partials/examplesHead %>
+
+<h4>4. Getting a list of clickwraps</h4>
+<p>
+    This example demonstrates how to use the Click API to get a list of
+    clickwraps associated with a specific DocuSign user.
+</p>
+
+<% include ../../partials/docBody %>
+
+<p>API method used:
+    <a target='_blank'
+       href="https://developers.docusign.com/docs/click-api/reference/accounts/clickwraps/getclickwraps"
+    >
+        ClickWraps::getClickwraps
+    </a>
+</p>
+
+<% include ../../partials/gitSource %>
+
+<form class="eg" action="" method="post" data-busy="form">
+    <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+    <button type="submit" class="btn btn-docu">Continue</button>
+</form>
+
+<% include ../../partials/examplesFoot %>
