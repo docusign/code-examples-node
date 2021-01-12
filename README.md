@@ -25,7 +25,7 @@ For more information about the scopes used for obtaining authorization to use th
 
 1. **Use embedded signing.** [Source](./eg001EmbeddedSigning.js)<br />
    Sends an envelope, then uses embedded signing for the first signer. With embedded signing, DocuSign signing is initiated from your website.
-1. **Send an envelope with a remote (email) signer and cc recipient.** [Source](./lib/eSignature/eg002SigningViaEmail.js)<br />
+1. **How to request a signature by email (Remote Signing).** [Source](./lib/eSignature/eg002SigningViaEmail.js)<br />
    The envelope includes a PDF, Word, and HTML document. [Anchor text](https://support.docusign.com/en/guides/AutoPlace-New-DocuSign-Experience) is used to position the signing fields in the documents.
 1. **List envelopes in the user's account.** [Source](./lib/eSignature/eg003ListEnvelopes.js)<br />
    The envelopes' current status is included.
