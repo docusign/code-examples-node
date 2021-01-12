@@ -25,7 +25,7 @@ For more information about the scopes used for obtaining authorization to use th
 
 1. **Use embedded signing.** [Source](./eg001EmbeddedSigning.js)<br />
    Sends an envelope, then uses embedded signing for the first signer. With embedded signing, DocuSign signing is initiated from your website.
-1. **Send an envelope with a remote (email) signer and cc recipient.** [Source](./lib/eSignature/eg002SigningViaEmail.js)<br />
+1. **Request a signature by email (Remote Signing).** [Source](./lib/eSignature/eg002SigningViaEmail.js)<br />
    The envelope includes a PDF, Word, and HTML document. [Anchor text](https://support.docusign.com/en/guides/AutoPlace-New-DocuSign-Experience) is used to position the signing fields in the documents.
 1. **List envelopes in the user's account.** [Source](./lib/eSignature/eg003ListEnvelopes.js)<br />
    The envelopes' current status is included.
@@ -38,7 +38,7 @@ For more information about the scopes used for obtaining authorization to use th
 1. **Download an envelope's documents.** [Source](./lib/eSignature/eg007EnvelopeGetDoc.js)<br />
    Downloads individual documents, the documents concatenated together, or a ZIP file of the documents.
 1. **Programmatically create a template.** [Source](./lib/eSignature/eg008CreateTemplate.js)
-1. **Send an envelope using a template.** [Source](./lib/eSignature/eg009UseTemplate.js)
+1. **Request a signature by email using a template.** [Source](./lib/eSignature/eg009UseTemplate.js)
 1. **Send an envelope and upload its documents with multipart binary transfer.** [Source](./lib/eSignature/eg010SendBinaryDocs.js)<br />
    Binary transfer is 33% more efficient than using Base64 encoding.
 1. **Use embedded sending.** [Source](./lib/eSignature/eg011EmbeddedSending.js)<br />
