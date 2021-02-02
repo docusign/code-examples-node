@@ -90,8 +90,8 @@ For more information about the scopes used for obtaining authorization to use th
    You must have created at least one envelope with a paused signature workflow to run this example.
 1. **Using conditional recipients.** [Source](./lib/eSignature/eg034UseConditionalRecipients.js)<br />
    Demonstrates how to create an envelope where the workflow is routed to different recipients based on the value of a transaction using the [Create Envelope](https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/create) method.
-1. **Request a signature by SMS** [Source](./lib/eSignature/eg035SmsDelivery.js)<br />
-   Demonstrates how to send a signature request for a signer to read and sign via an SMS message using the [Create Envelope](https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/create) method.
+1. **Request a signature by SMS delivery** [Source](./lib/eSignature/eg035SmsDelivery.js)<br />
+   Demonstrates how to send a signature request via an SMS message using the [Envelopes: create](https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/create) method.
 
 ## Rooms API 
 
