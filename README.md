@@ -25,7 +25,7 @@ For more information about the scopes used for obtaining authorization to use th
 
 1. **Use embedded signing.** [Source](./eg001EmbeddedSigning.js)<br />
    Sends an envelope, then uses embedded signing for the first signer. With embedded signing, DocuSign signing is initiated from your website.
-1. **Send an envelope with a remote (email) signer and cc recipient.** [Source](./lib/eSignature/eg002SigningViaEmail.js)<br />
+1. **Request a signature by email (Remote Signing).** [Source](./lib/eSignature/eg002SigningViaEmail.js)<br />
    The envelope includes a PDF, Word, and HTML document. [Anchor text](https://support.docusign.com/en/guides/AutoPlace-New-DocuSign-Experience) is used to position the signing fields in the documents.
 1. **List envelopes in the user's account.** [Source](./lib/eSignature/eg003ListEnvelopes.js)<br />
    The envelopes' current status is included.
@@ -38,7 +38,7 @@ For more information about the scopes used for obtaining authorization to use th
 1. **Download an envelope's documents.** [Source](./lib/eSignature/eg007EnvelopeGetDoc.js)<br />
    Downloads individual documents, the documents concatenated together, or a ZIP file of the documents.
 1. **Programmatically create a template.** [Source](./lib/eSignature/eg008CreateTemplate.js)
-1. **Send an envelope using a template.** [Source](./lib/eSignature/eg009UseTemplate.js)
+1. **Request a signature by email using a template.** [Source](./lib/eSignature/eg009UseTemplate.js)
 1. **Send an envelope and upload its documents with multipart binary transfer.** [Source](./lib/eSignature/eg010SendBinaryDocs.js)<br />
    Binary transfer is 33% more efficient than using Base64 encoding.
 1. **Use embedded sending.** [Source](./lib/eSignature/eg011EmbeddedSending.js)<br />
@@ -90,6 +90,8 @@ For more information about the scopes used for obtaining authorization to use th
    You must have created at least one envelope with a paused signature workflow to run this example.
 1. **Using conditional recipients.** [Source](./lib/eSignature/eg034UseConditionalRecipients.js)<br />
    Demonstrates how to create an envelope where the workflow is routed to different recipients based on the value of a transaction using the [Create Envelope](https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/create) method.
+1. **Request a signature by SMS delivery** [Source](./lib/eSignature/eg035SmsDelivery.js)<br />
+   Demonstrates how to send a signature request via an SMS message using the [Envelopes: create](https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/create) method.
 
 ## Rooms API 
 
@@ -115,19 +117,19 @@ For more information about the scopes used for obtaining authorization to use th
 For more information about the scopes used for obtaining authorization to use the Click API, see the [Required Scopes section](https://developers.docusign.com/docs/click-api/click101/auth).
 
 1. **Create a clickwrap.**
-   [Source.](./lib/click/eg001CreateClickwrap.js)
+   [Source](./lib/click/eg001CreateClickwrap.js)<br />
    Demonstrates how to create a clickwrap that you can embed in your website or app.
 1. **Activate a clickwrap.**
-   [Source.](./lib/click/eg002ActivateClickwrap.js)
+   [Source](./lib/click/eg002ActivateClickwrap.js)<br />
    Demonstrates how to activate a new clickwrap. By default, new clickwraps are inactive. You must activate your clickwrap before you can use it.
 1. **Create a new clickwrap version.**
-   [Source.](./lib/click/eg003CreateNewClickwrapVersion.js)
+   [Source](./lib/click/eg003CreateNewClickwrapVersion.js)<br />
    Demonstrates how to use the Click API to create a new version of a clickwrap.
 1. **Get a list of clickwraps.**
-   [Source.](./lib/click/eg004ListClickwraps.js)
+   [Source](./lib/click/eg004ListClickwraps.js)<br />
    Demonstrates how to get a list of clickwraps associated with a specific DocuSign user.
 1. **Get clickwrap responses.**
-   [Source.](./lib/click/eg005ClickwrapResponses.js)
+   [Source](./lib/click/eg005ClickwrapResponses.js)<br />
    Demonstrates how to get user responses to your clickwrap agreements.
 
 ## Installation
@@ -155,7 +157,7 @@ For more information about the scopes used for obtaining authorization to use th
 ### Installation steps
 **Note: If you downloaded this code using [Quickstart](https://developers.docusign.com/docs/esign-rest-api/quickstart/) from the DocuSign Developer Center, skip step 4 below as it was automatically performed for you.**
 
-1. Unzip the [Quickstart](https://developers.docusign.com/docs/esign-rest-api/quickstart/) file or download or clone the [code-examples-node](https://github.com/docusign/code-examples-node) repository.
+1. Extract the [Quickstart](https://developers.docusign.com/docs/esign-rest-api/quickstart/) ZIP file or download or clone the [code-examples-node](https://github.com/docusign/code-examples-node) repository.
 
 1. Switch to the folder: `cd <Quickstart_folder_name>` or `cd code-examples-node`
 

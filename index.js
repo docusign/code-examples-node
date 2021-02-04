@@ -52,6 +52,7 @@ const express = require('express')
     , eg032 = require('./lib/eSignature/eg032PauseSignatureWorkflow')
     , eg033 = require('./lib/eSignature/eg033UnpauseSignatureWorkflow')
     , eg034 = require('./lib/eSignature/eg034UseConditionalRecipients')
+    , eg035 = require('./lib/eSignature/eg035SmsDelivery')
   , eg001rooms = require('./lib/rooms/eg001CreateRoomWithData')
   , eg002rooms = require('./lib/rooms/eg002CreateRoomFromTemplate')
   , eg003rooms = require('./lib/rooms/eg003ExportDataFromRoom')
@@ -214,6 +215,8 @@ if (dsConfig.examplesApi.isRoomsApi) {
         .post('/eg033', eg033.createController)
         .get('/eg034', eg034.getController)
         .post('/eg034', eg034.createController)
+        .get('/eg035', eg035.getController)
+        .post('/eg035', eg035.createController)
 }
 
 function dsLoginCB1(req, res, next) { req.dsAuthCodeGrant.oauth_callback1(req, res, next) }
