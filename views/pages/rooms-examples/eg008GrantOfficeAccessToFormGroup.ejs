@@ -1,0 +1,41 @@
+<% include ../../partials/examplesHead %>
+
+<h4>8. Grant office access to a form group</h4>
+<p>This example demonstrates how to grant office access to a form group.</p>
+
+<% include ../../partials/docBody %>
+
+<p>
+    API methods used:
+    <a target ='_blank' href="https://developers.docusign.com/docs/rooms-api/how-to/access-form-group/">Rooms::AccessFormGroup</a>,
+    <a target ='_blank' href="https://developers.docusign.com/docs/rooms-api/reference/forms/formgroups/getformgroups/">FormGroups::GetFormGroups</a> and
+    <a target ='_blank' href="https://developers.docusign.com/docs/rooms-api/reference/offices/offices/getoffices/">Offices::GetOffices</a>
+</p>
+
+<% include ../../partials/gitSource %>
+
+<form class="eg" action="" method="post" data-busy="form">
+    <% if (formGroups && formGroups.length > 0) { %>
+        <div class="form-group">
+            <label for="officeId">Office</label>
+            <select id="officeId" name="officeId" class="form-control">
+                <% offices.forEach( office => { %>
+                    <option value="<%= office.officeId %>"> <%= office.name %> </option>
+                <% }) %>
+            </select>
+            <label for="formGroupId">Form Group</label>
+            <select id="formGroupId" name="formGroupId" class="form-control">
+                <% formGroups.forEach( formGroup => { %>
+                    <option value="<%= formGroup.formGroupId %>"> <%= formGroup.name %> </option>
+                <% }) %>
+            </select>
+        </div>
+        <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+        <button type="submit" class="btn btn-docu">Submit</button>
+    <% } else { %>
+        <p>Problem: please first create a form_group using <a href="eg007rooms">example 7</a>
+            </br>Thank you.</p>
+    <% } %>
+</form>
+
+<% include ../../partials/examplesFoot.ejs %>

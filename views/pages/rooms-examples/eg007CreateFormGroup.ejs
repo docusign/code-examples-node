@@ -1,0 +1,24 @@
+<% include ../../partials/examplesHead %>
+
+<h4>7. Creating a form group</h4>
+<p>This example demonstrates creating a DocuSign Form Group.</p>
+
+<% include ../../partials/docBody %>
+
+<p>
+    API methods used:
+    <a target ='_blank' href="https://developers.docusign.com/docs/rooms-api/how-to/create-form-group/">Rooms::CreateFormGroup</a>
+</p>
+
+<% include ../../partials/gitSource %>
+
+<form class="eg" action="" method="post" data-busy="form">
+    <div class="form-group">
+        <label for="formGroupName">Form Group Name</label>
+        <input type="text" class="form-control" id="formGroupName" name="formGroupName" required>
+    </div>
+    <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+    <button type="submit" class="btn btn-docu">Submit</button>
+</form>
+
+<% include ../../partials/examplesFoot.ejs %>

@@ -1,0 +1,41 @@
+<% include ../../partials/examplesHead %>
+
+<h4>9. Assign a form to a form group</h4>
+<p>This example demonstrates how to assign a form to a form group.</p>
+
+<% include ../../partials/docBody %>
+
+<p>
+    API methods used:
+    <a target ='_blank' href="https://developers.docusign.com/docs/rooms-api/how-to/assign-form-group/">Rooms::AssignFormGroup</a>,
+    <a target ='_blank' href="https://developers.docusign.com/docs/rooms-api/reference/forms/formgroups/getformgroups/">FormGroups::GetFormGroups</a> and
+    <a target ='_blank' href="https://developers.docusign.com/docs/rooms-api/reference/forms/formlibraries/getformlibraries/">FormLibraries:GetFormLibraries</a>
+</p>
+
+<% include ../../partials/gitSource %>
+
+<form class="eg" action="" method="post" data-busy="form">
+    <% if (formGroups && formGroups.length > 0) { %>
+        <div class="form-group">
+            <label for="formId">Form</label>
+            <select id="formId" name="formId" class="form-control">
+                <% forms.forEach( form => { %>
+                    <option value="<%= form.libraryFormId %>"> <%= form.name %> </option>
+                <% }) %>
+            </select>
+            <label for="formGroupId">FormGroup</label>
+            <select id="formGroupId" name="formGroupId" class="form-control">
+                <% formGroups.forEach( formGroup => { %>
+                    <option value="<%= formGroup.formGroupId %>"> <%= formGroup.name %> </option>
+                <% }) %>
+            </select>
+        </div>
+        <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+        <button type="submit" class="btn btn-docu">Submit</button>
+    <% } else { %>
+        <p>Problem: please first create a form_group using <a href="eg007rooms">example 7</a>
+            </br>Thank you.</p>
+    <% } %>
+</form>
+
+<% include ../../partials/examplesFoot.ejs %>
