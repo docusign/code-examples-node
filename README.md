@@ -111,6 +111,12 @@ For more information about the scopes used for obtaining authorization to use th
    Searches for a room in your DocuSign Rooms account using a specific filter. 
 1. **Create an external form fillable session.** [Source](./lib/rooms/eg006CreateExternalFormFillSession.js)<br />
    Creates an external form that can be filled using DocuSign for a specific room in your DocuSign Rooms account.
+1. **Creating a form group.** [Source.](./lib/rooms/eg007CreateFormGroup.js)<br />
+   Creates a new form group with the name given in the name property of the request body.
+1. **Grant office access to a form group.** [Source.](./lib/rooms/eg008GrantOfficeAccessToFormGroup.js)<br />
+   Assigns an office to a form group for your DocuSign Rooms.
+1. **Assign a form to a form group.** [Source.](./lib/rooms/eg009AssignFormToFormGroup.js)<br />
+   Assigns a form to a form group for your DocuSign Rooms.
 
 ## Click API:
 

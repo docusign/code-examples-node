@@ -10,6 +10,7 @@
   <a target ='_blank' href="https://developers.docusign.com/rooms-api/reference/Rooms/ExternalFormFillSessions/CreateExternalFormFillSession">ExternalFormFillSessions::CreateExternalFormFillSession</a>
 </p>
 <% include ../../partials/gitSource %>
+<% if (rooms && rooms.length > 0) { %>
 <form class="eg" action="" method="post" data-busy="form">
   <div class="form-group">
     <label for="roomId">Room</label>
@@ -22,4 +23,12 @@
   <input type="hidden" name="_csrf" value="<%- csrfToken %>">
   <button type="submit" class="btn btn-docu">Submit</button>
 </form>
+<% } else { %>
+  <p>Problem: please first create a room using <a href="eg001rooms">example 1.</a> <br/>
+   Thank you.</p>
+   
+<form class="eg" action="eg001rooms" method="get">
+    <button type="submit" class="btn btn-docu">Continue</button>
+</form>
+<% } %>
 <% include ../../partials/examplesFoot.ejs %>
