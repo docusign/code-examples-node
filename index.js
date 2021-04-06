@@ -266,11 +266,16 @@ const ROOM_SCOPES = [
 const CLICK_SCOPES = [
   "signature", "click.manage", "click.send"
 ];
+const MONITOR_SCOPES = [
+  "signature", "impersonation"
+];
 let scope;
 if (dsConfig.examplesApi.isRoomsApi) {
   scope = ROOM_SCOPES;
 } else if (dsConfig.examplesApi.isClickApi) {
   scope = CLICK_SCOPES;
+} else if (dsConfig.examplesApi.isMonitorApi) {
+  scope = MONITOR_SCOPES;
 } else {
   scope = SCOPES;
 }
