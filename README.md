@@ -138,8 +138,9 @@ For more information about the scopes used for obtaining authorization to use th
    [Source](./lib/click/eg005ClickwrapResponses.js)<br />
    Demonstrates how to get user responses to your clickwrap agreements.
    
+   
 ## Monitor API
-**Note:** To use the Monitor API you must also [enable DocuSign Monitor for your organization](https://developers.docusign.com/docs/monitor-api/how-to/enable-monitor/). 
+**Note:** To use the Monitor API you must also [enable DocuSign Monitor for your organization](https://developers.docusign.com/docs/monitor-api/how-to/enable-monitor/).   
 For more information about the scopes used for obtaining authorization to use the Monitor API, see the [Required Scopes section](https://developers.docusign.com/docs/monitor-api/monitor101/auth/)
 
 1. **Get monitoring data.** [Source](./lib/monitor/eg001GetMonitoringData.js)   
