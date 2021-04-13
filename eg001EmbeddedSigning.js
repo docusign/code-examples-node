@@ -261,7 +261,7 @@ eg001EmbeddedSigning.getController = (req, res) => {
             eg: eg, csrfToken: req.csrfToken(),
             title: "Use embedded signing",
             sourceFile: path.basename(__filename),
-            sourceUrl: dsConfig.githubExampleUrl + path.basename(__filename),
+            sourceUrl: 'https://github.com/docusign/code-examples-node/blob/master/eg001EmbeddedSigning.js',
             documentation: dsConfig.documentation + eg,
             showDoc: dsConfig.documentation
         });
