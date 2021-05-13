@@ -67,7 +67,7 @@ const express = require('express')
   , eg003click = require('./lib/click/controllers/eg003CreateNewClickwrapVersion')
   , eg004click = require('./lib/click/controllers/eg004ListClickwraps')
   , eg005click = require('./lib/click/controllers/eg005ClickwrapResponses')
-  , eg001monitor = require('./lib/monitor/eg001GetMonitoringData')
+  , eg001monitor = require('./lib/monitor/controllers/eg001GetMonitoringData')
   ;
 
 const PORT = process.env.PORT || 5000
