@@ -5,7 +5,7 @@
  */
 
 const path = require('path');
-const embeddedSigning = require('./lib/eSignature/examples/embeddedSigning');
+const { sendEnvelopeForEmbeddedSigning } = require('./lib/eSignature/examples/embeddedSigning');
 const validator = require('validator');
 const dsConfig = require('./config/index.js').config;
 
@@ -55,7 +55,7 @@ eg001EmbeddedSigning.createController = async (req, res) => {
     let results = null;
 
     try {
-        results = await embeddedSigning.sendEnvelopeForEmbeddedSigning(args);
+        results = await sendEnvelopeForEmbeddedSigning(args);
     }
     catch (error) {
         const errorBody = error && error.response && error.response.body;
