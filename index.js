@@ -1,80 +1,89 @@
 #!/usr/bin/env node
 
-const express = require('express')
-  , session = require('express-session')  // https://github.com/expressjs/session
-  , bodyParser = require('body-parser')
-  , cookieParser = require('cookie-parser')
-  , MemoryStore = require('memorystore')(session) // https://github.com/roccomuso/memorystore
-  , path = require('path')
-  , DSAuthCodeGrant = require('./lib/DSAuthCodeGrant')
-  , DsJwtAuth = require('./lib/DSJwtAuth')
-  , passport = require('passport')
-  , DocusignStrategy = require('passport-docusign')
-  , docOptions = require('./config/documentOptions.json')
-  , docNames = require('./config/documentNames.json')
-  , dsConfig = require('./config/index.js').config
-  , commonControllers = require('./lib/commonControllers')
-  , flash = require('express-flash')
-  , helmet = require('helmet') // https://expressjs.com/en/advanced/best-practice-security.html
-  , moment = require('moment')
-  , csrf = require('csurf') // https://www.npmjs.com/package/csurf
-    , eg001 = require('./eg001EmbeddedSigning')
-    , eg002 = require('./lib/eSignature/controllers/eg002SigningViaEmail')
-    , eg003 = require('./lib/eSignature/controllers/eg003ListEnvelopes')
-    , eg004 = require('./lib/eSignature/controllers/eg004EnvelopeInfo')
-    , eg005 = require('./lib/eSignature/controllers/eg005EnvelopeRecipients')
-    , eg006 = require('./lib/eSignature/controllers/eg006EnvelopeDocs')
-    , eg007 = require('./lib/eSignature/controllers/eg007EnvelopeGetDoc')
-    , eg008 = require('./lib/eSignature/controllers/eg008CreateTemplate')
-    , eg009 = require('./lib/eSignature/controllers/eg009UseTemplate')
-    , eg010 = require('./lib/eSignature/controllers/eg010SendBinaryDocs')
-    , eg011 = require('./lib/eSignature/controllers/eg011EmbeddedSending')
-    , eg012 = require('./lib/eSignature/controllers/eg012EmbeddedConsole')
-    , eg013 = require('./lib/eSignature/controllers/eg013AddDocToTemplate')
-    , eg014 = require('./lib/eSignature/controllers/eg014CollectPayment')
-    , eg015 = require('./lib/eSignature/controllers/eg015EnvelopeTabData')
-    , eg016 = require('./lib/eSignature/controllers/eg016SetTabValues')
-    , eg017 = require('./lib/eSignature/controllers/eg017SetTemplateTabValues')
-    , eg018 = require('./lib/eSignature/controllers/eg018EnvelopeCustomFieldData')
-    , eg019 = require('./lib/eSignature/controllers/eg019AccessCodeAuthentication')
-    , eg020 = require('./lib/eSignature/controllers/eg020SmsAuthentication')
-    , eg021 = require('./lib/eSignature/controllers/eg021PhoneAuthentication')
-    , eg022 = require('./lib/eSignature/controllers/eg022KbaAuthentication')
-    , eg023 = require('./lib/eSignature/controllers/eg023IdvAuthentication')
-    , eg024 = require('./lib/eSignature/controllers/eg024CreatePermission')
-    , eg025 = require('./lib/eSignature/controllers/eg025PermissionSetUserGroup')
-    , eg026 = require('./lib/eSignature/controllers/eg026PermissionChangeSingleSetting')
-    , eg027 = require('./lib/eSignature/controllers/eg027DeletePermission')
-    , eg028 = require('./lib/eSignature/controllers/eg028CreateBrand')
-    , eg029 = require('./lib/eSignature/controllers/eg029ApplyBrandToEnvelope')
-    , eg030 = require('./lib/eSignature/controllers/eg030ApplyBrandToTemplate')
-    , eg031 = require('./lib/eSignature/controllers/eg031BulkSendEnvelopes')
-    , eg032 = require('./lib/eSignature/controllers/eg032PauseSignatureWorkflow')
-    , eg033 = require('./lib/eSignature/controllers/eg033UnpauseSignatureWorkflow')
-    , eg034 = require('./lib/eSignature/controllers/eg034UseConditionalRecipients')
-    , eg035 = require('./lib/eSignature/controllers/eg035SmsDelivery')
-  , eg001rooms = require('./lib/rooms/controllers/eg001CreateRoomWithData')
-  , eg002rooms = require('./lib/rooms/controllers/eg002CreateRoomFromTemplate')
-  , eg003rooms = require('./lib/rooms/controllers/eg003ExportDataFromRoom')
-  , eg004rooms = require('./lib/rooms/controllers/eg004AddingFormToRoom')
-  , eg005rooms = require('./lib/rooms/controllers/eg005GetRoomsWithFilters')
-  , eg006rooms = require('./lib/rooms/controllers/eg006CreateExternalFormFillSession')
-  , eg007rooms = require('./lib/rooms/controllers/eg007CreateFormGroup')
-  , eg008rooms = require('./lib/rooms/controllers/eg008GrantOfficeAccessToFormGroup')
-  , eg009rooms = require('./lib/rooms/controllers/eg009AssignFormToFormGroup')
-  , eg001click = require('./lib/click/controllers/eg001CreateClickwrap')
-  , eg002click = require('./lib/click/controllers/eg002ActivateClickwrap')
-  , eg003click = require('./lib/click/controllers/eg003CreateNewClickwrapVersion')
-  , eg004click = require('./lib/click/controllers/eg004ListClickwraps')
-  , eg005click = require('./lib/click/controllers/eg005ClickwrapResponses')
-  , eg001monitor = require('./lib/monitor/controllers/eg001GetMonitoringData')
-  ;
+const express = require('express');
+const session = require('express-session');  // https://github.com/expressjs/session
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const MemoryStore = require('memorystore')(session); // https://github.com/roccomuso/memorystore
+const path = require('path');
+const DSAuthCodeGrant = require('./lib/DSAuthCodeGrant');
+const DsJwtAuth = require('./lib/DSJwtAuth');
+const passport = require('passport');
+const DocusignStrategy = require('passport-docusign');
+const docOptions = require('./config/documentOptions.json');
+const docNames = require('./config/documentNames.json');
+const dsConfig = require('./config/index.js').config;
+const commonControllers = require('./lib/commonControllers');
+const flash = require('express-flash');
+const helmet = require('helmet'); // https://expressjs.com/en/advanced/best-practice-security.html
+const moment = require('moment');
+const csrf = require('csurf'); // https://www.npmjs.com/package/csurf
 
-const PORT = process.env.PORT || 5000
-  , HOST = process.env.HOST || 'localhost'
-  , max_session_min = 180
-  , csrfProtection = csrf({ cookie: true })
-  ;
+const eg001 = require('./eg001EmbeddedSigning');
+
+const {
+  eg002,
+  eg003,
+  eg004,
+  eg005,
+  eg006,
+  eg007,
+  eg008,
+  eg009,
+  eg010,
+  eg011,
+  eg012,
+  eg013,
+  eg014,
+  eg015,
+  eg016,
+  eg017,
+  eg018,
+  eg019,
+  eg020,
+  eg021,
+  eg022,
+  eg023,
+  eg024,
+  eg025,
+  eg026,
+  eg027,
+  eg028,
+  eg029,
+  eg030,
+  eg031,
+  eg032,
+  eg033,
+  eg034,
+  eg035,
+} = require("./lib/eSignature/controllers/index");
+
+const {
+  eg001click,
+  eg002click,
+  eg003click,
+  eg004click,
+  eg005click,
+} = require("./lib/click/controllers/index");
+
+const {
+  eg001rooms,
+  eg002rooms,
+  eg003rooms,
+  eg004rooms,
+  eg005rooms,
+  eg006rooms,
+  eg007rooms,
+  eg008rooms,
+  eg009rooms,
+} = require("./lib/rooms/controllers/index");
+
+const { eg001monitor } = require("./lib/monitor/controllers/index");
+
+const PORT = process.env.PORT || 5000;
+const HOST = process.env.HOST || 'localhost';
+const max_session_min = 180;
+const csrfProtection = csrf({ cookie: true });
 
 let hostUrl = 'http://' + HOST + ':' + PORT
 if (dsConfig.appUrl != '' && dsConfig.appUrl != '{APP_URL}') { hostUrl = dsConfig.appUrl }
