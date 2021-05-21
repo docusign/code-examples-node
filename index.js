@@ -21,62 +21,24 @@ const csrf = require('csurf'); // https://www.npmjs.com/package/csurf
 
 const eg001 = require('./eg001EmbeddedSigning');
 
-const {
-  eg002,
-  eg003,
-  eg004,
-  eg005,
-  eg006,
-  eg007,
-  eg008,
-  eg009,
-  eg010,
-  eg011,
-  eg012,
-  eg013,
-  eg014,
-  eg015,
-  eg016,
-  eg017,
-  eg018,
-  eg019,
-  eg020,
-  eg021,
-  eg022,
-  eg023,
-  eg024,
-  eg025,
-  eg026,
-  eg027,
-  eg028,
-  eg029,
-  eg030,
-  eg031,
-  eg032,
-  eg033,
-  eg034,
-  eg035,
-} = require("./lib/eSignature/controllers/index");
+const { 
+  eg002, eg003, eg004, eg005, eg006, eg007, eg008, 
+  eg009, eg010, eg011, eg012, eg013, eg014, eg015,
+  eg016, eg017, eg018, eg019, eg020, eg021, eg022,
+  eg023, eg024, eg025, eg026, eg027, eg028, eg029,
+  eg030, eg031, eg032, eg033, eg034, eg035,
+} = require("./lib/eSignature/controllers");
 
-const {
-  eg001click,
-  eg002click,
-  eg003click,
-  eg004click,
-  eg005click,
-} = require("./lib/click/controllers/index");
+const { 
+  eg001click, eg002click, eg003click,
+  eg004click, eg005click,
+} = require("./lib/click/controllers");
 
-const {
-  eg001rooms,
-  eg002rooms,
-  eg003rooms,
-  eg004rooms,
-  eg005rooms,
-  eg006rooms,
-  eg007rooms,
-  eg008rooms,
-  eg009rooms,
-} = require("./lib/rooms/controllers/index");
+const { 
+  eg001rooms, eg002rooms, eg003rooms,
+  eg004rooms, eg005rooms, eg006rooms,
+  eg007rooms, eg008rooms, eg009rooms,
+} = require("./lib/rooms/controllers");
 
 const { eg001monitor } = require("./lib/monitor/controllers/index");
 
