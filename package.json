@@ -32,7 +32,7 @@
     "csurf": "^1.10.0",
     "docusign-click": "^1.0.0",
     "docusign-esign": "^5.10.0",
-    "docusign-monitor": "^1.0.0-beta",
+    "docusign-monitor": "^1.0.0",
     "docusign-rooms": "^1.1.0",
     "ejs": "^2.6.2",
     "express": "^4.17.1",
