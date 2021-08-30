@@ -42,6 +42,10 @@ const {
 
 const { eg001monitor } = require("./lib/monitor/controllers/index");
 
+const {
+  eg001admin, eg002admin, eg003admin, eg004admin, eg005admin
+} = require("./lib/admin/controllers");
+
 const PORT = process.env.PORT || 5000;
 const HOST = process.env.HOST || 'localhost';
 const max_session_min = 180;
@@ -130,6 +134,17 @@ if (dsConfig.examplesApi.isRoomsApi) {
 } else if (dsConfig.examplesApi.isMonitorApi) {
   app.get('/eg001', eg001monitor.getController)
     .post('/eg001', eg001monitor.createController)
+} else if (dsConfig.examplesApi.isAdminApi) {
+    app.get('/eg001', eg001admin.getController)
+    .post('/eg001', eg001admin.createController)
+    .get('/eg002', eg002admin.getController)
+    .post('/eg002', eg002admin.createController)
+    .get('/eg003', eg003admin.getController)
+    .post('/eg003', eg003admin.createController)
+    .get('/eg004', eg004admin.getController)
+    .post('/eg004', eg004admin.createController)
+    .get('/eg005', eg005admin.getController)
+    .post('/eg005', eg005admin.createController)
 } else {
   app.get('/eg001', eg001.getController)
     .post('/eg001', eg001.createController)
@@ -213,7 +228,7 @@ if (dsConfig.dsClientId && dsConfig.dsClientId !== '{CLIENT_ID}' &&
   console.log(`Listening on ${PORT}`);
   console.log(`Ready! Open ${hostUrl}`);
 } else {
-  console.log(`PROBLEM: You need to set the clientId (Integrator Key), and perhaps other settings as well. 
+  console.log(`PROBLEM: You need to set the clientId (Integrator Key), and perhaps other settings as well.
 You can set them in the configuration file config/appsettings.json or set environment variables.\n`);
   process.exit(); // We're not using exit code of 1 to avoid extraneous npm messages.
 }
@@ -240,6 +255,11 @@ const CLICK_SCOPES = [
 const MONITOR_SCOPES = [
   "signature", "impersonation"
 ];
+const ADMIN_SCOPES = [
+  "organization_read", "group_read", "permission_read	",
+  "user_read", "user_write", "account_read",
+  "domain_read", "identity_provider_read", "signature"
+];
 let scope;
 if (dsConfig.examplesApi.isRoomsApi) {
   scope = ROOM_SCOPES;
@@ -247,6 +267,8 @@ if (dsConfig.examplesApi.isRoomsApi) {
   scope = CLICK_SCOPES;
 } else if (dsConfig.examplesApi.isMonitorApi) {
   scope = MONITOR_SCOPES;
+} else if (dsConfig.examplesApi.isAdminApi) {
+  scope = ADMIN_SCOPES;
 } else {
   scope = SCOPES;
 }

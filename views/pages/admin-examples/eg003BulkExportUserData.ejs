@@ -1,0 +1,23 @@
+<% include ../../partials/examplesHead %>
+
+<h4>3. Bulk-export user data</h4>
+<p>
+    Demonstrates how to bulk-export user accounts within an organization into a CSV (comma-separated value) file.
+</p>
+
+<% include ../../partials/docBody %>
+
+<p>
+    API methods used:
+    <a target='_blank' href="https://developers.docusign.com/docs/admin-api/reference/bulkoperations/userexport/createuserlistexport/">UserExport::createUserListExport</a> and
+    <a target='_blank' href="https://developers.docusign.com/docs/admin-api/reference/bulkoperations/userexport/getuserlistexport/">UserExport::getUserListExport</a>.
+</p>
+
+<% include ../../partials/gitSource %>
+
+<form class="eg" action="" method="post" data-busy="form">
+    <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+    <button type="submit" class="btn btn-docu">Submit</button>
+</form>
+
+<% include ../../partials/examplesFoot %>

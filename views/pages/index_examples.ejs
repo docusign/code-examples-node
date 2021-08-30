@@ -4,6 +4,8 @@
     <% include index_click_examples %>
 <% } else if(locals.dsConfig.examplesApi.isMonitorApi) { %>
     <% include index_monitor_examples %>
+<% } else if(locals.dsConfig.examplesApi.isAdminApi) { %>
+    <% include index_admin_examples %>
 <% } else { %>
     <% include index_esignature_examples %>
 <% } %>
