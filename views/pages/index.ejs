@@ -1,5 +1,5 @@
 <% include ../partials/genericHead %>
-<% if (! locals.user) { %>
+
   <!-- IF not signed in -->
 <div>
   <div class="jumbotron jumbotron-fluid">
@@ -9,17 +9,24 @@
           <tr>
               <td>
 
-                
-            
+
+
     <% if (locals.dsConfig.multiSourceChooser) { %>
       <h1 class="display-4">Welcome</h1>
       <p class="Xlead">Welcome to the DocuSign code examples with
         OAuth Authorization Code Grant and JWT.</p>
     <% } else { %>
       <h1 class="display-4">Node Launcher</h1>
-      <p class="Xlead">
-        Run and explore DocuSign Admin API code examples with Authorization Code Grant or JWT Grant authentication
-    </p>
+      <% if (dsConfig.examplesApi.isAdminApi) { %>
+        <p class="Xlead">
+          Run and explore DocuSign Admin API code examples with Authorization Code Grant or JWT Grant authentication
+        </p>
+      <% } else { %>
+        <h1 class="display-4">Node Launcher</h1>
+        <p class="Xlead">
+          Welcome to the DocuSign Node examples using multiple OAuth flows (JWT and Authorization Code Grant).
+        </p>
+      <% } %>
     <% } %>
 
   </td>
@@ -32,7 +39,6 @@
 
   </div>
 </div>
-<% } %>
 
 
 <div class="container" style="margin-top: 40px" id="index-page">
