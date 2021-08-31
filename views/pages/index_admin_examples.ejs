@@ -1,0 +1,73 @@
+
+
+<div class="container" style="margin-top: 40px" id="index-page">
+    <% if (showDoc) { %>
+        <p><a target='_blank' href='<%= documentation %>'>Documentation</a> on using OAuth Authorization Code Grant and JWT
+            from
+            a Node Express application.</p>
+    <% } %>
+
+    <% if (locals.dsConfig.multiSourceChooser) { %>
+        <h3 class="mt-4">Admin API Code Examples for Bash, C#, Java, Node.js, PHP, PowerShell, Python, and Ruby</h3>
+    <% } else { %>
+        <h3 class="mt-4">Admin API Code Examples</h3>
+    <% } %>
+
+    <h4 id="example001">1. <a href="eg001">Create a new active eSignature user</a></h4>
+    <p>
+        Demonstrates how to create a new eSignature user and activate their account automatically.
+    </p>
+    <p>
+        API methods used:
+        <a target='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/accounts/accountpermissionprofiles/list/">AccountPermissionProfiles::list</a>,
+        <a target='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/usergroups/groups/list/">Groups::list</a>,
+        <a target='_blank' href="https://developers.docusign.com/docs/admin-api/reference/users/users/createuser/">Users::createUser</a>
+    </p>
+
+    <h4 id="example002">2. <a href="eg002">Create a new active user for CLM and eSignature</a></h4>
+    <p>
+        Demonstrates how to create a new DocuSign user (valid for both CLM and eSignature) and activate their account automatically.
+    </p>
+    <p>
+        API methods used:
+        <a target='_blank' href="https://developers.docusign.com/docs/admin-api/reference/productpermissionprofiles/productpermissionprofiles/getproductpermissionprofiles/">ProductPermissionProfiles::getProductPermissionProfiles</a>,
+        <a target='_blank' href="https://developers.docusign.com/docs/admin-api/reference/dsgroups/dsgroups/getdsgroups/">DsGroups::getDSGroups</a>,
+        <a target='_blank' href="">Users::addOrUpdateUser</a>
+    </p>
+
+    <h4 id="example003">3. <a href="eg003">Bulk export user data</a></h4>
+    <p>
+        Demonstrates how to bulk export user accounts within an organization into a CSV (comma-separated value) file.
+    </p>
+    <p>
+        API methods used:
+        <a target='_blank' href="https://developers.docusign.com/docs/admin-api/reference/bulkoperations/userexport/createuserlistexport/">UserExport::createUserListExport</a>,
+        <a target='_blank' href="https://developers.docusign.com/docs/admin-api/reference/bulkoperations/userexport/getuserlistexport/">UserExport::getUserListExport</a>
+    </p>
+
+    <h4 id="example004">4. <a href="eg004">Add users via bulk import</a></h4>
+    <p>
+        Demonstrates how to bulk-import users and add user data from an example CSV (comma-separated value) file into a DocuSign Admin organization.
+    </p>
+    <p>
+        API method used:
+        <a target='_blank' href="https://developers.docusign.com/docs/admin-api/reference/bulkoperations/userimport/addbulkuserimport/">UserImport:addBulkUserImport</a>
+    </p>
+
+    <h4 id="example005">5. <a href="eg005">Audit users</a></h4>
+    <p>
+        Demonstrates how to audit the users in your account by retrieving the profiles of users that were modified after a specified date.
+    </p>
+    <p>
+        API methods used:
+        <a target='_blank' href="https://developers.docusign.com/docs/admin-api/reference/users/users/getusers/">Users::getUsers</a>,
+        <a target='_blank' href="https://developers.docusign.com/docs/admin-api/reference/users/users/getuserprofiles/">Users::getUserProfiles</a>
+    </p>
+
+</div>
+
+<!-- anchor-js is only for the index page -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js"></script>
+<script>anchors.options.placement = 'left'; anchors.add('h4')</script>
+
+<% include ../partials/genericFoot %>

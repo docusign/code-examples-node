@@ -30,6 +30,7 @@
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.4",
     "csurf": "^1.10.0",
+    "docusign-admin": "1.0.0-beta",
     "docusign-click": "^1.0.0",
     "docusign-esign": "^5.11.0-rc1 ",
     "docusign-monitor": "^1.0.0",
@@ -48,6 +49,7 @@
     "passport": "^0.4.0",
     "passport-docusign": "^1.1.0",
     "path": "^0.12.7",
+    "request": "^2.88.2",
     "stream": "0.0.2",
     "validator": "^10.11.0"
   },
