@@ -21,20 +21,20 @@ const csrf = require('csurf'); // https://www.npmjs.com/package/csurf
 
 const eg001 = require('./eg001EmbeddedSigning');
 
-const { 
-  eg002, eg003, eg004, eg005, eg006, eg007, eg008, 
+const {
+  eg002, eg003, eg004, eg005, eg006, eg007, eg008,
   eg009, eg010, eg011, eg012, eg013, eg014, eg015,
   eg016, eg017, eg018, eg019, eg020, eg021, eg022,
   eg023, eg024, eg025, eg026, eg027, eg028, eg029,
   eg030, eg031, eg032, eg033, eg034, eg035,
 } = require("./lib/eSignature/controllers");
 
-const { 
+const {
   eg001click, eg002click, eg003click,
   eg004click, eg005click,
 } = require("./lib/click/controllers");
 
-const { 
+const {
   eg001rooms, eg002rooms, eg003rooms,
   eg004rooms, eg005rooms, eg006rooms,
   eg007rooms, eg008rooms, eg009rooms,
@@ -143,6 +143,7 @@ if (dsConfig.examplesApi.isRoomsApi) {
     .post('/eg003', eg003admin.createController)
     .get('/eg004', eg004admin.getController)
     .post('/eg004', eg004admin.createController)
+    .get('/eg004status', eg004admin.checkStatus)
     .get('/eg005', eg005admin.getController)
     .post('/eg005', eg005admin.createController)
 } else {

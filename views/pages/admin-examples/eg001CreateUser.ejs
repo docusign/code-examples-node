@@ -8,9 +8,12 @@
 <% include ../../partials/docBody %>
 
 <p>API methods used:
-  <a target='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/accounts/accountpermissionprofiles/list/">AccountPermissionProfiles::list</a>, 
-  <a target='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/usergroups/groups/list/">Groups::list</a>, 
-  <a target='_blank' href="https://developers.docusign.com/docs/admin-api/reference/users/users/createuser/">Users::createUser</a>.
+  <a target='_blank' rel='noopener noreferrer'
+    href='https://developers.docusign.com/docs/esign-rest-api/reference/accounts/accountpermissionprofiles/list/'>AccountPermissionProfiles:list</a>,
+  <a target='_blank' rel='noopener noreferrer'
+    href='https://developers.docusign.com/docs/esign-rest-api/reference/usergroups/groups/list/'>Groups:list</a>,
+  <a target='_blank' rel='noopener noreferrer'
+    href="https://developers.docusign.com/docs/admin-api/reference/usermanagement/esignusermanagement/createuser/">eSignUserManagement:createUser</a>.
 </p>
 
 <% include ../../partials/gitSource %>
@@ -39,7 +42,7 @@
     </div>
     <% if (permissionProfiles && permissionProfiles.length > 0) { %>
         <div class="form-group">
-            <label for="permissionProfileId">DocuSign permission profile</label>
+            <label for="permissionProfileId">eSignature permission profile</label>
             <select id="permissionProfileId" name="permissionProfileId" class="form-control">
                 <% permissionProfiles.forEach( profile => { %>
                     <option value="<%= profile.permissionProfileId%>"> <%= profile.permissionProfileName %> </option>
@@ -52,7 +55,7 @@
     <% } %>
     <% if (groups && groups.length > 0) { %>
         <div class="form-group">
-            <label for="groupId">DocuSign group</label>
+            <label for="groupId">eSignature group</label>
             <select id="groupId" name="groupId" class="form-control">
                 <% groups.forEach( group => { %>
                     <option value="<%= group.groupId%>"> <%= group.groupName %> </option>
@@ -60,7 +63,7 @@
             </select>
         </div>
     <% } else { %>
-        <p>Problem: Please first create a DocuSign group.</a>
+        <p>Problem: Please first create an eSignature group.</a>
             </br>Thank you.</p>
     <% } %>
     <input type="hidden" name="_csrf" value="<%- csrfToken %>">

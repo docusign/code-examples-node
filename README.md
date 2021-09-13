@@ -2,7 +2,7 @@
 
 ### GitHub repo: [code-examples-node](./README.md)
 
-This GitHub repo includes code examples for the DocuSign eSignature REST API, Rooms API, Click API, and Monitor API. To switch between API code examples, modify the `examplesApi` setting in the appsettings.json file. Change the value of either `isESignatureApi`, `isRoomsApi`, `isClickApi`, or `isMonitorApi` to `true` to use the corresponding API. Set only one API type to `true` and set the remaining to `false`.
+This GitHub repo includes code examples for the DocuSign Admin API, Click API, eSignature REST API, Monitor API, and Rooms API. To switch between API code examples, modify the `examplesApi` setting in the appsettings.json file. Set only one API type to `true` and set the remaining to `false`.
 
 If none of the API types are set to `true`, the DocuSign eSignature REST API code examples will be shown. If multiple API types are set to `true`, only the first will be shown.
 
@@ -43,11 +43,11 @@ For information about the scopes used for obtaining authorization to use the Mon
 For a list of code examples that use the Monitor API, select the Node.js tab under [Examples and languages](https://developers.docusign.com/docs/monitor-api/how-to/code-launchers/#examples-and-languages) on the DocuSign Developer Center.
 
 ## Admin API
-**Note:** To use the Admin API, you must [create an organization](https://support.docusign.com/en/guides/org-admin-guide-create-org) in your DocuSign account. Also, to run the DocuSign CLM code example, [CLM must be enabled for your organization](https://support.docusign.com/en/articles/DocuSign-and-SpringCM).
+**Note:** To use the Admin API, you must [create an organization](https://support.docusign.com/en/guides/org-admin-guide-create-org) in your DocuSign developer account. Also, to run the DocuSign CLM code example, [CLM must be enabled for your organization](https://support.docusign.com/en/articles/DocuSign-and-SpringCM).
 
-For information about the scopes used for obtaining authorization to use the Admin API, see the [scopes section](https://developers.docusign.com/docs/admin-api/admin101/auth/).
+For more information about the scopes used for obtaining authorization to use the Admin API, see the [scopes section](https://developers.docusign.com/docs/admin-api/admin101/auth/).
 
-For a list of code examples that use the Monitor API, select the Node.js tab under [Examples and languages](hhttps://developers.docusign.com/docs/admin-api/how-to/code-launchers/#examples-and-languages) on the DocuSign Developer Center.
+For a list of code examples that use the Admin API, select the Node.js tab under [Examples and languages](https://developers.docusign.com/docs/admin-api/how-to/code-launchers/#examples-and-languages) on the DocuSign Developer Center.
 
 ## Installation
 
