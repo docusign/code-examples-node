@@ -1,0 +1,18 @@
+<% include ../../partials/genericHead %>
+
+<% if (locals.status == "completed") { %>
+  <h2><%= h1 %></h2>
+  <p><%- message %></p>
+
+  <!-- Data from the server -->
+  <div id="server_json_data" data-server-json-data='{"json":<%- JSON.stringify(json) %>}' class="hidden"></div>
+  <p><pre class="json-display"><code id="json-display"></code></pre></p>
+
+  <p><a href="/">Continue</a></p>
+
+<% } else { %>
+  <h4>Request not complete</h4>
+  <p>The request has not completed, please refresh this page</p>
+<% } %>
+
+<% include ../../partials/genericFoot %>
