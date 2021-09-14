@@ -24,7 +24,7 @@ const eg001 = require('./eg001EmbeddedSigning');
 const { 
   eg002, eg003, eg004, eg005, eg006, eg007, eg008, 
   eg009, eg010, eg011, eg012, eg013, eg014, eg015,
-  eg016, eg017, eg018, eg019, eg020, eg021, eg022,
+  eg016, eg017, eg018, eg019, eg020, eg022,
   eg023, eg024, eg025, eg026, eg027, eg028, eg029,
   eg030, eg031, eg032, eg033, eg034, eg035,
 } = require("./lib/eSignature/controllers");
@@ -186,8 +186,6 @@ if (dsConfig.examplesApi.isRoomsApi) {
     .post('/eg019', eg019.createController)
     .get('/eg020', eg020.getController)
     .post('/eg020', eg020.createController)
-    .get('/eg021', eg021.getController)
-    .post('/eg021', eg021.createController)
     .get('/eg022', eg022.getController)
     .post('/eg022', eg022.createController)
     .get('/eg023', eg023.getController)
