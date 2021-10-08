@@ -1,27 +1,38 @@
 <% include ../../partials/examplesHead %>
 
-<h4>20. Send an envelope with recipient SMS authentication.</h4>
-<p>Anchor text 
-  (<a href="https://developers.docusign.com/docs/esign-rest-api/esign101/concepts/tabs/auto-place/">AutoPlace</a>)
-  is used to position the signing fields in the documents.
+<h4>20. Require Phone Authentication for a Recipient</h4>
+
+<p>
+  Sends an envelope that requires entering a six-digit code from a text message or phone call for the purpose of multifactor authentication.
 </p>
-<p>This is an example of an envelope utilizing SMS authentication for multi-factor verification of a recipient.</p>
+<p>
+    The envelope includes a PDF file. Anchor text
+    (<a href="https://developers.docusign.com/docs/esign-rest-api/esign101/concepts/tabs/auto-place/">AutoPlace</a>)
+    is used to position the signing fields in the documents.
+</p>
+
 
 <% include ../../partials/docBody %>
-  
-  <p>API method used: 
-   <a target='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">Envelopes::create</a>.
+
+<p>
+  API method used:
+  <a target='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">Envelopes:create</a>.
 </p>
 
 
 <% include ../../partials/gitSource %>
 <form class="eg" action="" method="post" data-busy="form">
   <div class="form-group">
-    <label for="phoneNumber">SMS Number</label>
-    <input type="text" class="form-control" id="phoneNumber" placeholder="415-555-1212" name="phoneNumber"
-           value="415-555-1212" required>
+    <label for="countryCode">Signer Country Code</label>
+    <input type="text" class="form-control" id="countryCode" placeholder="1" name="countryCode"
+           required>
   </div>
-    <div class="form-group">
+  <div class="form-group">
+    <label for="phoneNumber">Signer Phone Number</label>
+    <input type="text" class="form-control" id="phoneNumber" placeholder="4155551212" name="phoneNumber"
+           required>
+  </div>
+  <div class="form-group">
       <label for="signerEmail">Signer Email</label>
       <input type="email" class="form-control" id="signerEmail" name="signerEmail"
              aria-describedby="emailHelp" placeholder="pat@example.com" required
@@ -36,5 +47,5 @@
     <input type="hidden" name="_csrf" value="<%- csrfToken %>">
     <button type="submit" class="btn btn-docu">Submit</button>
 </form>
-  
+
 <% include ../../partials/examplesFoot %>
