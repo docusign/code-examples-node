@@ -19,7 +19,7 @@ const helmet = require('helmet'); // https://expressjs.com/en/advanced/best-prac
 const moment = require('moment');
 const csrf = require('csurf'); // https://www.npmjs.com/package/csurf
 
-const eg001 = require('./eg001EmbeddedSigning');
+const eg001 = require('./lib/eSignature/controllers/eg001EmbeddedSigning');
 
 const {
   eg002, eg003, eg004, eg005, eg006, eg007, eg008,
