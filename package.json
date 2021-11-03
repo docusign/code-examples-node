@@ -51,7 +51,7 @@
     "path": "^0.12.7",
     "request": "^2.88.2",
     "stream": "0.0.2",
-    "validator": "^10.11.0"
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "chai": "^4.2.0",
