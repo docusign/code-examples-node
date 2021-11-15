@@ -18,6 +18,7 @@ const flash = require('express-flash');
 const helmet = require('helmet'); // https://expressjs.com/en/advanced/best-practice-security.html
 const moment = require('moment');
 const csrf = require('csurf'); // https://www.npmjs.com/package/csurf
+const examplesApi = require('./config/examplesApi.json');
 
 const eg001 = require('./lib/eSignature/controllers/eg001EmbeddedSigning');
 
@@ -75,6 +76,7 @@ let app = express()
     res.locals.user = req.user;
     res.locals.session = req.session;
     res.locals.dsConfig = { ...dsConfig, docOptions: docOptions, docNames: docNames };
+    res.locals.examplesApi = examplesApi
     res.locals.hostUrl = hostUrl; // Used by DSAuthCodeGrant#logout
     next()
   })) // Send user info to views
@@ -93,6 +95,8 @@ let app = express()
   })
   // Routes
   .get('/', commonControllers.indexController)
+  .get('/ds/choose_api', commonControllers.chooseApi)
+  .get('/ds/switch_api', commonControllers.switchApi)
   .get('/ds/login', commonControllers.login)
   .get('/ds/callback', [dsLoginCB1, dsLoginCB2]) // OAuth callbacks. See below
   .get('/ds/logout', commonControllers.logout)
@@ -101,7 +105,7 @@ let app = express()
   .get('/ds-return', commonControllers.returnController)
   .use(csrfProtection) // CSRF protection for the following routes
 ;
-if (dsConfig.examplesApi.isRoomsApi) {
+if (examplesApi.examplesApi.isRoomsApi) {
   app.get('/eg001rooms', eg001rooms.getController)
     .post('/eg001rooms', eg001rooms.createController)
     .get('/eg002rooms', eg002rooms.getController)
@@ -120,7 +124,7 @@ if (dsConfig.examplesApi.isRoomsApi) {
     .post('/eg008rooms', eg008rooms.createController)
     .get('/eg009rooms', eg009rooms.getController)
     .post('/eg009rooms', eg009rooms.createController)
-} else if (dsConfig.examplesApi.isClickApi) {
+} else if (examplesApi.examplesApi.isClickApi) {
   app.get('/eg001', eg001click.getController)
     .post('/eg001', eg001click.createController)
     .get('/eg002', eg002click.getController)
@@ -131,10 +135,10 @@ if (dsConfig.examplesApi.isRoomsApi) {
     .post('/eg004', eg004click.createController)
     .get('/eg005', eg005click.getController)
     .post('/eg005', eg005click.createController)
-} else if (dsConfig.examplesApi.isMonitorApi) {
+} else if (examplesApi.examplesApi.isMonitorApi) {
   app.get('/eg001', eg001monitor.getController)
     .post('/eg001', eg001monitor.createController)
-} else if (dsConfig.examplesApi.isAdminApi) {
+} else if (examplesApi.examplesApi.isAdminApi) {
     app.get('/eg001', eg001admin.getController)
     .post('/eg001', eg001admin.createController)
     .get('/eg002', eg002admin.getController)
@@ -260,13 +264,13 @@ const ADMIN_SCOPES = [
   "domain_read", "identity_provider_read", "signature"
 ];
 let scope;
-if (dsConfig.examplesApi.isRoomsApi) {
+if (examplesApi.examplesApi.isRoomsApi) {
   scope = ROOM_SCOPES;
-} else if (dsConfig.examplesApi.isClickApi) {
+} else if (examplesApi.examplesApi.isClickApi) {
   scope = CLICK_SCOPES;
-} else if (dsConfig.examplesApi.isMonitorApi) {
+} else if (examplesApi.examplesApi.isMonitorApi) {
   scope = MONITOR_SCOPES;
-} else if (dsConfig.examplesApi.isAdminApi) {
+} else if (examplesApi.examplesApi.isAdminApi) {
   scope = ADMIN_SCOPES;
 } else {
   scope = SCOPES;
