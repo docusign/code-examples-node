@@ -2,9 +2,7 @@
 
 ### GitHub repo: [code-examples-node](./README.md)
 
-This GitHub repo includes code examples for the DocuSign Admin API, Click API, eSignature REST API, Monitor API, and Rooms API. To switch between API code examples, modify the `examplesApi` setting in the appsettings.json file. Set only one API type to `true` and set the remaining to `false`.
-
-If none of the API types are set to `true`, the DocuSign eSignature REST API code examples will be shown. If multiple API types are set to `true`, only the first will be shown.
+This GitHub repo includes code examples for the DocuSign Admin API, Click API, eSignature REST API, Monitor API, and Rooms API. By default, the launcher will display the eSignature examples. To switch between API code examples, select "Choose API" in the top menu.
 
 
 ## Introduction
