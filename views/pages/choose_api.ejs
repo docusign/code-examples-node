@@ -1,0 +1,22 @@
+<% include ../partials/genericHead %>
+<div style="margin:1% 5%;">
+  <h1 class="display-4">Please Choose an API</h1>
+  <p class="lead">
+  <form class="eg" action="/ds/switch_api" method="get" data-busy="form">
+    <div class="form-group">
+      <label>Please choose your API</label>
+      <select id="chosenApi" name="chosenApi" class="form-control">
+        <option value="eSignature" selected>eSignature</option>
+        <option value="rooms">Rooms</option>
+        <option value="click">Click</option>
+        <option value="monitor">Monitor</option>
+        <option value="admin">Admin</option>
+      </select><br>
+      <button class="btn btn-docu btn-lg">Choose your desired API</button>
+    </div>
+  </form>
+  </p>
+  <hr class="my-4">
+
+</div>
+<% include ../partials/genericFoot %>
