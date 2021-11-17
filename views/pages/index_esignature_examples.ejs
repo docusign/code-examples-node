@@ -4,9 +4,9 @@
 <% } %>
 
 <% if (locals.dsConfig.multiSourceChooser) { %>
-    <h3 class="mt-4">Code Examples for C#, PHP, Java, Node.js, Python, and Curl</h3>
+    <h3 class="mt-4">Run and explore eSignature REST API code examples with Authorization Code Grant or JWT Grant authentication</h3>
 <% } else { %>
-    <h3 class="mt-4">Basic examples</h3>
+    <h2 class="mt-4">Basic examples</h2>
 <% } %>
 
 <h4 id="example001">1. <a href="eg001">Use embedded signing</a></h4>
@@ -129,6 +129,7 @@
 </p>
 
 <h2>Payments</h2>
+
 <h4 id="example014">14. <a href="eg014">Send an envelope with an order form and payment field</a></h4>
 <p>Anchor text
     (<a target='_blank'
@@ -140,6 +141,7 @@
 </p>
 
 <h2>Tabs</h2>
+
 <h4 id="example015">15. <a href="eg015">Get the tab data from an envelope</a></h4>
 <p>This example retrieves the tab (field) values from an envelope.</p>
 <p>API method used:
@@ -168,28 +170,27 @@
 </p>
 
 <h2>Recipient authentication</h2>
-<h4 id="example019">19. <a href="eg019">Access Code Authentication</a></h4>
-<p>This is an example of an envelope utilizing Access Code authentication for multi-factor verification of a
-    recipient.</p>
+
+<h4 id="example019">19. <a href="eg019">Require access code authentication for a recipient</a></h4>
+<p>Sends an envelope that requires entering an access code for the purpose of multifactor authentication.</p>
 <p>API method used:
     <a target='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">Envelopes::create</a>.
 </p>
 
-<h4 id="example020">20. <a href="eg020">Require Phone Authentication for a Recipient</a></h4>
+<h4 id="example020">20. <a href="eg020">Require phone authentication for a recipient</a></h4>
 <p>Sends an envelope that requires entering a six-digit code from a text message or phone call for the purpose of multifactor authentication.</p>
 <p>API method used:
     <a target='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">Envelopes::create</a>.
 </p>
 
-<h4 id="example022">22. <a href="eg022">KBA Authentication</a></h4>
-<p>This is an example of an envelope utilizing Knowledge based authentication for multi-factor verification of a
-    recipient.</p>
+<h4 id="example022">22. <a href="eg022">Require knowledge-based authentication (KBA) for a recipient</a></h4>
+<p>Sends an envelope that requires passing a public records check to validate identity for the purpose of multifactor authentication.</p>
 <p>API method used:
     <a target='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">Envelopes::create</a>.
 </p>
 
-<h4 id="example023">23. <a href="eg023">IDV Authentication</a></h4>
-<p>This is an example of an envelope utilizing Id verification authentication for a recipient.</p>
+<h4 id="example023">23. <a href="eg023">Require ID Verification (IDV) for a recipient</a></h4>
+<p>Sends an envelope that requires the recipient to upload a government-issued ID for the purpose of multifactor authentication.</p>
 <p>API methods used:
     <a target='_blank'
        href="https://developers.docusign.com/esign-rest-api/reference/Accounts/IdentityVerifications/list">Accounts::getAccountIdentityVerificationsList</a>.
@@ -197,7 +198,8 @@
 </p>
 
 <h2>Permissions</h2>
-<h4 id="example024">24. <a href="eg024">Creating a permission</a></h4>
+
+<h4 id="example024">24. <a href="eg024">Creating a permission profile</a></h4>
 <p>This code example demonstrates how to create a permission profile with the eSignature REST API. </p>
 <p>API methods used:
     <a target='_blank'
@@ -225,6 +227,7 @@
 </p>
 
 <h2>Brands</h2>
+
 <h4 id="example028">28. <a href="eg028">Creating a brand</a></h4>
 <p>This code example demonstrates how to create a brand with the eSignature REST API. </p>
 <p>API methods used:
@@ -245,6 +248,7 @@
 </p>
 
 <h2>Bulk operations</h2>
+
 <h4 id="example031">31. <a href="eg031">Bulk sending envelopes to multiple recipients.</a></h4>
 <p>
     Method BulkSend::createBulkSendList creates a bulk send list that you can use to send an envelope to up to 1,000
@@ -266,6 +270,7 @@
 </p>
 
 <h2>Advanced recipient routing</h2>
+
 <h4 id="example032">32. <a href="eg032">Pausing a signature workflow</a></h4>
 <p>
     This example creates and envelope and then pauses the signature workflow
@@ -294,6 +299,7 @@
 </p>
 
 <h2>Premium features</h2>
+
 <h4 id="example035">35. <a href="eg035">Sending via SMS delivery</a></h4>
 <p>
     This example demonstrates how to send a signature request for a signer (and CC) to read and sign via an SMS message.
