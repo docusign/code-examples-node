@@ -6,6 +6,9 @@
 
 <% if (errorCode) { %>
   <p><%= errorCode %>: <%= errorMessage %></p>
+  <% if (typeof errorInfo !== 'undefined') { %>
+    <p><%- errorInfo %></p>
+  <% } %>
 <% } else { %>
   <p><pre><%= err %></pre></p>
 
