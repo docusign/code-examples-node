@@ -3,19 +3,19 @@
 <h4>31.  Bulk sending envelopes to multiple recipients.</h4>
 
 <p>
-    Method BulkSend::createBulkSendList creates a bulk send list that you can use to send an envelope to up to 1,000 recipients at once.
+  Demonstrates how to send envelopes in bulk to multiple recipients. First, this example creates a bulk send recipients list, then creates an envelope. After that, 
+  it initiates bulk envelope sending.
 </p>
 
 <% include ../../partials/docBody %>
 
 <p>
     API methods used:
-    <a target="_blank" href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/enveloperecipients/create/">EnvelopeRecipients::create</a>,
-    <a target="_blank" href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">Envelopes::create</a>,
-    <a target="_blank" href="https://developers.docusign.com/esign-rest-api/reference/BulkEnvelopes/BulkEnvelopes/get">BulkEnvelopes::get</a>,
-    <a target="_blank" href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/EnvelopeCustomFields/create">EnvelopeCustomFields::create</a>,
-    <a target="_blank" href="https://developers.docusign.com/esign-rest-api/reference/BulkEnvelopes/BulkSend/createBulkSendList">BulkSend::createBulkSendList</a>
-    <a target="_blank" href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/enveloperecipients/create/">EnvelopeRecipients::create</a>.
+    <a target="_blank" href="https://developers.docusign.com/docs/esign-rest-api/reference/bulkenvelopes/bulksend/createbulksendlist/">BulkSend:createBulkSendList</a>,
+    <a target="_blank" href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">Envelopes:create</a>,
+    <a target="_blank" href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopecustomfields/create/">EnvelopeCustomFields:create</a>,
+    <a target="_blank" href="https://developers.docusign.com/docs/esign-rest-api/reference/bulkenvelopes/bulksend/createbulksendrequest/">BulkSend:createBulkSendRequest</a>,
+    <a target="_blank" href="https://developers.docusign.com/docs/esign-rest-api/reference/bulkenvelopes/bulksend/getbulksendbatchstatus/">BulkSend:getBulkSendBatchStatus</a>
 </p>
 
 
@@ -23,51 +23,45 @@
 
 <form action="" class="eg" method="post" data-busy="form">
 
-    <h5 class="mt-4"> Bulk copy #1</h5>
     <div class="row">
         <div class="col-md-6 column">
-              <div class='form-group'>
-                <label for= "">Signer name</label >
-                <input type = 'text' name = "signerName1" id = "signerName1"  placeholder = "Bob" required class='form-control'/>
-              </div>
-              <div class='form-group'>
-                <label for= "">Signer Email</label >
-                <input type = 'mail' name = "signerEmail1" id = "signerEmail1" placeholder = "bob@mail.com" required class='form-control'/>
-              </div>
-        </div>
-        <div class="col-md-6 column">
-              <div class='form-group'>
-                <label for= "">CC name</label >
-                <input type = 'text' name = "ccName1" id = "ccName1"  placeholder = "Alice" required class='form-control'/>
-              </div>
-              <div class='form-group'>
-                <label for= "">CC Email</label >
-                <input type = 'mail' name = "ccEmail1" id = "ccEmail1" placeholder = "alice@mail.com" required class='form-control'/>
-              </div>
-        </div>
-    </div>
-
-    <h5 class="mt-4"> Bulk copy #2</h5>
-    <div class="row">
-      <div class="col-md-6 column">
-          <div class='form-group'>
-            <label for= "">Signer name</label >
-            <input type = 'text' name = "signerName2" id = "signerName2" placeholder = "Eve" required class='form-control'/>
-          </div>
+          <h5 class="mt-4"> Bulk copy #1</h5>
           <div class='form-group'>
             <label for= "">Signer Email</label >
-            <input type = 'mail' name = "signerEmail2" id = "signerEmail2" placeholder = "eve@mail.com" required class='form-control'/>
+            <input type = 'mail' name = "signerEmail1" id = "signerEmail1" placeholder = "bob@mail.com" required class='form-control'/>
           </div>
-    </div>
-    <div class="col-md-6 column">
           <div class='form-group'>
-            <label for= "">CC name</label >
-            <input type = 'text' name = "ccName2" id = "ccName2" placeholder = "Ted" required class='form-control'/>
+            <label for= "">Signer Name</label >
+            <input type = 'text' name = "signerName1" id = "signerName1"  placeholder = "Bob" required class='form-control'/>
           </div>
           <div class='form-group'>
             <label for= "">CC Email</label >
-            <input type = 'mail' name = "ccEmail2" id = "ccEmail2" placeholder = "ted@mail.com" required class='form-control'/>
+            <input type = 'mail' name = "ccEmail1" id = "ccEmail1" placeholder = "alice@mail.com" required class='form-control'/>
           </div>
+          <div class='form-group'>
+            <label for= "">CC Name</label >
+            <input type = 'text' name = "ccName1" id = "ccName1"  placeholder = "Alice" required class='form-control'/>
+          </div>
+        </div>
+
+      <div class="col-md-6 column">
+        <h5 class="mt-4"> Bulk copy #2</h5>
+        <div class='form-group'>
+          <label for= "">Signer Email</label >
+          <input type = 'mail' name = "signerEmail2" id = "signerEmail2" placeholder = "eve@mail.com" required class='form-control'/>
+        </div>
+        <div class='form-group'>
+          <label for= "">Signer Name</label >
+          <input type = 'text' name = "signerName2" id = "signerName2" placeholder = "Eve" required class='form-control'/>
+        </div>
+        <div class='form-group'>
+          <label for= "">CC Email</label >
+          <input type = 'mail' name = "ccEmail2" id = "ccEmail2" placeholder = "ted@mail.com" required class='form-control'/>
+        </div>
+        <div class='form-group'>
+          <label for= "">CC Name</label >
+          <input type = 'text' name = "ccName2" id = "ccName2" placeholder = "Ted" required class='form-control'/>
+        </div>
        </div>
     </div>
 
