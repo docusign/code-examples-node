@@ -249,24 +249,18 @@
 
 <h2>Bulk operations</h2>
 
-<h4 id="example031">31. <a href="eg031">Bulk sending envelopes to multiple recipients.</a></h4>
+<h4 id="example031">31. <a href="eg031">Bulk send envelopes</a></h4>
 <p>
-    Method BulkSend::createBulkSendList creates a bulk send list that you can use to send an envelope to up to 1,000
-    recipients at once.
+    Demonstrates how to send envelopes in bulk to multiple recipients. First, this example creates a bulk send recipients list, 
+    then creates an envelope. After that, it initiates bulk envelope sending.
 </p>
 <p>
     API methods used:
-    <a target="_blank"
-       href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/enveloperecipients/create/">EnvelopeRecipients::create</a>,
-    <a target="_blank" href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">Envelopes::create</a>,
-    <a target="_blank"
-       href="https://developers.docusign.com/esign-rest-api/reference/BulkEnvelopes/BulkEnvelopes/get">BulkEnvelopes::get</a>,
-    <a target="_blank"
-       href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/EnvelopeCustomFields/create">EnvelopeCustomFields::create</a>,
-    <a target="_blank"
-       href="https://developers.docusign.com/esign-rest-api/reference/BulkEnvelopes/BulkSend/createBulkSendList">BulkSend::createBulkSendList</a>
-    <a target="_blank"
-       href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/enveloperecipients/create/">EnvelopeRecipients::create</a>.
+    <a target="_blank" href="https://developers.docusign.com/docs/esign-rest-api/reference/bulkenvelopes/bulksend/createbulksendlist/">BulkSend:createBulkSendList</a>,
+    <a target="_blank" href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">Envelopes:create</a>,
+    <a target="_blank" href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopecustomfields/create/">EnvelopeCustomFields:create</a>,
+    <a target="_blank" href="https://developers.docusign.com/docs/esign-rest-api/reference/bulkenvelopes/bulksend/createbulksendrequest/">BulkSend:createBulkSendRequest</a>,
+    <a target="_blank" href="https://developers.docusign.com/docs/esign-rest-api/reference/bulkenvelopes/bulksend/getbulksendbatchstatus/">BulkSend:getBulkSendBatchStatus</a>
 </p>
 
 <h2>Advanced recipient routing</h2>
