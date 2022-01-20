@@ -9,63 +9,56 @@
     <h2 class="mt-4">Basic examples</h2>
 <% } %>
 
-<h4 id="example001">1. <a href="eg001">Use embedded signing</a></h4>
-<p>This example sends an envelope, then uses embedded signing for the first signer.
-    With embedded signing, DocuSign signing is initiated from your website.
+<h4 id="example001">1. <a href="eg001">Request a signature through your app (embedded signing)</a></h4>
+<p>Sends an envelope, then uses embedded signing for the first signer. With embedded signing, DocuSign signing is initiated from your website.
 </p>
 <p>API methods used:
-    <a target='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">Envelopes::create</a>
-    and
+    <a target='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">Envelopes::create</a>, 
     <a target='_blank'
        href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopeviews/createrecipient/">EnvelopeViews::createRecipient</a>.
 </p>
 
-<h4 id="example002">2. <a href="eg002">Send an envelope with a remote (email) signer and cc recipient</a></h4>
-<p>The envelope includes a pdf, Word, and HTML document. Anchor text
-    (<a target='_blank'
-        href="https://developers.docusign.com/docs/esign-rest-api/esign101/concepts/tabs/auto-place/">AutoPlace</a>)
-    is used to position the signing fields in the documents.
+<h4 id="example002">2. <a href="eg002">Request a signature by email (remote signing)</a></h4>
+<p>The envelope includes a PDF, Word, and HTML document. <a target='_blank'
+        href="https://developers.docusign.com/docs/esign-rest-api/esign101/concepts/tabs/auto-place/">Anchor text</a> is used to position the signing fields in the documents.
 </p>
 <p>API method used:
     <a target='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">Envelopes::create</a>.
 </p>
 
-<h4 id="example003">3. <a href="eg003">List envelopes in the user's account</a></h4>
-<p>List the envelopes created in the last 30 days.
+<h4 id="example003">3. <a href="eg003">List envelope status changes</a></h4>
+<p>The envelopes' current status is included.
 </p>
 <p>API method used:
     <a target='_blank'
        href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/liststatuschanges/">Envelopes::listStatusChanges</a>.
 </p>
 
-<h4 id="example004">4. <a href="eg004">Get an envelope's basic information and status</a></h4>
-<p>List the basic information about an envelope, including its overall status.
-    Additional API/SDK methods may be used to get additional information about the
-    envelope, its documents, recipients, etc.
+<h4 id="example004">4. <a href="eg004">Get envelope information</a></h4>
+<p>Lists basic information about an envelope, including its overall status.
 </p>
 <p>API method used:
     <a target='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/get/">Envelopes::get</a>.
 </p>
 
-<h4 id="example005">5. <a href="eg005">List an envelope's recipients and their status</a></h4>
-<p>List the envelope's recipients, including their current status.
+<h4 id="example005">5. <a href="eg005">List envelope recipients</a></h4>
+<p>Includes current recipient status.
 </p>
 <p>API method used:
     <a target='_blank'
        href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/enveloperecipients/list/">EnvelopeRecipients::list</a>.
 </p>
 
-<h4 id="example006">6. <a href="eg006">List an envelope's documents</a></h4>
-<p>List the envelope's documents. A <i>Certificate of Completion</i> document
-    is also associated with every envelope.
+<h4 id="example006">6. <a href="eg006">List envelope documents</a></h4>
+<p>Lists the envelope's documents. A <i>Certificate of Completion</i> is also included with every envelope.
 </p>
 <p>API method used:
     <a target='_blank'
        href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopedocuments/list/">EnvelopeDocuments::list</a>.
 </p>
 
-<h4 id="example007">7. <a href="eg007">Download a document from an envelope</a></h4>
-<p>An envelope's documents can be downloaded one by one or as a complete set.
+<h4 id="example007">7. <a href="eg007">Download envelope documents</a></h4>
+<p>Downloads individual documents, the documents concatenated together, or a ZIP file of the documents.
 </p>
 <p>API method used:
     <a target='_blank'
@@ -73,68 +66,55 @@
 </p>
 
 <h4 id="example008">8. <a href="eg008">Create a template</a></h4>
-<p>Create a template with two roles, <b>signer</b> and <b>cc</b>.</p>
+<p>Creates a template with two roles, <i>signer</i> and <i>cc</i> recipient.</p>
 <p>API methods used:
     <a target='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/templates/templates/list/">Templates::list</a>,
     <a target='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/templates/templates/create/">Templates::create</a>.
 </p>
 
-<h4 id="example009">9. <a href="eg009">Send an envelope using a template</a></h4>
-<p>The envelope is defined by the template.
-    The signer and cc recipient name and email are used to fill in the template's <i>roles</i>.</p>
+<h4 id="example009">9. <a href="eg009">Request a signature by email using a template</a></h4>
+<p>The envelope is defined by the template. The signer and cc recipient name and email are used to fill the template's <i>roles</i>.</p>
 <p>API method used:
     <a target='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">Envelopes::create</a>.
 </p>
 
-<h4 id="example010">10. <a href="eg010">Send an envelope using binary document transfer</a></h4>
-<p>The envelope includes a pdf, Word, and HTML document.</p>
-<p>Multipart data transfer is used to send the documents in binary format to DocuSign.
-    Binary transfer is 33% more efficient than base64 encoding and is recommended for documents over 15M Bytes.
-    Binary transfer is not yet supported by the SDK.
+<h4 id="example010">10. <a href="eg010">Attach documents using binary transfer</a></h4>
+<p>Binary transfer is 33% more efficient than using Base64 encoding.
 </p>
 <p>API method used:
     <a target='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">Envelopes::create</a>.
 </p>
 
-<h4 id="example011">11. <a href="eg011">Use embedded sending</a></h4>
-<p>An envelope will be created in draft mode. The DocuSign
-    web tool (NDSE) will then be shown, enabling further updates
-    to the envelope before it is sent.
+<h4 id="example011">11. <a href="eg011">Sends an envelope in your app (embedded sending)</a></h4>
+<p>Embeds the DocuSign UI in your web app to finalize or update the envelope and documents before they are sent.
 </p>
 <p>API methods used:
     <a target='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">Envelopes::create</a>,
     <a target='_blank'
        href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopeviews/createsender/">EnvelopeViews::createSender</a>.
 
-<h4 id="example012">12. <a href="eg012">Embedded DocuSign web tool</a></h4>
-<p>Redirect the user to the DocuSign web tool.</p>
+<h4 id="example012">12. <a href="eg012">Embed the DocuSign UI in your app</a></h4>
+<p>Redirects the user to the DocuSign web tool.</p>
 <p>API method used:
     <a target='_blank'
        href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopeviews/createconsole/">EnvelopeViews::createConsole</a>.
 </p>
 
-<h4 id="example013">13. <a href="eg013">Use embedded signing from a template with an added document</a></h4>
-<p>This example sends an envelope based on a template.</p>
-<p>In addition to the template's document(s), the example adds an
-    additional document to the envelope by using the
-    <a target='_blank'
+<h4 id="example013">13. <a href="eg013">Request a signature using a composite template</a></h4>
+<p>Sends an envelope based on a template. In addition to the template's document(s), the example adds an
+    additional document to the envelope by using the <a target='_blank'
        href='https://developers.docusign.com/docs/esign-rest-api/esign101/concepts/templates/composite/'>Composite
-        Templates</a>
-    feature.</p>
+        templates</a> feature.</p>
 <p>API methods used:
-    <a target='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">Envelopes::create</a>
-    and
+    <a target='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">Envelopes::create</a>, 
     <a target='_blank'
        href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopeviews/createrecipient/">EnvelopeViews::createRecipient</a>.
 </p>
 
 <h2>Payments</h2>
 
-<h4 id="example014">14. <a href="eg014">Send an envelope with an order form and payment field</a></h4>
-<p>Anchor text
-    (<a target='_blank'
-        href="https://developers.docusign.com/docs/esign-rest-api/esign101/concepts/tabs/auto-place/">AutoPlace</a>)
-    is used to position the fields in the documents.
+<h4 id="example014">14. <a href="eg014">Send a request for Accept payments</a></h4>
+<p>Sends an order form with online payment by credit card. 
 </p>
 <p>API method used:
     <a target='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">Envelopes::create</a>.
@@ -142,28 +122,27 @@
 
 <h2>Tabs</h2>
 
-<h4 id="example015">15. <a href="eg015">Get the tab data from an envelope</a></h4>
-<p>This example retrieves the tab (field) values from an envelope.</p>
+<h4 id="example015">15. <a href="eg015">Get envelope tab values</a></h4>
+<p>Retrieves the tab (field) values for all of the envelope's recipients.</p>
 <p>API method used:
     <a target='_blank'
        href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopeformdata/get/">EnvelopeFormData::get</a>.
 </p>
 
-<h4 id="example016">16. <a href="eg016">Set tab values for a envelope</a></h4>
-<p>This example sets the tab (field) values for an envelope including tabs that can and cannot be changed by the
-    signer.</p>
+<h4 id="example016">16. <a href="eg016">Set envelope tab values</a></h4>
+<p>Creates an envelope and sets the initial values for its tabs (fields). Some of the tabs are set to be read-only, others can be updated by the recipient. This example also stores metadata with the envelope.</p>
 <p>API method used:
     <a target='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">Envelopes::create</a>.
 </p>
 
-<h4 id="example017">17. <a href="eg017">Set template tab values</a></h4>
-<p>This example sets the tab (field) values for a template being used by an envelope.</p>
+<h4 id="example017">17. <a href="eg017">Set tab values in a template</a></h4>
+<p>Creates an envelope using a template and sets the initial values for its tabs (fields). This example also stores metadata with the envelope.</p>
 <p>API method used:
     <a target='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">Envelopes::create</a>.
 </p>
 
-<h4 id="example018">18. <a href="eg018">List envelope custom metadata field values</a></h4>
-<p>This example lists the envelope's custom metadata field values.</p>
+<h4 id="example018">18. <a href="eg018">Get envelope custom tab values</a></h4>
+<p>Retrieves the custom metadata (custom data fields) stored with the envelope.</p>
 <p>API method used:
     <a target='_blank'
        href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopecustomfields/list/">EnvelopeCustomFields::list</a>.
@@ -189,61 +168,66 @@
     <a target='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">Envelopes::create</a>.
 </p>
 
-<h4 id="example023">23. <a href="eg023">Require ID Verification (IDV) for a recipient</a></h4>
+<h4 id="example023">23. <a href="eg023">Require ID verification (IDV) for a recipient</a></h4>
 <p>Sends an envelope that requires the recipient to upload a government-issued ID for the purpose of multifactor authentication.</p>
 <p>API methods used:
     <a target='_blank'
-       href="https://developers.docusign.com/esign-rest-api/reference/Accounts/IdentityVerifications/list">Accounts::getAccountIdentityVerificationsList</a>.
+       href="https://developers.docusign.com/esign-rest-api/reference/Accounts/IdentityVerifications/list">Accounts::getAccountIdentityVerificationsList</a>, 
     <a target='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">Envelopes::create</a>.
 </p>
 
 <h2>Permissions</h2>
 
-<h4 id="example024">24. <a href="eg024">Creating a permission profile</a></h4>
-<p>This code example demonstrates how to create a permission profile with the eSignature REST API. </p>
-<p>API methods used:
+<h4 id="example024">24. <a href="eg024">Create a permission profile</a></h4>
+<p>Demonstrates how to create a permission profile with the eSignature REST API. </p>
+<p>API method used:
     <a target='_blank'
        href="https://developers.docusign.com/docs/esign-rest-api/reference/accounts/accountpermissionprofiles/create/">AccountPermissionProfiles::create</a>.
 </p>
 
-<h4 id="example025">25. <a href="eg025">Setting a permission profile</a></h4>
-<p>This code example demonstrates how to set a permission profile with the eSignature REST API. </p>
-<p>API methods used:
+<h4 id="example025">25. <a href="eg025">Set a permission profile</a></h4>
+<p>Demonstrates how to set a user group's permission profile. You must have already created a permission profile and a group of users.</p>
+<p>API method used:
     <a target="_blank" href="https://developers.docusign.com/docs/esign-rest-api/reference/usergroups/groups/update/">Groups::update</a>.
 </p>
 
-<h4 id="example026">26. <a href="eg026">Updates the permission profile.</a></h4>
-<p>This code example demonstrates how to update a permission profile with the eSignature REST API. </p>
+<h4 id="example026">26. <a href="eg026">Update individual permission settings</a></h4>
+<p>Demonstrates how to edit individual permission settings on a permission profile.</p>
 <p>API method used:
     <a target='_blank'
        href="https://developers.docusign.com/docs/esign-rest-api/reference/accounts/accountpermissionprofiles/update/">AccountPermissionProfiles::update</a>.
 </p>
 
-<h4 id="example027">27. <a href="eg027">Deleting a permission</a></h4>
-<p>This code example demonstrates how to delete a permission profile with the eSignature REST API. </p>
-<p>API methods used:
+<h4 id="example027">27. <a href="eg027">Delete a permission profile</a></h4>
+<p>Demonstrates how to delete a permission profile with the eSignature REST API. </p>
+<p>API method used:
     <a target='_blank'
        href="https://developers.docusign.com/esign-rest-api/code-examples/permission-profile-deleting">AccountPermissionProfiles::delete</a>.
 </p>
 
 <h2>Brands</h2>
 
-<h4 id="example028">28. <a href="eg028">Creating a brand</a></h4>
-<p>This code example demonstrates how to create a brand with the eSignature REST API. </p>
-<p>API methods used:
+<h4 id="example028">28. <a href="eg028">Create a brand</a></h4>
+<p>Creates a brand profile for an account.</p>
+<p>API method used:
     <a target='_blank'
        href="https://developers.docusign.com/docs/esign-rest-api/reference/accounts/accountbrands/create/">AccountBrands::create</a>.
 </p>
 
-<h4 id="example029">29. <a href="eg029">Applying a brand to an envelope</a></h4>
-<p>This code example demonstrates how to apply a brand to an envelope with the eSignature REST API.</p>
-<p>API methods used:
-    <a target='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">Envelopes::create</a>
+<h4 id="example029">29. <a href="eg029">Apply a brand to an envelope</a></h4>
+<p>Demonstrates how to apply a brand you've created to an envelope. First, this example creates the envelope, 
+then applies the brand to it. <a target='_blank'
+        href="https://developers.docusign.com/docs/esign-rest-api/esign101/concepts/tabs/auto-place/">Anchor text</a> is used 
+        to position the signing fields in the documents.</p>
+<p>API method used:
+    <a target='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">Envelopes::create</a>.
 </p>
 
-<h4 id="example030">30. <a href="eg030">Applying a brand to a template</a></h4>
-<p>This code example demonstrates how to apply a brand to a template with the eSignature REST API. </p>
-<p>API methods used:
+<h4 id="example030">30. <a href="eg030">Apply a brand and template to an envelope</a></h4>
+<p>Demonstrates how to apply a brand you've created to a template. You must have at least one created template and brand. <a target='_blank'
+        href="https://developers.docusign.com/docs/esign-rest-api/esign101/concepts/tabs/auto-place/">Anchor text</a> is used 
+        to position the signing fields in the documents.<p>
+<p>API method used:
     <a target='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">Envelopes::create</a>.
 </p>
 
@@ -260,45 +244,44 @@
     <a target="_blank" href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">Envelopes:create</a>,
     <a target="_blank" href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopecustomfields/create/">EnvelopeCustomFields:create</a>,
     <a target="_blank" href="https://developers.docusign.com/docs/esign-rest-api/reference/bulkenvelopes/bulksend/createbulksendrequest/">BulkSend:createBulkSendRequest</a>,
-    <a target="_blank" href="https://developers.docusign.com/docs/esign-rest-api/reference/bulkenvelopes/bulksend/getbulksendbatchstatus/">BulkSend:getBulkSendBatchStatus</a>
+    <a target="_blank" href="https://developers.docusign.com/docs/esign-rest-api/reference/bulkenvelopes/bulksend/getbulksendbatchstatus/">BulkSend:getBulkSendBatchStatus</a>.
 </p>
 
 <h2>Advanced recipient routing</h2>
 
-<h4 id="example032">32. <a href="eg032">Pausing a signature workflow</a></h4>
+<h4 id="example032">32. <a href="eg032">Pause a signature workflow</a></h4>
 <p>
-    This example creates and envelope and then pauses the signature workflow
+    Demonstrates how to create an envelope where the workflow is paused before the envelope is sent to a second recipient.
 </p>
 <p>
-    API methods used:
-    <a target="_blank" href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">Envelopes::create</a>
-</p>
-
-<h4 id="example033">33. <a href="eg033">Resuming a signature workflow</a></h4>
-<p>
-    This example resumes a signature workflow for the previously created envelope that was paused.
-</p>
-<p>
-    API methods used:
-    <a target="_blank" href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/update/">Envelopes::update</a>
+    API method used:
+    <a target="_blank" href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">Envelopes::create</a>.
 </p>
 
-<h4 id="example034">34. <a href="eg034">Using conditional recipients</a></h4>
+<h4 id="example033">33. <a href="eg033">Unpause a signature workflow</a></h4>
 <p>
-    This example creates an envelope that is routed to different recipients based on a predefined condition.
+    Demonstrates how to update an envelope to resume the workflow that has been paused using the Update Envelope method. You must have created at least one envelope with a paused signature workflow to run this example.
+<p>
+    API method used:
+    <a target="_blank" href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/update/">Envelopes::update</a>.
+</p>
+
+<h4 id="example034">34. <a href="eg034">Use conditional recipients</a></h4>
+<p>
+    Demonstrates how to create an envelope where the workflow is routed to different recipients based on the value of a transaction.
 </p>
 <p>
-    API methods used:
-    <a target="_blank" href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">Envelopes::create</a>
+    API method used:
+    <a target="_blank" href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">Envelopes::create</a>.
 </p>
 
 <h2>Premium features</h2>
 
-<h4 id="example035">35. <a href="eg035">Sending via SMS delivery</a></h4>
+<h4 id="example035">35. <a href="eg035">Request a signature by SMS delivery</a></h4>
 <p>
-    This example demonstrates how to send a signature request for a signer (and CC) to read and sign via an SMS message.
+    Demonstrates how to send a signature request via an SMS message.
 </p>
 <p>
-    API methods used:
-    <a target="_blank" href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">Envelopes::create</a>
+    API method used:
+    <a target="_blank" href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">Envelopes::create</a>.
 </p>
