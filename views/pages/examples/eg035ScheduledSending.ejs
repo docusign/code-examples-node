@@ -30,6 +30,7 @@
     <div class="form-group">
         <label for="signerName">Resume Date</label>
         <input type="date" class="form-control" id="resumeDate" name="resumeDate" required />
+        <small id="dateHelp" class="form-text text-muted">Please choose a date in the future.</small>
     </div>
     <input type="hidden" name="_csrf" value="<%- csrfToken %>">
     <button type="submit" class="btn btn-primary">Submit</button>

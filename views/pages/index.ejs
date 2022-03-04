@@ -5,18 +5,47 @@
   <div class="jumbotron jumbotron-fluid">
 
     <table>
-        <tbody>
-            <tr>
-                <td>
-                  <h1 class="display-4">DocuSign Code Launcher: Node.js</h1>
-                  <p class="Xlead">This launcher both demonstrates use of Authorization Code Grant and JWT OAuth flows and includes multiple usage examples for the DocuSign eSignature REST API.</p>
-                </td>
-                <td>
-                    <img src="/images/banner-code.png" />
-                </td>
-            </tr>
-        </tbody>
-    </table>
+      <tbody>
+          <tr>
+              <td>
+
+
+
+    <% if (locals.dsConfig.multiSourceChooser) { %>
+      <h1 class="display-4">Welcome</h1>
+      <p class="Xlead">Run and explore DocuSign code examples with Authorization Code Grant or JWT Grant authentication</p>
+    <% } else { %>
+      <h1 class="display-4">Node Launcher</h1>
+      <% if (examplesApi.examplesApi.isAdminApi) { %>
+        <p class="Xlead">
+          Run and explore DocuSign Admin API code examples with Authorization Code Grant or JWT Grant authentication
+        </p>
+      <% } else if (examplesApi.examplesApi.isClickApi) { %>
+        <p class="Xlead">
+          Run and explore Click API code examples with Authorization Code Grant or JWT Grant authentication
+        </p>
+      <% } else if (examplesApi.examplesApi.isRoomsApi) { %>
+        <p class="Xlead">
+          Run and explore Rooms API code examples with Authorization Code Grant or JWT Grant authentication
+        </p>
+      <% } else if (examplesApi.examplesApi.isMonitorApi) { %>
+        <p class="Xlead">
+          Run and explore Monitor API code examples with JWT Grant authentication
+        </p>
+      <% } else { %>
+        <p class="Xlead">
+          Run and explore eSignature REST API code examples with Authorization Code Grant or JWT Grant authentication
+        </p>
+      <% } %>
+    <% } %>
+
+  </td>
+  <td>
+      <img src="/images/banner-code.png" />
+  </td>
+</tr>
+</tbody>
+</table>
 
   </div>
 </div>
