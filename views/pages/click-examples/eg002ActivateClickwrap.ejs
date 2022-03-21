@@ -18,19 +18,30 @@
 
 <% include ../../partials/gitSource %>
 
-<% if (clickwrapOk) { %>
-    <p>The clickwrap you created via example 1 will be queried.</p>
-
-    <form class="eg" action="" method="post" data-busy="form">
-        <input type="hidden" name="_csrf" value="<%- csrfToken %>">
-        <button type="submit" class="btn btn-docu">Continue</button>
-    </form>
-<% } else { %>
-    <p>Problem: please first create a clickwrap using
-        <a href="eg001">example 1.</a><br/>Thank you.
+<% if (clickwrapsData.clickwraps.length == 0) { %>
+    <p>Problem: You do not have clickwraps to activate. Go to example#1 and create one: 
+        <a href="eg001">create clickwrap</a><br/>Thank you.
     </p>
     <form class="eg" action="eg001" method="get">
         <button type="submit" class="btn btn-docu">Continue</button>
+    </form>
+<% } else { %>
+    <p>Please choose a clickwrap to activate</p>
+
+    <form class="eg" action="" method="post" data-busy="form-download">
+        <div class="form-group">
+            <label for="clickwrap">Clickwrap</label>
+            <select class="custom-select" id="clickwrap"
+                    name="clickwrap">
+                <% for(var i=0; i < clickwrapsData.clickwraps.length; i++) { %>
+                <option value="<%=JSON.stringify(clickwrapsData.clickwraps[i])%>">
+                    <%= clickwrapsData.clickwraps[i].clickwrapName %>
+                </option>
+                <% } %>
+            </select>
+        </div>
+        <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+        <button type="submit" class="btn btn-docu">Submit</button>
     </form>
 <% } %>
 
