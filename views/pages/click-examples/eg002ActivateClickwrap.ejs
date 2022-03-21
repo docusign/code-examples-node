@@ -30,11 +30,13 @@
 
     <form class="eg" action="" method="post" data-busy="form-download">
         <div class="form-group">
-            <label for="clickwrapId">Clickwrap</label>
-            <select class="custom-select" id="clickwrapId"
-                    name="clickwrapId">
+            <label for="clickwrap">Clickwrap</label>
+            <select class="custom-select" id="clickwrap"
+                    name="clickwrap">
                 <% for(var i=0; i < clickwrapsData.clickwraps.length; i++) { %>
-                <option value="<%=clickwrapsData.clickwraps[i].clickwrapId%>"><%= clickwrapsData.clickwraps[i].clickwrapName %></option>
+                <option value="<%=JSON.stringify(clickwrapsData.clickwraps[i])%>">
+                    <%= clickwrapsData.clickwraps[i].clickwrapName %>
+                </option>
                 <% } %>
             </select>
         </div>
