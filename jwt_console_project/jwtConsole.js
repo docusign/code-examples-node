@@ -78,10 +78,10 @@ async function authenticate(){
 }
 
 function getArgs(apiAccountId, accessToken, basePath){
-  signerEmail = prompt("Please enter the signer's email address: ");
-  signerName = prompt("Please enter the signer's name: ");
-  ccEmail = prompt("Please enter the cc email address: ");
-  ccName = prompt("Please enter the cc name: ");
+  signerEmail = prompt("Enter the signer's email address: ");
+  signerName = prompt("Enter the signer's name: ");
+  ccEmail = prompt("Enter the carbon copy's email address: ");
+  ccName = prompt("Enter the carbon copy's name: ");
 
   const envelopeArgs = {
     signerEmail: signerEmail,
