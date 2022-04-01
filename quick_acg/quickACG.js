@@ -17,7 +17,6 @@ const flash = require('express-flash');
 const helmet = require('helmet'); // https://expressjs.com/en/advanced/best-practice-security.html
 const moment = require('moment');
 const csrf = require('csurf'); // https://www.npmjs.com/package/csurf
-const examplesApi = require('../config/examplesApi.json');
 
 const eg001 = require('../lib/eSignature/controllers/eg001EmbeddedSigning');
 
@@ -50,7 +49,7 @@ let app = express()
     res.locals.user = req.user;
     res.locals.session = req.session;
     res.locals.dsConfig = { ...dsConfig, docOptions: docOptions, docNames: docNames };
-    res.locals.examplesApi = examplesApi
+    res.locals.examplesApi = {"isESignatureApi":true};
     res.locals.hostUrl = hostUrl; // Used by DSAuthCodeGrant#logout
     next()
   })) // Send user info to views
@@ -70,8 +69,6 @@ let app = express()
   .post('/eg001', eg001.createController)
   .get('/ds/mustAuthenticate', redirectLogin)
   .get('/ds/login', commonControllers.login)
-  .get('/ds/logout', commonControllers.logout)
-  .get('/ds/logoutCallback', commonControllers.logoutCallback)
   .get('/ds-return', redirectReturn)
   .get('/ds/callback', [dsLoginCB1, dsLoginCB2]) // OAuth callbacks. See below
 ;
@@ -103,8 +100,7 @@ You can set them in the configuration file config/appsettings.json or set enviro
 passport.serializeUser(function (user, done) { done(null, user) });
 passport.deserializeUser(function (obj, done) { done(null, obj) });
 
-let scope = ["signature"];
-
+let scope = ["signature"];;
 // Configure passport for DocusignStrategy
 let docusignStrategy = new DocusignStrategy({
     production: dsConfig.production,
@@ -140,4 +136,5 @@ if (!dsConfig.allowSilentAuthentication) {
     return { prompt: 'login' };
   }
 }
+
 passport.use(docusignStrategy);

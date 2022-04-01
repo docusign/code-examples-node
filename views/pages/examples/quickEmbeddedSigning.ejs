@@ -47,7 +47,11 @@
         <a target ='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">Envelopes::create</a> and
         <a target ='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopeviews/createrecipient/">EnvelopeViews::createRecipient</a>.
       </p>
-      <% include ../../partials/gitSource %>
+      <% if (! locals.dsConfig.multiSourceChooser) { %>
+        <p>
+            View source file <a target="_blank" href="<%= sourceUrl %>"><%= sourceFile %></a> on GitHub.
+        </p>
+      <% } %>
       <form class="eg" action="" method="post" data-busy="form">
         <div class="form-group">
           <label for="signerEmail">Signer Email</label>
