@@ -48,7 +48,8 @@ let app = express()
   .use(((req, res, next) => {
     res.locals.user = req.user;
     res.locals.session = req.session;
-    res.locals.dsConfig = { ...dsConfig, docOptions: docOptions, docNames: docNames };
+    res.locals.dsConfig = { ...dsConfig, docOptions: docOptions, docNames: docNames};
+    res.locals.quickACG = true; 
     res.locals.examplesApi = {"isESignatureApi":true};
     res.locals.hostUrl = hostUrl; // Used by DSAuthCodeGrant#logout
     next()
