@@ -44,7 +44,7 @@
     "helmet": "^3.18.0",
     "jsonwebtoken": "^8.5.1",
     "memorystore": "^1.6.1",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "node-fetch": "2.6.7",
     "passport": "^0.4.0",
     "passport-docusign": "^1.1.0",
