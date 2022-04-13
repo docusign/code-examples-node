@@ -63,7 +63,7 @@ For a list of code examples that use the Admin API, select the Node.js tab under
 
    For both authentication flows:
 
-   If you use this launcher on your own workstation, the integration key must include redirect a URI of http://localhost:5000/ds/callback
+   If you use this launcher on your own workstation, the integration key must include redirect a URI of http://localhost:3000/ds/callback
 
    If you host this launcher on a remote web server, set your redirect URI as
 
@@ -84,11 +84,11 @@ For a list of code examples that use the Admin API, select the Node.js tab under
 1. To configure the launcher for [Authorization Code Grant](https://developers.docusign.com/platform/auth/authcode/) authentication, create a copy of the file config/appsettings.example.json and save the copy as config/appsettings.json.
    1. Add your integration key. On the [Apps and Keys](https://admindemo.docusign.com/authenticate?goTo=apiIntegratorKey) page, under **Apps and Integration Keys**, choose the app to use, then select **Actions > Edit**. Under **General Info**, copy the **Integration Key** GUID and save it in appsettings.json as your `dsClientId`.
    1. Generate a secret key, if you don’t already have one. Under **Authentication**, select **+ ADD SECRET KEY**. Copy the secret key and save it in appsettings.json as your `dsClientSecret`.
-   1. Add the launcher’s redirect URI. Under **Additional settings**, select **+ ADD URI**, and set a redirect URI of http://localhost:5000/ds/callback. Select **SAVE**.
+   1. Add the launcher’s redirect URI. Under **Additional settings**, select **+ ADD URI**, and set a redirect URI of http://localhost:3000/ds/callback. Select **SAVE**.
    1. Set a name and email address for the signer. In appsettings.json, save an email address as `signerEmail` and a name as `signerName`.
 **Note:** Protect your personal information. Please make sure that appsettings.json will not be stored in your source code repository.
 1. Run the launcher: `npm start`
-1. Open a browser to http://localhost:5000
+1. Open a browser to http://localhost:3000
 
 ### Installation steps for JWT Grant authentication
 
@@ -102,11 +102,11 @@ Also, in order to select JSON Web Token authentication in the launcher, in confi
    1. Add your User ID. On the [Apps and Keys](https://admindemo.docusign.com/authenticate?goTo=apiIntegratorKey) page, under **My Account Information**, copy the **User ID** GUID and save it in appsettings.json as your `impersonatedUserGuid`.
    1. Add your integration key. On the [Apps and Keys](https://admindemo.docusign.com/authenticate?goTo=apiIntegratorKey) page, under **Apps and Integration Keys**, choose the app to use, then select **Actions > Edit**. Under **General Info**, copy the **Integration Key** GUID and save it in apsettings.json as your `dsClientId`.
    1. Generate an RSA key pair, if you don’t already have one. Under **Authentication**, select **+ GENERATE RSA**. Copy the private key, and save it in a new file named config/private.key.
-   1. Add the launcher’s redirect URI. Under **Additional settings**, select **+ ADD URI**, and set a redirect URI of http://localhost:5000/ds/callback. Select **SAVE**.
+   1. Add the launcher’s redirect URI. Under **Additional settings**, select **+ ADD URI**, and set a redirect URI of http://localhost:3000/ds/callback. Select **SAVE**.
    1. Set a name and email address for the signer. In appsettings.json, save an email address as `signerEmail` and a name as `signerName`.
 **Note:** Protect your personal information. Please make sure that appsettings.json will not be stored in your source code repository.
 1. Run the launcher: `npm start`
-1. Open a browser to http://localhost:5000
+1. Open a browser to http://localhost:3000
 1. On the black navigation bar, select **Login**.
 1. From the picklist, select **JWT (JSON Web Token)** > **Authenticate with DocuSign**.
 1. When prompted, log in to your DocuSign developer account. If this is your first time using the app, select **ACCEPT** at the consent window.

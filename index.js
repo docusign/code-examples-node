@@ -47,7 +47,7 @@ const {
   eg001admin, eg002admin, eg003admin, eg004admin, eg005admin
 } = require("./lib/admin/controllers");
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || 'localhost';
 const max_session_min = 180;
 const csrfProtection = csrf({ cookie: true });
