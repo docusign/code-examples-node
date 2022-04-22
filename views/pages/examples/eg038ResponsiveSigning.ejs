@@ -1,11 +1,11 @@
 <% include ../../partials/examplesHead %>
 
-<h4>38. Signable HTML document</h4>
-<p>This example demonstrates how to create an HTML document for responsive signing.</p>
+<h4>38. Create a signable HTML document</h4>
+<p>Demonstrates how to create an HTML document for responsive signing.</p>
 
 <% include ../../partials/docBody %>
   
-<p>API method used: 
+<p>API methods used: 
   <a target ='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">Envelopes::create</a> and
   <a target ='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopeviews/createrecipient/">EnvelopeViews::createRecipient</a>.
 </p>
@@ -27,13 +27,13 @@
     <div class="form-group">
       <label for="ccEmail">CC Email</label>
       <input type="email" class="form-control" id="ccEmail" name="ccEmail"
-             aria-describedby="emailHelp" placeholder="pat@example.com" required
+             aria-describedby="emailHelp" placeholder="pat@example.com" required />
       <small id="emailHelp" class="form-text text-muted">The email for the cc recipient must be different from the signer's email.</small>
     </div>
     <div class="form-group">
       <label for="ccName">CC Name</label>
       <input type="text" class="form-control" id="ccName" placeholder="Pat Johnson" name="ccName"
-             required>
+             required />
     </div>
     <input type="hidden" name="_csrf" value="<%- csrfToken %>">
     <button type="submit" class="btn btn-docu">Submit</button>
