@@ -1,0 +1,27 @@
+<% include ../../partials/examplesHead %>
+
+<h4>6. Get user profile by email</h4>
+<p>
+    Demonstrates how to get user profile data by email.
+</p>
+
+<% include ../../partials/docBody %>
+
+<p>API method used:
+  UsersApi::getUserDSProfilesByEmail.
+</p>
+
+<% include ../../partials/gitSource %>
+
+<form class="eg" action="" method="post" data-busy="form">
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" id="email" name="email"
+             aria-describedby="emailHelp" placeholder="pat@example.com" required>
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+    <button type="submit" class="btn btn-docu">Submit</button>
+</form>
+
+<% include ../../partials/examplesFoot %>

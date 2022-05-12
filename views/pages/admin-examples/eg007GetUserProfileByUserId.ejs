@@ -1,0 +1,27 @@
+<% include ../../partials/examplesHead %>
+
+<h4>7. Get user profile by user ID</h4>
+<p>
+  Demonstrates how to get user profile data by user ID.
+</p>
+
+<% include ../../partials/docBody %>
+
+<p>API method used:
+  UsersApi::getUserDSProfile.
+</p>
+
+<% include ../../partials/gitSource %>
+
+<form class="eg" action="" method="post" data-busy="form">
+    <div class="form-group">
+      <label for="userId">User ID</label>
+      <input type="text" class="form-control" id="userId" name="userId"
+             placeholder="00000000-0000-0000-0000-000000000000" required
+             pattern="[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}">
+    </div>
+    <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+    <button type="submit" class="btn btn-docu">Submit</button>
+</form>
+
+<% include ../../partials/examplesFoot %>

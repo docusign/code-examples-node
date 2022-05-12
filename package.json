@@ -30,7 +30,7 @@
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.4",
     "csurf": "^1.10.0",
-    "docusign-admin": "^1.0.2",
+    "docusign-admin": "^1.1.0",
     "docusign-click": "^1.1.0",
     "docusign-esign": "^5.15.0",
     "docusign-monitor": "^1.0.1",
