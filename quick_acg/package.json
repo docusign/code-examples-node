@@ -27,7 +27,7 @@
     "fs-extra": "^6.0.1",
     "helmet": "^3.18.0",
     "memorystore": "^1.6.1",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "passport": "^0.4.0",
     "passport-docusign": "^1.1.0",
     "path": "^0.12.7",
