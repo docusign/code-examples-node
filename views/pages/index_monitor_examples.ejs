@@ -32,11 +32,6 @@
         a Node Express application.</p>
 <% } %>
 
-<% if (locals.dsConfig.multiSourceChooser) { %>
-    <h3 class="mt-4">Monitor API Code Examples for C#, PHP, Java, Node.js, Python, and Curl</h3>
-<% } else { %>
-    <h3 class="mt-4">Monitor API Code Examples</h3>
-<% } %>
 
 <h4 id="example001">1. <a href="eg001">Get monitoring data</a></h4>
 <p>
@@ -45,7 +40,16 @@
 <p>
     API method used:
     <a target='_blank'
-       href="https://developers.docusign.com/docs/monitor-api/reference/monitor/dataset/getstream/">DataSet::getStream</a>
+       href="https://developers.docusign.com/docs/monitor-api/reference/monitor/dataset/getstream/">DataSet:getStream</a>
+</p>
+
+<h4 id="example002">2. <a href="eg002">Query monitoring data with filters</a></h4>
+<p>
+    Demonstrates how to query an organization's data based on specified filters and aggregations.
+</p>
+<p>
+    API method used:
+    <a target='_blank' href="https://developers.docusign.com/docs/monitor-api/reference/monitor/dataset/postwebquery/">DataSet:postWebQuery</a>
 </p>
 </div>
 

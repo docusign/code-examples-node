@@ -42,7 +42,9 @@ const {
   eg007rooms, eg008rooms, eg009rooms,
 } = require("./lib/rooms/controllers");
 
-const { eg001monitor } = require("./lib/monitor/controllers/index");
+const {
+  eg001monitor, eg002monitor
+} = require("./lib/monitor/controllers/index");
 
 const {
   eg001admin, eg002admin, eg003admin, eg004admin, eg005admin
@@ -139,6 +141,8 @@ if (examplesApi.examplesApi.isRoomsApi) {
 } else if (examplesApi.examplesApi.isMonitorApi) {
   app.get('/eg001', eg001monitor.getController)
     .post('/eg001', eg001monitor.createController)
+    .get('/eg002', eg002monitor.getController)
+    .post('/eg002', eg002monitor.createController)
 } else if (examplesApi.examplesApi.isAdminApi) {
     app.get('/eg001', eg001admin.getController)
     .post('/eg001', eg001admin.createController)
