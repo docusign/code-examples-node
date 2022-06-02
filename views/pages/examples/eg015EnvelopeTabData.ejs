@@ -1,4 +1,4 @@
-<% include ../../partials/examplesHead %>
+<%- include("../../partials/examplesHead") %>
 
 <h4>15. Get the tab data from an envelope</h4>
 <p>Get the tab (field) values from an envelope for all of the envelope's recipients.</p>
@@ -8,13 +8,13 @@
    still in progress.
 </p>
 
-<% include ../../partials/docBody %>
+<%- include("../../partials/docBody") %>
 
 <p>API method used:
     <a target ='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopeformdata/get/">EnvelopeFormData::get</a>.
 </p>
 
-<% include ../../partials/gitSource %>
+<%- include("../../partials/gitSource") %>
 <% if (envelopeOk) { %>
     <p>The last envelope you created with this example launcher will be queried.
      Recommendation:  use example 9, then this example, since example 9 includes many tabs of different types.</p>
@@ -33,5 +33,5 @@
   </form>
   <% } %>
 
-  <% include ../../partials/examplesFoot %>
+  <%- include("../../partials/examplesFoot") %>
   

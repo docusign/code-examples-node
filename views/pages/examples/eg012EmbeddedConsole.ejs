@@ -1,4 +1,4 @@
-<% include ../../partials/examplesHead %>
+<%- include("../../partials/examplesHead") %>
 
 <h4>12. Embedded DocuSign web tool</h4>
 <p>Redirect the user to the DocuSign web tool.</p>
@@ -10,13 +10,13 @@
     Or you can open the NDSE in a new tab for the user.
 </p>
 
-<% include ../../partials/docBody %>
+<%- include("../../partials/docBody") %>
   
 <p>API method used: 
     <a target ='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopeviews/createconsole/">EnvelopeViews::createConsole</a>.
 </p>
 
-<% include ../../partials/gitSource %>
+<%- include("../../partials/gitSource") %>
 <% if (!envelopeOk) { %>
     <p><b>Optional:</b> to use the <i>Envelope's document view</i> please first create an envelope using 
         <a href="eg002">example 2.</a></p>
@@ -35,4 +35,4 @@
     <button type="submit" class="btn btn-docu">Continue</button>
 </form>
   
-<% include ../../partials/examplesFoot %>
+<%- include("../../partials/examplesFoot") %>

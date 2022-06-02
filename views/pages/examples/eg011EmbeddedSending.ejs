@@ -1,4 +1,4 @@
-<% include ../../partials/examplesHead %>
+<%- include("../../partials/examplesHead") %>
 
 <h4>11. Use embedded sending</h4>
 <p>An envelope will be created in draft mode. Your browser will then be redirected to 
@@ -14,14 +14,14 @@
     needed feature (see example 13 for adding additional documents programmatically).
 </p>
 
-<% include ../../partials/docBody %>
+<%- include("../../partials/docBody") %>
 
 <p>API methods used:
    <a target='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">Envelopes::create</a> and
    <a target='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopeviews/createsender/">EnvelopeViews::createSender</a>.
 </p>
 
-<% include ../../partials/gitSource %>
+<%- include("../../partials/gitSource") %>
 <form class="eg" action="" method="post" data-busy="form">
     <div class="form-group">
         <label for="startingView">Starting View</label>
@@ -57,4 +57,4 @@
     <button type="submit" class="btn btn-docu">Submit</button>
   </form>
   
-<% include ../../partials/examplesFoot %>
+<%- include("../../partials/examplesFoot") %>

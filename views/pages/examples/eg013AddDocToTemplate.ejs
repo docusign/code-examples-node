@@ -1,4 +1,4 @@
-<% include ../../partials/examplesHead %>
+<%- include("../../partials/examplesHead") %>
 
 <h4>13. Use Embedded Signing from a template with an added document</h4>
 
@@ -16,13 +16,13 @@
     signing is initiated from your website.</p>
 <% } %>
 
-<% include ../../partials/docBody %>
+<%- include("../../partials/docBody") %>
 
 <p>API methods used: 
    <a target ='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">Envelopes::create</a> and 
    <a target ='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopeviews/createrecipient/">EnvelopeViews::createRecipient</a>.
 </p>
-<% include ../../partials/gitSource %>
+<%- include("../../partials/gitSource") %>
 <% if (templateOk) { %>
   <p>The template you created via example 8 will be used.</p>
   
@@ -86,4 +86,4 @@
   </form>
 <% } %>
     
-<% include ../../partials/examplesFoot %>
+<%- include("../../partials/examplesFoot") %>

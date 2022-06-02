@@ -1,4 +1,4 @@
-<% include ../../partials/examplesHead %>
+<%- include("../../partials/examplesHead") %>
 
 <h4>30. Applying a brand to a template</h4>
 <% if (templateOk) { %>
@@ -6,14 +6,14 @@
   <p>The access-code to utilize the example provided is: <strong>NJ9@D1</strong></p>
 <% } %>
 
-<% include ../../partials/docBody %>
+<%- include("../../partials/docBody") %>
 
 <p>
     API method used:
     <a target='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">Envelopes::create</a>.
 </p>
 
-<% include ../../partials/gitSource %>
+<%- include("../../partials/gitSource") %>
 
 <% if (templateOk) { %>
   <% if (brands.length !== 0) { %>
@@ -69,4 +69,4 @@
   </form>
 <% } %>
 
-<% include ../../partials/examplesFoot %>
+<%- include("../../partials/examplesFoot") %>
