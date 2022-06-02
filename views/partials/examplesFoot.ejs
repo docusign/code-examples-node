@@ -1,10 +1,10 @@
 <% if (locals.dsConfig.multiSourceChooser) { %>
             </div> <!-- lcolumn -->
             <div id="rcolumn" class="col">
-                <% include sourceChooser %>
+                <%- include("sourceChooser") %>
             </div>
             </div> <!-- row -->
 <% } %>
         </section>
     </div> <!-- container -->
-    <% include foot %>
+    <%- include("foot") %>

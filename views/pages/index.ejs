@@ -1,4 +1,4 @@
-<% include ../partials/genericHead %>
+<%- include("../partials/genericHead") %>
 
   <!-- IF not signed in -->
 <div>
@@ -66,14 +66,14 @@
     </ul>
     <div class="tab-content" id="pills-tabContent">
       <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-          <% include index_examples %>
+          <%- include("index_examples") %>
       </div>
       <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-          <% include index_launchers %>
+          <%- include("index_launchers") %>
       </div>
     </div>
   <% } else { %>
-    <% include index_examples %>
+    <%- include("index_examples") %>
   <% } %>
 </section>
 </div>
@@ -82,4 +82,4 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js"></script>
 <script>anchors.options.placement = 'left'; anchors.add('h4')</script>
 
-<% include ../partials/genericFoot %>
+<%- include("../partials/genericFoot") %>

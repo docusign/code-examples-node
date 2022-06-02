@@ -1,4 +1,4 @@
-<% include ../../partials/examplesHead %>
+<%- include("../../partials/examplesHead") %>
 
 <h4>6. List an envelope's documents</h4>
 <p>List the envelope's documents. A <i>Certificate of Completion</i> document 
@@ -8,13 +8,13 @@
 <p>This method is often used to dynamically create a list of an envelope's documents
     in preparation for enabling your user to download one or more of the documents.</p>
 
-  <% include ../../partials/docBody %>
+  <%- include("../../partials/docBody") %>
   
 <p>API method used: 
    <a target='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopedocuments/list/">EnvelopeDocuments::list</a>.
 </p>
 
-<% include ../../partials/gitSource %>
+<%- include("../../partials/gitSource") %>
 <% if (envelopeOk) { %>
   <p>The envelope you created via example 2 will be queried.</p>
   
@@ -32,4 +32,4 @@
   </form>
 <% } %>
 
-<% include ../../partials/examplesFoot %>
+<%- include("../../partials/examplesFoot") %>

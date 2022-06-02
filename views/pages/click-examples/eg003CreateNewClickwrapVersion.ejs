@@ -1,4 +1,4 @@
-<% include ../../partials/examplesHead %>
+<%- include("../../partials/examplesHead") %>
 
 <h4>3. Create a new clickwrap version</h4>
 <p>
@@ -9,7 +9,7 @@
     to accept the new version when they return to your website.
 </p>
 
-<% include ../../partials/docBody %>
+<%- include("../../partials/docBody") %>
 
 <p>API method used:
     <a target='_blank'
@@ -19,7 +19,7 @@
     </a>
 </p>
 
-<% include ../../partials/gitSource %>
+<%- include("../../partials/gitSource") %>
 
 <% if (clickwrapsData.clickwraps.length == 0) { %>
     <p>Problem: You do not have clickwraps to activate. Go to example#1 and create one: 
@@ -49,4 +49,4 @@
     </form>
 <% } %>
 
-<% include ../../partials/examplesFoot %>
+<%- include("../../partials/examplesFoot") %>

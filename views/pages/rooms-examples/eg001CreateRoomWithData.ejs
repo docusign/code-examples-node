@@ -1,14 +1,14 @@
-<% include ../../partials/examplesHead %>
+<%- include("../../partials/examplesHead") %>
 <h4>1. Creates a new room from data.</h4>
 <p>This is a general example of creating a room.</p>
 
-<% include ../../partials/docBody %>
+<%- include("../../partials/docBody") %>
 
 <p>API methods used:
   <a target ='_blank' href="https://developers.docusign.com/rooms-api/reference/Roles/Roles/GetRoles">Roles::GetRoles</a> and
   <a target ='_blank' href="https://developers.docusign.com/rooms-api/reference/Rooms/Rooms/CreateRoom">Rooms::CreateRoom</a>.
 </p>
-<% include ../../partials/gitSource %>
+<%- include("../../partials/gitSource") %>
 <form class="eg" action="" method="post" data-busy="form">
   <div class="form-group">
     <label for="roomName">Room Name</label>
@@ -18,4 +18,4 @@
   <input type="hidden" name="_csrf" value="<%- csrfToken %>">
   <button type="submit" class="btn btn-docu">Submit</button>
 </form>
-<% include ../../partials/examplesFoot.ejs %>
+<%- include("../../partials/examplesFoot") %>

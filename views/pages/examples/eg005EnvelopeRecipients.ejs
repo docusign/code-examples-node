@@ -1,14 +1,14 @@
-<% include ../../partials/examplesHead %>
+<%- include("../../partials/examplesHead") %>
 
 <h4>5. List an envelope's recipients and their status</h4>
 <p>List the envelope's recipients, including their current status.</p>
 
-<% include ../../partials/docBody %>
+<%- include("../../partials/docBody") %>
   
   <p>API method used: 
    <a target='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/enveloperecipients/list/">EnvelopeRecipients::list</a>.
 </p>
-<% include ../../partials/gitSource %>
+<%- include("../../partials/gitSource") %>
 <% if (envelopeOk) { %>
   <p>The envelope you created via example 2 will be queried.</p>
   
@@ -26,4 +26,4 @@
   </form>
 <% } %>
   
-<% include ../../partials/examplesFoot %>
+<%- include("../../partials/examplesFoot") %>

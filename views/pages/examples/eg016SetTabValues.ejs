@@ -1,16 +1,16 @@
-<% include ../../partials/examplesHead %>
+<%- include("../../partials/examplesHead") %>
 
 <h4>16. Set tab values for a envelope</h4>
 <p>This example creates an example with both read-only tabs (fields) and tabs that can
     be updated by the recipient.</p>
 <p>The example also sets custom metadata in the envelope via the envelope custom fields feature.</p>
 
-<% include ../../partials/docBody %>
+<%- include("../../partials/docBody") %>
 
 <p>API method used:
    <a target ='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">Envelopes::create</a>.
 </p>
-<% include ../../partials/gitSource %>
+<%- include("../../partials/gitSource") %>
 <form class="eg" action="" method="post" data-busy="form">
     <div class="form-group">
       <label for="signerEmail">Signer Email</label>
@@ -28,5 +28,5 @@
     <button type="submit" class="btn btn-docu">Submit</button>
   </form>
   
-  <% include ../../partials/examplesFoot %>
+  <%- include("../../partials/examplesFoot") %>
 

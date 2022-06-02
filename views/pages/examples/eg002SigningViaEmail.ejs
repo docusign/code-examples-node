@@ -1,4 +1,4 @@
-<% include ../../partials/examplesHead %>
+<%- include("../../partials/examplesHead") %>
 
 <h4>2. Send an envelope with a remote (email) signer and cc recipient</h4>
 <p>The envelope includes a pdf, Word, and HTML document. Anchor text 
@@ -8,13 +8,13 @@
 <p>This is a general example of creating and sending an envelope (a signing request) to multiple recipients,
   with multiple documents, and with signature fields for the documents.</p>
 
-  <% include ../../partials/docBody %>
+  <%- include("../../partials/docBody") %>
   
   <p>API method used: 
    <a target='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">Envelopes::create</a>.
 </p>
 
-<% include ../../partials/gitSource %>
+<%- include("../../partials/gitSource") %>
 <form class="eg" action="" method="post" data-busy="form">
     <div class="form-group">
       <label for="signerEmail">Signer Email</label>
@@ -43,4 +43,4 @@
     <button type="submit" class="btn btn-docu">Submit</button>
 </form>
   
-<% include ../../partials/examplesFoot %>
+<%- include("../../partials/examplesFoot") %>
