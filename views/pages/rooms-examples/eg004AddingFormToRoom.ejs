@@ -1,8 +1,8 @@
-<% include ../../partials/examplesHead %>
+<%- include("../../partials/examplesHead") %>
 <h4>4. Adding form to a room.</h4>
 <p>This example adds form to a room.</p>
 
-<% include ../../partials/docBody %>
+<%- include("../../partials/docBody") %>
 
 <p>API methods used:
   <a target='_blank' href="https://developers.docusign.com/rooms-api/reference/Rooms/Rooms/GetRooms">Rooms: GetRooms</a>,
@@ -10,7 +10,7 @@
     <a target='_blank' href="https://developers.docusign.com/rooms-api/reference/Forms/FormLibraries/GetFormLibraryForms">FormLibraries: GetFormLibraryForms</a> and
     <a target='_blank' href="https://developers.docusign.com/rooms-api/reference/Rooms/Rooms/AddFormToRoom">Rooms: AddFormToRoom</a>.
 </p>
-<% include ../../partials/gitSource %>
+<%- include("../../partials/gitSource") %>
 <% if (rooms && rooms.length > 0) { %>
 <form class="eg" action="" method="post" data-busy="form">
   <div class="form-group">
@@ -40,4 +40,4 @@
     <button type="submit" class="btn btn-docu">Continue</button>
 </form>
 <% } %>
-<% include ../../partials/examplesFoot.ejs %>
+<%- include("../../partials/examplesFoot") %>

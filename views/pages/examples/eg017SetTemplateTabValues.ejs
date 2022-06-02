@@ -1,16 +1,16 @@
-<% include ../../partials/examplesHead %>
+<%- include("../../partials/examplesHead") %>
 
 <h4>17. Set template tab values</h4>
 <p>This example sets the value of a template's tabs. It includes setting
 radio button and checkbox tabs.</p>
 <p>The example also sets custom metadata in the envelope via the envelope custom fields feature.</p>
 
-<% include ../../partials/docBody %>
+<%- include("../../partials/docBody") %>
 
 <p>API method used:
    <a target ='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">Envelopes::create</a>.
 </p>
-<% include ../../partials/gitSource %>
+<%- include("../../partials/gitSource") %>
 <% if (templateOk) { %>
     <form class="eg" action="" method="post" data-busy="form">
         <div class="form-group">
@@ -49,5 +49,5 @@ radio button and checkbox tabs.</p>
     </form>
     <% } %>
 
-    <% include ../../partials/examplesFoot %>
+    <%- include("../../partials/examplesFoot") %>
     

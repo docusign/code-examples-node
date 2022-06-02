@@ -1,9 +1,9 @@
-<% include ../../partials/examplesHead %>
+<%- include("../../partials/examplesHead") %>
 
 <h4>2. Create a new active user for CLM and eSignature</h4>
 <p>Demonstrates how to create a new DocuSign user (valid for both CLM and eSignature) and activate their account automatically.</p>
 
-<% include ../../partials/docBody %>
+<%- include("../../partials/docBody") %>
 
 <p>
   API methods used:
@@ -15,7 +15,7 @@
     href="https://developers.docusign.com/docs/admin-api/reference/usermanagement/multiproductusermanagement/addorupdateuser/">MultiProductUserManagement:addOrUpdateUser</a>.
 </p>
 
-<% include ../../partials/gitSource %>
+<%- include("../../partials/gitSource") %>
 
 <form class="eg" action="" method="post" data-busy="form">
     <div class="form-group">
@@ -87,4 +87,4 @@
     </div>
 </form>
 
-<% include ../../partials/examplesFoot.ejs %>
+<%- include("../../partials/examplesFoot") %>

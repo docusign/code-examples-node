@@ -1,4 +1,4 @@
-<% include ../../partials/examplesHead %>
+<%- include("../../partials/examplesHead") %>
 
 <h4>19. Send an envelope with recipient Access-code authentication.</h4>
 <p>Anchor text 
@@ -7,13 +7,13 @@
 </p>
 <p>This is an example of an envelope utilizing Access-code authentication for multi-factor verification of a recipient.</p>
 
-<% include ../../partials/docBody %>
+<%- include("../../partials/docBody") %>
   
   <p>API method used: 
    <a target='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">Envelopes::create</a>.
 </p>
 
-<% include ../../partials/gitSource %>
+<%- include("../../partials/gitSource") %>
 <form class="eg" action="" method="post" data-busy="form">
   <div class="form-group">
     <label for="accessCode">Access Code</label>
@@ -36,4 +36,4 @@
     <button type="submit" class="btn btn-docu">Submit</button>
 </form>
   
-<% include ../../partials/examplesFoot %>
+<%- include("../../partials/examplesFoot") %>

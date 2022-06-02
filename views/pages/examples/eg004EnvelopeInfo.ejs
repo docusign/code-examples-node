@@ -1,4 +1,4 @@
-<% include ../../partials/examplesHead %>
+<%- include("../../partials/examplesHead") %>
 
 <h4>4. Get an envelope's basic information and status</h4>
 <p>List the basic information about an envelope, including its overall status.
@@ -11,13 +11,13 @@
   status of an envelope changes.
 </p>
 
-<% include ../../partials/docBody %>
+<%- include("../../partials/docBody") %>
 
 <p>API method used: 
    <a target='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/get/">Envelopes::get</a>.
 </p>
 
-<% include ../../partials/gitSource %>
+<%- include("../../partials/gitSource") %>
 <% if (envelopeOk) { %>
   <p>The envelope you created via example 2 will be queried.</p>
   
@@ -35,4 +35,4 @@
   </form>
 <% } %>
 
-<% include ../../partials/examplesFoot %>
+<%- include("../../partials/examplesFoot") %>

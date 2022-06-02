@@ -1,4 +1,4 @@
-<% include ../../partials/examplesHead %>
+<%- include("../../partials/examplesHead") %>
 
 <h4>29. Applying a brand to an envelope.</h4>
 
@@ -11,13 +11,13 @@
     This code example demonstrates how to apply a brand to an envelope.
 </p>
 
-<% include ../../partials/docBody %>
+<%- include("../../partials/docBody") %>
 
   <p>API method used:
    <a target='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">Envelopes::create</a>.
 </p>
 
-<% include ../../partials/gitSource %>
+<%- include("../../partials/gitSource") %>
 
 <% if (brands.length == 0) { %>
 <p>Problem: please first create the brand using <a href="eg028">example 28.</a> <br/>
@@ -54,4 +54,4 @@
 </form>
 <% } %>
 
-<% include ../../partials/examplesFoot %>
+<%- include("../../partials/examplesFoot") %>

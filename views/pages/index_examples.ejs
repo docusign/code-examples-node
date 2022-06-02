@@ -1,11 +1,11 @@
 <% if(locals.examplesApi.examplesApi.isRoomsApi) { %>
-    <% include index_rooms_examples %>
+    <%- include("index_rooms_examples") %>
 <% } else if(locals.examplesApi.examplesApi.isClickApi) { %>
-    <% include index_click_examples %>
+    <%- include("index_click_examples") %>
 <% } else if(locals.examplesApi.examplesApi.isMonitorApi) { %>
-    <% include index_monitor_examples %>
+    <%- include("index_monitor_examples") %>
 <% } else if(locals.examplesApi.examplesApi.isAdminApi) { %>
-    <% include index_admin_examples %>
+    <%- include("index_admin_examples") %>
 <% } else { %>
-    <% include index_esignature_examples %>
+    <%- include("index_esignature_examples") %>
 <% } %>

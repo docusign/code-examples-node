@@ -1,4 +1,4 @@
-<% include ../../partials/examplesHead %>
+<%- include("../../partials/examplesHead") %>
 
 <h4>18. Get the custom field data for an envelope</h4>
 <p>Get the data values associated with the envelope itself. The custom data fields enable you to
@@ -10,13 +10,13 @@ envelope's certificate of completion.</p>
    an envelope.
 </p>
 
-<% include ../../partials/docBody %>
+<%- include("../../partials/docBody") %>
 
 <p>API method used:
     <a target ='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopecustomfields/list/">EnvelopeCustomFields::list</a>.
 </p>
 
-<% include ../../partials/gitSource %>
+<%- include("../../partials/gitSource") %>
 <% if (envelopeOk) { %>
     <p>
         The last envelope you created with this example launcher will be queried.
@@ -38,5 +38,5 @@ envelope's certificate of completion.</p>
   </form>
   <% } %>
 
-  <% include ../../partials/examplesFoot %>
+  <%- include("../../partials/examplesFoot") %>
   
