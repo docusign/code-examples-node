@@ -1,0 +1,85 @@
+<%- include("../../partials/examplesHead") %>
+
+<h4>8. Update user product permission profiles using an email address</h4>
+<p>Demonstrates how to update user product permission profiles. There may only be one permission profile assigned to a user per product.</p>
+
+<%- include("../../partials/docBody") %>
+
+<p>
+    API methods used:
+    <a target='_blank' href="https://developers.docusign.com/docs/admin-api/reference/usermanagement/multiproductusermanagement/getproductpermissionprofiles/">MultiProductUserManagement:getProductPermissionProfiles</a>,
+    <a target="_blank" href="https://developers.docusign.com/docs/admin-api/reference/usermanagement/multiproductusermanagement/adduserproductpermissionprofilesbyemail/">MultiProductUserManagement:addUserProductPermissionProfilesByEmail</a>.
+</p>
+
+<%- include("../../partials/gitSource") %>
+
+<% if (emailOk) { %>
+    <p>Update user product permission profile for the following email: <b><%= email %></b></p>
+    
+    <form class="eg" action="" method="post" data-busy="form">
+        <div class="form-group">
+            <label for="productId">DocuSign Admin Group</label>
+            <select id="productId" name="productId" class="form-control">
+                <% products.forEach( product => { %>
+                    <option value="<%= product.product_id %>"> <%= product.product_name %> </option>
+                <% }) %>
+            </select>
+        </div>
+    
+        <% if (eSignPermissionProfiles && eSignPermissionProfiles.length > 0) { %>
+            <div class="form-group" id="esign-profiles" style="display: none">
+                <label for="eSignPermissionProfileId">eSignature Permission Profile</label>
+                <select id="eSignPermissionProfileId" name="eSignPermissionProfileId" class="form-control">
+                    <% eSignPermissionProfiles.forEach( permissionProfile => { %>
+                        <option value="<%= permissionProfile.permission_profile_id%>"> <%= permissionProfile.permission_profile_name %> </option>
+                    <% }) %>
+                </select>
+            </div>
+        <% } else { %>
+            <p>Problem: Please first create an eSignature permission profile.
+            </br>Thank you.</p>
+        <% } %>
+        
+        <% if (clmPermissionProfiles && clmPermissionProfiles.length > 0) { %>
+            <div class="form-group" id="clm-profiles">
+                <label for="clmPermissionProfileId">CLM Permission Profile</label>
+                <select id="clmPermissionProfileId" name="clmPermissionProfileId" class="form-control">
+                    <% clmPermissionProfiles.forEach( permissionProfile => { %>
+                        <option value="<%= permissionProfile.permission_profile_id %>"> <%= permissionProfile.permission_profile_name %> </option>
+                    <% }) %>
+                </select>
+            </div>
+        <% } else { %>
+            <p>Problem: Please first create a CLM permission profile.
+            </br>Thank you.</p>
+        <% } %>
+        
+        <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+        <button type="submit" class="btn btn-docu">Submit</button>
+    </form>
+    
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $("#productId").on("change", function () {
+            if($("#productId option:selected" ).text().includes("CLM")){
+                $("#esign-profiles").css("display", "none")
+                $("#clm-profiles").css("display", "block")
+            } else {
+                $("#esign-profiles").css("display", "block")
+                $("#clm-profiles").css("display", "none")
+            }
+        });
+    });
+    </script>
+
+<% } else { %>
+    <p>Problem: You do not have the user to change permissions for. Go to <a href="eg002">example 2</a> and create one.
+    </br>Thank you.</p>
+
+    <form class="eg" action="eg002" method="get">
+        <button type="submit" class="btn btn-docu">Continue</button>
+    </form>
+<% } %>
+
+<%- include("../../partials/examplesFoot") %>
