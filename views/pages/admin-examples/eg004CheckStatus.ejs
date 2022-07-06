@@ -1,4 +1,4 @@
-<% include ../../partials/genericHead %>
+<%- include("../../partials/genericHead") %>
 
 <% if (locals.status == "completed") { %>
   <h2><%= h1 %></h2>
@@ -15,4 +15,4 @@
   <p>The request has not completed, please refresh this page</p>
 <% } %>
 
-<% include ../../partials/genericFoot %>
+<%- include("../../partials/genericFoot") %>

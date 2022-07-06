@@ -1,4 +1,4 @@
-<% include ../../partials/examplesHead %>
+<%- include("../../partials/examplesHead") %>
 
 <h4>27. Deleting a permission profile</h4>
 <p>
@@ -7,7 +7,7 @@
     This code example demonstrates how to delete a permission profile with the eSignature REST API.
 </p>
 
-<% include ../../partials/docBody %>
+<%- include("../../partials/docBody") %>
 
 <p>
     API method used:
@@ -15,7 +15,7 @@
 </p>
 
 
-<% include ../../partials/gitSource %>
+<%- include("../../partials/gitSource") %>
 
 <% if (profiles.length == 0) { %>
 <p>Problem: please first create the profile using <a href="eg024">example 24.</a> <br/> Thank you.</p>
@@ -38,4 +38,4 @@
 </form>
 <% } %>
 
-<% include ../../partials/examplesFoot %>
+<%- include("../../partials/examplesFoot") %>

@@ -20,7 +20,7 @@ const csrf = require('csurf'); // https://www.npmjs.com/package/csurf
 
 const eg001 = require('../lib/eSignature/controllers/eg001EmbeddedSigning');
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || 'localhost';
 const max_session_min = 180;
 const csrfProtection = csrf({ cookie: true });

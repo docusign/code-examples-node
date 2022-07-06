@@ -1,4 +1,4 @@
-<% include ../../partials/examplesHead %>
+<%- include("../../partials/examplesHead") %>
 
 <h4>2. Query monitoring data with filters</h4>
 
@@ -6,13 +6,13 @@
   Demonstrates how to query an organization's data based on specified filters and aggregations.
 </p>
 
-<% include ../../partials/docBody %>
+<%- include("../../partials/docBody") %>
 
 <p>API method used:
   <a target='_blank' href="https://developers.docusign.com/docs/monitor-api/reference/monitor/dataset/postwebquery/">DataSet:postWebQuery</a>.
 </p>
 
-<% include ../../partials/gitSource %>
+<%- include("../../partials/gitSource") %>
 <p>Please select start and end dates.</p>
 
 <form class="eg" action="" method="post" data-busy="form">
@@ -30,4 +30,4 @@
   <button type="submit" class="btn btn-docu">Continue</button>
 </form>
 
-<% include ../../partials/examplesFoot %>
+<%- include("../../partials/examplesFoot") %>
