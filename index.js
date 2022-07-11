@@ -49,7 +49,7 @@ const {
 const {
   eg001admin, eg002admin, eg003admin,
   eg004admin, eg005admin, eg006admin,
-  eg007admin
+  eg007admin, eg008admin, eg009admin
 } = require("./lib/admin/controllers");
 
 const PORT = process.env.PORT || 3000;
@@ -161,6 +161,10 @@ if (examplesApi.examplesApi.isRoomsApi) {
     .post('/eg006', eg006admin.createController)
     .get('/eg007', eg007admin.getController)
     .post('/eg007', eg007admin.createController)
+    .get('/eg008', eg008admin.getController)
+    .post('/eg008', eg008admin.createController)
+    .get('/eg009', eg009admin.getController)
+    .post('/eg009', eg009admin.createController)
 } else {
   app.get('/eg001', eg001.getController)
     .post('/eg001', eg001.createController)

@@ -1,0 +1,45 @@
+<%- include("../../partials/examplesHead") %>
+
+<h4>9. Delete user product permission profiles using an email address</h4>
+<p>Demonstrates how to list and delete DocuSign Admin user product permission profiles.</p>
+
+<%- include("../../partials/docBody") %>
+
+<p>
+    API methods used:
+    <a target="_blank" href="https://developers.docusign.com/docs/admin-api/reference/usermanagement/multiproductusermanagement/getuserproductpermissionprofilesbyemail/">MultiProductUserManagement:getUserProductPermissionProfilesByEmail</a>,
+    <a target="_blank" href="https://developers.docusign.com/docs/admin-api/reference/usermanagement/multiproductusermanagement/removeuserproductpermission/">MultiProductUserManagement:removeUserProductPermission</a>.
+</p>
+
+<%- include("../../partials/gitSource") %>
+
+<% if (emailOk) { %>
+    <p>Delete user product permission profile for the following email: <b><%= email %></b></p>
+
+    <form class="eg" action="" method="post" data-busy="form">
+        <% if (permissionProfileList && permissionProfileList.length > 0) { %>
+            <div class="form-group">
+                <label for="productId">DocuSign Admin Group</label>
+                <select id="productId" name="productId" class="form-control">
+                    <% permissionProfileList.forEach( profile => { %>
+                        <option value="<%= profile.productId %>"> <%= profile.permissionName %> </option>
+                    <% }) %>
+                </select>
+            </div>
+        <% } else { %>
+            <p>Problem: Please first create a user with permission profile.
+            </br>Thank you.</p>
+        <% } %>
+
+        <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+        <button type="submit" class="btn btn-docu">Submit</button>
+    </form>
+<% } else { %>
+    <p>Problem: You do not have the user to change permissions for. Go to <a href="eg002">example 2</a> and create one.</p>
+
+    <form class="eg" action="eg002" method="get">
+        <button type="submit" class="btn btn-docu">Continue</button>
+    </form>
+<% } %>
+
+<%- include("../../partials/examplesFoot") %>
