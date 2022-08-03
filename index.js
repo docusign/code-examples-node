@@ -18,7 +18,7 @@ const flash = require('express-flash');
 const helmet = require('helmet'); // https://expressjs.com/en/advanced/best-practice-security.html
 const moment = require('moment');
 const csrf = require('csurf'); // https://www.npmjs.com/package/csurf
-const examplesApi = require('./config/examplesApi.json');
+const examplesApi = require('./config/examplesAPI.json');
 
 const eg001 = require('./lib/eSignature/controllers/eg001EmbeddedSigning');
 
