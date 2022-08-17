@@ -1,0 +1,24 @@
+<%- include("../../partials/examplesHead") %>
+
+<h4>Send an envelope to an In Person Signer</h4>
+<p>Demonstrates how to host an In Person Signing session with embedded signing.</p>
+
+<%- include("../../partials/docBody") %>
+
+<p>API methods used:
+  <a target='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">Envelopes::create</a>,
+  <a target='_blank'
+     href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopeviews/createrecipient/">EnvelopeViews::createRecipient</a>.
+</p>
+
+<%- include("../../partials/gitSource") %>
+<form class="eg" action="" method="post" data-busy="form">
+  <div class="form-group">
+    <label for="signerName">Signer Name</label>
+    <input type="text" class="form-control" id="signerName" placeholder="Pat Johnson" name="signerName" required>
+  </div>
+
+  <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+  <button type="submit" class="btn btn-docu">Submit</button>
+</form>
+<%- include("../../partials/examplesFoot") %>
