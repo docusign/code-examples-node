@@ -1,39 +1,25 @@
 <%- include("../../partials/examplesHead") %>
 
-<h4>Creating a brand</h4>
-<p>
-  The brand includes a Brand Name <a href="https://support.docusign.com/en/guides/ndse-admin-guide-configure-branding">Configure Brands</a>.
-</p>
-<p>
-  This code example demonstrates how to create a brand.
-</p>
+<%- include("../../partials/exampleInfo") %>
 
-<%- include("../../partials/docBody") %>
-
-<p>
-    API method used:
-    <a target='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/accounts/accountbrands/create/">AccountBrands::create</a>.
-</p>
-
-<%- include("../../partials/gitSource") %>
 <form class="eg" action="" method="post" data-busy="form">
-  <p>
-      <strong>New brand</strong>
-  </p>
+  <% if(example.Forms && example.Forms[0].FormName) { %>
+    <%- example.Forms[0].FormName %>
+  <% } %>
 
   <div class="form-group">
-      <label for="brandName">Brand name</label>
+      <label for="brandName"><%= example.Forms[0].Inputs[0].InputName %></label>
       <input type="text" class="form-control" id="brandName" name="brandName"
-             aria-describedby="emailHelp" placeholder="New Brand" required>
+             aria-describedby="emailHelp" placeholder="<%= example.Forms[0].Inputs[0].InputPlaceholder %>" required>
   </div>
   <div class="form-group">
-    <label for="defaultBrandLanguage">Default Brand language</label>
+    <label for="defaultBrandLanguage"><%= example.Forms[0].Inputs[1].InputName %></label>
     <select id="defaultBrandLanguage" name="defaultBrandLanguage" class="form-control">
           <option value="en" selected>English US</option>
     </select>
 </div>
-  <input type="hidden" name="_csrf" value="<%- csrfToken %>">
-  <button type="submit" class="btn btn-docu">Submit</button>
+<input type="hidden" name="_csrf" value="<%- csrfToken %>">
+<%- include("../../partials/submitButton") %>
 </form>
 
 <%- include("../../partials/examplesFoot") %>

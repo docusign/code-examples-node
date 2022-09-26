@@ -1,25 +1,18 @@
 <%- include("../../partials/examplesHead") %>
 
-<h4>9. Delete user product permission profiles using an email address</h4>
-<p>Demonstrates how to list and delete DocuSign Admin user product permission profiles.</p>
+<%- include("../../partials/exampleInfo") %>
 
-<%- include("../../partials/docBody") %>
-
-<p>
-    API methods used:
-    <a target="_blank" href="https://developers.docusign.com/docs/admin-api/reference/usermanagement/multiproductusermanagement/getuserproductpermissionprofilesbyemail/">MultiProductUserManagement:getUserProductPermissionProfilesByEmail</a>,
-    <a target="_blank" href="https://developers.docusign.com/docs/admin-api/reference/usermanagement/multiproductusermanagement/removeuserproductpermission/">MultiProductUserManagement:removeUserProductPermission</a>.
-</p>
-
-<%- include("../../partials/gitSource") %>
+<% include("../../partials/functions") %>
 
 <% if (emailOk) { %>
-    <p>Delete user product permission profile for the following email: <b><%= email %></b></p>
-
+    <% if(example.Forms && example.Forms[0].FormName) { %>
+      <%- formatString(example.Forms[0].FormName, email) %>
+    <% } %>
+    
     <form class="eg" action="" method="post" data-busy="form">
         <% if (permissionProfileList && permissionProfileList.length > 0) { %>
             <div class="form-group">
-                <label for="productId">DocuSign Admin Group</label>
+                <label for="productId"><%= example.Forms[0].Inputs[0].InputName %></label>
                 <select id="productId" name="productId" class="form-control">
                     <% permissionProfileList.forEach( profile => { %>
                         <option value="<%= profile.productId %>"> <%= profile.permissionName %> </option>
@@ -30,15 +23,14 @@
             <p>Problem: Please first create a user with permission profile.
             </br>Thank you.</p>
         <% } %>
-
         <input type="hidden" name="_csrf" value="<%- csrfToken %>">
-        <button type="submit" class="btn btn-docu">Submit</button>
+        <%- include("../../partials/submitButton") %>
     </form>
 <% } else { %>
-    <p>Problem: You do not have the user to change permissions for. Go to <a href="eg002">example 2</a> and create one.</p>
+    <%- formatString(example.RedirectsToOtherCodeExamples[0].RedirectText, formatString('href="eg00{0}"', example.RedirectsToOtherCodeExamples[0].CodeExampleToRedirectTo)) %>
 
     <form class="eg" action="eg002" method="get">
-        <button type="submit" class="btn btn-docu">Continue</button>
+        <%- include("../../partials/continueButton") %>
     </form>
 <% } %>
 

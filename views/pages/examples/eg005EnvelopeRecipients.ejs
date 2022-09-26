@@ -1,28 +1,24 @@
 <%- include("../../partials/examplesHead") %>
 
-<h4>List an envelope's recipients and their status</h4>
-<p>List the envelope's recipients, including their current status.</p>
+<%- include("../../partials/exampleInfo") %>
 
-<%- include("../../partials/docBody") %>
-  
-  <p>API method used: 
-   <a target='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/enveloperecipients/list/">EnvelopeRecipients::list</a>.
-</p>
-<%- include("../../partials/gitSource") %>
+<% include("../../partials/functions") %>
+
 <% if (envelopeOk) { %>
-  <p>The envelope you created via example 2 will be queried.</p>
-  
   <form class="eg" action="" method="post" data-busy="form">
-      <input type="hidden" name="_csrf" value="<%- csrfToken %>">
-      <button type="submit" class="btn btn-docu">Continue</button>
+    <% if(example.Forms && example.Forms[0].FormName) { %>
+      <%- example.Forms[0].FormName %>
+    <% } %>
+    
+    <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+    <%- include("../../partials/submitButton") %>
   </form>
 
 <% } else { %>
-  <p>Problem: please first create an envelope using <a href="eg002">example 2.</a> <br/>
-     Thank you.</p>
+  <%- formatString(example.RedirectsToOtherCodeExamples[0].RedirectText, formatString('href="eg00{0}"', example.RedirectsToOtherCodeExamples[0].CodeExampleToRedirectTo)) %>
      
   <form class="eg" action="eg002" method="get">
-      <button type="submit" class="btn btn-docu">Continue</button>
+      <%- include("../../partials/continueButton") %>
   </form>
 <% } %>
   

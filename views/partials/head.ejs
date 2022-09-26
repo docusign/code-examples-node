@@ -7,7 +7,11 @@
     <meta name="author" content="">
     <link rel="icon" href="assets/favicon.ico">
 
-    <title><%= title %></title>
+    <% if (locals.example && locals.example.ExampleName) { %>
+      <title><%= example.ExampleName %></title>
+    <% } else { %>
+      <title><%= title %></title>
+    <% } %>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -27,23 +31,23 @@
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/"><%= locals.manifest.SupportingTexts.HomeButton %> <span class="sr-only">(current)</span></a>
           </li>
 
           <% if (locals.user) { %>
             <li>
               <a class="nav-link" href="/ds/logout" id="logout"
-                 data-busy="href">Logout <span class="sr-only">(current)</span></a>
+                 data-busy="href"><%= locals.manifest.SupportingTexts.LogoutButton %> <span class="sr-only">(current)</span></a>
             </li>
           <% } else { %>
             <li>
               <a class="nav-link" href="/ds/mustAuthenticate" id="login"
-                 data-busy="href">Login <span class="sr-only">(current)</span></a>
+                 data-busy="href"><%= locals.manifest.SupportingTexts.LoginButton %> <span class="sr-only">(current)</span></a>
             </li>
           <% }  %>
           <li>
             <a class="nav-link" href="/ds/choose_api" id="choose_api"
-               data-busy="href">Choose API <span class="sr-only">(current)</span></a>
+               data-busy="href"><%= locals.manifest.SupportingTexts.ChangeAPITypeButton %> <span class="sr-only">(current)</span></a>
           </li>
         </ul>
 
@@ -78,5 +82,5 @@
         </div>
       </section>
 
-      <p id="download-continue" class="feedback"><a href="/">Continue</a></p>
+      <p id="download-continue" class="feedback"><a href="/"><%= locals.manifest.SupportingTexts.ContinueButton %></a></p>
     </div> <!-- container -->

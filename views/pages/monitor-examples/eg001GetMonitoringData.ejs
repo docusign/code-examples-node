@@ -1,21 +1,14 @@
 <%- include("../../partials/examplesHead") %>
 
-<h4>1. Get monitoring data</h4>
+<%- include("../../partials/exampleInfo") %>
 
-<p>
-  Demonstrates how to get and display all of your organization’s monitoring data.
-</p>
-
-<%- include("../../partials/docBody") %>
-
-<p>API method used:
-  <a target='_blank' href="https://developers.docusign.com/docs/monitor-api/reference/monitor/dataset/getstream/">DataSet::getStream</a>.
-</p>
-
-<%- include("../../partials/gitSource") %>
 <form class="eg" action="" method="post" data-busy="form">
+  <% if(example.Forms && example.Forms[0].FormName) { %>
+    <%- example.Forms[0].FormName %>
+  <% } %>
+  
   <input type="hidden" name="_csrf" value="<%- csrfToken %>">
-  <button type="submit" class="btn btn-docu">Continue</button>
+  <%- include("../../partials/submitButton") %>
 </form>
 
 <%- include("../../partials/examplesFoot") %>

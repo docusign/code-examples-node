@@ -1,38 +1,23 @@
 <%- include("../../partials/examplesHead") %>
 
-<h4>3. Create a new clickwrap version</h4>
-<p>
-    Creates a new version of a clickwrap.
-</p>
-<p>
-    You can specify whether you require users who have previously accepted the clickwrap 
-    to accept the new version when they return to your website.
-</p>
+<%- include("../../partials/exampleInfo") %>
 
-<%- include("../../partials/docBody") %>
-
-<p>API method used:
-    <a target='_blank'
-       href="https://developers.docusign.com/docs/click-api/reference/accounts/clickwraps/createclickwrapversion"
-    >
-        ClickWraps::createClickwrapVersion
-    </a>
-</p>
-
-<%- include("../../partials/gitSource") %>
+<% include("../../partials/functions") %>
 
 <% if (clickwrapsData.clickwraps.length == 0) { %>
-    <p>Problem: You do not have clickwraps to activate. Go to example#1 and create one: 
-        <a href="eg001">create clickwrap</a><br/>Thank you.
-    </p>
+    <%- formatString(example.RedirectsToOtherCodeExamples[0].RedirectText, formatString('href="eg00{0}"', example.RedirectsToOtherCodeExamples[0].CodeExampleToRedirectTo)) %>
     <form class="eg" action="eg001" method="get">
-        <button type="submit" class="btn btn-docu">Continue</button>
+        <%- include("../../partials/continueButton") %>
     </form>
 <% } else { %>
 
     <form class="eg" action="" method="post" data-busy="form-download">
+        <% if(example.Forms && example.Forms[0].FormName) { %>
+          <%- example.Forms[0].FormName %>
+        <% } %>
+        
         <div class="form-group">
-            <label for="clickwrapId">Clickwrap</label>
+            <label for="clickwrapId"><%= example.Forms[0].Inputs[0].InputName %></label>
             <select class="custom-select" id="clickwrapId"
                     name="clickwrapId">
                 <% for(var i=0; i < clickwrapsData.clickwraps.length; i++) { %>
@@ -41,11 +26,12 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="clickwrapName">New Name</label>
-            <input type="text" class="form-control" id="clickwrapName" name="clickwrapName" required/>
+            <label for="clickwrapName"><%= example.Forms[0].Inputs[1].InputName %></label>
+            <input type="text" class="form-control" id="clickwrapName" name="clickwrapName"
+                   placeholder="<%= example.Forms[0].Inputs[1].InputPlaceholder %>" required/>
         </div>
         <input type="hidden" name="_csrf" value="<%- csrfToken %>">
-        <button type="submit" class="btn btn-docu">Submit</button>
+        <%- include("../../partials/submitButton") %>
     </form>
 <% } %>
 

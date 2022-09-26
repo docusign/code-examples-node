@@ -1,58 +1,47 @@
 <%- include("../../partials/examplesHead") %>
 
-<h4>Send an envelope using a template</h4>
-<p>The envelope is defined by the template.
-   The signer and cc recipient name and email are used to fill in the template's <i>roles</i>.</p>
+<%- include("../../partials/exampleInfo") %>
 
-<p>This example demonstrates a common pattern for DocuSign integrations: envelopes will
-  be sent programmatically, based on a template. If the template definition needs to be
-  updated, the DocuSign web tool can be used to easily update the template, thus 
-  avoiding the need to make software changes.
-</p>
+<% include("../../partials/functions") %>
 
-<%- include("../../partials/docBody") %>
-
-<p>API method used: 
-   <a target='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">Envelopes::create</a>.
-</p>
-<%- include("../../partials/gitSource") %>
 <% if (templateOk) { %>
-  <p>The template you created via example 8 will be used.</p>
-  
   <form class="eg" action="" method="post" data-busy="form">
+    <% if(example.Forms && example.Forms[0].FormName) { %>
+      <%- example.Forms[0].FormName %>
+    <% } %>
+    
       <div class="form-group">
-        <label for="signerEmail">Signer Email</label>
+        <label for="signerEmail"><%= example.Forms[0].Inputs[0].InputName %></label>
         <input type="email" class="form-control" id="signerEmail" name="signerEmail"
-               aria-describedby="emailHelp" placeholder="pat@example.com" required
+               aria-describedby="emailHelp" placeholder="<%= example.Forms[0].Inputs[0].InputPlaceholder %>" required
                value="<%= locals.dsConfig.signerEmail %>">
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        <small id="emailHelp" class="form-text text-muted"><%= locals.manifest.SupportingTexts.HelpingTexts.EmailWontBeShared %></small>
       </div>
       <div class="form-group">
-        <label for="signerName">Signer Name</label>
-        <input type="text" class="form-control" id="signerName" placeholder="Pat Johnson" name="signerName"
+        <label for="signerName"><%= example.Forms[0].Inputs[1].InputName %></label>
+        <input type="text" class="form-control" id="signerName" placeholder="<%= example.Forms[0].Inputs[1].InputPlaceholder %>" name="signerName"
                value="<%= locals.dsConfig.signerName %>" required>
       </div>
       <div class="form-group">
-        <label for="ccEmail">CC Email</label>
+        <label for="ccEmail"><%= example.Forms[0].Inputs[2].InputName %></label>
         <input type="email" class="form-control" id="ccEmail" name="ccEmail"
-               aria-describedby="emailHelp" placeholder="pat@example.com" required
-        <small id="emailHelp" class="form-text text-muted">The email for the cc recipient must be different from the signer's email.</small>
+               aria-describedby="emailHelp" placeholder="<%= example.Forms[0].Inputs[2].InputPlaceholder %>" required
+        <small id="emailHelp" class="form-text text-muted"><%= locals.manifest.SupportingTexts.HelpingTexts.CCEmailShouldDifferFromSigner %></small>
       </div>
       <div class="form-group">
-        <label for="ccName">CC Name</label>
-        <input type="text" class="form-control" id="ccName" placeholder="Pat Johnson" name="ccName"
+        <label for="ccName"><%= example.Forms[0].Inputs[3].InputName %></label>
+        <input type="text" class="form-control" id="ccName" placeholder="<%= example.Forms[0].Inputs[3].InputPlaceholder %>" name="ccName"
                required>
       </div>
       <input type="hidden" name="_csrf" value="<%- csrfToken %>">
-      <button type="submit" class="btn btn-docu">Submit</button>
+      <%- include("../../partials/submitButton") %>
     </form>  
 
 <% } else { %>
-  <p>Problem: please first create the template using <a href="eg008">example 8.</a> <br/>
-     Thank you.</p>
+  <%- formatString(example.RedirectsToOtherCodeExamples[0].RedirectText, formatString('href="eg00{0}"', example.RedirectsToOtherCodeExamples[0].CodeExampleToRedirectTo)) %>
      
   <form class="eg" action="eg008" method="get">
-      <button type="submit" class="btn btn-docu">Continue</button>
+      <%- include("../../partials/continueButton") %>
   </form>
 <% } %>
   

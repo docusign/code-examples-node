@@ -1,20 +1,17 @@
 <%- include("../../partials/examplesHead") %>
-<h4>4. Adding form to a room.</h4>
-<p>This example adds form to a room.</p>
 
-<%- include("../../partials/docBody") %>
+<%- include("../../partials/exampleInfo") %>
 
-<p>API methods used:
-  <a target='_blank' href="https://developers.docusign.com/rooms-api/reference/Rooms/Rooms/GetRooms">Rooms: GetRooms</a>,
-    <a target='_blank' href="https://developers.docusign.com/rooms-api/reference/Forms/FormLibraries/GetFormLibraries">FormLibraries: GetFormLibraries</a>,
-    <a target='_blank' href="https://developers.docusign.com/rooms-api/reference/Forms/FormLibraries/GetFormLibraryForms">FormLibraries: GetFormLibraryForms</a> and
-    <a target='_blank' href="https://developers.docusign.com/rooms-api/reference/Rooms/Rooms/AddFormToRoom">Rooms: AddFormToRoom</a>.
-</p>
-<%- include("../../partials/gitSource") %>
+<% include("../../partials/functions") %>
+
 <% if (rooms && rooms.length > 0) { %>
 <form class="eg" action="" method="post" data-busy="form">
+  <% if(example.Forms && example.Forms[0].FormName) { %>
+    <%- example.Forms[0].FormName %>
+  <% } %>
+  
   <div class="form-group">
-    <label for="roomId">Room</label>
+    <label for="roomId"><%= example.Forms[0].Inputs[0].InputName %></label>
     <select id="roomId" name="roomId" class="form-control" required>
       <% rooms.forEach( room => { %>
         <option value="<%= room.roomId %>" selected> <%= room.name %> </option>
@@ -22,22 +19,21 @@
     </select>
   </div>
   <div class="form-group">
-    <label for="libraryFormId">Form</label>
+    <label for="libraryFormId"><%= example.Forms[0].Inputs[1].InputName %></label>
     <select id="libraryFormId" name="libraryFormId" class="form-control" required>
-      <% forms.forEach( form => { %>
+      <% example.Forms.forEach( form => { %>
         <option value="<%= form.libraryFormId %>" selected> <%= form.name %> </option>
       <% }) %>
     </select>
 </div>
-  <input type="hidden" name="_csrf" value="<%- csrfToken %>">
-  <button type="submit" class="btn btn-docu">Submit</button>
+<input type="hidden" name="_csrf" value="<%- csrfToken %>">
+<%- include("../../partials/submitButton") %>
 </form>
 <% } else { %>
-  <p>Problem: please first create a room using <a href="eg001">example 1.</a> <br/>
-   Thank you.</p>
+  <%- formatString(example.RedirectsToOtherCodeExamples[0].RedirectText, formatString('href="eg00{0}"', example.RedirectsToOtherCodeExamples[0].CodeExampleToRedirectTo)) %>
    
 <form class="eg" action="eg001" method="get">
-    <button type="submit" class="btn btn-docu">Continue</button>
+    <%- include("../../partials/continueButton") %>
 </form>
 <% } %>
 <%- include("../../partials/examplesFoot") %>

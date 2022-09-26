@@ -1,27 +1,22 @@
 <%- include("../../partials/examplesHead") %>
-<h4>2. Create a room from template.</h4>
-<p>Create a room from template.</p>
 
-<%- include("../../partials/docBody") %>
+<%- include("../../partials/exampleInfo") %>
 
-<p>API methods used:
-  <a target='_blank' href="https://developers.docusign.com/rooms-api/reference/Roles/Roles/GetRoles">Roles::GetRoles</a>
-  and
-  <a target='_blank'
-    href="https://developers.docusign.com/rooms-api/reference/Rooms/Rooms/CreateRoom">Rooms::CreateRoom</a>
-  <a target='_blank'
-    href="https://developers.docusign.com/rooms-api/reference/RoomTemplates/RoomTemplates/GetRoomTemplates">RoomTemplates::GetRoomTemplates</a>
-</p>
-<%- include("../../partials/gitSource") %>
+<% include("../../partials/functions") %>
+
 <% if (templates && templates.length > 0) { %>
   <form class="eg" action="" method="post" data-busy="form">
+    <% if(example.Forms && example.Forms[0].FormName) { %>
+      <%- example.Forms[0].FormName %>
+    <% } %>
+    
     <div class="form-group">
-      <label for="roomName">Room Name</label>
-      <input type="text" class="form-control" id="roomName" placeholder="Sample Room Name" name="roomName"
+      <label for="roomName"><%= example.Forms[0].Inputs[0].InputName %></label>
+      <input type="text" class="form-control" id="roomName" placeholder="<%= example.Forms[0].Inputs[0].InputPlaceholder %>" name="roomName"
         value="<%= locals.dsConfig.roomName %>" required>
     </div>
     <div class="form-group">
-      <label for="templateId">Template</label>
+      <label for="templateId"><%= example.Forms[0].Inputs[1].InputName %></label>
       <select id="templateId" name="templateId" class="form-control">
         <% templates.forEach( template => { %>
         <option value="<%= template.templateId %>" selected> <%= template.name %> </option>
@@ -29,14 +24,13 @@
       </select>
     </div>
     <input type="hidden" name="_csrf" value="<%- csrfToken %>">
-    <button type="submit" class="btn btn-docu">Submit</button>
+    <%- include("../../partials/submitButton") %>
   </form>
   <% } else { %>
-    <p>Problem: you don't have any templates. Please first create a form template using <a href="https://demo.rooms.docusign.com/admin/company/roomtemplates">Docusign Admin</a> <br/>
-     Thank you.</p>
+    <%- formatString(example.RedirectsToOtherCodeExamples[0].RedirectText, formatString('href="eg00{0}"', example.RedirectsToOtherCodeExamples[0].CodeExampleToRedirectTo)) %>
      
   <form class="eg" action="eg002" method="get">
-      <button type="submit" class="btn btn-docu">Continue</button>
+      <%- include("../../partials/continueButton") %>
   </form>
   <% } %>
 

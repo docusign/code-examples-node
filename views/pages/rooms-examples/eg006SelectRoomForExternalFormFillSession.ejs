@@ -1,19 +1,17 @@
 <%- include("../../partials/examplesHead") %>
-<h4>6. Creates external form fill session.</h4>
-<p>This is an example of creating external form fill session.</p>
 
-<%- include("../../partials/docBody") %>
+<%- include("../../partials/exampleInfo") %>
 
-<p>API methods used:
-  <a target ='_blank' href="https://developers.docusign.com/rooms-api/reference/Rooms/Rooms/GetRooms">Rooms::GetRooms</a>,
-  <a target ='_blank' href="https://developers.docusign.com/rooms-api/reference/Rooms/Rooms/GetDocuments">Rooms::GetDocuments</a> and
-  <a target ='_blank' href="https://developers.docusign.com/rooms-api/reference/Rooms/ExternalFormFillSessions/CreateExternalFormFillSession">ExternalFormFillSessions::CreateExternalFormFillSession</a>
-</p>
-<%- include("../../partials/gitSource") %>
+<% include("../../partials/functions") %>
+
 <% if (rooms && rooms.length > 0) { %>
 <form class="eg" action="" method="post" data-busy="form">
+  <% if(example.Forms && example.Forms[0].FormName) { %>
+    <%- example.Forms[0].FormName %>
+  <% } %>
+  
   <div class="form-group">
-    <label for="roomId">Room</label>
+    <label for="roomId"><%= example.Forms[0].Inputs[0].InputName %></label>
     <select id="roomId" name="roomId" class="form-control" required>
       <% rooms.forEach( room => { %>
         <option value="<%= room.roomId %>" selected> <%= room.name %> </option>
@@ -21,14 +19,13 @@
     </select>
   </div>
   <input type="hidden" name="_csrf" value="<%- csrfToken %>">
-  <button type="submit" class="btn btn-docu">Submit</button>
+  <%- include("../../partials/submitButton") %>
 </form>
 <% } else { %>
-  <p>Problem: please first create a room using <a href="eg001">example 1.</a> <br/>
-   Thank you.</p>
+  <%- formatString(example.RedirectsToOtherCodeExamples[0].RedirectText, formatString('href="eg00{0}"', example.RedirectsToOtherCodeExamples[0].CodeExampleToRedirectTo)) %>
    
 <form class="eg" action="eg001" method="get">
-    <button type="submit" class="btn btn-docu">Continue</button>
+    <%- include("../../partials/continueButton") %>
 </form>
 <% } %>
 <%- include("../../partials/examplesFoot") %>

@@ -1,55 +1,41 @@
 <%- include("../../partials/examplesHead") %>
 
-<h4>Send an envelope with an order form, including a payment field.</h4>
+<%- include("../../partials/exampleInfo") %>
 
-<h5 style="color: purple;">Note: This example will only work if the sender's DocuSign account
-  is set up with a DocuSign payment gateway. Since the Payment Gateway ID 
-  is set in the configuration file, you will need to run your 
-  own instance of this project to set it.
-</h5>
-
-<p>Anchor strings 
-  (<a href="https://developers.docusign.com/docs/esign-rest-api/esign101/concepts/tabs/auto-place/">AutoPlace</a>)
-  are used to position the fields in the documents.
-</p>
-
-<%- include("../../partials/docBody") %>
-  
-  <p>API method used: 
-   <a target='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">Envelopes::create</a>.
-</p>
-
-<%- include("../../partials/gitSource") %>
 <% if (gatewayOk) { %>
   <form class="eg" action="" method="post" data-busy="form">
+    <% if(example.Forms && example.Forms[0].FormName) { %>
+      <%- example.Forms[0].FormName %>
+    <% } %>
+    
       <div class="form-group">
-        <label for="signerEmail">Signer Email</label>
+        <label for="signerEmail"><%= example.Forms[0].Inputs[0].InputName %></label>
         <input type="email" class="form-control" id="signerEmail" name="signerEmail"
-              aria-describedby="emailHelp" placeholder="pat@example.com" required
+              aria-describedby="emailHelp" placeholder="<%= example.Forms[0].Inputs[0].InputPlaceholder %>" required
               value="<%= locals.dsConfig.signerEmail %>">
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        <small id="emailHelp" class="form-text text-muted"><%= locals.manifest.SupportingTexts.HelpingTexts.EmailWontBeShared %></small>
       </div>
       <div class="form-group">
-        <label for="signerName">Signer Name</label>
-        <input type="text" class="form-control" id="signerName" placeholder="Pat Johnson" name="signerName"
+        <label for="signerName"><%= example.Forms[0].Inputs[1].InputName %></label>
+        <input type="text" class="form-control" id="signerName" placeholder="<%= example.Forms[0].Inputs[1].InputPlaceholder %>" name="signerName"
               value="<%= locals.dsConfig.signerName %>" required>
       </div>
       <div class="form-group">
-        <label for="ccEmail">CC Email</label>
+        <label for="ccEmail"><%= example.Forms[0].Inputs[2].InputName %></label>
         <input type="email" class="form-control" id="ccEmail" name="ccEmail"
-              aria-describedby="emailHelp" placeholder="pat@example.com" required
-        <small id="emailHelp" class="form-text text-muted">The email for the cc recipient must be different from the signer's email.</small>
+              aria-describedby="emailHelp" placeholder="<%= example.Forms[0].Inputs[2].InputPlaceholder %>" required
+        <small id="emailHelp" class="form-text text-muted"><%= locals.manifest.SupportingTexts.HelpingTexts.CCEmailShouldDifferFromSigner %></small>
       </div>
       <div class="form-group">
-        <label for="ccName">CC Name</label>
-        <input type="text" class="form-control" id="ccName" placeholder="Pat Johnson" name="ccName"
+        <label for="ccName"><%= example.Forms[0].Inputs[3].InputName %></label>
+        <input type="text" class="form-control" id="ccName" placeholder="<%= example.Forms[0].Inputs[3].InputPlaceholder %>" name="ccName"
               required>
       </div>
       <input type="hidden" name="_csrf" value="<%- csrfToken %>">
-      <button type="submit" class="btn btn-docu">Submit</button>
+      <%- include("../../partials/submitButton") %>
     </form>
 <% } else { %>
-  <p>Problem: please set the <b>DS_PAYMENT_GATEWAY_ID</b> value in the configuration file.</p>
+  <%- example.RedirectsToOtherCodeExamples[0].RedirectText %>
 <% } %>
 
 <%- include("../../partials/examplesFoot") %>

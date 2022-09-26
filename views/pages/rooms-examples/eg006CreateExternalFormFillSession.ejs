@@ -1,35 +1,32 @@
 
 <%- include("../../partials/examplesHead") %>
-<h4>6. Creates external form fill session.</h4>
-<p>This is an example of creating external form fill session.</p>
 
-<%- include("../../partials/docBody") %>
+<%- include("../../partials/exampleInfo") %>
 
-<p>API methods used:
-  <a target ='_blank' href="https://developers.docusign.com/rooms-api/reference/Rooms/Rooms/GetRooms">Rooms::GetRooms</a>,
-  <a target ='_blank' href="https://developers.docusign.com/rooms-api/reference/Rooms/Rooms/GetDocuments">Rooms::GetDocuments</a> and
-  <a target ='_blank' href="https://developers.docusign.com/rooms-api/reference/Rooms/ExternalFormFillSessions/CreateExternalFormFillSession">ExternalFormFillSessions::CreateExternalFormFillSession</a>
-</p>
-<%- include("../../partials/gitSource") %>
+<% include("../../partials/functions") %>
+
 <% if (documents && documents.length > 0) { %>
 <form class="eg" action="" method="post" data-busy="form">
+  <% if(example.Forms && example.Forms[0].FormName) { %>
+    <%- example.Forms[0].FormName %>
+  <% } %>
+  
   <div class="form-group">
-    <label for="docuSignFormId">Forms</label>
+    <label for="docuSignFormId"><%= example.Forms[0].Inputs[0].InputName %></label>
     <select id="docuSignFormId" name="docuSignFormId" class="form-control" required>
       <% documents.forEach( document => { %>
         <option value="<%= document.docuSignFormId %>" selected> <%= document.name %> </option>
       <% }) %>
     </select>
   </div>
-  <input type="hidden" name="_csrf" value="<%- csrfToken %>">
   <input type="hidden" name="roomId" value="<%- roomId %>">
-  <button type="submit" class="btn btn-docu">Submit</button>
+  <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+  <%- include("../../partials/submitButton") %>
 </form>
 <% } else { %>
-  <p>Problem: Selected room does not have any documents. Please first add a form to a room using  <a href="eg004">example 4</a></a> <br/>
-   Thank you.</p>
+  <%- formatString(example.RedirectsToOtherCodeExamples[0].RedirectText, formatString('href="eg00{0}"', example.RedirectsToOtherCodeExamples[0].CodeExampleToRedirectTo)) %>
    <form class="eg" action="eg004" method="get">
-    <button type="submit" class="btn btn-docu">Continue</button>
+    <%- include("../../partials/continueButton") %>
   </form>
 <% } %>
 <%- include("../../partials/examplesFoot") %>

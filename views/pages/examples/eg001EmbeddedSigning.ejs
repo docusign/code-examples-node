@@ -1,30 +1,27 @@
 <%- include("../../partials/examplesHead") %>
 
-<h4>Use embedded signing</h4>
-<p>This example sends an envelope, and then uses embedded signing for the first signer.</p>
-<p>Embedded signing provides a smoother user experience for the signer: the DocuSign signing is initiated from your website.</p>
+<%- include("../../partials/exampleInfo") %>
 
-<%- include("../../partials/docBody") %>
-
-<p>API methods used:
-  <a target ='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">Envelopes::create</a> and
-  <a target ='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopeviews/createrecipient/">EnvelopeViews::createRecipient</a>.
-</p>
-<%- include("../../partials/gitSource") %>
 <form class="eg" action="" method="post" data-busy="form">
+  <% if(example.Forms && example.Forms[0].FormName) { %>
+    <%- example.Forms[0].FormName %>
+  <% } %>
+
   <div class="form-group">
-    <label for="signerEmail">Signer Email</label>
+    <label for="signerEmail"><%= example.Forms[0].Inputs[0].InputName %></label>
     <input type="email" class="form-control" id="signerEmail" name="signerEmail"
-          aria-describedby="emailHelp" placeholder="pat@example.com" required
+          aria-describedby="emailHelp" placeholder="<%= example.Forms[0].Inputs[0].InputPlaceholder %>" required
           value="<%= locals.dsConfig.signerEmail %>">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    <small id="emailHelp" class="form-text text-muted"><%= locals.manifest.SupportingTexts.HelpingTexts.EmailWontBeShared %></small>
   </div>
   <div class="form-group">
-    <label for="signerName">Signer Name</label>
-    <input type="text" class="form-control" id="signerName" placeholder="Pat Johnson" name="signerName"
+    <label for="signerName"><%= example.Forms[0].Inputs[1].InputName %></label>
+    <input type="text" class="form-control" id="signerName" placeholder="<%= example.Forms[0].Inputs[1].InputPlaceholder %>" name="signerName"
           value="<%= locals.dsConfig.signerName %>" required>
   </div>
+
   <input type="hidden" name="_csrf" value="<%- csrfToken %>">
-  <button type="submit" class="btn btn-docu">Submit</button>
+  <%- include("../../partials/submitButton") %>
 </form>
+
 <%- include("../../partials/examplesFoot") %>

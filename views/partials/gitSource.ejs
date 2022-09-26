@@ -1,5 +1,9 @@
+<% include("functions") %>
+
 <% if (! locals.dsConfig.multiSourceChooser) { %>
     <p>
-        View source file <a target="_blank" href="<%= sourceUrl %>"><%= sourceFile %></a> on GitHub.
+        <%- 
+            formatString(locals.manifest.SupportingTexts.ViewSourceFile, formatString('<a target="_blank" href="{0}">{1}</a>', sourceUrl, sourceFile)) 
+        %>
     </p>
 <% } %>

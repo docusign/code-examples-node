@@ -1,30 +1,20 @@
 <%- include("../../partials/examplesHead") %>
 
-<h4>Embedded DocuSign web tool</h4>
-<p>Redirect the user to the DocuSign web tool.</p>
-<p>Use this API call to open the DocuSign web tool, the NDSE (New DocuSign Signing Experience), 
-    with the user already logged in.</p>
-<p>The starting view can be either an envelope's documents or the web tool's front page.</p>
-<p>The user does not necessarily return from the NDSE, so using this API call is often a final 
-    step for your application.
-    Or you can open the NDSE in a new tab for the user.
-</p>
+<%- include("../../partials/exampleInfo") %>
 
-<%- include("../../partials/docBody") %>
-  
-<p>API method used: 
-    <a target ='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopeviews/createconsole/">EnvelopeViews::createConsole</a>.
-</p>
+<% include("../../partials/functions") %>
 
-<%- include("../../partials/gitSource") %>
 <% if (!envelopeOk) { %>
-    <p><b>Optional:</b> to use the <i>Envelope's document view</i> please first create an envelope using 
-        <a href="eg002">example 2.</a></p>
+    <%- formatString(example.RedirectsToOtherCodeExamples[0].RedirectText, formatString('href="eg00{0}"', example.RedirectsToOtherCodeExamples[0].CodeExampleToRedirectTo)) %>
 <% } %>
 
 <form class="eg" action="" method="post" data-busy="form">
+    <% if(example.Forms && example.Forms[0].FormName) { %>
+      <%- example.Forms[0].FormName %>
+    <% } %>
+    
     <div class="form-group">
-        <label for="startingView">Starting View</label>
+        <label for="startingView"><%= example.Forms[0].Inputs[0].InputName %></label>
         <select id="startingView" name="startingView" class="form-control">
                 <option value="frontPage" selected>Front page</option>
                 <option value="envelope" <%= envelopeOk ? '' : 'disabled="true"' %> >
@@ -32,7 +22,7 @@
         </select>
     </div>
     <input type="hidden" name="_csrf" value="<%- csrfToken %>">
-    <button type="submit" class="btn btn-docu">Continue</button>
+    <%- include("../../partials/submitButton") %>
 </form>
   
 <%- include("../../partials/examplesFoot") %>

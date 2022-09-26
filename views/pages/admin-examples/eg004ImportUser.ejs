@@ -1,25 +1,13 @@
 <%- include("../../partials/examplesHead") %>
 
-<h4>4. Add users via bulk import</h4>
-<p>
-  Demonstrates how to bulk import users and add user data from an example CSV (comma-separated value) file into a DocuSign Admin organization.
-</p>
-
-<%- include("../../partials/docBody") %>
-
-<p>
-  API methods used:
-  <a target='_blank' rel='noopener noreferrer'
-    href="https://developers.docusign.com/docs/admin-api/reference/bulkoperations/userimport/addbulkuserimport/">UserImport:addBulkUserImport</a>,
-  <a target='_blank' rel='noopener noreferrer'
-    href='https://developers.docusign.com/docs/admin-api/reference/bulkoperations/userimport/getbulkuserimportrequest/'>UserImport:getBulkUserImportRequest</a>.
-</p>
-
-<%- include("../../partials/gitSource") %>
+<%- include("../../partials/exampleInfo") %>
 
 <form class="eg" action="" method="post" data-busy="form">
+    <% if(example.Forms && example.Forms[0].FormName) { %>
+      <%- example.Forms[0].FormName %>
+    <% } %>
     <input type="hidden" name="_csrf" value="<%- csrfToken %>">
-    <button type="submit" class="btn btn-docu">Submit</button>
+    <%- include("../../partials/submitButton") %>
 </form>
 
 <%- include("../../partials/examplesFoot") %>

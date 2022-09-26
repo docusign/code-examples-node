@@ -1,36 +1,22 @@
 <%- include("../../partials/examplesHead") %>
 
-<h4>5. Get clickwrap responses</h4>
-<p>
-    Gets user responses to your clickwrap agreements.
-</p>
+<%- include("../../partials/exampleInfo") %>
 
-<%- include("../../partials/docBody") %>
-
-<p>API method used:
-    <a target='_blank'
-       href="https://developers.docusign.com/docs/click-api/reference/accounts/clickwraps/getclickwrapagreements"
-    >
-        ClickWraps::getClickwrapAgreements
-    </a>
-</p>
-
-<%- include("../../partials/gitSource") %>
-
+<% include("../../partials/functions") %>
 
 <% if (clickwrapsData.clickwraps.length == 0) { %>
-    <p>Problem: You do not have clickwraps to activate. Go to example#1 and create one: 
-        <a href="eg001">create clickwrap</a><br/>Thank you.
-    </p>
+    <%- formatString(example.RedirectsToOtherCodeExamples[0].RedirectText, formatString('href="eg00{0}"', example.RedirectsToOtherCodeExamples[0].CodeExampleToRedirectTo)) %>
     <form class="eg" action="eg001" method="get">
-        <button type="submit" class="btn btn-docu">Continue</button>
+        <%- include("../../partials/continueButton") %>
     </form>
 <% } else { %>
-    <p>Please choose a clickwrap</p>
-
     <form class="eg" action="" method="post" data-busy="form-download">
+        <% if(example.Forms && example.Forms[0].FormName) { %>
+          <%- example.Forms[0].FormName %>
+        <% } %>
+        
         <div class="form-group">
-            <label for="clickwrapId">Clickwrap</label>
+            <label for="clickwrapId"><%= example.Forms[0].Inputs[0].InputName %></label>
             <select class="custom-select" id="clickwrapId"
                     name="clickwrapId">
                 <% for(var i=0; i < clickwrapsData.clickwraps.length; i++) { %>
@@ -39,7 +25,7 @@
             </select>
         </div>
         <input type="hidden" name="_csrf" value="<%- csrfToken %>">
-        <button type="submit" class="btn btn-docu">Submit</button>
+        <%- include("../../partials/submitButton") %>
     </form>
 <% } %>
 

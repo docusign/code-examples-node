@@ -1,35 +1,22 @@
 <%- include("../../partials/examplesHead") %>
 
-<h4>Get the tab data from an envelope</h4>
-<p>Get the tab (field) values from an envelope for all of the envelope's recipients.</p>
+<%- include("../../partials/exampleInfo") %>
 
-<p>This method is used to read the updated tab values from
-   the envelope. The method can be used after the envelope is complete or while it is
-   still in progress.
-</p>
-
-<%- include("../../partials/docBody") %>
-
-<p>API method used:
-    <a target ='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopeformdata/get/">EnvelopeFormData::get</a>.
-</p>
-
-<%- include("../../partials/gitSource") %>
 <% if (envelopeOk) { %>
-    <p>The last envelope you created with this example launcher will be queried.
-     Recommendation:  use example 9, then this example, since example 9 includes many tabs of different types.</p>
-  
   <form class="eg" action="" method="post" data-busy="form">
+    <% if(example.Forms && example.Forms[0].FormName) { %>
+      <%- example.Forms[0].FormName %>
+    <% } %>
+    
     <input type="hidden" name="_csrf" value="<%- csrfToken %>">
-    <button type="submit" class="btn btn-docu">Continue</button>
+    <%- include("../../partials/submitButton") %>
   </form>
 
   <% } else { %>
-    <p>Problem: please first create an envelope using <a href="eg009">example 9.</a> <br/>
-     Thank you.</p>
+    <%- formatString(example.RedirectsToOtherCodeExamples[0].RedirectText, formatString('href="eg00{0}"', example.RedirectsToOtherCodeExamples[0].CodeExampleToRedirectTo)) %>
      
   <form class="eg" action="eg009" method="get">
-      <button type="submit" class="btn btn-docu">Continue</button>
+      <%- include("../../partials/continueButton") %>
   </form>
   <% } %>
 

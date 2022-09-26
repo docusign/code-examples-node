@@ -19,6 +19,7 @@ const helmet = require('helmet'); // https://expressjs.com/en/advanced/best-prac
 const moment = require('moment');
 const csrf = require('csurf'); // https://www.npmjs.com/package/csurf
 const examplesApi = require('./config/examplesAPI.json');
+const { getManifest } = require('./lib/manifestService')
 
 const eg001 = require('./lib/eSignature/controllers/eg001EmbeddedSigning');
 
@@ -97,6 +98,35 @@ let app = express()
       req.dsAuth = req.dsAuthJwt;
     }
     next()
+  })
+  .use(async (req, res, next) => {
+    let manifestUrl;
+
+    switch(true) {
+      case examplesApi.examplesApi.isRoomsApi:
+        manifestUrl = dsConfig.roomsManifestUrl;
+        break;
+
+      case examplesApi.examplesApi.isClickApi:
+        manifestUrl = dsConfig.clickManifestUrl;
+        break;
+
+      case examplesApi.examplesApi.isMonitorApi:
+        manifestUrl = dsConfig.monitorManifestUrl;
+        break;
+
+      case examplesApi.examplesApi.isAdminApi:
+        manifestUrl = dsConfig.adminManifestUrl;
+        break;
+
+      default:
+        manifestUrl = dsConfig.eSignManifestUrl;
+    }
+
+    const manifest = await getManifest(manifestUrl);
+    res.locals.manifest = manifest;
+
+    next();
   })
   // Routes
   .get('/', commonControllers.indexController)

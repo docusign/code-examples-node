@@ -1,21 +1,18 @@
 <%- include("../../partials/examplesHead") %>
-<h4>1. Creates a new room from data.</h4>
-<p>This is a general example of creating a room.</p>
 
-<%- include("../../partials/docBody") %>
+<%- include("../../partials/exampleInfo") %>
 
-<p>API methods used:
-  <a target ='_blank' href="https://developers.docusign.com/rooms-api/reference/Roles/Roles/GetRoles">Roles::GetRoles</a> and
-  <a target ='_blank' href="https://developers.docusign.com/rooms-api/reference/Rooms/Rooms/CreateRoom">Rooms::CreateRoom</a>.
-</p>
-<%- include("../../partials/gitSource") %>
 <form class="eg" action="" method="post" data-busy="form">
+  <% if(example.Forms && example.Forms[0].FormName) { %>
+    <%- example.Forms[0].FormName %>
+  <% } %>
+  
   <div class="form-group">
-    <label for="roomName">Room Name</label>
-    <input type="text" class="form-control" id="roomName" placeholder="Sample Room Name" name="roomName"
+    <label for="roomName"><%= example.Forms[0].Inputs[0].InputName %></label>
+    <input type="text" class="form-control" id="roomName" placeholder="<%= example.Forms[0].Inputs[0].InputPlaceholder %>" name="roomName"
           value="<%= locals.dsConfig.roomName %>" required>
   </div>
   <input type="hidden" name="_csrf" value="<%- csrfToken %>">
-  <button type="submit" class="btn btn-docu">Submit</button>
+  <%- include("../../partials/submitButton") %>
 </form>
 <%- include("../../partials/examplesFoot") %>
