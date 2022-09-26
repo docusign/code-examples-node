@@ -1,0 +1,23 @@
+<h4><%= example.ExampleName %></h4>
+
+<p><%- example.ExampleDescription %></p>
+
+<%- include("docBody") %>
+
+<% if(example.Note) { %>
+    <%- example.Note %>
+<% } %>
+
+<p>
+  <% if (example.LinksToAPIMethod.length > 1) { %>
+    <%= locals.manifest.SupportingTexts.APIMethodUsedPlural %>
+  <% } else { %>
+    <%= locals.manifest.SupportingTexts.APIMethodUsed %>
+  <% } %>
+  
+  <% example.LinksToAPIMethod.forEach(function(link) { %>
+      <a target='_blank' href="<%= link.Path %>"><%= link.PathName %></a>
+  <% }); %>
+</p>
+
+<%- include("gitSource") %>

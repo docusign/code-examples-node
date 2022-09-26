@@ -1,48 +1,41 @@
 <%- include("../../partials/examplesHead") %>
 
-<h4>Applying a brand to a template</h4>
-<% if (templateOk) { %>
-  <p>This code example demonstrates how to apply a brand to a template</p>
-  <p>The access-code to utilize the example provided is: <strong>NJ9@D1</strong></p>
-<% } %>
+<%- include("../../partials/exampleInfo") %>
 
-<%- include("../../partials/docBody") %>
-
-<p>
-    API method used:
-    <a target='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">Envelopes::create</a>.
-</p>
-
-<%- include("../../partials/gitSource") %>
+<% include("../../partials/functions") %>
 
 <% if (templateOk) { %>
   <% if (brands.length !== 0) { %>
     <form class="eg" action="" method="post" data-busy="form">
+      <% if(example.Forms && example.Forms[0].FormName) { %>
+        <%- example.Forms[0].FormName %>
+      <% } %>
+      
       <div class="form-group">
-        <label for="signerEmail">Signer Email</label>
+        <label for="signerEmail"><%= example.Forms[0].Inputs[0].InputName %></label>
         <input type="email" class="form-control" id="signerEmail" name="signerEmail"
-               aria-describedby="emailHelp" placeholder="pat@example.com" required
+               aria-describedby="emailHelp" placeholder="<%= example.Forms[0].Inputs[0].InputPlaceholder %>" required
                value="<%= locals.dsConfig.signerEmail%>">
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        <small id="emailHelp" class="form-text text-muted"><%= locals.manifest.SupportingTexts.HelpingTexts.EmailWontBeShared %></small>
       </div>
       <div class="form-group">
-        <label for="signerName">Signer Name</label>
-        <input type="text" class="form-control" id="signerName" placeholder="Pat Johnson" name="signerName"
+        <label for="signerName"><%= example.Forms[0].Inputs[1].InputName %></label>
+        <input type="text" class="form-control" id="signerName" placeholder="<%= example.Forms[0].Inputs[1].InputPlaceholder %>" name="signerName"
                value="<%= locals.dsConfig.signerName%>" required>
       </div>
       <div class="form-group">
-        <label for="ccEmail">CC Email</label>
+        <label for="ccEmail"><%= example.Forms[0].Inputs[2].InputName %></label>
         <input type="email" class="form-control" id="ccEmail" name="ccEmail"
-               aria-describedby="emailHelp" placeholder="pat@example.com" required />
+               aria-describedby="emailHelp" placeholder="<%= example.Forms[0].Inputs[2].InputPlaceholder %>" required />
         <small id="emailHelp" class="form-text text-muted">The email and/or name for the cc recipient must be different from the signer.</small>
       </div>
       <div class="form-group">
-        <label for="ccName">CC Name</label>
-        <input type="text" class="form-control" id="ccName" placeholder="Pat Johnson" name="ccName"
+        <label for="ccName"><%= example.Forms[0].Inputs[3].InputName %></label>
+        <input type="text" class="form-control" id="ccName" placeholder="<%= example.Forms[0].Inputs[3].InputPlaceholder %>" name="ccName"
                required>
       </div>
       <div class="form-group">
-        <label for="brandId">Brand</label>
+        <label for="brandId"><%= example.Forms[0].Inputs[4].InputName %></label>
         <select id="brandId" name="brandId" class="form-control">
           <% brands.forEach( brand => { %>
             <option value="<%= brand.brandId %>" selected> <%= brand.brandName %> </option>
@@ -50,22 +43,20 @@
         </select>
       </div>
       <input type="hidden" name="_csrf" value="<%- csrfToken %>">
-      <button type="submit" class="btn btn-docu">Submit</button>
+      <%- include("../../partials/submitButton") %>
   </form>
   <% } else { %>
-    <p>Problem: please first create the brand using <a href="eg028">example 28.</a> <br/>
-       Thank you.</p>
+    <%- formatString(example.RedirectsToOtherCodeExamples[0].RedirectText, formatString('href="eg0{0}"', example.RedirectsToOtherCodeExamples[0].CodeExampleToRedirectTo)) %>
 
     <form class="eg" action="eg028" method="get">
-      <button type="submit" class="btn btn-docu">Continue</button>
+      <%- include("../../partials/continueButton") %>
     </form>
   <% } %>
 <% } else { %>
-  <p>Problem: please first create the template using <a href="eg008">example 8.</a> <br/>
-    Thank you.</p>
+  <%- formatString(example.RedirectsToOtherCodeExamples[0].RedirectText, formatString('href="eg00{0}"', example.RedirectsToOtherCodeExamples[0].CodeExampleToRedirectTo)) %>
     
   <form class="eg" action="eg008" method="get">
-    <button type="submit" class="btn btn-docu">Continue</button>
+    <%- include("../../partials/continueButton") %>
   </form>
 <% } %>
 

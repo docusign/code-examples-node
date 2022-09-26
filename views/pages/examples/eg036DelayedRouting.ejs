@@ -1,47 +1,39 @@
 <%- include("../../partials/examplesHead") %>
 
-<h4>Send an envelope with delayed routing</h4>
-<p>
-    This example demonstrates how to delay an envelope’s delivery between recipients using the delayed routing feature.
-</p>
-
-<%- include("../../partials/docBody") %>
-
-<p>
-    API method used:
-    <a target='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">Envelopes::create</a>.
-</p>
-
-<%- include("../../partials/gitSource") %>
+<%- include("../../partials/exampleInfo") %>
 
 <form class="eg" action="" method="post" data-busy="form">
+    <% if(example.Forms && example.Forms[0].FormName) { %>
+      <%- example.Forms[0].FormName %>
+    <% } %>
+    
     <div class="form-group">
-        <label for="signer1Email">Signer 1 Email</label>
+        <label for="signer1Email"><%= example.Forms[0].Inputs[0].InputName %></label>
         <input type="email" class="form-control" id="signer1Email" name="signer1Email"
-               aria-describedby="emailHelp" placeholder="pat@example.com" required
+               aria-describedby="emailHelp" placeholder="<%= example.Forms[0].Inputs[0].InputPlaceholder %>" required
                value="<%= locals.dsConfig.signerEmail %>" />
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        <small id="emailHelp" class="form-text text-muted"><%= locals.manifest.SupportingTexts.HelpingTexts.EmailWontBeShared %></small>
     </div>
     <div class="form-group">
-        <label for="signer1Name">Signer 1 Name</label>
-        <input type="text" class="form-control" id="signer1Name" placeholder="Pat Johnson" name="signer1Name"
+        <label for="signer1Name"><%= example.Forms[0].Inputs[1].InputName %></label>
+        <input type="text" class="form-control" id="signer1Name" placeholder="<%= example.Forms[0].Inputs[1].InputPlaceholder %>" name="signer1Name"
                value="<%= locals.dsConfig.signerName %>" required />
     </div>
     <div class="form-group">
-        <label for="signer2Email">Signer 2 Email</label>
+        <label for="signer2Email"><%= example.Forms[0].Inputs[2].InputName %></label>
         <input type="email" class="form-control" id="signer2Email" name="signer2Email"
-               aria-describedby="emailHelp" placeholder="dana@example.com" required />
+               aria-describedby="emailHelp" placeholder="<%= example.Forms[0].Inputs[2].InputPlaceholder %>" required />
     </div>
     <div class="form-group">
-        <label for="signer2Name">Signer 2 Name</label>
-        <input type="text" class="form-control" id="signer2Name" placeholder="Dana Paxon" name="signer2Name"
+        <label for="signer2Name"><%= example.Forms[0].Inputs[3].InputName %></label>
+        <input type="text" class="form-control" id="signer2Name" placeholder="<%= example.Forms[0].Inputs[3].InputPlaceholder %>" name="signer2Name"
                required />
     </div>
     <div class="form-group">
-        <label for="delay">Delay (in hours)</label>
+        <label for="delay"><%= example.Forms[0].Inputs[4].InputName %></label>
         <input type="number" class="form-control" id="delay" name="delay"
                required />
     </div>
     <input type="hidden" name="_csrf" value="<%- csrfToken %>">
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <%- include("../../partials/submitButton") %>
 </form>

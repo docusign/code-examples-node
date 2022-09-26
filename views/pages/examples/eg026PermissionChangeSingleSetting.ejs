@@ -1,24 +1,16 @@
 <%- include("../../partials/examplesHead") %>
 
-<h4>Updating individual permission settings</h4>
-<p>
-  This code example demonstrates how to edit individual permission settings on a permissions profile with the eSignature REST API.
-</p>
-
-<%- include("../../partials/docBody") %>
-
-<p>
-    API method used:
-    <a target='_blank' href="https://developers.docusign.com/esign-rest-api/code-examples/permission-profile-updating">AccountPermissionProfiles::update</a>.
-</p>
-
-<%- include("../../partials/gitSource") %>
+<%- include("../../partials/exampleInfo") %>
 
 <form class="eg" action="" method="post" data-busy="form">
-  <div class="form-group">
+    <% if(example.Forms && example.Forms[0].FormName) { %>
+      <%- example.Forms[0].FormName %>
+    <% } %>
+    
+    <div class="form-group">
 
     <div class="form-group">
-      <label for="profiles">Permission profiles</label>
+      <label for="profiles"><%= example.Forms[0].Inputs[0].InputName %></label>
       <select id="profileId" name="profileId" class="form-control">
           <% profiles.forEach( profile => { %>
           <option value="<%= profile.permissionProfileId %>" selected> <%= profile.permissionProfileName %> </option>
@@ -87,7 +79,7 @@
           <br>
           <br>
 
-          <label for="powerFormRole">Power forms</label> <br>
+          <label for="powerFormRole">Power example.Forms</label> <br>
           <select id="powerFormRole" name="powerFormRole">
               <option value="none">None</option>
               <option value="user">User</option>
@@ -95,10 +87,8 @@
           </select>
       </div>
 
-
-  <input type="hidden" name="_csrf" value="<%- csrfToken %>">
-  <button type="submit" class="btn btn-docu">Submit</button>
-
+      <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+      <%- include("../../partials/submitButton") %>
 </form>
 
 <%- include("../../partials/examplesFoot") %>

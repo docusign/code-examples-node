@@ -1,24 +1,18 @@
 <%- include("../../partials/examplesHead") %>
 
-<h4>Send an envelope to an In Person Signer</h4>
-<p>Demonstrates how to host an In Person Signing session with embedded signing.</p>
+<%- include("../../partials/exampleInfo") %>
 
-<%- include("../../partials/docBody") %>
-
-<p>API methods used:
-  <a target='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">Envelopes::create</a>,
-  <a target='_blank'
-     href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopeviews/createrecipient/">EnvelopeViews::createRecipient</a>.
-</p>
-
-<%- include("../../partials/gitSource") %>
 <form class="eg" action="" method="post" data-busy="form">
+  <% if(example.Forms && example.Forms[0].FormName) { %>
+    <%- example.Forms[0].FormName %>
+  <% } %>
+  
   <div class="form-group">
-    <label for="signerName">Signer Name</label>
-    <input type="text" class="form-control" id="signerName" placeholder="Pat Johnson" name="signerName" required>
+    <label for="signerName"><%= example.Forms[0].Inputs[0].InputName %></label>
+    <input type="text" class="form-control" id="signerName" placeholder="<%= example.Forms[0].Inputs[0].InputPlaceholder %>" name="signerName" required>
   </div>
 
   <input type="hidden" name="_csrf" value="<%- csrfToken %>">
-  <button type="submit" class="btn btn-docu">Submit</button>
+  <%- include("../../partials/submitButton") %>
 </form>
 <%- include("../../partials/examplesFoot") %>

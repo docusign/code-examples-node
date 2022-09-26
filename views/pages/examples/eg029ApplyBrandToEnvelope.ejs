@@ -1,47 +1,35 @@
 <%- include("../../partials/examplesHead") %>
 
-<h4>Applying a brand to an envelope.</h4>
+<%- include("../../partials/exampleInfo") %>
 
-<p>
-    The envelope includes a pdf document. Anchor text
-    (<a href="https://developers.docusign.com/docs/esign-rest-api/esign101/concepts/tabs/auto-place/">AutoPlace</a>)
-    is used to position the signing fields in the documents.
-</p>
-<p>
-    This code example demonstrates how to apply a brand to an envelope.
-</p>
-
-<%- include("../../partials/docBody") %>
-
-  <p>API method used:
-   <a target='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopes/create/">Envelopes::create</a>.
-</p>
-
-<%- include("../../partials/gitSource") %>
+<% include("../../partials/functions") %>
 
 <% if (brands.length == 0) { %>
-<p>Problem: please first create the brand using <a href="eg028">example 28.</a> <br/>
-    Thank you.</p>
+  <%- formatString(example.RedirectsToOtherCodeExamples[0].RedirectText, formatString('href="eg0{0}"', example.RedirectsToOtherCodeExamples[0].CodeExampleToRedirectTo)) %>
 
  <form class="eg" action="eg028" method="get">
-     <button type="submit" class="btn btn-docu">Continue</button>
+     <%- include("../../partials/continueButton") %>
  </form>
 <% } else { %>
 <form class="eg" action="" method="post" data-busy="form">
+  <% if(example.Forms && example.Forms[0].FormName) { %>
+    <%- example.Forms[0].FormName %>
+  <% } %>
+  
     <div class="form-group">
-      <label for="signerEmail">Signer Email</label>
+      <label for="signerEmail"><%= example.Forms[0].Inputs[0].InputName %></label>
       <input type="email" class="form-control" id="signerEmail" name="signerEmail"
-             aria-describedby="emailHelp" placeholder="pat@example.com" required
+             aria-describedby="emailHelp" placeholder="<%= example.Forms[0].Inputs[0].InputPlaceholder %>" required
              value="<%= locals.dsConfig.signerEmail %>">
-      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      <small id="emailHelp" class="form-text text-muted"><%= locals.manifest.SupportingTexts.HelpingTexts.EmailWontBeShared %></small>
     </div>
     <div class="form-group">
-      <label for="signerName">Signer Name</label>
-      <input type="text" class="form-control" id="signerName" placeholder="Pat Johnson" name="signerName"
+      <label for="signerName"><%= example.Forms[0].Inputs[1].InputName %></label>
+      <input type="text" class="form-control" id="signerName" placeholder="<%= example.Forms[0].Inputs[1].InputPlaceholder %>" name="signerName"
              value="<%= locals.dsConfig.signerName %>" required>
     </div>
     <div class="form-group">
-        <label for="brandId">Brand</label>
+        <label for="brandId"><%= example.Forms[0].Inputs[2].InputName %></label>
         <select id="brandId" name="brandId" class="form-control">
           <% brands.forEach( brand => { %>
             <option value="<%= brand.brandId %>" selected> <%= brand.brandName %> </option>
@@ -50,7 +38,7 @@
     </div>
 
     <input type="hidden" name="_csrf" value="<%- csrfToken %>">
-    <button type="submit" class="btn btn-docu">Submit</button>
+    <%- include("../../partials/submitButton") %>
 </form>
 <% } %>
 

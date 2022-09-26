@@ -65,8 +65,7 @@
           <input type="text" class="form-control" id="signerName" placeholder="Pat Johnson" name="signerName"
                 value="<%= locals.dsConfig.signerName %>" required>
         </div>
-        <input type="hidden" name="_csrf" value="<%- csrfToken %>">
-        <button type="submit" class="btn btn-docu">Submit</button>
+        <%- include("../../partials/submitButton") %>
       </form>
     </div>
   </body>

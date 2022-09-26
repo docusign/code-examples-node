@@ -1,24 +1,14 @@
 <%- include("../../partials/examplesHead") %>
 
-<h4>Setting a permission profile.</h4>
-
-<p>
-    Updates the group name and modifies, or sets, the permission profile for the group.
-</p>
-
-<%- include("../../partials/docBody") %>
-
-<p>
-    API method used:
-    <a target="_blank" href="https://developers.docusign.com/docs/esign-rest-api/reference/usergroups/groups/update/">Groups::update</a>.
-</p>
-
-
-<%- include("../../partials/gitSource") %>
+<%- include("../../partials/exampleInfo") %>
 
 <form action="" class="eg" method="post" data-busy="form">
+  <% if(example.Forms && example.Forms[0].FormName) { %>
+    <%- example.Forms[0].FormName %>
+  <% } %>
+  
     <div class="form-group">
-        <label for="permissionProfileId">Permission profile</label>
+        <label for="permissionProfileId"><%= example.Forms[0].Inputs[0].InputName %></label>
         <select id="permissionProfileId" name="permissionProfileId" class="form-control">
           <% permissions.forEach( permission => { %>
             <option value="<%= permission.permissionProfileId %>" selected> <%= permission.permissionProfileName %> </option>
@@ -27,7 +17,7 @@
     </div>
 
     <div class="form-group">
-        <label for="userGroupId">User group</label>
+        <label for="userGroupId"><%= example.Forms[0].Inputs[1].InputName %></label>
         <select id="userGroupId" name="userGroupId" class="form-control">
           <% groups.forEach( group => { %>
             <option value="<%= group.groupId %>" selected> <%= group.groupName %> </option>
@@ -36,7 +26,7 @@
     </div>
 
     <input type="hidden" name="_csrf" value="<%- csrfToken %>">
-    <button type="submit" class="btn btn-docu">Submit</button>
+    <%- include("../../partials/submitButton") %>
 </form>
 
 <%- include("../../partials/examplesFoot") %>

@@ -1,20 +1,19 @@
 <%- include("../partials/genericHead") %>
 <div style="margin:1% 5%;">
-  <h1 class="display-4">Please Authenticate with DocuSign</h1>
+  <%- locals.manifest.SupportingTexts.LoginPage.LoginHeader %>
   <p class="lead">
   <form class="eg" action="/ds/login" method="get" data-busy="form">
     <div class="form-group">
-      <label>Please choose your authentication type</label>
       <select id="auth" name="auth" class="form-control">
         <option value="grand-auth" selected>Authorization Code Grant</option>
         <option value="jwt-auth">JWT (JSON Web Token)</option>
       </select><br>
-      <button class="btn btn-docu btn-lg">Authenticate with DocuSign</button>
+      <button class="btn btn-docu btn-lg"><%- locals.manifest.SupportingTexts.LoginPage.LoginButton %></button>
     </div>
   </form>
   </p>
   <hr class="my-4">
-  <p>You need to authenticate with DocuSign to continue your request.</p>
+  <p><%- locals.manifest.SupportingTexts.LoginPage.LoginHelperText %></p>
 
 </div>
 <%- include("../partials/genericFoot") %>

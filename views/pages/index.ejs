@@ -16,27 +16,9 @@
       <p class="Xlead">Run and explore DocuSign code examples with Authorization Code Grant or JWT Grant authentication</p>
     <% } else { %>
       <h1 class="display-4">Node Launcher</h1>
-      <% if (examplesApi.examplesApi.isAdminApi) { %>
-        <p class="Xlead">
-          Run and explore DocuSign Admin API code examples with Authorization Code Grant or JWT Grant authentication
-        </p>
-      <% } else if (examplesApi.examplesApi.isClickApi) { %>
-        <p class="Xlead">
-          Run and explore Click API code examples with Authorization Code Grant or JWT Grant authentication
-        </p>
-      <% } else if (examplesApi.examplesApi.isRoomsApi) { %>
-        <p class="Xlead">
-          Run and explore Rooms API code examples with Authorization Code Grant or JWT Grant authentication
-        </p>
-      <% } else if (examplesApi.examplesApi.isMonitorApi) { %>
-        <p class="Xlead">
-          Run and explore Monitor API code examples with JWT Grant authentication
-        </p>
-      <% } else { %>
-        <p class="Xlead">
-          Run and explore eSignature REST API code examples with Authorization Code Grant or JWT Grant authentication
-        </p>
-      <% } %>
+      <p class="Xlead">
+        <%- locals.manifest.SupportingTexts.HomePageText %>
+      </p>
     <% } %>
 
   </td>

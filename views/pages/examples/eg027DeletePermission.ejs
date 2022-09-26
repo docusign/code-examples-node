@@ -1,32 +1,23 @@
 <%- include("../../partials/examplesHead") %>
 
-<h4>Deleting a permission profile</h4>
-<p>
-    Permission profiles are collections of account settings that determine the behavior and actions available
-    to the user groups to which they're applied.
-    This code example demonstrates how to delete a permission profile with the eSignature REST API.
-</p>
+<%- include("../../partials/exampleInfo") %>
 
-<%- include("../../partials/docBody") %>
-
-<p>
-    API method used:
-    <a target='_blank' href="https://developers.docusign.com/esign-rest-api/code-examples/permission-profile-deleting">AccountPermissionProfiles::delete.</a>.
-</p>
-
-
-<%- include("../../partials/gitSource") %>
+<% include("../../partials/functions") %>
 
 <% if (profiles.length == 0) { %>
-<p>Problem: please first create the profile using <a href="eg024">example 24.</a> <br/> Thank you.</p>
+    <%- formatString(example.RedirectsToOtherCodeExamples[0].RedirectText, formatString('href="eg0{0}"', example.RedirectsToOtherCodeExamples[0].CodeExampleToRedirectTo)) %>
 
 <form class="eg" action="eg024" method="get">
-    <button type="submit" class="btn btn-docu">Continue</button>
+    <%- include("../../partials/continueButton") %>
 </form>
 <% } else { %>
 <form class="eg" action="" method="post" data-busy="form">
+    <% if(example.Forms && example.Forms[0].FormName) { %>
+      <%- example.Forms[0].FormName %>
+    <% } %>
+    
     <div class="form-group">
-        <label for="profiles">Permission profiles</label>
+        <label for="profiles"><%= example.Forms[0].Inputs[0].InputName %></label>
         <select id="profileId" name="profileId" class="form-control">
             <% profiles.forEach( profile => { %>
             <option value="<%= profile.permissionProfileId %>" selected> <%= profile.permissionProfileName %> </option>
@@ -34,7 +25,7 @@
         </select>
     </div>
     <input type="hidden" name="_csrf" value="<%- csrfToken %>">
-    <button type="submit" class="btn btn-danger">Delete</button>
+    <%- include("../../partials/submitButton") %>
 </form>
 <% } %>
 

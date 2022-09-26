@@ -1,28 +1,20 @@
 <%- include("../../partials/examplesHead") %>
 
-<h4>7. Retrieve the user's DocuSign profile using a User ID</h4>
-<p>
-  Demonstrates how to obtain the user’s DocuSign profile information across all DocuSign accounts by specifying the user’s User ID.
-</p>
-
-<%- include("../../partials/docBody") %>
-
-<p>API method used:
-   <a target="_blank" rel='noopener noreferrer' 
-        href="https://developers.docusign.com/docs/admin-api/reference/usermanagement/multiproductusermanagement/getuserdsprofile/">MultiProductUserManagement:getUserDSProfile</a>.
-</p>
-
-<%- include("../../partials/gitSource") %>
+<%- include("../../partials/exampleInfo") %>
 
 <form class="eg" action="" method="post" data-busy="form">
+  <% if(example.Forms && example.Forms[0].FormName) { %>
+    <%- example.Forms[0].FormName %>
+  <% } %>
+  
     <div class="form-group">
-      <label for="userId">User ID</label>
+      <label for="userId"><%= example.Forms[0].Inputs[0].InputName %></label>
       <input type="text" class="form-control" id="userId" name="userId"
-             placeholder="00000000-0000-0000-0000-000000000000" required
+             placeholder="<%= example.Forms[0].Inputs[0].InputPlaceholder %>" required
              pattern="[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}">
     </div>
     <input type="hidden" name="_csrf" value="<%- csrfToken %>">
-    <button type="submit" class="btn btn-docu">Submit</button>
+    <%- include("../../partials/submitButton") %>
 </form>
 
 <%- include("../../partials/examplesFoot") %>

@@ -1,47 +1,29 @@
 <%- include("../../partials/examplesHead") %>
 
-<h4>Download a document from an envelope</h4>
-<p>An envelope's documents can be downloaded one by one or as a complete set.</p>
-<p>Document download options:</p>
-<ul>
-  <li><b>Combined</b>: a PDF with the combined content of all documents and the
-         certificate</li>
-  <li><b>Zip Archive</b>: a ZIP archive that contains all of the PDF documents, 
-         the certificate, and any .WAV files used for voice authentication.</li>
-  <li>The envelope's individual documents</li>
-  <li>The envelope's Certificate of Completion</li>
-</ul>
+<%- include("../../partials/exampleInfo") %>
 
-<%- include("../../partials/docBody") %>
+<% include("../../partials/functions") %>
 
-<p>API method used: 
-   <a target='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopedocuments/get/">EnvelopeDocuments::get</a>.
-</p>
-
-<%- include("../../partials/gitSource") %>
 <% if (! envelopeOk) { %>
-  <p>Problem: please first create an envelope using <a href="eg002">example 2.</a> <br/>
-    You will then need to use example 6 to create the list of documents.<br/>
-    Thank you.</p>
+  <%- formatString(example.RedirectsToOtherCodeExamples[0].RedirectText, formatString('href="eg00{0}"', example.RedirectsToOtherCodeExamples[0].CodeExampleToRedirectTo)) %>
     
  <form class="eg" action="eg002" method="get">
-     <button type="submit" class="btn btn-docu">Continue</button>
+     <%- include("../../partials/continueButton") %>
  </form>
 <% } else if (!documentsOk) { %>
-  <p>Problem: please first create a list of the envelope's documents using 
-    <a href="eg006">example 6.</a> <br/>
-    Thank you.</p>
+  <%- formatString(example.RedirectsToOtherCodeExamples[1].RedirectText, formatString('href="eg00{0}"', example.RedirectsToOtherCodeExamples[1].CodeExampleToRedirectTo)) %>
     
  <form class="eg" action="eg006" method="get">
-     <button type="submit" class="btn btn-docu">Continue</button>
+     <%- include("../../partials/continueButton") %>
  </form>
 <% } else { %>
-  <p>Please choose a document.<br/>
-     The document list is from your results for example 6.</p>
-  
   <form class="eg" action="" method="post" data-busy="form-download">
+    <% if(example.Forms && example.Forms[0].FormName) { %>
+      <%- example.Forms[0].FormName %>
+    <% } %>
+    
     <div class="form-group">
-        <label for="docSelect">Document selection</label>
+        <label for="docSelect"><%= example.Forms[0].Inputs[0].InputName %></label>
         <select class="custom-select" id="docSelect" 
           name="docSelect" aria-describedby="emailHelp">
         <% for (let opt of documentOptions) { %>
@@ -50,7 +32,7 @@
         </select>
     </div>  
     <input type="hidden" name="_csrf" value="<%- csrfToken %>">
-    <button type="submit" class="btn btn-docu">Continue</button>
+    <%- include("../../partials/submitButton") %>
   </form>
 <% } %>
 

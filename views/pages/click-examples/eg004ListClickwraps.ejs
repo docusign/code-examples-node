@@ -1,25 +1,14 @@
 <%- include("../../partials/examplesHead") %>
 
-<h4>4. Get a list of clickwraps</h4>
-<p>
-    Gets a list of clickwraps associated with a specific DocuSign user.
-</p>
-
-<%- include("../../partials/docBody") %>
-
-<p>API method used:
-    <a target='_blank'
-       href="https://developers.docusign.com/docs/click-api/reference/accounts/clickwraps/getclickwraps"
-    >
-        ClickWraps::getClickwraps
-    </a>
-</p>
-
-<%- include("../../partials/gitSource") %>
+<%- include("../../partials/exampleInfo") %>
 
 <form class="eg" action="" method="post" data-busy="form">
+    <% if(example.Forms && example.Forms[0].FormName) { %>
+      <%- example.Forms[0].FormName %>
+    <% } %>
+    
     <input type="hidden" name="_csrf" value="<%- csrfToken %>">
-    <button type="submit" class="btn btn-docu">Continue</button>
+    <%- include("../../partials/submitButton") %>
 </form>
 
 <%- include("../../partials/examplesFoot") %>

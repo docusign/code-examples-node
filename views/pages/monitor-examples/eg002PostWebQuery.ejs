@@ -1,33 +1,24 @@
 <%- include("../../partials/examplesHead") %>
 
-<h4>2. Query monitoring data with filters</h4>
-
-<p>
-  Demonstrates how to query an organization's data based on specified filters and aggregations.
-</p>
-
-<%- include("../../partials/docBody") %>
-
-<p>API method used:
-  <a target='_blank' href="https://developers.docusign.com/docs/monitor-api/reference/monitor/dataset/postwebquery/">DataSet:postWebQuery</a>.
-</p>
-
-<%- include("../../partials/gitSource") %>
-<p>Please select start and end dates.</p>
+<%- include("../../partials/exampleInfo") %>
 
 <form class="eg" action="" method="post" data-busy="form">
+  <% if(example.Forms && example.Forms[0].FormName) { %>
+    <%- example.Forms[0].FormName %>
+  <% } %>
+  
   <div class="form-group">
-    <label for="startDate">Start date</label>
+    <label for="startDate"><%= example.Forms[0].Inputs[0].InputName %></label>
     <input type="date" class="form-control" id="startDate" name="startDate" value= <%= startDate %> required>
   </div>
 
   <div class="form-group">
-    <label for="endDate">End date</label>
+    <label for="endDate"><%= example.Forms[0].Inputs[1].InputName %></label>
     <input type="date" class="form-control" id="endDate" name="endDate" value= <%= currentDate %> required>
   </div>
 
   <input type="hidden" name="_csrf" value="<%- csrfToken %>">
-  <button type="submit" class="btn btn-docu">Continue</button>
+  <%- include("../../partials/submitButton") %>
 </form>
 
 <%- include("../../partials/examplesFoot") %>

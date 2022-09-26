@@ -1,40 +1,24 @@
 <%- include("../../partials/examplesHead") %>
 
-<h4>Get the custom field data for an envelope</h4>
-<p>Get the data values associated with the envelope itself. The custom data fields enable you to
-    add additional meta-data to the envelope. The custom data fields can be set by the <b>Sender</b>
-via the DocuSign web tool, or can be set programmatically. The data can be included in the
-envelope's certificate of completion.</p>
+<%- include("../../partials/exampleInfo") %>
 
-<p>This method is used to read the custom field values from
-   an envelope.
-</p>
-
-<%- include("../../partials/docBody") %>
-
-<p>API method used:
-    <a target ='_blank' href="https://developers.docusign.com/docs/esign-rest-api/reference/envelopes/envelopecustomfields/list/">EnvelopeCustomFields::list</a>.
-</p>
-
-<%- include("../../partials/gitSource") %>
 <% if (envelopeOk) { %>
-    <p>
-        The last envelope you created with this example launcher will be queried.
-        Recommendation: Create an envelope using <a href="eg016">example 16</a> then use this example in order to see an example of custom tab values.
-    </p>
-  
   <form class="eg" action="" method="post" data-busy="form">
+    <% if(example.Forms && example.Forms[0].FormName) { %>
+      <%- example.Forms[0].FormName %>
+    <% } %>
+    
     <input type="hidden" name="_csrf" value="<%- csrfToken %>">
-    <button type="submit" class="btn btn-docu">Continue</button>
+    <%- include("../../partials/submitButton") %>
   </form>
 
   <% } else { %>
     <p>
-        Problem: please first create an envelope using <a href="eg016">example 16.</a>
+      <%- formatString(example.RedirectsToOtherCodeExamples[0].RedirectText, formatString('href="eg0{0}"', example.RedirectsToOtherCodeExamples[0].CodeExampleToRedirectTo)) %>
     </p>
      
   <form class="eg" action="eg016" method="get">
-      <button type="submit" class="btn btn-docu">Continue</button>
+      <%- include("../../partials/continueButton") %>
   </form>
   <% } %>
 
