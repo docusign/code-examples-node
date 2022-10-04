@@ -31,7 +31,8 @@
     "passport": "^0.4.0",
     "passport-docusign": "^1.1.0",
     "path": "^0.12.7",
-    "validator": "^13.7.0"
+    "validator": "^13.7.0",
+    "node-fetch": "2.6.7"
   },
   "devDependencies": {
     "chai": "^4.2.0",
