@@ -17,6 +17,7 @@ const flash = require('express-flash');
 const helmet = require('helmet'); // https://expressjs.com/en/advanced/best-practice-security.html
 const moment = require('moment');
 const csrf = require('csurf'); // https://www.npmjs.com/package/csurf
+const { getManifest } = require('../lib/manifestService');
 
 const eg001 = require('../lib/eSignature/controllers/eg001EmbeddedSigning');
 
@@ -62,6 +63,14 @@ let app = express()
     req.dsAuthCodeGrant = new DSAuthCodeGrant(req);
     req.dsAuth = req.dsAuthCodeGrant;
     next()
+  })
+  .use(async (req, res, next) => {
+    let manifestUrl = dsConfig.eSignManifestUrl;
+
+    const manifest = await getManifest(manifestUrl);
+    res.locals.manifest = manifest;
+
+    next();
   })
   .use(csrfProtection) // CSRF protection for the following routes
   // Routes
