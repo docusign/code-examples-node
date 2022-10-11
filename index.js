@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const express = require('express');
-const session = require('express-session');  // https://github.com/expressjs/session
+const session = require('express-session'); // https://github.com/expressjs/session
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const MemoryStore = require('memorystore')(session); // https://github.com/roccomuso/memorystore
@@ -19,7 +19,7 @@ const helmet = require('helmet'); // https://expressjs.com/en/advanced/best-prac
 const moment = require('moment');
 const csrf = require('csurf'); // https://www.npmjs.com/package/csurf
 const examplesApi = require('./config/examplesAPI.json');
-const { getManifest } = require('./lib/manifestService')
+const { getManifest } = require('./lib/manifestService');
 
 const eg001 = require('./lib/eSignature/controllers/eg001EmbeddedSigning');
 
@@ -30,36 +30,36 @@ const {
   eg024, eg025, eg026, eg027, eg028, eg029, eg030,
   eg031, eg032, eg033, eg034, eg035, eg036, eg037,
   eg038, eg039, eg040
-} = require("./lib/eSignature/controllers");
+} = require('./lib/eSignature/controllers');
 
 const {
   eg001click, eg002click, eg003click,
   eg004click, eg005click,
-} = require("./lib/click/controllers");
+} = require('./lib/click/controllers');
 
 const {
   eg001rooms, eg002rooms, eg003rooms,
   eg004rooms, eg005rooms, eg006rooms,
   eg007rooms, eg008rooms, eg009rooms,
-} = require("./lib/rooms/controllers");
+} = require('./lib/rooms/controllers');
 
 const {
   eg001monitor, eg002monitor
-} = require("./lib/monitor/controllers/index");
+} = require('./lib/monitor/controllers/index');
 
 const {
   eg001admin, eg002admin, eg003admin,
   eg004admin, eg005admin, eg006admin,
   eg007admin, eg008admin, eg009admin
-} = require("./lib/admin/controllers");
+} = require('./lib/admin/controllers');
 
 const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || 'localhost';
 const max_session_min = 180;
 const csrfProtection = csrf({ cookie: true });
 
-let hostUrl = 'http://' + HOST + ':' + PORT
-if (dsConfig.appUrl != '' && dsConfig.appUrl != '{APP_URL}') { hostUrl = dsConfig.appUrl }
+let hostUrl = 'http://' + HOST + ':' + PORT;
+if (dsConfig.appUrl !== '' && dsConfig.appUrl !== '{APP_URL}') { hostUrl = dsConfig.appUrl; }
 
 let app = express()
   .use(helmet())
@@ -78,14 +78,14 @@ let app = express()
   .use(passport.initialize())
   .use(passport.session())
   .use(bodyParser.urlencoded({ extended: true }))
-  .use(((req, res, next) => {
+  .use((req, res, next) => {
     res.locals.user = req.user;
     res.locals.session = req.session;
     res.locals.dsConfig = { ...dsConfig, docOptions: docOptions, docNames: docNames };
-    res.locals.examplesApi = examplesApi
+    res.locals.examplesApi = examplesApi;
     res.locals.hostUrl = hostUrl; // Used by DSAuthCodeGrant#logout
-    next()
-  })) // Send user info to views
+    next();
+  }) // Send user info to views
   .use(flash())
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
@@ -97,12 +97,12 @@ let app = express()
     if (req.session.authMethod === 'jwt-auth') {
       req.dsAuth = req.dsAuthJwt;
     }
-    next()
+    next();
   })
   .use(async (req, res, next) => {
     let manifestUrl;
 
-    switch(true) {
+    switch (true) {
       case examplesApi.examplesApi.isRoomsApi:
         manifestUrl = dsConfig.roomsManifestUrl;
         break;
@@ -158,7 +158,7 @@ if (examplesApi.examplesApi.isRoomsApi) {
     .get('/eg008', eg008rooms.getController)
     .post('/eg008', eg008rooms.createController)
     .get('/eg009', eg009rooms.getController)
-    .post('/eg009', eg009rooms.createController)
+    .post('/eg009', eg009rooms.createController);
 } else if (examplesApi.examplesApi.isClickApi) {
   app.get('/eg001', eg001click.getController)
     .post('/eg001', eg001click.createController)
@@ -169,12 +169,12 @@ if (examplesApi.examplesApi.isRoomsApi) {
     .get('/eg004', eg004click.getController)
     .post('/eg004', eg004click.createController)
     .get('/eg005', eg005click.getController)
-    .post('/eg005', eg005click.createController)
+    .post('/eg005', eg005click.createController);
 } else if (examplesApi.examplesApi.isMonitorApi) {
   app.get('/eg001', eg001monitor.getController)
     .post('/eg001', eg001monitor.createController)
     .get('/eg002', eg002monitor.getController)
-    .post('/eg002', eg002monitor.createController)
+    .post('/eg002', eg002monitor.createController);
 } else if (examplesApi.examplesApi.isAdminApi) {
     app.get('/eg001', eg001admin.getController)
     .post('/eg001', eg001admin.createController)
@@ -194,7 +194,7 @@ if (examplesApi.examplesApi.isRoomsApi) {
     .get('/eg008', eg008admin.getController)
     .post('/eg008', eg008admin.createController)
     .get('/eg009', eg009admin.getController)
-    .post('/eg009', eg009admin.createController)
+    .post('/eg009', eg009admin.createController);
 } else {
   app.get('/eg001', eg001.getController)
     .post('/eg001', eg001.createController)
@@ -273,16 +273,16 @@ if (examplesApi.examplesApi.isRoomsApi) {
     .get('/eg039', eg039.getController)
     .post('/eg039', eg039.createController)
     .get('/eg040', eg040.getController)
-    .post('/eg040', eg040.createController)
+    .post('/eg040', eg040.createController);
 }
 
-function dsLoginCB1(req, res, next) { req.dsAuthCodeGrant.oauth_callback1(req, res, next) }
-function dsLoginCB2(req, res, next) { req.dsAuthCodeGrant.oauth_callback2(req, res, next) }
+function dsLoginCB1(req, res, next) { req.dsAuthCodeGrant.oauth_callback1(req, res, next); }
+function dsLoginCB2(req, res, next) { req.dsAuthCodeGrant.oauth_callback2(req, res, next); }
 
 /* Start the web server */
 if (dsConfig.dsClientId && dsConfig.dsClientId !== '{CLIENT_ID}' &&
   dsConfig.dsClientSecret && dsConfig.dsClientSecret !== '{CLIENT_SECRET}') {
-  app.listen(PORT)
+  app.listen(PORT);
   console.log(`Listening on ${PORT}`);
   console.log(`Ready! Open ${hostUrl}`);
 } else {
@@ -298,25 +298,25 @@ You can set them in the configuration file config/appsettings.json or set enviro
 //   the user by ID when deserializing.  However, since this example does not
 //   have a database of user records, the complete DocuSign profile is serialized
 //   and deserialized.
-passport.serializeUser(function (user, done) { done(null, user) });
-passport.deserializeUser(function (obj, done) { done(null, obj) });
+passport.serializeUser(function(user, done) { done(null, user); });
+passport.deserializeUser(function(obj, done) { done(null, obj); });
 
-const SCOPES = ["signature"];
+const SCOPES = ['signature'];
 const ROOM_SCOPES = [
-  "signature", "dtr.rooms.read", "dtr.rooms.write",
-  "dtr.documents.read", "dtr.documents.write", "dtr.profile.read", "dtr.profile.write",
-  "dtr.company.read", "dtr.company.write", "room_forms"
+  'signature', 'dtr.rooms.read', 'dtr.rooms.write',
+  'dtr.documents.read', 'dtr.documents.write', 'dtr.profile.read', 'dtr.profile.write',
+  'dtr.company.read', 'dtr.company.write', 'room_forms'
 ];
 const CLICK_SCOPES = [
-  "signature", "click.manage", "click.send"
+  'signature', 'click.manage', 'click.send'
 ];
 const MONITOR_SCOPES = [
-  "signature", "impersonation"
+  'signature', 'impersonation'
 ];
 const ADMIN_SCOPES = [
-  "organization_read", "group_read", "permission_read	",
-  "user_read", "user_write", "account_read",
-  "domain_read", "identity_provider_read", "signature"
+  'organization_read', 'group_read', 'permission_read	',
+  'user_read', 'user_write', 'account_read',
+  'domain_read', 'identity_provider_read', 'signature'
 ];
 let scope;
 if (examplesApi.examplesApi.isRoomsApi) {
@@ -334,7 +334,7 @@ if (examplesApi.examplesApi.isRoomsApi) {
 let docusignStrategy = new DocusignStrategy({
     production: dsConfig.production,
     clientID: dsConfig.dsClientId,
-    scope: scope.join(" "),
+    scope: scope.join(' '),
     clientSecret: dsConfig.dsClientSecret,
     callbackURL: hostUrl + '/ds/callback',
     state: true // automatic CSRF protection.
@@ -361,8 +361,8 @@ let docusignStrategy = new DocusignStrategy({
  */
 if (!dsConfig.allowSilentAuthentication) {
   // See https://stackoverflow.com/a/32877712/64904
-  docusignStrategy.authorizationParams = function (options) {
+  docusignStrategy.authorizationParams = function(options) {
     return { prompt: 'login' };
-  }
+  };
 }
 passport.use(docusignStrategy);

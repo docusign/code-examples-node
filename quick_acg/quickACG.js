@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const express = require('express');
-const session = require('express-session');  // https://github.com/expressjs/session
+const session = require('express-session'); // https://github.com/expressjs/session
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const MemoryStore = require('memorystore')(session); // https://github.com/roccomuso/memorystore
@@ -26,8 +26,8 @@ const HOST = process.env.HOST || 'localhost';
 const max_session_min = 180;
 const csrfProtection = csrf({ cookie: true });
 
-let hostUrl = 'http://' + HOST + ':' + PORT
-if (dsConfig.appUrl != '' && dsConfig.appUrl != '{APP_URL}') { hostUrl = dsConfig.appUrl }
+let hostUrl = 'http://' + HOST + ':' + PORT;
+if (dsConfig.appUrl !== '' && dsConfig.appUrl !== '{APP_URL}') { hostUrl = dsConfig.appUrl; }
 
 let app = express()
   .use(helmet())
@@ -46,15 +46,15 @@ let app = express()
   .use(passport.initialize())
   .use(passport.session())
   .use(bodyParser.urlencoded({ extended: true }))
-  .use(((req, res, next) => {
+  .use((req, res, next) => {
     res.locals.user = req.user;
     res.locals.session = req.session;
     res.locals.dsConfig = { ...dsConfig, docOptions: docOptions, docNames: docNames};
-    res.locals.quickACG = true; 
-    res.locals.examplesApi = {"isESignatureApi":true};
+    res.locals.quickACG = true;
+    res.locals.examplesApi = {isESignatureApi: true};
     res.locals.hostUrl = hostUrl; // Used by DSAuthCodeGrant#logout
-    next()
-  })) // Send user info to views
+    next();
+  }) // Send user info to views
   .use(flash())
   .set('views', path.join(__dirname, '../views'))
   .set('view engine', 'ejs')
@@ -62,7 +62,7 @@ let app = express()
   .use((req, res, next) => {
     req.dsAuthCodeGrant = new DSAuthCodeGrant(req);
     req.dsAuth = req.dsAuthCodeGrant;
-    next()
+    next();
   })
   .use(async (req, res, next) => {
     let manifestUrl = dsConfig.eSignManifestUrl;
@@ -86,12 +86,12 @@ let app = express()
 function redirectEg001(req, res) { return res.redirect('/eg001'); }
 function redirectLogin(req, res) { return res.redirect('/ds/login'); }
 function redirectReturn(req, res) { return res.redirect('/eg001'); }
-function dsLoginCB1(req, res, next) { req.dsAuthCodeGrant.oauth_callback1(req, res, next) }
-function dsLoginCB2(req, res, next) { req.dsAuthCodeGrant.oauth_callback2(req, res, next) }
+function dsLoginCB1(req, res, next) { req.dsAuthCodeGrant.oauth_callback1(req, res, next); }
+function dsLoginCB2(req, res, next) { req.dsAuthCodeGrant.oauth_callback2(req, res, next); }
 
 if (dsConfig.dsClientId && dsConfig.dsClientId !== '{CLIENT_ID}' &&
   dsConfig.dsClientSecret && dsConfig.dsClientSecret !== '{CLIENT_SECRET}') {
-  app.listen(PORT)
+  app.listen(PORT);
   console.log(`Listening on ${PORT}`);
   console.log(`Ready! Open ${hostUrl}`);
 } else {
@@ -107,15 +107,15 @@ You can set them in the configuration file config/appsettings.json or set enviro
 //   the user by ID when deserializing.  However, since this example does not
 //   have a database of user records, the complete DocuSign profile is serialized
 //   and deserialized.
-passport.serializeUser(function (user, done) { done(null, user) });
-passport.deserializeUser(function (obj, done) { done(null, obj) });
+passport.serializeUser(function(user, done) { done(null, user); });
+passport.deserializeUser(function(obj, done) { done(null, obj); });
 
-let scope = ["signature"];;
+let scope = ['signature'];
 // Configure passport for DocusignStrategy
 let docusignStrategy = new DocusignStrategy({
     production: dsConfig.production,
     clientID: dsConfig.dsClientId,
-    scope: scope.join(" "),
+    scope: scope.join(' '),
     clientSecret: dsConfig.dsClientSecret,
     callbackURL: hostUrl + '/ds/callback',
     state: true // automatic CSRF protection.
@@ -142,9 +142,9 @@ let docusignStrategy = new DocusignStrategy({
  */
 if (!dsConfig.allowSilentAuthentication) {
   // See https://stackoverflow.com/a/32877712/64904
-  docusignStrategy.authorizationParams = function (options) {
+  docusignStrategy.authorizationParams = function(options) {
     return { prompt: 'login' };
-  }
+  };
 }
 
 passport.use(docusignStrategy);

@@ -4,8 +4,8 @@
  * @author DocuSign
  */
 
-const fs = require("fs-extra");
-const docusign = require("docusign-esign");
+const fs = require('fs-extra');
+const docusign = require('docusign-esign');
 
 /**
  * This function does the work of creating the envelope and the
@@ -20,9 +20,9 @@ const sendEnvelopeForEmbeddedSigning = async (args) => {
 
   let dsApiClient = new docusign.ApiClient();
   dsApiClient.setBasePath(args.basePath);
-  dsApiClient.addDefaultHeader("Authorization", "Bearer " + args.accessToken);
-  let envelopesApi = new docusign.EnvelopesApi(dsApiClient),
-    results = null;
+  dsApiClient.addDefaultHeader('Authorization', 'Bearer ' + args.accessToken);
+  let envelopesApi = new docusign.EnvelopesApi(dsApiClient);
+  let results = null;
 
   // Step 1. Make the envelope request body
   let envelope = makeEnvelope(args.envelopeArgs);
@@ -59,7 +59,7 @@ function makeEnvelope(args) {
   // args.signerEmail
   // args.signerName
   // args.signerClientId
-  // docFile 
+  // docFile
 
   // document 1 (pdf) has tag /sn1/
   //
@@ -73,15 +73,15 @@ function makeEnvelope(args) {
 
   // create the envelope definition
   let env = new docusign.EnvelopeDefinition();
-  env.emailSubject = "Please sign this document";
+  env.emailSubject = 'Please sign this document';
 
   // add the documents
-  let doc1 = new docusign.Document(),
-    doc1b64 = Buffer.from(docPdfBytes).toString("base64");
+  let doc1 = new docusign.Document();
+  let doc1b64 = Buffer.from(docPdfBytes).toString('base64');
   doc1.documentBase64 = doc1b64;
-  doc1.name = "Lorem Ipsum"; // can be different from actual file name
-  doc1.fileExtension = "pdf";
-  doc1.documentId = "3";
+  doc1.name = 'Lorem Ipsum'; // can be different from actual file name
+  doc1.fileExtension = 'pdf';
+  doc1.documentId = '3';
 
   // The order in the docs array determines the order in the envelope
   env.documents = [doc1];
@@ -102,10 +102,10 @@ function makeEnvelope(args) {
   // The DocuSign platform seaches throughout your envelope's
   // documents for matching anchor strings.
   let signHere1 = docusign.SignHere.constructFromObject({
-    anchorString: "/sn1/",
-    anchorYOffset: "10",
-    anchorUnits: "pixels",
-    anchorXOffset: "20",
+    anchorString: '/sn1/',
+    anchorYOffset: '10',
+    anchorUnits: 'pixels',
+    anchorXOffset: '20',
   });
   // Tabs are set per recipient / signer
   let signer1Tabs = docusign.Tabs.constructFromObject({
@@ -121,7 +121,7 @@ function makeEnvelope(args) {
 
   // Request that the envelope be sent by setting |status| to "sent".
   // To request that the envelope be created as a draft, set to "created"
-  env.status = "sent";
+  env.status = 'sent';
 
   return env;
 }
@@ -143,12 +143,12 @@ function makeRecipientViewRequest(args) {
   // the DocuSign signing. It's usually better to use
   // the session mechanism of your web framework. Query parameters
   // can be changed/spoofed very easily.
-  viewRequest.returnUrl = args.dsReturnUrl + "?state=123";
+  viewRequest.returnUrl = args.dsReturnUrl + '?state=123';
 
   // How has your app authenticated the user? In addition to your app's
   // authentication, you can include authenticate steps from DocuSign.
   // Eg, SMS authentication
-  viewRequest.authenticationMethod = "none";
+  viewRequest.authenticationMethod = 'none';
 
   // Recipient information must match embedded recipient info
   // we used to create the envelope.
