@@ -1,29 +1,49 @@
-// Test helpers
+const docusign = require('docusign-esign');
+const fs = require('fs');
+const path = require('path');
 
-// See https://mochajs.org/
-const helpers = exports;
 const settings = require('../config/appsettings.json');
+const { REDIRECT_URI, BASE_PATH, OAUTH_BASE_PATH, PRIVATE_KEY_FILENAME, EXPIRES_IN, signerClientId, pingUrl, returnUrl, TEST_PDF_FILE, SCOPES } = require('./constants');
 
-helpers.accessToken = process.env.DS_TEST_ACCESS_TOKEN; // An access token
-helpers.accountId = process.env.DS_TEST_ACCOUNT_ID; //An API Account ID
-helpers.basePath = 'https://demo.docusign.net/restapi';
-helpers.signerEmail = settings.signerEmail || process.env.DS_TEST_SIGNER_EMAIL;
-helpers.signerName = settings.signerName || process.env.DS_TEST_SIGNER_NAME;
-helpers.ccEmail = process.env.DS_TEST_CC_EMAIL;
-helpers.ccName = process.env.DS_TEST_CC_NAME;
+const apiClient = new docusign.ApiClient({
+  basePath: BASE_PATH,
+  oAuthBasePath: OAUTH_BASE_PATH
+});
 
-helpers.catchMethod = (error) => {
-    // This catch statement provides more info on an API problem.
-    // To debug mocha:
-    // npm test -- --inspect --debug-brk
-    let errorBody = error && error.response && error.response.body
-        // we can pull the DocuSign error code and message from the response body
-        , errorCode = errorBody && errorBody.errorCode
-        , errorMessage = errorBody && errorBody.message
-        ;
-    // In production, may want to provide customized error messages and 
-    // remediation advice to the user.
-    console.log (`err: ${error}, errorCode: ${errorCode}, errorMessage: ${errorMessage}`);
+const authenticate = async () => {
+  // IMPORTANT NOTE:
+  // the first time you ask for a JWT access token, you should grant access by making the following call
+  // get DocuSign OAuth authorization url:
+  
+  const authorizationUrl = apiClient.getJWTUri(settings.dsJWTClientId, REDIRECT_URI, OAUTH_BASE_PATH);
+  // open DocuSign OAuth authorization url in the browser, login and grant access
+  console.log('OAuth authorization url:', authorizationUrl);
+  // END OF NOTE
 
-    //throw error; // an unexpected error has occured
+  const privateKeyFile = fs.readFileSync(path.resolve(__dirname, PRIVATE_KEY_FILENAME));
+  const res = await apiClient.requestJWTUserToken(settings.dsJWTClientId, settings.impersonatedUserGuid, SCOPES, privateKeyFile, EXPIRES_IN);
+
+  const accessToken = res.body.access_token;
+  apiClient.addDefaultHeader('Authorization', `Bearer ${accessToken}`);
+  const userInfo = await apiClient.getUserInfo(accessToken);
+
+  const accountId = userInfo.accounts[0].accountId;
+  const baseUri = userInfo.accounts[0].baseUri;
+  const accountDomain = baseUri.split('/v2');
+  apiClient.setBasePath(`${accountDomain[0]}/restapi`);
+  
+  return { accessToken, accountId, baseUri };
+};
+
+const getEnvelopeArgs = () => {
+  return {
+    signerEmail: settings.signerEmail,
+    signerName: settings.signerName,
+    signerClientId: signerClientId,
+    dsReturnUrl: returnUrl,
+    dsPingUrl: pingUrl,
+    docFile: path.resolve(TEST_PDF_FILE),
+  };
 }
+
+module.exports = { authenticate, getEnvelopeArgs }
