@@ -2,7 +2,7 @@ const settings = require('../config/appsettings.json');
 const chai = require('chai');
 const expect = chai.expect;
 const should = chai.should();
-const helpers = require('./testHelpers');
+const fs = require('fs');
 const { createTemplate, makeTemplate } = require('../lib/eSignature/examples/createTemplate');
 const { sendEnvelopeFromTemplate, makeEnvelope: makeEnvelopeForUsingTemplate } = require('../lib/eSignature/examples/useTemplate');
 const { addDocToTemplate, makeEnvelope: makeEnvelopeForAddingDoc, document1: document1ForAddingDoc, makeRecipientViewRequest: makeRecipientViewRequestForAddingDoc } = require('../lib/eSignature/examples/addDocToTemplate')
@@ -219,13 +219,21 @@ describe ('templateTests', function() {
           }
         ]
       },
+      documents: [
+        {
+          documentBase64: Buffer.from(fs.readFileSync(TEST_TEMPLATE_PDF_FILE)).toString("base64"),
+          name: "Lorem Ipsum",
+          fileExtension: "pdf",
+          documentId: "1",
+        }
+      ],
       status: "created",
     };   
     
     const template = await makeTemplate(args);
 
     should.exist(template);
-    expect(template).excluding('documents').to.deep.equal(expected);
+    expect(template).excluding(['']).to.deep.equal(expected);
   });
 
   it('useTemplate', async function() {
@@ -315,6 +323,9 @@ describe ('templateTests', function() {
   it('addDocToTemplate_makeEnvelope', async function() {
     this.timeout(0);
 
+    const item = 'Item';
+    const quantity = '5';
+
     const envelopeArgs  = {
       templateId: TEMPLATE_ID,
       signerEmail: settings.signerEmail,
@@ -322,11 +333,36 @@ describe ('templateTests', function() {
       signerClientId: signerClientId,
       ccEmail: 'test@mail.com',
       ccName: 'Test Name',
-      item: 'Item',
-      quantity: '5',
+      item: item,
+      quantity: quantity,
       dsReturnUrl: returnUrl,
       dsPingUrl: pingUrl
     };
+
+    const documentText = `
+    <!DOCTYPE html>
+    <html>
+        <head>
+          <meta charset="UTF-8">
+        </head>
+        <body style="font-family:sans-serif;margin-left:2em;">
+        <h1 style="font-family: 'Trebuchet MS', Helvetica, sans-serif;
+            color: darkblue;margin-bottom: 0;">World Wide Corp</h1>
+        <h2 style="font-family: 'Trebuchet MS', Helvetica, sans-serif;
+          margin-top: 0px;margin-bottom: 3.5em;font-size: 1em;
+          color: darkblue;">Order Processing Division</h2>
+        <h4>Ordered by ${settings.signerName}</h4>
+        <p style="margin-top:0em; margin-bottom:0em;">Email: ${settings.signerEmail}</p>
+        <p style="margin-top:0em; margin-bottom:0em;">Copy to: ${'Test Name'}, ${'test@mail.com'}</p>
+        <p style="margin-top:3em; margin-bottom:0em;">Item: <b>${item}</b>, quantity: <b>${quantity}</b> at market price.</p>
+        <p style="margin-top:3em;">
+  Candy bonbon pastry jujubes lollipop wafer biscuit biscuit. Topping brownie sesame snaps sweet roll pie. Croissant danish biscuit soufflé caramels jujubes jelly. Dragée danish caramels lemon drops dragée. Gummi bears cupcake biscuit tiramisu sugar plum pastry. Dragée gummies applicake pudding liquorice. Donut jujubes oat cake jelly-o. Dessert bear claw chocolate cake gummies lollipop sugar plum ice cream gummies cheesecake.
+        </p>
+        <!-- Note the anchor tag for the signature field is in white. -->
+        <h3 style="margin-top:3em;">Agreed: <span style="color:white;">**signature_1**/</span></h3>
+        </body>
+    </html>
+  `;
 
     const expected = {
       compositeTemplates: [
@@ -398,6 +434,12 @@ describe ('templateTests', function() {
               },
             },
           ],
+          document: {
+            documentBase64: Buffer.from(documentText).toString("base64"),
+            name: "Appendix 1--Sales order",
+            fileExtension: "html",
+            documentId: "1",
+          }
         }
       ],
       status: 'sent'
@@ -406,7 +448,7 @@ describe ('templateTests', function() {
     const envelope = await makeEnvelopeForAddingDoc(envelopeArgs);
 
     should.exist(envelope);
-    expect(envelope).excludingEvery('document').to.deep.equal(expected);
+    expect(envelope).excluding(['']).to.deep.equal(expected);
   });
 
   it('addDocToTemplate_document1', async function() {
@@ -590,11 +632,19 @@ describe ('templateTests', function() {
           }
         ]
       },
+      documents: [
+        {
+          documentBase64: Buffer.from(fs.readFileSync(TEST_TEMPLATE_DOCX_FILE)).toString("base64"),
+          name: "Lorem Ipsum",
+          fileExtension: "docx",
+          documentId: "1",
+        }
+      ]
     }
 
     const envelope = await makeEnvelopeForSetTabValues(envelopeArgs);
 
     should.exist(envelope);
-    expect(envelope).excluding('documents').to.deep.equal(expected);
+    expect(envelope).excluding(['']).to.deep.equal(expected);
   });
 });

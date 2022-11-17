@@ -7,7 +7,7 @@ const { sendEnvelopeForEmbeddedSigning, makeEnvelope: makeEnvelopeForEmbeddedSig
 const { sendEnvelope, makeEnvelope: makeEnvelopeForSigningViaEmail, document1 } = require('../lib/eSignature/examples/signingViaEmail')
 const fs = require('fs');
 const path = require('path');
-const { authenticate } = require('./testHelpers');
+const { authenticate, areEqual } = require('./testHelpers');
 const { signerClientId, pingUrl, returnUrl, TEST_PDF_FILE, TEST_DOCX_FILE, BASE_PATH } = require('./constants')
 
 chai.use(chaiExclude);
@@ -63,6 +63,14 @@ describe ('envelopeTests', function() {
 
     const expected = {
       emailSubject: "Please sign this document",
+      documents: [
+        {
+          documentBase64: Buffer.from(fs.readFileSync(path.resolve(TEST_PDF_FILE))).toString("base64"),
+          name: "Lorem Ipsum",
+          fileExtension: "pdf",
+          documentId: "3",
+        }
+      ],
       recipients: {
         signers: [
           {
@@ -89,7 +97,7 @@ describe ('envelopeTests', function() {
     const envelope = await makeEnvelopeForEmbeddedSigning(envelopeArgs);
 
     should.exist(envelope);
-    expect(envelope).excluding('documents').to.deep.equal(expected);
+    expect(envelope).excluding(['']).to.deep.equal(expected);
   });
 
   it('embeddedSigning_makeRecipientView', async function() {
@@ -116,7 +124,6 @@ describe ('envelopeTests', function() {
     const viewRequest = await makeRecipientViewRequest(envelopeArgs);
 
     should.exist(viewRequest);
-    // expect(JSON.stringify(expected)).to.be.equal(JSON.stringify(viewRequest));
     expect({...viewRequest}).to.deep.equal({...expected});
   });
 
@@ -147,6 +154,30 @@ describe ('envelopeTests', function() {
   it('signViaEmail_makeEnvelope', async function() {
     this.timeout(0);
 
+    const document1Text = `
+    <!DOCTYPE html>
+    <html>
+        <head>
+          <meta charset="UTF-8">
+        </head>
+        <body style="font-family:sans-serif;margin-left:2em;">
+        <h1 style="font-family: 'Trebuchet MS', Helvetica, sans-serif;
+            color: darkblue;margin-bottom: 0;">World Wide Corp</h1>
+        <h2 style="font-family: 'Trebuchet MS', Helvetica, sans-serif;
+          margin-top: 0px;margin-bottom: 3.5em;font-size: 1em;
+          color: darkblue;">Order Processing Division</h2>
+        <h4>Ordered by ${settings.signerName}</h4>
+        <p style="margin-top:0em; margin-bottom:0em;">Email: ${settings.signerEmail}</p>
+        <p style="margin-top:0em; margin-bottom:0em;">Copy to: ${'Test Name'}, ${'test@mail.com'}</p>
+        <p style="margin-top:3em;">
+  Candy bonbon pastry jujubes lollipop wafer biscuit biscuit. Topping brownie sesame snaps sweet roll pie. Croissant danish biscuit soufflé caramels jujubes jelly. Dragée danish caramels lemon drops dragée. Gummi bears cupcake biscuit tiramisu sugar plum pastry. Dragée gummies applicake pudding liquorice. Donut jujubes oat cake jelly-o. Dessert bear claw chocolate cake gummies lollipop sugar plum ice cream gummies cheesecake.
+        </p>
+        <!-- Note the anchor tag for the signature field is in white. -->
+        <h3 style="margin-top:3em;">Agreed: <span style="color:white;">**signature_1**/</span></h3>
+        </body>
+    </html>
+  `;
+
     const envelopeArgs = {
       signerEmail: settings.signerEmail,
       signerName: settings.signerName,
@@ -159,6 +190,26 @@ describe ('envelopeTests', function() {
 
     const expected = {
       emailSubject: "Please sign this document set",
+      documents: [
+        {
+          documentBase64: Buffer.from(document1Text).toString("base64"),
+          name: 'Order acknowledgement',
+          fileExtension: 'html',
+          documentId: '1',
+        },
+        {
+          documentBase64: Buffer.from(fs.readFileSync(path.resolve(TEST_DOCX_FILE))).toString("base64"),
+          name: "Battle Plan",
+          fileExtension: "docx",
+          documentId: "2",
+        },
+        {
+          documentBase64: Buffer.from(fs.readFileSync(path.resolve(TEST_PDF_FILE))).toString("base64"),
+          name: "Lorem Ipsum",
+          fileExtension: "pdf",
+          documentId: "3",
+        }
+      ],
       recipients: {
         signers: [
           {
@@ -199,7 +250,7 @@ describe ('envelopeTests', function() {
     const envelope = await makeEnvelopeForSigningViaEmail(envelopeArgs);
 
     should.exist(envelope);
-    expect(envelope).excluding('documents').to.deep.equal(expected);
+    expect(envelope).excluding(['']).to.deep.equal(expected);
   });
 
   it('signViaEmail_document1', async function() {
