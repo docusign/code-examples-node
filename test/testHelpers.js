@@ -20,7 +20,7 @@ const authenticate = async () => {
   console.log('OAuth authorization url:', authorizationUrl);
   // END OF NOTE
 
-  const privateKeyFile = fs.readFileSync(path.resolve(__dirname, PRIVATE_KEY_FILENAME));
+  const privateKeyFile = fs.readFileSync(path.resolve(PRIVATE_KEY_FILENAME));
   const res = await apiClient.requestJWTUserToken(settings.dsJWTClientId, settings.impersonatedUserGuid, SCOPES, privateKeyFile, EXPIRES_IN);
 
   const accessToken = res.body.access_token;
@@ -35,15 +35,64 @@ const authenticate = async () => {
   return { accessToken, accountId, baseUri };
 };
 
-const getEnvelopeArgs = () => {
+const areEqual = (obj1, obj2) => {
+  return obj1 == obj2
+    || JSON.stringify(obj1) == JSON.stringify(obj2)
+    || JSON.parse(JSON.stringify(obj1)) == JSON.parse(JSON.stringify(obj2));
+}
+
+const getToken = async function _getToken() {
+  // Data used
+  // dsConfig.dsClientId
+  // dsConfig.impersonatedUserGuid
+  // dsConfig.privateKey
+  // dsConfig.dsOauthServer
+  const privateKeyFile = fs.readFileSync(path.resolve(__dirname, PRIVATE_KEY_FILENAME));
+
+  const jwtLifeSec = 10 * 60, // requested lifetime for the JWT is 10 min
+      dsApi = new docusign.ApiClient();
+  dsApi.setOAuthBasePath(OAUTH_BASE_PATH); // it should be domain only.
+  const results = await dsApi.requestJWTUserToken(settings.dsClientId,
+    settings.impersonatedUserGuid, SCOPES, privateKeyFile,
+      jwtLifeSec);
+
   return {
-    signerEmail: settings.signerEmail,
-    signerName: settings.signerName,
-    signerClientId: signerClientId,
-    dsReturnUrl: returnUrl,
-    dsPingUrl: pingUrl,
-    docFile: path.resolve(TEST_PDF_FILE),
+      accessToken: results.body.access_token,
   };
 }
 
-module.exports = { authenticate, getEnvelopeArgs }
+const getUserInfo = async function _getUserInfo(accessToken){
+  // Data used:
+  // dsConfig.targetAccountId
+  // dsConfig.dsOauthServer
+  // DsJwtAuth.accessToken
+
+  const dsApi = new docusign.ApiClient()
+      , targetAccountId = settings.targetAccountId
+      , baseUriSuffix = '/restapi';
+
+  dsApi.setOAuthBasePath(OAUTH_BASE_PATH); // it have to be domain name
+  const results = await dsApi.getUserInfo(accessToken);
+
+  let accountInfo;
+  if (!Boolean(targetAccountId)) {
+      // find the default account
+      accountInfo = results.accounts.find(account =>
+          account.isDefault === "true");
+  } else {
+      // find the matching account
+      accountInfo = results.accounts.find(account => account.accountId == targetAccountId);
+  }
+  if (typeof accountInfo === 'undefined') {
+      throw new Error (`Target account ${targetAccountId} not found!`);
+  }
+
+  const accountId = accountInfo.accountId;
+  const basePath = accountInfo.baseUri + baseUriSuffix;
+  return {
+      accountId,
+      basePath
+  }
+}
+
+module.exports = { authenticate, areEqual, getToken, getUserInfo }

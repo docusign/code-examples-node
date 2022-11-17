@@ -1,13 +1,13 @@
 const settings = require('../config/appsettings.json')
 
-const signerClientId = 1000;
+const signerClientId = '1000';
 const returnUrl = settings.appUrl + "/ds-return";
 const pingUrl = settings.appUrl + "/";
 const PRIVATE_KEY_FILENAME = "../config/private.key";
 const BASE_PATH = 'https://demo.docusign.net/restapi';
 const OAUTH_BASE_PATH = 'account-d.docusign.com';
 const REDIRECT_URI = 'https://www.docusign.com/api';
-const SCOPES = ["signature, impersonation"];
+const SCOPES = ["signature", "impersonation"];
 const EXPIRES_IN = 3600;
 const TEST_PDF_FILE = './test/docs/World_Wide_Corp_lorem.pdf';
 const TEST_DOCX_FILE = './test/docs/World_Wide_Corp_Battle_Plan_Trafalgar.docx';
