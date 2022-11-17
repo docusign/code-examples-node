@@ -7,7 +7,7 @@ const { sendEnvelopeForEmbeddedSigning, makeEnvelope: makeEnvelopeForEmbeddedSig
 const { sendEnvelope, makeEnvelope: makeEnvelopeForSigningViaEmail, document1 } = require('../lib/eSignature/examples/signingViaEmail')
 const fs = require('fs');
 const path = require('path');
-const { authenticate, getEnvelopeArgs, getToken, getUserInfo } = require('./testHelpers');
+const { authenticate } = require('./testHelpers');
 const { signerClientId, pingUrl, returnUrl, TEST_PDF_FILE, TEST_DOCX_FILE, BASE_PATH } = require('./constants')
 
 chai.use(chaiExclude);
@@ -19,8 +19,7 @@ describe ('envelopeTests', function() {
   before(async function() {
     this.timeout(0);
 
-    const { accessToken } = await getToken();
-    const { accountId } = await getUserInfo(accessToken);
+    const { accountId, accessToken } = await authenticate();
       
     ACCOUNT_ID = accountId;
     ACCESS_TOKEN = accessToken;
@@ -102,7 +101,6 @@ describe ('envelopeTests', function() {
       signerClientId: signerClientId,
       dsReturnUrl: returnUrl,
       dsPingUrl: pingUrl,
-      docFile: path.resolve(TEST_PDF_FILE),
     };
 
     const expected = {

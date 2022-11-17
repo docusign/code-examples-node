@@ -20,7 +20,7 @@ const authenticate = async () => {
   console.log('OAuth authorization url:', authorizationUrl);
   // END OF NOTE
 
-  const privateKeyFile = fs.readFileSync(path.resolve(PRIVATE_KEY_FILENAME));
+  const privateKeyFile = fs.readFileSync(path.resolve(__dirname, PRIVATE_KEY_FILENAME));
   const res = await apiClient.requestJWTUserToken(settings.dsJWTClientId, settings.impersonatedUserGuid, SCOPES, privateKeyFile, EXPIRES_IN);
 
   const accessToken = res.body.access_token;

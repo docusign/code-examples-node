@@ -4,9 +4,9 @@ const expect = chai.expect;
 const should = chai.should();
 const helpers = require('./testHelpers');
 const { createTemplate, makeTemplate } = require('../lib/eSignature/examples/createTemplate');
-const { sendEnvelopeFromTemplate, makeEnvelope } = require('../lib/eSignature/examples/useTemplate');
-const { addDocToTemplate } = require('../lib/eSignature/examples/addDocToTemplate')
-const { setTabValues } = require('../lib/eSignature/examples/setTabValues')
+const { sendEnvelopeFromTemplate, makeEnvelope: makeEnvelopeForUsingTemplate } = require('../lib/eSignature/examples/useTemplate');
+const { addDocToTemplate, makeEnvelope: makeEnvelopeForAddingDoc, document1: document1ForAddingDoc, makeRecipientViewRequest: makeRecipientViewRequestForAddingDoc } = require('../lib/eSignature/examples/addDocToTemplate')
+const { setTabValues, makeEnvelope: makeEnvelopeForSetTabValues } = require('../lib/eSignature/examples/setTabValues')
 const path = require('path');
 const { authenticate, areEqual } = require('./testHelpers');
 const { TEST_TEMPLATE_PDF_FILE, TEST_TEMPLATE_DOCX_FILE, TEMPLATE_NAME, BASE_PATH, signerClientId, returnUrl, pingUrl } = require('./constants')
@@ -16,23 +16,24 @@ let ACCESS_TOKEN;
 let TEMPLATE_ID = "12345678-1234-1234-1234-123456789123";
 
 describe ('templateTests', function() {
-  // before(async function() {
-  //   this.timeout(0);
+  before(async function() {
+    this.timeout(0);
 
-  //   const { accountId, accessToken } = await authenticate();
+    const { accountId, accessToken } = await authenticate();
       
-  //   ACCOUNT_ID = accountId;
-  //   ACCESS_TOKEN = accessToken;
-  // });
+    ACCOUNT_ID = accountId;
+    ACCESS_TOKEN = accessToken;
+  });
 
   it('createTemplate', async function() {
     this.timeout(0);
 
+    const newTemplateName = `${TEMPLATE_NAME}_${Date.now()}`;
     const args = {
       accessToken: ACCESS_TOKEN,
       basePath: BASE_PATH,
       accountId: ACCOUNT_ID,
-      templateName: TEMPLATE_NAME,
+      templateName: newTemplateName,
       docFile: TEST_TEMPLATE_PDF_FILE
     };
 
@@ -42,6 +43,7 @@ describe ('templateTests', function() {
 
     should.exist(templateId);
     should.exist(templateName);
+    should.equal(templateName, newTemplateName);
     should.equal(createdNewTemplate, true);
   });
 
@@ -56,7 +58,7 @@ describe ('templateTests', function() {
     const expected = {
       emailSubject: "Please sign this document",
       description: "Example template created via the API",
-      name: "Example Signer and CC template",
+      name: TEMPLATE_NAME,
       shared: "false",
       recipients: {
         signers: [
@@ -276,10 +278,10 @@ describe ('templateTests', function() {
       status: 'sent'
     };
 
-    const envelope = await makeEnvelope(envelopeArgs);
+    const envelope = await makeEnvelopeForUsingTemplate(envelopeArgs);
 
     should.exist(envelope);
-    // expect(areEqual(envelope, expected)).to.be.true;
+    expect(areEqual(envelope, expected)).to.be.true;
   });
 
   it('addDocToTemplate', async function() {
@@ -310,6 +312,176 @@ describe ('templateTests', function() {
     should.exist(redirectUrl);
   });
 
+  it('addDocToTemplate_makeEnvelope', async function() {
+    this.timeout(0);
+
+    const envelopeArgs  = {
+      templateId: TEMPLATE_ID,
+      signerEmail: settings.signerEmail,
+      signerName: settings.signerName,
+      signerClientId: signerClientId,
+      ccEmail: 'test@mail.com',
+      ccName: 'Test Name',
+      item: 'Item',
+      quantity: '5',
+      dsReturnUrl: returnUrl,
+      dsPingUrl: pingUrl
+    };
+
+    const expected = {
+      compositeTemplates: [
+        {
+          compositeTemplateId: "1",
+          serverTemplates: [
+            {
+              sequence: "1",
+              templateId: TEMPLATE_ID,
+            },
+          ],
+          inlineTemplates: [
+            {
+              sequence: "2",
+              recipients: {
+                carbonCopies: [
+                  {
+                    email: 'test@mail.com',
+                    name: 'Test Name',
+                    roleName: "cc",
+                    recipientId: "2",
+                  }
+                ],
+                signers: [
+                  {
+                    email: settings.signerEmail,
+                    name: settings.signerName,
+                    roleName: "signer",
+                    recipientId: "1",
+                    clientUserId: signerClientId,
+                  }
+                ],
+              },
+            },
+          ],
+        },
+        {
+          compositeTemplateId: "2",
+          inlineTemplates: [
+            {
+              sequence: "1",
+              recipients: {
+                carbonCopies: [
+                  {
+                    email: 'test@mail.com',
+                    name: 'Test Name',
+                    roleName: "cc",
+                    recipientId: "2",
+                  }
+                ],
+                signers: [
+                  {
+                    email: settings.signerEmail,
+                    name: settings.signerName,
+                    roleName: "signer",
+                    recipientId: "1",
+                    tabs: {
+                      signHereTabs: [
+                        {
+                          anchorString: "**signature_1**",
+                          anchorYOffset: "10",
+                          anchorUnits: "pixels",
+                          anchorXOffset: "20",
+                        }
+                      ]
+                    },
+                  }
+                ],
+              },
+            },
+          ],
+        }
+      ],
+      status: 'sent'
+    };
+
+    const envelope = await makeEnvelopeForAddingDoc(envelopeArgs);
+
+    should.exist(envelope);
+    expect(envelope).excludingEvery('document').to.deep.equal(expected);
+  });
+
+  it('addDocToTemplate_document1', async function() {
+    this.timeout(0);
+    
+    const item = 'Item';
+    const quantity = '5';
+    const envelopeArgs  = {
+      templateId: TEMPLATE_ID,
+      signerEmail: settings.signerEmail,
+      signerName: settings.signerName,
+      ccEmail: 'test@mail.com',
+      ccName: 'Test Name',
+      item: item,
+      quantity: quantity,
+    };
+
+    const expected = `
+    <!DOCTYPE html>
+    <html>
+        <head>
+          <meta charset="UTF-8">
+        </head>
+        <body style="font-family:sans-serif;margin-left:2em;">
+        <h1 style="font-family: 'Trebuchet MS', Helvetica, sans-serif;
+            color: darkblue;margin-bottom: 0;">World Wide Corp</h1>
+        <h2 style="font-family: 'Trebuchet MS', Helvetica, sans-serif;
+          margin-top: 0px;margin-bottom: 3.5em;font-size: 1em;
+          color: darkblue;">Order Processing Division</h2>
+        <h4>Ordered by ${settings.signerName}</h4>
+        <p style="margin-top:0em; margin-bottom:0em;">Email: ${settings.signerEmail}</p>
+        <p style="margin-top:0em; margin-bottom:0em;">Copy to: ${'Test Name'}, ${'test@mail.com'}</p>
+        <p style="margin-top:3em; margin-bottom:0em;">Item: <b>${item}</b>, quantity: <b>${quantity}</b> at market price.</p>
+        <p style="margin-top:3em;">
+  Candy bonbon pastry jujubes lollipop wafer biscuit biscuit. Topping brownie sesame snaps sweet roll pie. Croissant danish biscuit soufflé caramels jujubes jelly. Dragée danish caramels lemon drops dragée. Gummi bears cupcake biscuit tiramisu sugar plum pastry. Dragée gummies applicake pudding liquorice. Donut jujubes oat cake jelly-o. Dessert bear claw chocolate cake gummies lollipop sugar plum ice cream gummies cheesecake.
+        </p>
+        <!-- Note the anchor tag for the signature field is in white. -->
+        <h3 style="margin-top:3em;">Agreed: <span style="color:white;">**signature_1**/</span></h3>
+        </body>
+    </html>
+  `
+
+    const document = await document1ForAddingDoc(envelopeArgs);
+
+    should.exist(document);
+    expect(document).to.be.equal(expected);
+  });
+
+  it('addDocToTemplate_makeRecipientView', async function() {
+    this.timeout(0);
+
+    const envelopeArgs  = {
+      signerEmail: settings.signerEmail,
+      signerName: settings.signerName,
+      signerClientId: signerClientId,
+      dsReturnUrl: returnUrl,
+      dsPingUrl: pingUrl,
+    };
+
+    const expected = {
+      returnUrl: returnUrl,
+      authenticationMethod: 'none',
+      email: settings.signerEmail,
+      userName: settings.signerName,
+      clientUserId: signerClientId,
+      pingFrequency: 600,
+      pingUrl: pingUrl
+    };
+
+    const viewRequest = await makeRecipientViewRequestForAddingDoc(envelopeArgs);
+
+    should.exist(viewRequest);
+    expect({...viewRequest}).to.deep.equal({...expected});
+  });
+
   it('setTabValues', async function() {
     this.timeout(0);
 
@@ -331,5 +503,98 @@ describe ('templateTests', function() {
 
     should.exist(envelopeId);
     should.exist(redirectUrl);
+  });
+
+  it('setTabValues_makeEnvelope', async function() {
+    this.timeout(0);
+
+    const envelopeArgs  = {
+      signerEmail: settings.signerEmail,
+      signerName: settings.signerName,
+      signerClientId: signerClientId,
+      dsReturnUrl: returnUrl,
+      docFile: TEST_TEMPLATE_DOCX_FILE
+    };
+
+    const expected = {
+      emailSubject: "Please sign this salary document",
+      recipients: {
+        signers: [
+          {
+            email: settings.signerEmail,
+            name: settings.signerName,
+            clientUserId: signerClientId,
+            recipientId: '1',
+            tabs: {
+              signHereTabs: [
+                {
+                  anchorString: "/sn1/",
+                  anchorUnits: "pixels",
+                  anchorYOffset: "10",
+                  anchorXOffset: "20",
+                }
+              ],
+              textTabs: [
+                {
+                  anchorString: "/legal/",
+                  anchorUnits: "pixels",
+                  anchorYOffset: "-9",
+                  anchorXOffset: "5",
+                  font: "helvetica",
+                  fontSize: "size11",
+                  bold: "true",
+                  value: settings.signerName,
+                  locked: "false",
+                  tabId: "legal_name",
+                  tabLabel: "Legal name",
+                },
+                {
+                  anchorString: "/familiar/",
+                  anchorUnits: "pixels",
+                  anchorYOffset: "-9",
+                  anchorXOffset: "5",
+                  font: "helvetica",
+                  fontSize: "size11",
+                  bold: "true",
+                  value: settings.signerName,
+                  locked: "false",
+                  tabId: "familiar_name",
+                  tabLabel: "Familiar name",
+                },
+                {
+                  anchorString: "/salary/",
+                  anchorUnits: "pixels",
+                  anchorYOffset: "-9",
+                  anchorXOffset: "5",
+                  font: "helvetica",
+                  fontSize: "size11",
+                  bold: "true",
+                  value: '$123,000',
+                  locked: "true",
+                  tabId: "salary",
+                  tabLabel: "Salary",
+                }
+              ],
+            }
+          }
+        ]
+      },
+      status: "sent",
+      customFields: {
+        textCustomFields: [
+          {
+            name: "salary",
+            required: "false",
+            show: "true",
+            value: '123000',
+          }
+        ]
+      },
+    }
+
+    const envelope = await makeEnvelopeForSetTabValues(envelopeArgs);
+
+    should.exist(envelope);
+    expect(envelope).excluding('documents').to.deep.equal(expected);
   });
 });
