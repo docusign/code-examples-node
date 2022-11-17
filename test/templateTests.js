@@ -7,13 +7,12 @@ const { createTemplate, makeTemplate } = require('../lib/eSignature/examples/cre
 const { sendEnvelopeFromTemplate, makeEnvelope: makeEnvelopeForUsingTemplate } = require('../lib/eSignature/examples/useTemplate');
 const { addDocToTemplate, makeEnvelope: makeEnvelopeForAddingDoc, document1: document1ForAddingDoc, makeRecipientViewRequest: makeRecipientViewRequestForAddingDoc } = require('../lib/eSignature/examples/addDocToTemplate')
 const { setTabValues, makeEnvelope: makeEnvelopeForSetTabValues } = require('../lib/eSignature/examples/setTabValues')
-const path = require('path');
 const { authenticate, areEqual } = require('./testHelpers');
-const { TEST_TEMPLATE_PDF_FILE, TEST_TEMPLATE_DOCX_FILE, TEMPLATE_NAME, BASE_PATH, signerClientId, returnUrl, pingUrl } = require('./constants')
+const { TEST_TEMPLATE_PDF_FILE, TEST_TEMPLATE_DOCX_FILE, TEMPLATE_NAME, BASE_PATH, signerClientId, returnUrl, pingUrl, CC_EMAIL, CC_NAME } = require('./constants')
 
 let ACCOUNT_ID;
 let ACCESS_TOKEN;
-let TEMPLATE_ID = "12345678-1234-1234-1234-123456789123";
+let TEMPLATE_ID;
 
 describe ('templateTests', function() {
   before(async function() {
@@ -25,7 +24,7 @@ describe ('templateTests', function() {
     ACCESS_TOKEN = accessToken;
   });
 
-  it('createTemplate', async function() {
+  it('createTemplate method should create the correct template definition if correct data is provided', async function() {
     this.timeout(0);
 
     const newTemplateName = `${TEMPLATE_NAME}_${Date.now()}`;
@@ -47,7 +46,7 @@ describe ('templateTests', function() {
     should.equal(createdNewTemplate, true);
   });
 
-  it('createTemplate_makeTemplate', async function() {
+  it('makeTemplate method of createTemplate example should create correct template definition if correct data is provided', async function() {
     this.timeout(0);
 
     const args = {
@@ -236,15 +235,15 @@ describe ('templateTests', function() {
     expect(template).excluding(['']).to.deep.equal(expected);
   });
 
-  it('useTemplate', async function() {
+  it('useTemplate method should create the envelope with template if correct data is provided', async function() {
     this.timeout(0);
 
     const envelopeArgs  = {
       templateId: TEMPLATE_ID,
       signerEmail: settings.signerEmail,
       signerName: settings.signerName,
-      ccEmail: 'test@mail.com',
-      ccName: 'Test Name'
+      ccEmail: CC_EMAIL,
+      ccName: CC_NAME
     };
     const args = {
       accessToken: ACCESS_TOKEN,
@@ -258,15 +257,15 @@ describe ('templateTests', function() {
     should.exist(results);
   });
 
-  it('useTemplate_makeEnvelope', async function() {
+  it('makeEnvelope method of useTemplate example should create correct envelope definition if correct data is provided', async function() {
     this.timeout(0);
 
     const envelopeArgs  = {
       templateId: TEMPLATE_ID,
       signerEmail: settings.signerEmail,
       signerName: settings.signerName,
-      ccEmail: 'test@mail.com',
-      ccName: 'Test Name'
+      ccEmail: CC_EMAIL,
+      ccName: CC_NAME
     };
 
     const expected = {
@@ -278,8 +277,8 @@ describe ('templateTests', function() {
           roleName: "signer",
         },
         {
-          email: 'test@mail.com',
-          name: 'Test Name',
+          email: CC_EMAIL,
+          name: CC_NAME,
           roleName: "cc",
         }
       ],
@@ -292,7 +291,7 @@ describe ('templateTests', function() {
     expect(areEqual(envelope, expected)).to.be.true;
   });
 
-  it('addDocToTemplate', async function() {
+  it('addDocToTemplate method should correctly add document to a template if correct data is provided', async function() {
     this.timeout(0);
 
     const envelopeArgs  = {
@@ -300,8 +299,8 @@ describe ('templateTests', function() {
       signerEmail: settings.signerEmail,
       signerName: settings.signerName,
       signerClientId: signerClientId,
-      ccEmail: 'test@mail.com',
-      ccName: 'Test Name',
+      ccEmail: CC_EMAIL,
+      ccName: CC_NAME,
       item: 'Item',
       quantity: '5',
       dsReturnUrl: returnUrl,
@@ -320,7 +319,7 @@ describe ('templateTests', function() {
     should.exist(redirectUrl);
   });
 
-  it('addDocToTemplate_makeEnvelope', async function() {
+  it('makeEnvelope method of addDocToTemplate should create the correct envelope definition if correct data is provided', async function() {
     this.timeout(0);
 
     const item = 'Item';
@@ -331,8 +330,8 @@ describe ('templateTests', function() {
       signerEmail: settings.signerEmail,
       signerName: settings.signerName,
       signerClientId: signerClientId,
-      ccEmail: 'test@mail.com',
-      ccName: 'Test Name',
+      ccEmail: CC_EMAIL,
+      ccName: CC_NAME,
       item: item,
       quantity: quantity,
       dsReturnUrl: returnUrl,
@@ -353,7 +352,7 @@ describe ('templateTests', function() {
           color: darkblue;">Order Processing Division</h2>
         <h4>Ordered by ${settings.signerName}</h4>
         <p style="margin-top:0em; margin-bottom:0em;">Email: ${settings.signerEmail}</p>
-        <p style="margin-top:0em; margin-bottom:0em;">Copy to: ${'Test Name'}, ${'test@mail.com'}</p>
+        <p style="margin-top:0em; margin-bottom:0em;">Copy to: ${CC_NAME}, ${CC_EMAIL}</p>
         <p style="margin-top:3em; margin-bottom:0em;">Item: <b>${item}</b>, quantity: <b>${quantity}</b> at market price.</p>
         <p style="margin-top:3em;">
   Candy bonbon pastry jujubes lollipop wafer biscuit biscuit. Topping brownie sesame snaps sweet roll pie. Croissant danish biscuit soufflé caramels jujubes jelly. Dragée danish caramels lemon drops dragée. Gummi bears cupcake biscuit tiramisu sugar plum pastry. Dragée gummies applicake pudding liquorice. Donut jujubes oat cake jelly-o. Dessert bear claw chocolate cake gummies lollipop sugar plum ice cream gummies cheesecake.
@@ -380,8 +379,8 @@ describe ('templateTests', function() {
               recipients: {
                 carbonCopies: [
                   {
-                    email: 'test@mail.com',
-                    name: 'Test Name',
+                    email: CC_EMAIL,
+                    name: CC_NAME,
                     roleName: "cc",
                     recipientId: "2",
                   }
@@ -407,8 +406,8 @@ describe ('templateTests', function() {
               recipients: {
                 carbonCopies: [
                   {
-                    email: 'test@mail.com',
-                    name: 'Test Name',
+                    email: CC_EMAIL,
+                    name: CC_NAME,
                     roleName: "cc",
                     recipientId: "2",
                   }
@@ -451,7 +450,7 @@ describe ('templateTests', function() {
     expect(envelope).excluding(['']).to.deep.equal(expected);
   });
 
-  it('addDocToTemplate_document1', async function() {
+  it('document1 method of addDocToTemplate example should return correct HTML document if correct data is provided', async function() {
     this.timeout(0);
     
     const item = 'Item';
@@ -460,8 +459,8 @@ describe ('templateTests', function() {
       templateId: TEMPLATE_ID,
       signerEmail: settings.signerEmail,
       signerName: settings.signerName,
-      ccEmail: 'test@mail.com',
-      ccName: 'Test Name',
+      ccEmail: CC_EMAIL,
+      ccName: CC_NAME,
       item: item,
       quantity: quantity,
     };
@@ -480,7 +479,7 @@ describe ('templateTests', function() {
           color: darkblue;">Order Processing Division</h2>
         <h4>Ordered by ${settings.signerName}</h4>
         <p style="margin-top:0em; margin-bottom:0em;">Email: ${settings.signerEmail}</p>
-        <p style="margin-top:0em; margin-bottom:0em;">Copy to: ${'Test Name'}, ${'test@mail.com'}</p>
+        <p style="margin-top:0em; margin-bottom:0em;">Copy to: ${CC_NAME}, ${CC_EMAIL}</p>
         <p style="margin-top:3em; margin-bottom:0em;">Item: <b>${item}</b>, quantity: <b>${quantity}</b> at market price.</p>
         <p style="margin-top:3em;">
   Candy bonbon pastry jujubes lollipop wafer biscuit biscuit. Topping brownie sesame snaps sweet roll pie. Croissant danish biscuit soufflé caramels jujubes jelly. Dragée danish caramels lemon drops dragée. Gummi bears cupcake biscuit tiramisu sugar plum pastry. Dragée gummies applicake pudding liquorice. Donut jujubes oat cake jelly-o. Dessert bear claw chocolate cake gummies lollipop sugar plum ice cream gummies cheesecake.
@@ -497,7 +496,7 @@ describe ('templateTests', function() {
     expect(document).to.be.equal(expected);
   });
 
-  it('addDocToTemplate_makeRecipientView', async function() {
+  it('makeRecipientView method of addDocToTemplate example should create the correct recipient view request url if correct data is provided', async function() {
     this.timeout(0);
 
     const envelopeArgs  = {
@@ -524,7 +523,7 @@ describe ('templateTests', function() {
     expect({...viewRequest}).to.deep.equal({...expected});
   });
 
-  it('setTabValues', async function() {
+  it('setTabValues method should correctly set the tab values of template if correct data is provided', async function() {
     this.timeout(0);
 
     const envelopeArgs  = {
@@ -547,7 +546,7 @@ describe ('templateTests', function() {
     should.exist(redirectUrl);
   });
 
-  it('setTabValues_makeEnvelope', async function() {
+  it('makeEnvelope method of setTabValues example should create correct envelope definition if correct data is provided', async function() {
     this.timeout(0);
 
     const envelopeArgs  = {

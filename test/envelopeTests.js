@@ -8,7 +8,7 @@ const { sendEnvelope, makeEnvelope: makeEnvelopeForSigningViaEmail, document1 } 
 const fs = require('fs');
 const path = require('path');
 const { authenticate, areEqual } = require('./testHelpers');
-const { signerClientId, pingUrl, returnUrl, TEST_PDF_FILE, TEST_DOCX_FILE, BASE_PATH } = require('./constants')
+const { signerClientId, pingUrl, returnUrl, TEST_PDF_FILE, TEST_DOCX_FILE, BASE_PATH, CC_EMAIL, CC_NAME } = require('./constants')
 
 chai.use(chaiExclude);
 
@@ -25,7 +25,7 @@ describe ('envelopeTests', function() {
     ACCESS_TOKEN = accessToken;
   });
 
-  it('embeddedSigning', async function() {
+  it('sendEnvelopeForEmbeddedSigning method should create an envelope and a recipients view for the envelope if correct data is provided', async function() {
     this.timeout(0);
 
     const envelopeArgs = {
@@ -49,7 +49,7 @@ describe ('envelopeTests', function() {
     should.exist(redirectUrl);
   });
 
-  it('embeddedSigning_makeEnvelope', async function() {
+  it('makeEnvelope method of embeddedSigning example should create the correct envelope definition if correct data is provided', async function() {
     this.timeout(0);
 
     const envelopeArgs = {
@@ -100,7 +100,7 @@ describe ('envelopeTests', function() {
     expect(envelope).excluding(['']).to.deep.equal(expected);
   });
 
-  it('embeddedSigning_makeRecipientView', async function() {
+  it('makeRecipientView method should create the correct recipient view request url if correct data is provided', async function() {
     this.timeout(0);
 
     const envelopeArgs = {
@@ -127,14 +127,14 @@ describe ('envelopeTests', function() {
     expect({...viewRequest}).to.deep.equal({...expected});
   });
 
-  it('signViaEmail', async function() {
+  it('signViaEmail method creates the envelope and sends it via email when correct data is provided', async function() {
     this.timeout(0);
 
     const envelopeArgs = {
       signerEmail: settings.signerEmail,
       signerName: settings.signerName,
-      ccEmail: 'test@mail.com',
-      ccName: 'Test Name',
+      ccEmail: CC_EMAIL,
+      ccName: CC_NAME,
       status: 'sent',
       doc2File: path.resolve(TEST_DOCX_FILE),
       doc3File: path.resolve(TEST_PDF_FILE),
@@ -151,7 +151,7 @@ describe ('envelopeTests', function() {
     should.exist(envelopeId);
   });
 
-  it('signViaEmail_makeEnvelope', async function() {
+  it('makeEnvelope method of signViaEmail example should create the correct envelope definition if correct data is provided', async function() {
     this.timeout(0);
 
     const document1Text = `
@@ -168,7 +168,7 @@ describe ('envelopeTests', function() {
           color: darkblue;">Order Processing Division</h2>
         <h4>Ordered by ${settings.signerName}</h4>
         <p style="margin-top:0em; margin-bottom:0em;">Email: ${settings.signerEmail}</p>
-        <p style="margin-top:0em; margin-bottom:0em;">Copy to: ${'Test Name'}, ${'test@mail.com'}</p>
+        <p style="margin-top:0em; margin-bottom:0em;">Copy to: ${CC_NAME}, ${CC_EMAIL}</p>
         <p style="margin-top:3em;">
   Candy bonbon pastry jujubes lollipop wafer biscuit biscuit. Topping brownie sesame snaps sweet roll pie. Croissant danish biscuit soufflé caramels jujubes jelly. Dragée danish caramels lemon drops dragée. Gummi bears cupcake biscuit tiramisu sugar plum pastry. Dragée gummies applicake pudding liquorice. Donut jujubes oat cake jelly-o. Dessert bear claw chocolate cake gummies lollipop sugar plum ice cream gummies cheesecake.
         </p>
@@ -181,8 +181,8 @@ describe ('envelopeTests', function() {
     const envelopeArgs = {
       signerEmail: settings.signerEmail,
       signerName: settings.signerName,
-      ccEmail: 'test@mail.com',
-      ccName: 'Test Name',
+      ccEmail: CC_EMAIL,
+      ccName: CC_NAME,
       status: 'sent',
       doc2File: path.resolve(TEST_DOCX_FILE),
       doc3File: path.resolve(TEST_PDF_FILE),
@@ -237,8 +237,8 @@ describe ('envelopeTests', function() {
         ],
         carbonCopies: [
           {
-            email: 'test@mail.com',
-            name: 'Test Name',
+            email: CC_EMAIL,
+            name: CC_NAME,
             routingOrder: '2',
             recipientId: '2'
           }
@@ -253,14 +253,14 @@ describe ('envelopeTests', function() {
     expect(envelope).excluding(['']).to.deep.equal(expected);
   });
 
-  it('signViaEmail_document1', async function() {
+  it('document1 should return correct html document if correct data is provided', async function() {
     this.timeout(0);
 
     const envelopeArgs = {
       signerEmail: settings.signerEmail,
       signerName: settings.signerName,
-      ccEmail: 'test@mail.com',
-      ccName: 'Test Name',
+      ccEmail: CC_EMAIL,
+      ccName: CC_NAME,
     };
 
     const expected = `
@@ -277,7 +277,7 @@ describe ('envelopeTests', function() {
           color: darkblue;">Order Processing Division</h2>
         <h4>Ordered by ${settings.signerName}</h4>
         <p style="margin-top:0em; margin-bottom:0em;">Email: ${settings.signerEmail}</p>
-        <p style="margin-top:0em; margin-bottom:0em;">Copy to: ${'Test Name'}, ${'test@mail.com'}</p>
+        <p style="margin-top:0em; margin-bottom:0em;">Copy to: ${CC_NAME}, ${CC_EMAIL}</p>
         <p style="margin-top:3em;">
   Candy bonbon pastry jujubes lollipop wafer biscuit biscuit. Topping brownie sesame snaps sweet roll pie. Croissant danish biscuit soufflé caramels jujubes jelly. Dragée danish caramels lemon drops dragée. Gummi bears cupcake biscuit tiramisu sugar plum pastry. Dragée gummies applicake pudding liquorice. Donut jujubes oat cake jelly-o. Dessert bear claw chocolate cake gummies lollipop sugar plum ice cream gummies cheesecake.
         </p>
@@ -292,9 +292,8 @@ describe ('envelopeTests', function() {
     should.exist(document);
     expect(document).to.contain(settings.signerEmail);
     expect(document).to.contain(settings.signerName);
-    expect(document).to.contain('test@mail.com');
-    expect(document).to.contain('Test Name');
+    expect(document).to.contain(CC_EMAIL);
+    expect(document).to.contain(CC_NAME);
     expect(document).to.be.equal(expected);
   });
-
 })

@@ -14,6 +14,8 @@ const TEST_DOCX_FILE = './test/docs/World_Wide_Corp_Battle_Plan_Trafalgar.docx';
 const TEST_TEMPLATE_PDF_FILE = './test/docs/World_Wide_Corp_fields.pdf';
 const TEST_TEMPLATE_DOCX_FILE = './test/docs/World_Wide_Corp_salary.docx';
 const TEMPLATE_NAME = 'Test Template';
+const CC_NAME = 'Test Name';
+const CC_EMAIL = 'test@mail.com';
 
 module.exports = {
   signerClientId,
@@ -30,4 +32,6 @@ module.exports = {
   TEST_TEMPLATE_PDF_FILE,
   TEMPLATE_NAME,
   TEST_TEMPLATE_DOCX_FILE,
+  CC_NAME,
+  CC_EMAIL,
 };
