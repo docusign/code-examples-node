@@ -1,0 +1,10 @@
+<% if (showDoc) { %>
+    <p><a target='_blank' href='<%= documentation %>'>Documentation</a> on using OAuth Authorization Code Grant and
+        JWT from a Node Express application.</p>
+<% } %>
+
+<% if (locals.dsConfig.multiSourceChooser) { %>
+    <h3 class="mt-4">Run and explore eSignature REST API code examples with Authorization Code Grant or JWT Grant authentication</h3>
+<% } %>
+
+<%- include("index_cfr_examples_list") %>

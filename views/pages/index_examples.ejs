@@ -6,6 +6,8 @@
     <%- include("index_monitor_examples") %>
 <% } else if(locals.examplesApi.examplesApi.isAdminApi) { %>
     <%- include("index_admin_examples") %>
+<% } else if(locals.statusCFR == "enabled") { %>
+    <%- include("index_esignature_cfr_examples") %>
 <% } else { %>
     <%- include("index_esignature_examples") %>
 <% } %>

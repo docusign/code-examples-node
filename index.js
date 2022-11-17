@@ -29,7 +29,7 @@ const {
   eg016, eg017, eg018, eg019, eg020, eg022, eg023,
   eg024, eg025, eg026, eg027, eg028, eg029, eg030,
   eg031, eg032, eg033, eg034, eg035, eg036, eg037,
-  eg038, eg039, eg040
+  eg038, eg039, eg040, eg041
 } = require("./lib/eSignature/controllers");
 
 const {
@@ -274,6 +274,8 @@ if (examplesApi.examplesApi.isRoomsApi) {
     .post('/eg039', eg039.createController)
     .get('/eg040', eg040.getController)
     .post('/eg040', eg040.createController)
+    .get('/eg041', eg041.getController)
+    .post('/eg041', eg041.createController)
 }
 
 function dsLoginCB1(req, res, next) { req.dsAuthCodeGrant.oauth_callback1(req, res, next) }
