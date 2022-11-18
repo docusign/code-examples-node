@@ -1,31 +1,54 @@
-const settings = require('../config/appsettings.json');
+const fs = require('fs');
 const chai = require('chai');
 const expect = chai.expect;
 const should = chai.should();
-const fs = require('fs');
+
+const settings = require('../config/appsettings.json');
 const { createTemplate, makeTemplate } = require('../lib/eSignature/examples/createTemplate');
-const { sendEnvelopeFromTemplate, makeEnvelope: makeEnvelopeForUsingTemplate } = require('../lib/eSignature/examples/useTemplate');
-const { addDocToTemplate, makeEnvelope: makeEnvelopeForAddingDoc, document1: document1ForAddingDoc, makeRecipientViewRequest: makeRecipientViewRequestForAddingDoc } = require('../lib/eSignature/examples/addDocToTemplate')
+const {
+  sendEnvelopeFromTemplate,
+  makeEnvelope: makeEnvelopeForUsingTemplate
+} = require('../lib/eSignature/examples/useTemplate');
+const {
+  addDocToTemplate,
+  makeEnvelope: makeEnvelopeForAddingDoc,
+  document1: document1ForAddingDoc,
+  makeRecipientViewRequest: makeRecipientViewRequestForAddingDoc
+} = require('../lib/eSignature/examples/addDocToTemplate')
 const { setTabValues, makeEnvelope: makeEnvelopeForSetTabValues } = require('../lib/eSignature/examples/setTabValues')
-const { authenticate, areEqual } = require('./testHelpers');
-const { TEST_TEMPLATE_PDF_FILE, TEST_TEMPLATE_DOCX_FILE, TEMPLATE_NAME, BASE_PATH, signerClientId, returnUrl, pingUrl, CC_EMAIL, CC_NAME } = require('./constants')
+const { TEST_TIMEOUT_MS, authenticate, areEqual } = require('./testHelpers');
+
+const {
+  TEST_TEMPLATE_PDF_FILE,
+  TEST_TEMPLATE_DOCX_FILE,
+  TEMPLATE_NAME,
+  BASE_PATH,
+  signerClientId,
+  returnUrl,
+  pingUrl,
+  CC_EMAIL,
+  CC_NAME
+} = require('./constants')
 
 let ACCOUNT_ID;
 let ACCESS_TOKEN;
 let TEMPLATE_ID;
 
-describe ('templateTests', function() {
+describe ('TemplatesApi tests:', function() {
   before(async function() {
-    this.timeout(0);
+    this.timeout(TEST_TIMEOUT_MS);
 
     const { accountId, accessToken } = await authenticate();
-      
+    
+    should.exist(accountId);
+    should.exist(accessToken);
+
     ACCOUNT_ID = accountId;
     ACCESS_TOKEN = accessToken;
   });
 
   it('createTemplate method should create the correct template definition if correct data is provided', async function() {
-    this.timeout(0);
+    this.timeout(TEST_TIMEOUT_MS);
 
     const newTemplateName = `${TEMPLATE_NAME}_${Date.now()}`;
     const args = {
@@ -47,7 +70,7 @@ describe ('templateTests', function() {
   });
 
   it('makeTemplate method of createTemplate example should create correct template definition if correct data is provided', async function() {
-    this.timeout(0);
+    this.timeout(TEST_TIMEOUT_MS);
 
     const args = {
       templateName: TEMPLATE_NAME,
@@ -236,7 +259,7 @@ describe ('templateTests', function() {
   });
 
   it('useTemplate method should create the envelope with template if correct data is provided', async function() {
-    this.timeout(0);
+    this.timeout(TEST_TIMEOUT_MS);
 
     const envelopeArgs  = {
       templateId: TEMPLATE_ID,
@@ -258,7 +281,7 @@ describe ('templateTests', function() {
   });
 
   it('makeEnvelope method of useTemplate example should create correct envelope definition if correct data is provided', async function() {
-    this.timeout(0);
+    this.timeout(TEST_TIMEOUT_MS);
 
     const envelopeArgs  = {
       templateId: TEMPLATE_ID,
@@ -292,7 +315,7 @@ describe ('templateTests', function() {
   });
 
   it('addDocToTemplate method should correctly add document to a template if correct data is provided', async function() {
-    this.timeout(0);
+    this.timeout(TEST_TIMEOUT_MS);
 
     const envelopeArgs  = {
       templateId: TEMPLATE_ID,
@@ -320,7 +343,7 @@ describe ('templateTests', function() {
   });
 
   it('makeEnvelope method of addDocToTemplate should create the correct envelope definition if correct data is provided', async function() {
-    this.timeout(0);
+    this.timeout(TEST_TIMEOUT_MS);
 
     const item = 'Item';
     const quantity = '5';
@@ -451,8 +474,8 @@ describe ('templateTests', function() {
   });
 
   it('document1 method of addDocToTemplate example should return correct HTML document if correct data is provided', async function() {
-    this.timeout(0);
-    
+    this.timeout(TEST_TIMEOUT_MS);
+
     const item = 'Item';
     const quantity = '5';
     const envelopeArgs  = {
@@ -497,7 +520,7 @@ describe ('templateTests', function() {
   });
 
   it('makeRecipientView method of addDocToTemplate example should create the correct recipient view request url if correct data is provided', async function() {
-    this.timeout(0);
+    this.timeout(TEST_TIMEOUT_MS);
 
     const envelopeArgs  = {
       signerEmail: settings.signerEmail,
@@ -524,7 +547,7 @@ describe ('templateTests', function() {
   });
 
   it('setTabValues method should correctly set the tab values of template if correct data is provided', async function() {
-    this.timeout(0);
+    this.timeout(TEST_TIMEOUT_MS);
 
     const envelopeArgs  = {
       signerEmail: settings.signerEmail,
@@ -547,7 +570,7 @@ describe ('templateTests', function() {
   });
 
   it('makeEnvelope method of setTabValues example should create correct envelope definition if correct data is provided', async function() {
-    this.timeout(0);
+    this.timeout(TEST_TIMEOUT_MS);
 
     const envelopeArgs  = {
       signerEmail: settings.signerEmail,

@@ -1,32 +1,54 @@
-const settings = require('../config/appsettings.json');
+const fs = require('fs');
+const path = require('path');
 const chai = require('chai');
 const chaiExclude = require('chai-exclude');
 const expect = chai.expect;
 const should = chai.should();
-const { sendEnvelopeForEmbeddedSigning, makeEnvelope: makeEnvelopeForEmbeddedSigning, makeRecipientViewRequest } = require('../embeddedSigning');
-const { sendEnvelope, makeEnvelope: makeEnvelopeForSigningViaEmail, document1 } = require('../lib/eSignature/examples/signingViaEmail')
-const fs = require('fs');
-const path = require('path');
-const { authenticate, areEqual } = require('./testHelpers');
-const { signerClientId, pingUrl, returnUrl, TEST_PDF_FILE, TEST_DOCX_FILE, BASE_PATH, CC_EMAIL, CC_NAME } = require('./constants')
+
+const settings = require('../config/appsettings.json');
+const {
+  sendEnvelopeForEmbeddedSigning,
+  makeEnvelope: makeEnvelopeForEmbeddedSigning,
+  makeRecipientViewRequest
+} = require('../embeddedSigning');
+const {
+  sendEnvelope,
+  makeEnvelope: makeEnvelopeForSigningViaEmail,
+  document1
+} = require('../lib/eSignature/examples/signingViaEmail')
+const { TEST_TIMEOUT_MS, authenticate } = require('./testHelpers');
+
+const {
+  signerClientId,
+  pingUrl,
+  returnUrl,
+  TEST_PDF_FILE,
+  TEST_DOCX_FILE,
+  BASE_PATH,
+  CC_EMAIL,
+  CC_NAME
+} = require('./constants')
 
 chai.use(chaiExclude);
 
 let ACCOUNT_ID;
 let ACCESS_TOKEN;
 
-describe ('envelopeTests', function() {
+describe ('EnvelopesApi tests:', function() {
   before(async function() {
-    this.timeout(0);
+    this.timeout(TEST_TIMEOUT_MS);
 
     const { accountId, accessToken } = await authenticate();
       
+    should.exist(accountId);
+    should.exist(accessToken);
+
     ACCOUNT_ID = accountId;
     ACCESS_TOKEN = accessToken;
   });
 
   it('sendEnvelopeForEmbeddedSigning method should create an envelope and a recipients view for the envelope if correct data is provided', async function() {
-    this.timeout(0);
+    this.timeout(TEST_TIMEOUT_MS);
 
     const envelopeArgs = {
       signerEmail: settings.signerEmail,
@@ -50,7 +72,7 @@ describe ('envelopeTests', function() {
   });
 
   it('makeEnvelope method of embeddedSigning example should create the correct envelope definition if correct data is provided', async function() {
-    this.timeout(0);
+    this.timeout(TEST_TIMEOUT_MS);
 
     const envelopeArgs = {
       signerEmail: settings.signerEmail,
@@ -101,7 +123,7 @@ describe ('envelopeTests', function() {
   });
 
   it('makeRecipientView method should create the correct recipient view request url if correct data is provided', async function() {
-    this.timeout(0);
+    this.timeout(TEST_TIMEOUT_MS);
 
     const envelopeArgs = {
       signerEmail: settings.signerEmail,
@@ -128,7 +150,7 @@ describe ('envelopeTests', function() {
   });
 
   it('signViaEmail method creates the envelope and sends it via email when correct data is provided', async function() {
-    this.timeout(0);
+    this.timeout(TEST_TIMEOUT_MS);
 
     const envelopeArgs = {
       signerEmail: settings.signerEmail,
@@ -152,7 +174,7 @@ describe ('envelopeTests', function() {
   });
 
   it('makeEnvelope method of signViaEmail example should create the correct envelope definition if correct data is provided', async function() {
-    this.timeout(0);
+    this.timeout(TEST_TIMEOUT_MS);
 
     const document1Text = `
     <!DOCTYPE html>
@@ -254,7 +276,7 @@ describe ('envelopeTests', function() {
   });
 
   it('document1 should return correct html document if correct data is provided', async function() {
-    this.timeout(0);
+    this.timeout(TEST_TIMEOUT_MS);
 
     const envelopeArgs = {
       signerEmail: settings.signerEmail,
