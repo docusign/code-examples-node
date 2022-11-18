@@ -3,7 +3,7 @@
 <h2><%= title %></h2>
 <p><%- message %></p>
 
-<p>Agreement URL received back from the API call: <%- agreementUrl %></p>
+<p>Agreement URL received back from the API call: <code><%- agreementUrl %></code></p>
 
 <p id="agreementStatus">
     <%- locals.manifest.SupportingTexts.HelpingTexts.NOTAGREED %>
@@ -12,7 +12,7 @@
 <div id="ds-terms-of-service"></div>
 <script src="https://demo.docusign.net/clickapi/sdk/latest/docusign-click.js"></script>
 <script>docuSignClick.Clickwrap.render({
-  agreementUrl: agreementUrl,
+  agreementUrl: "<%- agreementUrl %>",
   onAgreed: function() {
     // Triggered if the user has just agreed
     document.getElementById("agreementStatus").innerHTML = "<%- locals.manifest.SupportingTexts.HelpingTexts.AGREED %>";
