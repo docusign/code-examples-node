@@ -34,7 +34,7 @@ const {
 
 const {
   eg001click, eg002click, eg003click,
-  eg004click, eg005click,
+  eg004click, eg005click, eg006click
 } = require("./lib/click/controllers");
 
 const {
@@ -170,6 +170,8 @@ if (examplesApi.examplesApi.isRoomsApi) {
     .post('/eg004', eg004click.createController)
     .get('/eg005', eg005click.getController)
     .post('/eg005', eg005click.createController)
+    .get('/eg006', eg006click.getController)
+    .post('/eg006', eg006click.createController)
 } else if (examplesApi.examplesApi.isMonitorApi) {
   app.get('/eg001', eg001monitor.getController)
     .post('/eg001', eg001monitor.createController)

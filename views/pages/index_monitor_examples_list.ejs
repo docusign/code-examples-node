@@ -1,0 +1,30 @@
+<% locals.manifest.Groups.forEach(function(group) { %>
+    <h2 class="mt-4"><%= group.Name %></h2>
+
+    <% group.Examples.forEach(function(example) { %>
+        <% if (!example.SkipForLanguages || !example.SkipForLanguages.includes("node")) { %>
+                <h4
+                    id=<%= "example".concat("0".repeat(3 - example.ExampleNumber.toString().length)).concat(example.ExampleNumber) %>
+                >
+                    <a 
+                        href=<%= "eg".concat("0".repeat(3 - example.ExampleNumber.toString().length)).concat(example.ExampleNumber) %>>
+                        <%= example.ExampleName %>
+                    </a>
+                </h4>
+
+                <p><%- example.ExampleDescription %></p>
+
+                <p>
+                    <% if (example.LinksToAPIMethod.length > 1) { %>
+                        API methods used:
+                    <% } else { %>
+                        API method used:
+                    <% } %>
+                
+                    <% example.LinksToAPIMethod.forEach(function(link) { %>
+                        <a target='_blank' href="<%= link.Path %>"><%= link.PathName %></a>
+                    <% }); %>
+                </p>
+        <% } %>
+    <% }); %>
+<% }); %>

@@ -31,7 +31,7 @@
     "cookie-parser": "^1.4.4",
     "csurf": "^1.10.0",
     "docusign-admin": "^1.1.0",
-    "docusign-click": "^1.1.0",
+    "docusign-click": "^1.2.2",
     "docusign-esign": "^5.16.0",
     "docusign-monitor": "^1.1.0",
     "docusign-rooms": "^1.1.0",
