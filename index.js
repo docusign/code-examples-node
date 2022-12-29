@@ -34,7 +34,7 @@ const {
 
 const {
   eg001click, eg002click, eg003click,
-  eg004click, eg005click, eg006click
+  eg004click, eg005click, eg006click,
 } = require("./lib/click/controllers");
 
 const {
