@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 const settings = require('../config/appsettings.json');
-const { REDIRECT_URI, BASE_PATH, OAUTH_BASE_PATH, PRIVATE_KEY_FILENAME, EXPIRES_IN, SCOPES } = require('./constants');
+const { REDIRECT_URI, BASE_PATH, OAUTH_BASE_PATH, PRIVATE_KEY_FILENAME, EXPIRES_IN, SCOPES, CLICK_SCOPES, ROOM_SCOPES, ADMIN_SCOPES } = require('./constants');
 
 const TEST_TIMEOUT_MS = 10000;
 
@@ -12,10 +12,25 @@ const apiClient = new docusign.ApiClient({
   oAuthBasePath: OAUTH_BASE_PATH
 });
 
-const authenticate = async () => {
+const authenticate = async (apiTypes) => {
   try {
     const privateKeyFile = fs.readFileSync(path.resolve(__dirname, PRIVATE_KEY_FILENAME));
-    const res = await apiClient.requestJWTUserToken(settings.dsJWTClientId, settings.impersonatedUserGuid, SCOPES, privateKeyFile, EXPIRES_IN);
+
+    let scopes = SCOPES;
+
+    if(apiTypes !== undefined) {
+      if(apiTypes.includes('click')) {
+        scopes = scopes.concat(CLICK_SCOPES);
+      }
+      if(apiTypes.includes('rooms')) {
+        scopes = scopes.concat(ROOM_SCOPES);
+      }
+      if(apiTypes.includes('admin')) {
+        scopes = scopes.concat(ADMIN_SCOPES);
+      }
+    }
+
+    const res = await apiClient.requestJWTUserToken(settings.dsJWTClientId, settings.impersonatedUserGuid, scopes, privateKeyFile, EXPIRES_IN);
   
     const accessToken = res.body.access_token;
     apiClient.addDefaultHeader('Authorization', `Bearer ${accessToken}`);
