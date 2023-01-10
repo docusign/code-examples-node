@@ -14,7 +14,9 @@ const apiClient = new docusign.ApiClient({
 
 const authenticate = async (apiTypes) => {
   try {
-    const privateKeyFile = fs.readFileSync(path.resolve(__dirname, PRIVATE_KEY_FILENAME));
+    const privateKeyFile = config.privateKey
+      ? config.privateKey
+      : fs.readFileSync(path.resolve(__dirname, PRIVATE_KEY_FILENAME));
 
     let scopes = SCOPES;
 
