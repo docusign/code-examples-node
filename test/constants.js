@@ -1,8 +1,8 @@
-const settings = require('../config/appsettings.json')
+const config = require('./testConfig').getConfiguration();
 
 const signerClientId = '1000';
-const returnUrl = settings.appUrl + "/ds-return";
-const pingUrl = settings.appUrl + "/";
+const returnUrl = config.appUrl + "/ds-return";
+const pingUrl = config.appUrl + "/";
 const PRIVATE_KEY_FILENAME = "../config/private.key";
 const BASE_PATH = 'https://demo.docusign.net/restapi';
 const CLICK_BASE_PATH = 'https://demo.docusign.net/clickapi';
