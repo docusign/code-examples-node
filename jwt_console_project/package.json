@@ -12,7 +12,7 @@
   "author": "DocuSign, Inc",
   "license": "ISC",
   "dependencies": {
-    "docusign-esign": "^5.14.0",
+    "docusign-esign": "^6.0.0",
     "fs": "^0.0.1-security",
     "fs-extra": "^10.0.0",
     "path": "^0.12.7",
