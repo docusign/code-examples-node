@@ -5,7 +5,6 @@ const chaiExclude = require('chai-exclude');
 const expect = chai.expect;
 const should = chai.should();
 
-const settings = require('../config/appsettings.json');
 const { createBrand } = require('../lib/eSignature/examples/createBrand');
 const {
   applyBrandToEnvelope,
@@ -14,7 +13,7 @@ const {
   getBrands
 } = require('../lib/eSignature/examples/applyBrandToEnvelope');
 const { createPermission } = require('../lib/eSignature/examples/createPermission');
-const { TEST_TIMEOUT_MS, authenticate } = require('./testHelpers');
+const { TEST_TIMEOUT_MS, authenticate, config } = require('./testHelpers');
 
 const {
   TEST_PDF_FILE,
@@ -69,8 +68,8 @@ describe ('AccountsApi tests:', function() {
     this.timeout(TEST_TIMEOUT_MS);
 
     const envelopeArgs  = {
-      signerEmail: settings.signerEmail,
-      signerName: settings.signerName,
+      signerEmail: config.signerEmail,
+      signerName: config.signerName,
       brandId: BRAND_ID,
       status: "sent",
       doc2File: path.resolve(TEST_DOCX_FILE),
@@ -92,8 +91,8 @@ describe ('AccountsApi tests:', function() {
     this.timeout(TEST_TIMEOUT_MS);
 
     const envelopeArgs  = {
-      signerEmail: settings.signerEmail,
-      signerName: settings.signerName,
+      signerEmail: config.signerEmail,
+      signerName: config.signerName,
       brandId: BRAND_ID,
       status: "sent",
       doc2File: path.resolve(TEST_DOCX_FILE),
@@ -112,8 +111,8 @@ describe ('AccountsApi tests:', function() {
         <h2 style="font-family: 'Trebuchet MS', Helvetica, sans-serif;
           margin-top: 0px;margin-bottom: 3.5em;font-size: 1em;
           color: darkblue;">Order Processing Division</h2>
-        <h4>Ordered by ${settings.signerName}</h4>
-        <p style="margin-top:0em; margin-bottom:0em;">Email: ${settings.signerEmail}</p>
+        <h4>Ordered by ${config.signerName}</h4>
+        <p style="margin-top:0em; margin-bottom:0em;">Email: ${config.signerEmail}</p>
         <p style="margin-top:3em;">
   Candy bonbon pastry jujubes lollipop wafer biscuit biscuit. Topping brownie sesame snaps sweet roll pie. Croissant danish biscuit soufflé caramels jujubes jelly. Dragée danish caramels lemon drops dragée. Gummi bears cupcake biscuit tiramisu sugar plum pastry. Dragée gummies applicake pudding liquorice. Donut jujubes oat cake jelly-o. Dessert bear claw chocolate cake gummies lollipop sugar plum ice cream gummies cheesecake.
         </p>
@@ -148,8 +147,8 @@ describe ('AccountsApi tests:', function() {
       recipients: {
         signers: [
           {
-            email: settings.signerEmail,
-            name: settings.signerName,
+            email: config.signerEmail,
+            name: config.signerName,
             recipientId: '1',
             routingOrder: '1',
             tabs: {
@@ -185,8 +184,8 @@ describe ('AccountsApi tests:', function() {
     this.timeout(TEST_TIMEOUT_MS);
 
     const args  = {
-      signerEmail: settings.signerEmail,
-      signerName: settings.signerName,
+      signerEmail: config.signerEmail,
+      signerName: config.signerName,
       brandId: BRAND_ID,
       status: "sent",
       doc2File: path.resolve(TEST_DOCX_FILE),
@@ -205,8 +204,8 @@ describe ('AccountsApi tests:', function() {
         <h2 style="font-family: 'Trebuchet MS', Helvetica, sans-serif;
           margin-top: 0px;margin-bottom: 3.5em;font-size: 1em;
           color: darkblue;">Order Processing Division</h2>
-        <h4>Ordered by ${settings.signerName}</h4>
-        <p style="margin-top:0em; margin-bottom:0em;">Email: ${settings.signerEmail}</p>
+        <h4>Ordered by ${config.signerName}</h4>
+        <p style="margin-top:0em; margin-bottom:0em;">Email: ${config.signerEmail}</p>
         <p style="margin-top:3em;">
   Candy bonbon pastry jujubes lollipop wafer biscuit biscuit. Topping brownie sesame snaps sweet roll pie. Croissant danish biscuit soufflé caramels jujubes jelly. Dragée danish caramels lemon drops dragée. Gummi bears cupcake biscuit tiramisu sugar plum pastry. Dragée gummies applicake pudding liquorice. Donut jujubes oat cake jelly-o. Dessert bear claw chocolate cake gummies lollipop sugar plum ice cream gummies cheesecake.
         </p>

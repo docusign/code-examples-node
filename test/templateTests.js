@@ -3,7 +3,6 @@ const chai = require('chai');
 const expect = chai.expect;
 const should = chai.should();
 
-const settings = require('../config/appsettings.json');
 const { createTemplate, makeTemplate } = require('../lib/eSignature/examples/createTemplate');
 const {
   sendEnvelopeFromTemplate,
@@ -16,7 +15,7 @@ const {
   makeRecipientViewRequest: makeRecipientViewRequestForAddingDoc
 } = require('../lib/eSignature/examples/addDocToTemplate')
 const { setTabValues, makeEnvelope: makeEnvelopeForSetTabValues } = require('../lib/eSignature/examples/setTabValues')
-const { TEST_TIMEOUT_MS, authenticate, areEqual } = require('./testHelpers');
+const { TEST_TIMEOUT_MS, authenticate, areEqual, config } = require('./testHelpers');
 
 const {
   TEST_TEMPLATE_PDF_FILE,
@@ -263,8 +262,8 @@ describe ('TemplatesApi tests:', function() {
 
     const envelopeArgs  = {
       templateId: TEMPLATE_ID,
-      signerEmail: settings.signerEmail,
-      signerName: settings.signerName,
+      signerEmail: config.signerEmail,
+      signerName: config.signerName,
       ccEmail: CC_EMAIL,
       ccName: CC_NAME
     };
@@ -285,8 +284,8 @@ describe ('TemplatesApi tests:', function() {
 
     const envelopeArgs  = {
       templateId: TEMPLATE_ID,
-      signerEmail: settings.signerEmail,
-      signerName: settings.signerName,
+      signerEmail: config.signerEmail,
+      signerName: config.signerName,
       ccEmail: CC_EMAIL,
       ccName: CC_NAME
     };
@@ -295,8 +294,8 @@ describe ('TemplatesApi tests:', function() {
       templateId: TEMPLATE_ID,
       templateRoles: [
         {
-          email: settings.signerEmail,
-          name: settings.signerName,
+          email: config.signerEmail,
+          name: config.signerName,
           roleName: "signer",
         },
         {
@@ -319,8 +318,8 @@ describe ('TemplatesApi tests:', function() {
 
     const envelopeArgs  = {
       templateId: TEMPLATE_ID,
-      signerEmail: settings.signerEmail,
-      signerName: settings.signerName,
+      signerEmail: config.signerEmail,
+      signerName: config.signerName,
       signerClientId: signerClientId,
       ccEmail: CC_EMAIL,
       ccName: CC_NAME,
@@ -350,8 +349,8 @@ describe ('TemplatesApi tests:', function() {
 
     const envelopeArgs  = {
       templateId: TEMPLATE_ID,
-      signerEmail: settings.signerEmail,
-      signerName: settings.signerName,
+      signerEmail: config.signerEmail,
+      signerName: config.signerName,
       signerClientId: signerClientId,
       ccEmail: CC_EMAIL,
       ccName: CC_NAME,
@@ -373,8 +372,8 @@ describe ('TemplatesApi tests:', function() {
         <h2 style="font-family: 'Trebuchet MS', Helvetica, sans-serif;
           margin-top: 0px;margin-bottom: 3.5em;font-size: 1em;
           color: darkblue;">Order Processing Division</h2>
-        <h4>Ordered by ${settings.signerName}</h4>
-        <p style="margin-top:0em; margin-bottom:0em;">Email: ${settings.signerEmail}</p>
+        <h4>Ordered by ${config.signerName}</h4>
+        <p style="margin-top:0em; margin-bottom:0em;">Email: ${config.signerEmail}</p>
         <p style="margin-top:0em; margin-bottom:0em;">Copy to: ${CC_NAME}, ${CC_EMAIL}</p>
         <p style="margin-top:3em; margin-bottom:0em;">Item: <b>${item}</b>, quantity: <b>${quantity}</b> at market price.</p>
         <p style="margin-top:3em;">
@@ -410,8 +409,8 @@ describe ('TemplatesApi tests:', function() {
                 ],
                 signers: [
                   {
-                    email: settings.signerEmail,
-                    name: settings.signerName,
+                    email: config.signerEmail,
+                    name: config.signerName,
                     roleName: "signer",
                     recipientId: "1",
                     clientUserId: signerClientId,
@@ -437,8 +436,8 @@ describe ('TemplatesApi tests:', function() {
                 ],
                 signers: [
                   {
-                    email: settings.signerEmail,
-                    name: settings.signerName,
+                    email: config.signerEmail,
+                    name: config.signerName,
                     roleName: "signer",
                     recipientId: "1",
                     tabs: {
@@ -480,8 +479,8 @@ describe ('TemplatesApi tests:', function() {
     const quantity = '5';
     const envelopeArgs  = {
       templateId: TEMPLATE_ID,
-      signerEmail: settings.signerEmail,
-      signerName: settings.signerName,
+      signerEmail: config.signerEmail,
+      signerName: config.signerName,
       ccEmail: CC_EMAIL,
       ccName: CC_NAME,
       item: item,
@@ -500,8 +499,8 @@ describe ('TemplatesApi tests:', function() {
         <h2 style="font-family: 'Trebuchet MS', Helvetica, sans-serif;
           margin-top: 0px;margin-bottom: 3.5em;font-size: 1em;
           color: darkblue;">Order Processing Division</h2>
-        <h4>Ordered by ${settings.signerName}</h4>
-        <p style="margin-top:0em; margin-bottom:0em;">Email: ${settings.signerEmail}</p>
+        <h4>Ordered by ${config.signerName}</h4>
+        <p style="margin-top:0em; margin-bottom:0em;">Email: ${config.signerEmail}</p>
         <p style="margin-top:0em; margin-bottom:0em;">Copy to: ${CC_NAME}, ${CC_EMAIL}</p>
         <p style="margin-top:3em; margin-bottom:0em;">Item: <b>${item}</b>, quantity: <b>${quantity}</b> at market price.</p>
         <p style="margin-top:3em;">
@@ -523,8 +522,8 @@ describe ('TemplatesApi tests:', function() {
     this.timeout(TEST_TIMEOUT_MS);
 
     const envelopeArgs  = {
-      signerEmail: settings.signerEmail,
-      signerName: settings.signerName,
+      signerEmail: config.signerEmail,
+      signerName: config.signerName,
       signerClientId: signerClientId,
       dsReturnUrl: returnUrl,
       dsPingUrl: pingUrl,
@@ -533,8 +532,8 @@ describe ('TemplatesApi tests:', function() {
     const expected = {
       returnUrl: returnUrl,
       authenticationMethod: 'none',
-      email: settings.signerEmail,
-      userName: settings.signerName,
+      email: config.signerEmail,
+      userName: config.signerName,
       clientUserId: signerClientId,
       pingFrequency: 600,
       pingUrl: pingUrl
@@ -550,8 +549,8 @@ describe ('TemplatesApi tests:', function() {
     this.timeout(TEST_TIMEOUT_MS);
 
     const envelopeArgs  = {
-      signerEmail: settings.signerEmail,
-      signerName: settings.signerName,
+      signerEmail: config.signerEmail,
+      signerName: config.signerName,
       signerClientId: signerClientId,
       dsReturnUrl: returnUrl,
       docFile: TEST_TEMPLATE_DOCX_FILE
@@ -573,8 +572,8 @@ describe ('TemplatesApi tests:', function() {
     this.timeout(TEST_TIMEOUT_MS);
 
     const envelopeArgs  = {
-      signerEmail: settings.signerEmail,
-      signerName: settings.signerName,
+      signerEmail: config.signerEmail,
+      signerName: config.signerName,
       signerClientId: signerClientId,
       dsReturnUrl: returnUrl,
       docFile: TEST_TEMPLATE_DOCX_FILE
@@ -585,8 +584,8 @@ describe ('TemplatesApi tests:', function() {
       recipients: {
         signers: [
           {
-            email: settings.signerEmail,
-            name: settings.signerName,
+            email: config.signerEmail,
+            name: config.signerName,
             clientUserId: signerClientId,
             recipientId: '1',
             tabs: {
@@ -607,7 +606,7 @@ describe ('TemplatesApi tests:', function() {
                   font: "helvetica",
                   fontSize: "size11",
                   bold: "true",
-                  value: settings.signerName,
+                  value: config.signerName,
                   locked: "false",
                   tabId: "legal_name",
                   tabLabel: "Legal name",
@@ -620,7 +619,7 @@ describe ('TemplatesApi tests:', function() {
                   font: "helvetica",
                   fontSize: "size11",
                   bold: "true",
-                  value: settings.signerName,
+                  value: config.signerName,
                   locked: "false",
                   tabId: "familiar_name",
                   tabLabel: "Familiar name",

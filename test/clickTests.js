@@ -5,7 +5,6 @@ const chaiExclude = require('chai-exclude');
 const expect = chai.expect;
 const should = chai.should();
 
-const settings = require('../config/appsettings.json');
 const { createClickwrap } = require('../lib/click/examples/createClickwrap');
 const {
   getInactiveClickwraps,
