@@ -5,7 +5,6 @@ const chaiExclude = require('chai-exclude');
 const expect = chai.expect;
 const should = chai.should();
 
-const settings = require('../config/appsettings.json');
 const {
   sendEnvelopeForEmbeddedSigning,
   makeEnvelope: makeEnvelopeForEmbeddedSigning,
@@ -16,7 +15,7 @@ const {
   makeEnvelope: makeEnvelopeForSigningViaEmail,
   document1
 } = require('../lib/eSignature/examples/signingViaEmail')
-const { TEST_TIMEOUT_MS, authenticate } = require('./testHelpers');
+const { TEST_TIMEOUT_MS, authenticate, config } = require('./testHelpers');
 
 const {
   signerClientId,
@@ -51,8 +50,8 @@ describe ('EnvelopesApi tests:', function() {
     this.timeout(TEST_TIMEOUT_MS);
 
     const envelopeArgs = {
-      signerEmail: settings.signerEmail,
-      signerName: settings.signerName,
+      signerEmail: config.signerEmail,
+      signerName: config.signerName,
       signerClientId: signerClientId,
       dsReturnUrl: returnUrl,
       dsPingUrl: pingUrl,
@@ -75,8 +74,8 @@ describe ('EnvelopesApi tests:', function() {
     this.timeout(TEST_TIMEOUT_MS);
 
     const envelopeArgs = {
-      signerEmail: settings.signerEmail,
-      signerName: settings.signerName,
+      signerEmail: config.signerEmail,
+      signerName: config.signerName,
       signerClientId: signerClientId,
       dsReturnUrl: returnUrl,
       dsPingUrl: pingUrl,
@@ -96,8 +95,8 @@ describe ('EnvelopesApi tests:', function() {
       recipients: {
         signers: [
           {
-            email: settings.signerEmail,
-            name: settings.signerName,
+            email: config.signerEmail,
+            name: config.signerName,
             clientUserId: signerClientId,
             recipientId: '1',
             tabs: {
@@ -126,8 +125,8 @@ describe ('EnvelopesApi tests:', function() {
     this.timeout(TEST_TIMEOUT_MS);
 
     const envelopeArgs = {
-      signerEmail: settings.signerEmail,
-      signerName: settings.signerName,
+      signerEmail: config.signerEmail,
+      signerName: config.signerName,
       signerClientId: signerClientId,
       dsReturnUrl: returnUrl,
       dsPingUrl: pingUrl,
@@ -136,8 +135,8 @@ describe ('EnvelopesApi tests:', function() {
     const expected = {
       returnUrl: `${returnUrl}?state=123`,
       authenticationMethod: 'none',
-      email: settings.signerEmail,
-      userName: settings.signerName,
+      email: config.signerEmail,
+      userName: config.signerName,
       clientUserId: signerClientId,
       pingFrequency: 600,
       pingUrl: pingUrl
@@ -153,8 +152,8 @@ describe ('EnvelopesApi tests:', function() {
     this.timeout(TEST_TIMEOUT_MS);
 
     const envelopeArgs = {
-      signerEmail: settings.signerEmail,
-      signerName: settings.signerName,
+      signerEmail: config.signerEmail,
+      signerName: config.signerName,
       ccEmail: CC_EMAIL,
       ccName: CC_NAME,
       status: 'sent',
@@ -188,8 +187,8 @@ describe ('EnvelopesApi tests:', function() {
         <h2 style="font-family: 'Trebuchet MS', Helvetica, sans-serif;
           margin-top: 0px;margin-bottom: 3.5em;font-size: 1em;
           color: darkblue;">Order Processing Division</h2>
-        <h4>Ordered by ${settings.signerName}</h4>
-        <p style="margin-top:0em; margin-bottom:0em;">Email: ${settings.signerEmail}</p>
+        <h4>Ordered by ${config.signerName}</h4>
+        <p style="margin-top:0em; margin-bottom:0em;">Email: ${config.signerEmail}</p>
         <p style="margin-top:0em; margin-bottom:0em;">Copy to: ${CC_NAME}, ${CC_EMAIL}</p>
         <p style="margin-top:3em;">
   Candy bonbon pastry jujubes lollipop wafer biscuit biscuit. Topping brownie sesame snaps sweet roll pie. Croissant danish biscuit soufflé caramels jujubes jelly. Dragée danish caramels lemon drops dragée. Gummi bears cupcake biscuit tiramisu sugar plum pastry. Dragée gummies applicake pudding liquorice. Donut jujubes oat cake jelly-o. Dessert bear claw chocolate cake gummies lollipop sugar plum ice cream gummies cheesecake.
@@ -201,8 +200,8 @@ describe ('EnvelopesApi tests:', function() {
   `;
 
     const envelopeArgs = {
-      signerEmail: settings.signerEmail,
-      signerName: settings.signerName,
+      signerEmail: config.signerEmail,
+      signerName: config.signerName,
       ccEmail: CC_EMAIL,
       ccName: CC_NAME,
       status: 'sent',
@@ -235,8 +234,8 @@ describe ('EnvelopesApi tests:', function() {
       recipients: {
         signers: [
           {
-            email: settings.signerEmail,
-            name: settings.signerName,
+            email: config.signerEmail,
+            name: config.signerName,
             recipientId: '1',
             routingOrder: '1',
             tabs: {
@@ -279,8 +278,8 @@ describe ('EnvelopesApi tests:', function() {
     this.timeout(TEST_TIMEOUT_MS);
 
     const envelopeArgs = {
-      signerEmail: settings.signerEmail,
-      signerName: settings.signerName,
+      signerEmail: config.signerEmail,
+      signerName: config.signerName,
       ccEmail: CC_EMAIL,
       ccName: CC_NAME,
     };
@@ -297,8 +296,8 @@ describe ('EnvelopesApi tests:', function() {
         <h2 style="font-family: 'Trebuchet MS', Helvetica, sans-serif;
           margin-top: 0px;margin-bottom: 3.5em;font-size: 1em;
           color: darkblue;">Order Processing Division</h2>
-        <h4>Ordered by ${settings.signerName}</h4>
-        <p style="margin-top:0em; margin-bottom:0em;">Email: ${settings.signerEmail}</p>
+        <h4>Ordered by ${config.signerName}</h4>
+        <p style="margin-top:0em; margin-bottom:0em;">Email: ${config.signerEmail}</p>
         <p style="margin-top:0em; margin-bottom:0em;">Copy to: ${CC_NAME}, ${CC_EMAIL}</p>
         <p style="margin-top:3em;">
   Candy bonbon pastry jujubes lollipop wafer biscuit biscuit. Topping brownie sesame snaps sweet roll pie. Croissant danish biscuit soufflé caramels jujubes jelly. Dragée danish caramels lemon drops dragée. Gummi bears cupcake biscuit tiramisu sugar plum pastry. Dragée gummies applicake pudding liquorice. Donut jujubes oat cake jelly-o. Dessert bear claw chocolate cake gummies lollipop sugar plum ice cream gummies cheesecake.
@@ -312,8 +311,8 @@ describe ('EnvelopesApi tests:', function() {
     const document = await document1(envelopeArgs);
 
     should.exist(document);
-    expect(document).to.contain(settings.signerEmail);
-    expect(document).to.contain(settings.signerName);
+    expect(document).to.contain(config.signerEmail);
+    expect(document).to.contain(config.signerName);
     expect(document).to.contain(CC_EMAIL);
     expect(document).to.contain(CC_NAME);
     expect(document).to.be.equal(expected);

@@ -3,9 +3,8 @@ const chai = require('chai');
 const chaiExclude = require('chai-exclude');
 const should = chai.should();
 
-const settings = require('../config/appsettings.json');
 const { bulkSendEnvelopes } = require('../lib/eSignature/examples/bulkSendEnvelope');
-const { TEST_TIMEOUT_MS, authenticate } = require('./testHelpers');
+const { TEST_TIMEOUT_MS, authenticate, config } = require('./testHelpers');
 
 const {
   TEST_PDF_FILE,
@@ -41,8 +40,8 @@ describe ('BulkEnvelopesApi tests:', function() {
 
     const list1 = {
       signer: {
-        name: settings.signerName,
-        email: settings.signerEmail,
+        name: config.signerName,
+        email: config.signerEmail,
       },
       cc: {
         name: CC_NAME,
