@@ -169,4 +169,4 @@ function makeRecipientViewRequest(args) {
   return viewRequest;
 }
 
-module.exports = { sendEnvelopeForEmbeddedSigning };
+module.exports = { sendEnvelopeForEmbeddedSigning, makeEnvelope, makeRecipientViewRequest };

@@ -1,29 +1,73 @@
-// Test helpers
+const docusign = require('docusign-esign');
+const fs = require('fs');
+const path = require('path');
 
-// See https://mochajs.org/
-const helpers = exports;
-const settings = require('../config/appsettings.json');
+const config = require('./testConfig').getConfiguration();
+const { REDIRECT_URI, BASE_PATH, OAUTH_BASE_PATH, PRIVATE_KEY_FILENAME, EXPIRES_IN, SCOPES, CLICK_SCOPES, ROOM_SCOPES, ADMIN_SCOPES } = require('./constants');
 
-helpers.accessToken = process.env.DS_TEST_ACCESS_TOKEN; // An access token
-helpers.accountId = process.env.DS_TEST_ACCOUNT_ID; //An API Account ID
-helpers.basePath = 'https://demo.docusign.net/restapi';
-helpers.signerEmail = settings.signerEmail || process.env.DS_TEST_SIGNER_EMAIL;
-helpers.signerName = settings.signerName || process.env.DS_TEST_SIGNER_NAME;
-helpers.ccEmail = process.env.DS_TEST_CC_EMAIL;
-helpers.ccName = process.env.DS_TEST_CC_NAME;
+const TEST_TIMEOUT_MS = 10000;
 
-helpers.catchMethod = (error) => {
-    // This catch statement provides more info on an API problem.
-    // To debug mocha:
-    // npm test -- --inspect --debug-brk
-    let errorBody = error && error.response && error.response.body
-        // we can pull the DocuSign error code and message from the response body
-        , errorCode = errorBody && errorBody.errorCode
-        , errorMessage = errorBody && errorBody.message
-        ;
-    // In production, may want to provide customized error messages and 
-    // remediation advice to the user.
-    console.log (`err: ${error}, errorCode: ${errorCode}, errorMessage: ${errorMessage}`);
+const apiClient = new docusign.ApiClient({
+  basePath: BASE_PATH,
+  oAuthBasePath: OAUTH_BASE_PATH
+});
 
-    //throw error; // an unexpected error has occured
+const authenticate = async (apiTypes) => {
+  try {
+    const privateKeyFile = config.privateKey
+      ? config.privateKey
+      : fs.readFileSync(path.resolve(__dirname, PRIVATE_KEY_FILENAME));
+
+    let scopes = SCOPES;
+
+    if(apiTypes !== undefined) {
+      if(apiTypes.includes('click')) {
+        scopes = scopes.concat(CLICK_SCOPES);
+      }
+      if(apiTypes.includes('rooms')) {
+        scopes = scopes.concat(ROOM_SCOPES);
+      }
+      if(apiTypes.includes('admin')) {
+        scopes = scopes.concat(ADMIN_SCOPES);
+      }
+    }
+
+    const res = await apiClient.requestJWTUserToken(config.dsJWTClientId, config.impersonatedUserGuid, scopes, privateKeyFile, EXPIRES_IN);
+  
+    const accessToken = res.body.access_token;
+    apiClient.addDefaultHeader('Authorization', `Bearer ${accessToken}`);
+    const userInfo = await apiClient.getUserInfo(accessToken);
+  
+    const accountId = userInfo.accounts[0].accountId;
+    
+    return { accessToken, accountId };
+  } catch(error) {
+    const body = error.response && error.response.body;
+
+    // Determine the source of the error.
+    if (body) {
+      if (body.error && body.error === 'consent_required') {
+        // The first time you ask for a JWT access token.
+        // get DocuSign OAuth authorization url:
+        const authorizationUrl = apiClient.getJWTUri(config.dsJWTClientId, REDIRECT_URI, OAUTH_BASE_PATH);
+        
+        // open DocuSign OAuth authorization url in the browser, login and grant access
+        const consentMessage = `You should grant access by making the following call: ${authorizationUrl}`;
+        console.log(consentMessage);
+        throw new Error(consentMessage);        
+      } else {
+        // Consent has been granted. Show status code for DocuSign API error.
+        throw new Error(`\nAPI problem: Status code ${error.response.status}, message body:
+        ${JSON.stringify(body, null, 4)}\n\n`);
+      }
+    }
+  }
+};
+
+const areEqual = (obj1, obj2) => {
+  return obj1 == obj2
+    || JSON.stringify(obj1) == JSON.stringify(obj2)
+    || JSON.parse(JSON.stringify(obj1)) == JSON.parse(JSON.stringify(obj2));
 }
+
+module.exports = { TEST_TIMEOUT_MS, authenticate, areEqual, config }
