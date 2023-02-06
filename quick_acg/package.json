@@ -4,10 +4,11 @@
   "description": "DocuSign eSignature Code example using either Authorization Code Grant",
   "main": "quickACG.js",
   "scripts": {
+    "relocate": "run-script-os",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "relocate": "[ ! -d 'node_modules' ] || (rm -rf ../node_modules && mv -f node_modules ../)",
-    "relocate_windows": "(if exist node_modules/ (cd ../ && remove-node-modules && move quick_acg/node_modules ./))",
-    "start": "(npm run relocate --silent || npm run relocate_windows --silent) && node quickACG.js"
+    "relocate:mac": "[ ! -d 'node_modules' ] || (rm -rf ../node_modules && mv -f node_modules ../)",
+    "relocate:win32": "(if exist node_modules/ (cd ../ && remove-node-modules && move quick_acg/node_modules ./))",
+    "start": "npm run relocate && node quickACG.js"
   },
   "author": "DocuSign, Inc",
   "license": "MIT",
@@ -31,6 +32,8 @@
     "passport": "^0.4.0",
     "passport-docusign": "^1.1.0",
     "path": "^0.12.7",
+    "run-script-os": "^1.1.6",
+    "remove-node-modules": "^1.7.6",
     "validator": "^13.7.0",
     "node-fetch": "2.6.7"
   },
