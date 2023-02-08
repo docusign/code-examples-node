@@ -4,10 +4,10 @@
   "description": "DocuSign eSignature Code example using either Authorization Code Grant",
   "main": "quickACG.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "relocate": "[ ! -d 'node_modules' ] || (rm -rf ../node_modules && mv -f node_modules ../)",
-    "relocate_windows": "(if exist node_modules/ (cd ../ && remove-node-modules && move quick_acg/node_modules ./))",
-    "start": "(npm run relocate --silent || npm run relocate_windows --silent) && node quickACG.js"
+    "test": "run-script-os",
+    "test:win32": "(if exist node_modules/ (cd ../ && remove-node-modules && move quick_acg/node_modules ./))",
+    "test:default": "[ ! -d 'node_modules' ] || (rm -rf ../node_modules && mv -f node_modules ../)",
+    "start": "npm test && node quickACG.js"
   },
   "author": "DocuSign, Inc",
   "license": "MIT",
@@ -18,7 +18,7 @@
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.4",
     "csurf": "^1.10.0",
-    "docusign-esign": "^5.15.0",
+    "docusign-esign": "^6.0.0",
     "ejs": "^3.1.7",
     "express": "^4.17.1",
     "express-flash": "0.0.2",
@@ -31,6 +31,8 @@
     "passport": "^0.4.0",
     "passport-docusign": "^1.1.0",
     "path": "^0.12.7",
+    "run-script-os": "^1.1.6",
+    "remove-node-modules": "^1.7.6",
     "validator": "^13.7.0",
     "node-fetch": "2.6.7"
   },
