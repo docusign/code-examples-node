@@ -21,7 +21,7 @@
   <div class="form-group">
     <label for="libraryFormId"><%= example.Forms[0].Inputs[1].InputName %></label>
     <select id="libraryFormId" name="libraryFormId" class="form-control" required>
-      <% example.Forms.forEach( form => { %>
+      <% forms.forEach( form => { %>
         <option value="<%= form.libraryFormId %>" selected> <%= form.name %> </option>
       <% }) %>
     </select>
