@@ -1,13 +1,10 @@
-<% if(locals.examplesApi.examplesApi.isRoomsApi) { %>
-    <%- include("index_rooms_examples") %>
-<% } else if(locals.examplesApi.examplesApi.isClickApi) { %>
-    <%- include("index_click_examples") %>
-<% } else if(locals.examplesApi.examplesApi.isMonitorApi) { %>
-    <%- include("index_monitor_examples") %>
-<% } else if(locals.examplesApi.examplesApi.isAdminApi) { %>
-    <%- include("index_admin_examples") %>
-<% } else if(locals.statusCFR == "enabled") { %>
-    <%- include("index_esignature_cfr_examples") %>
-<% } else { %>
-    <%- include("index_esignature_examples") %>
+<% if (showDoc) { %>
+    <p><a target='_blank' href='<%= documentation %>'>Documentation</a> on using OAuth Authorization Code Grant and
+        JWT from a Node Express application.</p>
 <% } %>
+
+<% if (locals.dsConfig.multiSourceChooser) { %>
+    <h3 class="mt-4">Run and explore eSignature REST API code examples with Authorization Code Grant or JWT Grant authentication</h3>
+<% } %>
+
+<%- include("index_examples_list") %>

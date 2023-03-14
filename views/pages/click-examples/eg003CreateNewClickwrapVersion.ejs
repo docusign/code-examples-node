@@ -5,8 +5,8 @@
 <% include("../../partials/functions") %>
 
 <% if (clickwrapsData.clickwraps.length == 0) { %>
-    <%- formatString(example.RedirectsToOtherCodeExamples[0].RedirectText, formatString('href="eg00{0}"', example.RedirectsToOtherCodeExamples[0].CodeExampleToRedirectTo)) %>
-    <form class="eg" action="eg001" method="get">
+    <%- formatString(example.RedirectsToOtherCodeExamples[0].RedirectText, formatString('href="ceg00{0}"', example.RedirectsToOtherCodeExamples[0].CodeExampleToRedirectTo)) %>
+    <form class="eg" action="ceg001" method="get">
         <%- include("../../partials/continueButton") %>
     </form>
 <% } else { %>
