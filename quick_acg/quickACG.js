@@ -65,7 +65,7 @@ let app = express()
     next()
   })
   .use(async (req, res, next) => {
-    let manifestUrl = dsConfig.eSignManifestUrl;
+    let manifestUrl = dsConfig.codeExamplesManifest;
 
     const manifest = await getManifest(manifestUrl);
     res.locals.manifest = manifest;
