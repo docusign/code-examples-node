@@ -22,9 +22,10 @@
   <%- include("../../partials/submitButton") %>
 </form>
 <% } else { %>
-  <%- formatString(example.RedirectsToOtherCodeExamples[1].RedirectText, formatString('href="eg00{0}"', example.RedirectsToOtherCodeExamples[1].CodeExampleToRedirectTo)) %>
+
+  <%- formatString(example.RedirectsToOtherCodeExamples[1].RedirectText, formatString('href="reg00{0}"', example.RedirectsToOtherCodeExamples[1].CodeExampleToRedirectTo)) %>
    
-<form class="eg" action="eg001" method="get">
+<form class="eg" action="reg001" method="get">
     <%- include("../../partials/continueButton") %>
 </form>
 <% } %>

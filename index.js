@@ -82,7 +82,6 @@ let app = express()
     res.locals.user = req.user;
     res.locals.session = req.session;
     res.locals.dsConfig = { ...dsConfig, docOptions: docOptions, docNames: docNames };
-    res.locals.examplesApi = examplesApi
     res.locals.hostUrl = hostUrl; // Used by DSAuthCodeGrant#logout
     next()
   })) // Send user info to views
@@ -100,185 +99,160 @@ let app = express()
     next()
   })
   .use(async (req, res, next) => {
-    let manifestUrl;
-
-    switch(true) {
-      case examplesApi.examplesApi.isRoomsApi:
-        manifestUrl = dsConfig.roomsManifestUrl;
-        break;
-
-      case examplesApi.examplesApi.isClickApi:
-        manifestUrl = dsConfig.clickManifestUrl;
-        break;
-
-      case examplesApi.examplesApi.isMonitorApi:
-        manifestUrl = dsConfig.monitorManifestUrl;
-        break;
-
-      case examplesApi.examplesApi.isAdminApi:
-        manifestUrl = dsConfig.adminManifestUrl;
-        break;
-
-      default:
-        manifestUrl = dsConfig.eSignManifestUrl;
-    }
-
-    const manifest = await getManifest(manifestUrl);
+    const manifest = await getManifest(dsConfig.codeExamplesManifest);
     res.locals.manifest = manifest;
 
     next();
   })
   // Routes
   .get('/', commonControllers.indexController)
-  .get('/ds/choose_api', commonControllers.chooseApi)
-  .get('/ds/switch_api', commonControllers.switchApi)
   .get('/ds/login', commonControllers.login)
   .get('/ds/callback', [dsLoginCB1, dsLoginCB2]) // OAuth callbacks. See below
   .get('/ds/logout', commonControllers.logout)
   .get('/ds/logoutCallback', commonControllers.logoutCallback)
   .get('/ds/mustAuthenticate', commonControllers.mustAuthenticateController)
+  .get('/ds/mustAuthenticateJWT', commonControllers.mustAuthenticateJWTController)
   .get('/ds-return', commonControllers.returnController)
   .use(csrfProtection) // CSRF protection for the following routes
 ;
-if (examplesApi.examplesApi.isRoomsApi) {
-  app.get('/eg001', eg001rooms.getController)
-    .post('/eg001', eg001rooms.createController)
-    .get('/eg002', eg002rooms.getController)
-    .post('/eg002', eg002rooms.createController)
-    .get('/eg003', eg003rooms.getController)
-    .post('/eg003', eg003rooms.createController)
-    .get('/eg004', eg004rooms.getController)
-    .post('/eg004', eg004rooms.createController)
-    .get('/eg005', eg005rooms.getController)
-    .post('/eg005', eg005rooms.createController)
-    .get('/eg006', eg006rooms.getController)
-    .post('/eg006', eg006rooms.createController)
-    .get('/eg007', eg007rooms.getController)
-    .post('/eg007', eg007rooms.createController)
-    .get('/eg008', eg008rooms.getController)
-    .post('/eg008', eg008rooms.createController)
-    .get('/eg009', eg009rooms.getController)
-    .post('/eg009', eg009rooms.createController)
-} else if (examplesApi.examplesApi.isClickApi) {
-  app.get('/eg001', eg001click.getController)
-    .post('/eg001', eg001click.createController)
-    .get('/eg002', eg002click.getController)
-    .post('/eg002', eg002click.createController)
-    .get('/eg003', eg003click.getController)
-    .post('/eg003', eg003click.createController)
-    .get('/eg004', eg004click.getController)
-    .post('/eg004', eg004click.createController)
-    .get('/eg005', eg005click.getController)
-    .post('/eg005', eg005click.createController)
-    .get('/eg006', eg006click.getController)
-    .post('/eg006', eg006click.createController)
-} else if (examplesApi.examplesApi.isMonitorApi) {
-  app.get('/eg001', eg001monitor.getController)
-    .post('/eg001', eg001monitor.createController)
-    .get('/eg002', eg002monitor.getController)
-    .post('/eg002', eg002monitor.createController)
-} else if (examplesApi.examplesApi.isAdminApi) {
-    app.get('/eg001', eg001admin.getController)
-    .post('/eg001', eg001admin.createController)
-    .get('/eg002', eg002admin.getController)
-    .post('/eg002', eg002admin.createController)
-    .get('/eg003', eg003admin.getController)
-    .post('/eg003', eg003admin.createController)
-    .get('/eg004', eg004admin.getController)
-    .post('/eg004', eg004admin.createController)
-    .get('/eg004status', eg004admin.checkStatus)
-    .get('/eg005', eg005admin.getController)
-    .post('/eg005', eg005admin.createController)
-    .get('/eg006', eg006admin.getController)
-    .post('/eg006', eg006admin.createController)
-    .get('/eg007', eg007admin.getController)
-    .post('/eg007', eg007admin.createController)
-    .get('/eg008', eg008admin.getController)
-    .post('/eg008', eg008admin.createController)
-    .get('/eg009', eg009admin.getController)
-    .post('/eg009', eg009admin.createController)
-} else {
-  app.get('/eg001', eg001.getController)
-    .post('/eg001', eg001.createController)
-    .get('/eg002', eg002.getController)
-    .post('/eg002', eg002.createController)
-    .get('/eg003', eg003.getController)
-    .post('/eg003', eg003.createController)
-    .get('/eg004', eg004.getController)
-    .post('/eg004', eg004.createController)
-    .get('/eg005', eg005.getController)
-    .post('/eg005', eg005.createController)
-    .get('/eg006', eg006.getController)
-    .post('/eg006', eg006.createController)
-    .get('/eg007', eg007.getController)
-    .post('/eg007', eg007.createController)
-    .get('/eg008', eg008.getController)
-    .post('/eg008', eg008.createController)
-    .get('/eg009', eg009.getController)
-    .post('/eg009', eg009.createController)
-    .get('/eg010', eg010.getController)
-    .post('/eg010', eg010.createController)
-    .get('/eg011', eg011.getController)
-    .post('/eg011', eg011.createController)
-    .get('/eg012', eg012.getController)
-    .post('/eg012', eg012.createController)
-    .get('/eg013', eg013.getController)
-    .post('/eg013', eg013.createController)
-    .get('/eg014', eg014.getController)
-    .post('/eg014', eg014.createController)
-    .get('/eg015', eg015.getController)
-    .post('/eg015', eg015.createController)
-    .get('/eg016', eg016.getController)
-    .post('/eg016', eg016.createController)
-    .get('/eg017', eg017.getController)
-    .post('/eg017', eg017.createController)
-    .get('/eg018', eg018.getController)
-    .post('/eg018', eg018.createController)
-    .get('/eg019', eg019.getController)
-    .post('/eg019', eg019.createController)
-    .get('/eg020', eg020.getController)
-    .post('/eg020', eg020.createController)
-    .get('/eg022', eg022.getController)
-    .post('/eg022', eg022.createController)
-    .get('/eg023', eg023.getController)
-    .post('/eg023', eg023.createController)
-    .get('/eg024', eg024.getController)
-    .post('/eg024', eg024.createController)
-    .get('/eg025', eg025.getController)
-    .post('/eg025', eg025.createController)
-    .get('/eg026', eg026.getController)
-    .post('/eg026', eg026.createController)
-    .get('/eg027', eg027.getController)
-    .post('/eg027', eg027.createController)
-    .get('/eg028', eg028.getController)
-    .post('/eg028', eg028.createController)
-    .get('/eg029', eg029.getController)
-    .post('/eg029', eg029.createController)
-    .get('/eg030', eg030.getController)
-    .post('/eg030', eg030.createController)
-    .get('/eg031', eg031.getController)
-    .post('/eg031', eg031.createController)
-    .get('/eg032', eg032.getController)
-    .post('/eg032', eg032.createController)
-    .get('/eg033', eg033.getController)
-    .post('/eg033', eg033.createController)
-    .get('/eg034', eg034.getController)
-    .post('/eg034', eg034.createController)
-    .get('/eg035', eg035.getController)
-    .post('/eg035', eg035.createController)
-    .get('/eg036', eg036.getController)
-    .post('/eg036', eg036.createController)
-    .get('/eg037', eg037.getController)
-    .post('/eg037', eg037.createController)
-    .get('/eg038', eg038.getController)
-    .post('/eg038', eg038.createController)
-    .get('/eg039', eg039.getController)
-    .post('/eg039', eg039.createController)
-    .get('/eg040', eg040.getController)
-    .post('/eg040', eg040.createController)
-    .get('/eg041', eg041.getController)
-    .post('/eg041', eg041.createController)
-}
+
+app.get('/reg001', eg001rooms.getController)
+  .post('/reg001', eg001rooms.createController)
+  .get('/reg002', eg002rooms.getController)
+  .post('/reg002', eg002rooms.createController)
+  .get('/reg003', eg003rooms.getController)
+  .post('/reg003', eg003rooms.createController)
+  .get('/reg004', eg004rooms.getController)
+  .post('/reg004', eg004rooms.createController)
+  .get('/reg005', eg005rooms.getController)
+  .post('/reg005', eg005rooms.createController)
+  .get('/reg006', eg006rooms.getController)
+  .post('/reg006', eg006rooms.createController)
+  .get('/reg007', eg007rooms.getController)
+  .post('/reg007', eg007rooms.createController)
+  .get('/reg008', eg008rooms.getController)
+  .post('/reg008', eg008rooms.createController)
+  .get('/reg009', eg009rooms.getController)
+  .post('/reg009', eg009rooms.createController)
+  
+app.get('/ceg001', eg001click.getController)
+  .post('/ceg001', eg001click.createController)
+  .get('/ceg002', eg002click.getController)
+  .post('/ceg002', eg002click.createController)
+  .get('/ceg003', eg003click.getController)
+  .post('/ceg003', eg003click.createController)
+  .get('/ceg004', eg004click.getController)
+  .post('/ceg004', eg004click.createController)
+  .get('/ceg005', eg005click.getController)
+  .post('/ceg005', eg005click.createController)
+  .get('/ceg006', eg006click.getController)
+  .post('/ceg006', eg006click.createController)
+  
+app.get('/meg001', eg001monitor.getController)
+  .post('/meg001', eg001monitor.createController)
+  .get('/meg002', eg002monitor.getController)
+  .post('/meg002', eg002monitor.createController)
+  
+app.get('/aeg001', eg001admin.getController)
+  .post('/aeg001', eg001admin.createController)
+  .get('/aeg002', eg002admin.getController)
+  .post('/aeg002', eg002admin.createController)
+  .get('/aeg003', eg003admin.getController)
+  .post('/aeg003', eg003admin.createController)
+  .get('/aeg004', eg004admin.getController)
+  .post('/aeg004', eg004admin.createController)
+  .get('/aeg004status', eg004admin.checkStatus)
+  .get('/aeg005', eg005admin.getController)
+  .post('/aeg005', eg005admin.createController)
+  .get('/aeg006', eg006admin.getController)
+  .post('/aeg006', eg006admin.createController)
+  .get('/aeg007', eg007admin.getController)
+  .post('/aeg007', eg007admin.createController)
+  .get('/aeg008', eg008admin.getController)
+  .post('/aeg008', eg008admin.createController)
+  .get('/aeg009', eg009admin.getController)
+  .post('/aeg009', eg009admin.createController)
+  
+app.get('/eg001', eg001.getController)
+  .post('/eg001', eg001.createController)
+  .get('/eg002', eg002.getController)
+  .post('/eg002', eg002.createController)
+  .get('/eg003', eg003.getController)
+  .post('/eg003', eg003.createController)
+  .get('/eg004', eg004.getController)
+  .post('/eg004', eg004.createController)
+  .get('/eg005', eg005.getController)
+  .post('/eg005', eg005.createController)
+  .get('/eg006', eg006.getController)
+  .post('/eg006', eg006.createController)
+  .get('/eg007', eg007.getController)
+  .post('/eg007', eg007.createController)
+  .get('/eg008', eg008.getController)
+  .post('/eg008', eg008.createController)
+  .get('/eg009', eg009.getController)
+  .post('/eg009', eg009.createController)
+  .get('/eg010', eg010.getController)
+  .post('/eg010', eg010.createController)
+  .get('/eg011', eg011.getController)
+  .post('/eg011', eg011.createController)
+  .get('/eg012', eg012.getController)
+  .post('/eg012', eg012.createController)
+  .get('/eg013', eg013.getController)
+  .post('/eg013', eg013.createController)
+  .get('/eg014', eg014.getController)
+  .post('/eg014', eg014.createController)
+  .get('/eg015', eg015.getController)
+  .post('/eg015', eg015.createController)
+  .get('/eg016', eg016.getController)
+  .post('/eg016', eg016.createController)
+  .get('/eg017', eg017.getController)
+  .post('/eg017', eg017.createController)
+  .get('/eg018', eg018.getController)
+  .post('/eg018', eg018.createController)
+  .get('/eg019', eg019.getController)
+  .post('/eg019', eg019.createController)
+  .get('/eg020', eg020.getController)
+  .post('/eg020', eg020.createController)
+  .get('/eg022', eg022.getController)
+  .post('/eg022', eg022.createController)
+  .get('/eg023', eg023.getController)
+  .post('/eg023', eg023.createController)
+  .get('/eg024', eg024.getController)
+  .post('/eg024', eg024.createController)
+  .get('/eg025', eg025.getController)
+  .post('/eg025', eg025.createController)
+  .get('/eg026', eg026.getController)
+  .post('/eg026', eg026.createController)
+  .get('/eg027', eg027.getController)
+  .post('/eg027', eg027.createController)
+  .get('/eg028', eg028.getController)
+  .post('/eg028', eg028.createController)
+  .get('/eg029', eg029.getController)
+  .post('/eg029', eg029.createController)
+  .get('/eg030', eg030.getController)
+  .post('/eg030', eg030.createController)
+  .get('/eg031', eg031.getController)
+  .post('/eg031', eg031.createController)
+  .get('/eg032', eg032.getController)
+  .post('/eg032', eg032.createController)
+  .get('/eg033', eg033.getController)
+  .post('/eg033', eg033.createController)
+  .get('/eg034', eg034.getController)
+  .post('/eg034', eg034.createController)
+  .get('/eg035', eg035.getController)
+  .post('/eg035', eg035.createController)
+  .get('/eg036', eg036.getController)
+  .post('/eg036', eg036.createController)
+  .get('/eg037', eg037.getController)
+  .post('/eg037', eg037.createController)
+  .get('/eg038', eg038.getController)
+  .post('/eg038', eg038.createController)
+  .get('/eg039', eg039.getController)
+  .post('/eg039', eg039.createController)
+  .get('/eg040', eg040.getController)
+  .post('/eg040', eg040.createController)
+  .get('/eg041', eg041.getController)
+  .post('/eg041', eg041.createController)
 
 function dsLoginCB1(req, res, next) { req.dsAuthCodeGrant.oauth_callback1(req, res, next) }
 function dsLoginCB2(req, res, next) { req.dsAuthCodeGrant.oauth_callback2(req, res, next) }
@@ -322,18 +296,9 @@ const ADMIN_SCOPES = [
   "user_read", "user_write", "account_read",
   "domain_read", "identity_provider_read", "signature"
 ];
-let scope;
-if (examplesApi.examplesApi.isRoomsApi) {
-  scope = ROOM_SCOPES;
-} else if (examplesApi.examplesApi.isClickApi) {
-  scope = CLICK_SCOPES;
-} else if (examplesApi.examplesApi.isMonitorApi) {
-  scope = MONITOR_SCOPES;
-} else if (examplesApi.examplesApi.isAdminApi) {
-  scope = ADMIN_SCOPES;
-} else {
-  scope = SCOPES;
-}
+
+const scope = [...ROOM_SCOPES, ...CLICK_SCOPES, ...MONITOR_SCOPES, ...ADMIN_SCOPES, ...SCOPES];
+
 // Configure passport for DocusignStrategy
 let docusignStrategy = new DocusignStrategy({
     production: dsConfig.production,

@@ -27,7 +27,7 @@
         <input type="hidden" name="_csrf" value="<%- csrfToken %>">
         <%- include("../../partials/submitButton") %>
     <% } else { %>
-        <%- formatString(example.RedirectsToOtherCodeExamples[0].RedirectText, formatString('href="eg00{0}"', example.RedirectsToOtherCodeExamples[0].CodeExampleToRedirectTo)) %>
+        <%- formatString(example.RedirectsToOtherCodeExamples[0].RedirectText, formatString('href="reg00{0}"', example.RedirectsToOtherCodeExamples[0].CodeExampleToRedirectTo)) %>
     <% } %>
 </form>
 

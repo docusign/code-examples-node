@@ -52,7 +52,6 @@ let app = express()
     res.locals.session = req.session;
     res.locals.dsConfig = { ...dsConfig, docOptions: docOptions, docNames: docNames};
     res.locals.quickACG = true; 
-    res.locals.examplesApi = {"isESignatureApi":true};
     res.locals.hostUrl = hostUrl; // Used by DSAuthCodeGrant#logout
     next()
   })) // Send user info to views
