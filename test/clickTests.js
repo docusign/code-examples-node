@@ -66,6 +66,7 @@ describe ('ClickApi tests:', function() {
       accessToken: ACCESS_TOKEN,
       basePath: CLICK_BASE_PATH,
       accountId: ACCOUNT_ID,
+      statuses: ['inactive', 'draft'],
     };
 
     const clickwraps = await getInactiveClickwraps(args);
