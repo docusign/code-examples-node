@@ -215,15 +215,18 @@ describe ('TemplatesApi tests:', function() {
                   height: "23",
                   width: "84",
                   required: "false",
-                },
+                }
+              ],
+              numericalTabs: [
                 {
                   documentId: "1",
                   pageNumber: "1",
-                  xPosition: "153",
+                  xPosition: "163",
                   yPosition: "260",
                   font: "helvetica",
                   fontSize: "size14",
-                  tabLabel: "numbersOnly",
+                  tabLabel: "numericalCurrency",
+                  "validationType": "Currency",
                   height: "23",
                   width: "84",
                   required: "false",
@@ -623,21 +626,32 @@ describe ('TemplatesApi tests:', function() {
                   locked: "false",
                   tabId: "familiar_name",
                   tabLabel: "Familiar name",
-                },
-                {
-                  anchorString: "/salary/",
-                  anchorUnits: "pixels",
-                  anchorYOffset: "-9",
-                  anchorXOffset: "5",
-                  font: "helvetica",
-                  fontSize: "size11",
-                  bold: "true",
-                  value: '$123,000',
-                  locked: "true",
-                  tabId: "salary",
-                  tabLabel: "Salary",
                 }
               ],
+              "numericalTabs": [
+                {
+                  bold: "true",
+                  documentId: "1",
+                  font: "helvetica",
+                  fontSize: "size11",
+                  height: "20",
+                  localePolicy: {
+                    cultureName: "en-US",
+                    currencyCode: "usd",
+                    currencyNegativeFormat: "minus_csym_1_comma_234_comma_567_period_89",
+                    currencyPositiveFormat: "csym_1_comma_234_comma_567_period_89",
+                    useLongCurrencyFormat: "true",
+                  },
+                  numericalValue: "123000",
+                  pageNumber: "1",
+                  tabId: "salary",
+                  tabLabel: "Salary",
+                  validationType: "Currency",
+                  width: "70",
+                  xPosition: "210",
+                  yPosition: "235",
+                }
+              ]
             }
           }
         ]
