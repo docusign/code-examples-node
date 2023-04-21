@@ -1,0 +1,49 @@
+<%- include("../../partials/examplesHead") %>
+
+<%- include("../../partials/exampleInfo") %>
+
+<form class="eg" action="" method="post" data-busy="form">
+  <% if(example.Forms && example.Forms[0].FormName) { %>
+    <%- example.Forms[0].FormName %>
+  <% } %>
+
+  <div class="form-group">
+    <label for="candidate_email"><%= example.Forms[0].Inputs[0].InputName %></label>
+    <input type="email" class="form-control" id="candidate_email" name="candidate_email"
+           aria-describedby="emailHelp" placeholder="<%= example.Forms[0].Inputs[0].InputPlaceholder %>" required>
+    <small id="emailHelp" class="form-text text-muted"><%= locals.manifest.SupportingTexts.HelpingTexts.EmailWontBeShared %></small>
+  </div>
+  <div class="form-group">
+    <label for="candidate_name"><%= example.Forms[0].Inputs[1].InputName %></label>
+    <input type="text" class="form-control" id="candidate_name" placeholder="<%= example.Forms[0].Inputs[1].InputPlaceholder %>" name="candidate_name"
+           required>
+  </div>
+  <div class="form-group">
+    <label for="manager_name"><%= example.Forms[0].Inputs[2].InputName %></label>
+    <input type="text" class="form-control" id="manager_name" name="manager_name"
+           aria-describedby="emailHelp" placeholder="<%= example.Forms[0].Inputs[2].InputPlaceholder %>" required>
+  </div>
+  <div class="form-group">
+    <label for="job_title"><%= example.Forms[0].Inputs[3].InputName %></label>
+    <select class="form-control" id="job_title" name="job_title">
+      <option value="Software Engineer">Software Engineer</option>
+      <option value="Product Manager">Product Manager</option>
+      <option value="Sales Representative">Sales Representative</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="salary"><%= example.Forms[0].Inputs[4].InputName %></label>
+    <input type="text" class="form-control" id="salary" placeholder="<%= example.Forms[0].Inputs[4].InputPlaceholder %>" name="salary"
+           required>
+  </div>
+  <div class="form-group">
+    <label for="start_date"><%= example.Forms[0].Inputs[5].InputName %></label>
+    <input type="date" class="form-control" id="start_date" placeholder="<%= example.Forms[0].Inputs[5].InputPlaceholder %>" name="start_date"
+           required>
+  </div>
+
+  <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+  <%- include("../../partials/submitButton") %>
+</form>
+  
+<%- include("../../partials/examplesFoot") %>
