@@ -1,0 +1,30 @@
+<%- include("../../partials/examplesHead") %>
+
+<%- include("../../partials/exampleInfo") %>
+
+<form class="eg" action="" method="post" data-busy="form">
+  <% if(example.Forms && example.Forms[0].FormName) { %>
+    <%- example.Forms[0].FormName %>
+  <% } %>
+    <div class="form-group">
+      <label for="email"><%= example.Forms[0].Inputs[0].InputName %></label>
+      <input type="email" class="form-control" id="email" name="email"
+             aria-describedby="emailHelp" placeholder="<%= example.Forms[0].Inputs[0].InputPlaceholder %>" required>
+    </div>
+    <div class="form-group">
+      <label for="user_name"><%= example.Forms[0].Inputs[1].InputName %></label>
+      <input type="text" class="form-control" id="user_name" placeholder="<%= example.Forms[0].Inputs[1].InputPlaceholder %>" name="user_name"
+             required>
+    </div>
+    <div class="form-group">
+      <label for="activation"><%= example.Forms[0].Inputs[2].InputName %></label>
+      <input type="text" class="form-control" id="activation" name="activation"
+             placeholder="<%= example.Forms[0].Inputs[2].InputPlaceholder %>" required>
+      <small id="activationHelp" class="form-text text-muted"><%= locals.manifest.SupportingTexts.HelpingTexts.SaveAgentActivationCode %></small>
+    </div>
+
+    <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+    <%- include("../../partials/submitButton") %>
+</form>
+  
+<%- include("../../partials/examplesFoot") %>

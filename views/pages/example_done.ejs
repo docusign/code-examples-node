@@ -13,6 +13,11 @@
   <p><a href="eg004status">Check the request status</a></p>
 <% } %>
 
-<p><a href="/">Continue</a></p>
+<% if (locals.redirectUrl) { %>
+  <p><a href="<%= locals.redirectUrl %>">Continue</a></p>
+<% } else { %>
+  <p><a href="/">Continue</a></p>
+<% } %>
+
 
 <%- include("../partials/genericFoot") %>
