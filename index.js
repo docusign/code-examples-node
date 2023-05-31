@@ -50,7 +50,8 @@ const {
 const {
   eg001admin, eg002admin, eg003admin,
   eg004admin, eg005admin, eg006admin,
-  eg007admin, eg008admin, eg009admin
+  eg007admin, eg008admin, eg009admin,
+  eg010admin, eg011admin
 } = require("./lib/admin/controllers");
 
 const PORT = process.env.PORT || 3000;
@@ -172,6 +173,10 @@ app.get('/aeg001', eg001admin.getController)
   .post('/aeg008', eg008admin.createController)
   .get('/aeg009', eg009admin.getController)
   .post('/aeg009', eg009admin.createController)
+  .get('/aeg010', eg010admin.getController)
+  .post('/aeg010', eg010admin.createController)
+  .get('/aeg011', eg011admin.getController)
+  .post('/aeg011', eg011admin.createController)
   
 app.get('/eg001', eg001.getController)
   .post('/eg001', eg001.createController)
@@ -301,7 +306,8 @@ const MONITOR_SCOPES = [
 const ADMIN_SCOPES = [
   "organization_read", "group_read", "permission_read	",
   "user_read", "user_write", "account_read",
-  "domain_read", "identity_provider_read", "signature"
+  "domain_read", "identity_provider_read", "signature",
+  "user_data_redact"
 ];
 
 const scope = [...ROOM_SCOPES, ...CLICK_SCOPES, ...MONITOR_SCOPES, ...ADMIN_SCOPES, ...SCOPES];
