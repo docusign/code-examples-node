@@ -44,7 +44,7 @@ const {
 } = require("./lib/rooms/controllers");
 
 const {
-  eg001monitor, eg002monitor
+  eg001monitor
 } = require("./lib/monitor/controllers/index");
 
 const {
@@ -151,8 +151,6 @@ app.get('/ceg001', eg001click.getController)
   
 app.get('/meg001', eg001monitor.getController)
   .post('/meg001', eg001monitor.createController)
-  .get('/meg002', eg002monitor.getController)
-  .post('/meg002', eg002monitor.createController)
   
 app.get('/aeg001', eg001admin.getController)
   .post('/aeg001', eg001admin.createController)
