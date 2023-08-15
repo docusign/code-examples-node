@@ -36,7 +36,7 @@
         
         <% if (clmPermissionProfiles && clmPermissionProfiles.length > 0) { %>
             <div class="form-group" id="clm-profiles">
-                <label for="clmPermissionProfileId"><%= example.Forms[0].Inputs[2].InputName %></label>
+                <label for="clmPermissionProfileId"><%= example.Forms[0].Inputs[1].InputName %></label>
                 <select id="clmPermissionProfileId" name="clmPermissionProfileId" class="form-control">
                     <% clmPermissionProfiles.forEach( permissionProfile => { %>
                         <option value="<%= permissionProfile.permission_profile_id %>"> <%= permissionProfile.permission_profile_name %> </option>
