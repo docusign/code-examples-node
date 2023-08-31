@@ -21,9 +21,10 @@ const CLICK_SCOPES = [
   "click.manage", "click.send"
 ];
 const ADMIN_SCOPES = [
-  "organization_read", "group_read", "permission_read	",
+  "organization_read", "group_read", "permission_read",
   "user_read", "user_write", "account_read",
-  "domain_read", "identity_provider_read"
+  "domain_read", "identity_provider_read", "asset_group_account_read",
+  "asset_group_account_clone_write", "asset_group_account_clone_read"
 ];
 const EXPIRES_IN = 3600;
 const TEST_PDF_FILE = './test/docs/World_Wide_Corp_lorem.pdf';

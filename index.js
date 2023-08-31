@@ -18,7 +18,6 @@ const flash = require('express-flash');
 const helmet = require('helmet'); // https://expressjs.com/en/advanced/best-practice-security.html
 const moment = require('moment');
 const csrf = require('csurf'); // https://www.npmjs.com/package/csurf
-const examplesApi = require('./config/examplesAPI.json');
 const { getManifest } = require('./lib/manifestService')
 
 const eg001 = require('./lib/eSignature/controllers/eg001EmbeddedSigning');
@@ -51,7 +50,7 @@ const {
   eg001admin, eg002admin, eg003admin,
   eg004admin, eg005admin, eg006admin,
   eg007admin, eg008admin, eg009admin,
-  eg010admin, eg011admin
+  eg010admin, eg011admin, eg012admin
 } = require("./lib/admin/controllers");
 
 const PORT = process.env.PORT || 3000;
@@ -175,6 +174,8 @@ app.get('/aeg001', eg001admin.getController)
   .post('/aeg010', eg010admin.createController)
   .get('/aeg011', eg011admin.getController)
   .post('/aeg011', eg011admin.createController)
+  .get('/aeg012', eg012admin.getController)
+  .post('/aeg012', eg012admin.createController)
   
 app.get('/eg001', eg001.getController)
   .post('/eg001', eg001.createController)
@@ -302,10 +303,11 @@ const MONITOR_SCOPES = [
   "signature", "impersonation"
 ];
 const ADMIN_SCOPES = [
-  "organization_read", "group_read", "permission_read	",
+  "organization_read", "group_read", "permission_read",
   "user_read", "user_write", "account_read",
   "domain_read", "identity_provider_read", "signature",
-  "user_data_redact"
+  "user_data_redact", "asset_group_account_read", "asset_group_account_clone_write",
+  "asset_group_account_clone_read"
 ];
 
 const scope = [...ROOM_SCOPES, ...CLICK_SCOPES, ...MONITOR_SCOPES, ...ADMIN_SCOPES, ...SCOPES];
