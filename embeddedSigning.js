@@ -18,6 +18,7 @@ const sendEnvelopeForEmbeddedSigning = async (args) => {
   // args.accessToken
   // args.accountId
 
+  //ds-snippet-start:eSign1Step3
   let dsApiClient = new docusign.ApiClient();
   dsApiClient.setBasePath(args.basePath);
   dsApiClient.addDefaultHeader('Authorization', 'Bearer ' + args.accessToken);
@@ -32,11 +33,13 @@ const sendEnvelopeForEmbeddedSigning = async (args) => {
   results = await envelopesApi.createEnvelope(args.accountId, {
     envelopeDefinition: envelope,
   });
+  //ds-snippet-end:eSign1Step3
 
   let envelopeId = results.envelopeId;
   console.log(`Envelope was created. EnvelopeId ${envelopeId}`);
 
   // Step 3. create the recipient view, the embedded signing
+  //ds-snippet-start:eSign1Step5
   let viewRequest = makeRecipientViewRequest(args.envelopeArgs);
   // Call the CreateRecipientView API
   // Exceptions will be caught by the calling function
@@ -46,6 +49,7 @@ const sendEnvelopeForEmbeddedSigning = async (args) => {
 
   return { envelopeId: envelopeId, redirectUrl: results.url };
 };
+//ds-snippet-end:eSign1Step5
 
 /**
  * Creates envelope
@@ -54,6 +58,8 @@ const sendEnvelopeForEmbeddedSigning = async (args) => {
  * @returns {Envelope} An envelope definition
  * @private
  */
+
+//ds-snippet-start:eSign1Step2
 function makeEnvelope(args) {
   // Data for this method
   // args.signerEmail
@@ -125,7 +131,9 @@ function makeEnvelope(args) {
 
   return env;
 }
+//ds-snippet-end:eSign1Step2
 
+//ds-snippet-start:eSign1Step4
 function makeRecipientViewRequest(args) {
   // Data for this method
   // args.dsReturnUrl
@@ -168,5 +176,6 @@ function makeRecipientViewRequest(args) {
 
   return viewRequest;
 }
+//ds-snippet-end:eSign1Step4
 
-module.exports = { sendEnvelopeForEmbeddedSigning };
+module.exports = { sendEnvelopeForEmbeddedSigning, makeEnvelope, makeRecipientViewRequest };

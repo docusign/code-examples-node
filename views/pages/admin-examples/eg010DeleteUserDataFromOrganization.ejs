@@ -1,0 +1,20 @@
+<%- include("../../partials/examplesHead") %>
+
+<%- include("../../partials/exampleInfo") %>
+
+<form class="eg" action="" method="post" data-busy="form">
+  <% if(example.Forms && example.Forms[0].FormName) { %>
+    <%- example.Forms[0].FormName %>
+  <% } %>
+  
+    <div class="form-group">
+      <label for="email"><%= example.Forms[0].Inputs[0].InputName %></label>
+      <input type="email" class="form-control" id="email" name="email"
+             aria-describedby="emailHelp" placeholder="<%= example.Forms[0].Inputs[0].InputPlaceholder %>" required>
+      <small id="emailHelp" class="form-text text-muted"><%= locals.manifest.SupportingTexts.HelpingTexts.EmailAddressOfUserToDelete %></small>
+    </div>
+    <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+    <%- include("../../partials/submitButton") %>
+</form>
+
+<%- include("../../partials/examplesFoot") %>

@@ -6,7 +6,13 @@
   <% if(example.Forms && example.Forms[0].FormName) { %>
     <%- example.Forms[0].FormName %>
   <% } %>
-  
+  <div class="form-group">
+    <label><%= example.Forms[0].Inputs[6].InputName %></label></br>
+      <label><%= example.Forms[0].Inputs[7].InputName %></label>
+      <input type="radio" name="deliveryMethod" value="SMS" checked /> 
+      <label><%= example.Forms[0].Inputs[8].InputName %></label>
+      <input type="radio" name="deliveryMethod" value="WhatsApp" /> 
+  </div>
   <div class="form-group">
     <label for="countryCode"><%= example.Forms[0].Inputs[0].InputName %></label>
     <input type="tel" class="form-control" id="countryCode" name="countryCode"

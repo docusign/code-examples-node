@@ -20,6 +20,7 @@ const csrf = require('csurf'); // https://www.npmjs.com/package/csurf
 const { getManifest } = require('../lib/manifestService');
 
 const eg001 = require('../lib/eSignature/controllers/eg001EmbeddedSigning');
+const eg041 = require('../lib/eSignature/controllers/eg041CFREmbeddedSigning');
 
 const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || 'localhost';
@@ -51,7 +52,6 @@ let app = express()
     res.locals.session = req.session;
     res.locals.dsConfig = { ...dsConfig, docOptions: docOptions, docNames: docNames};
     res.locals.quickACG = true;
-    res.locals.examplesApi = {isESignatureApi: true};
     res.locals.hostUrl = hostUrl; // Used by DSAuthCodeGrant#logout
     next();
   }) // Send user info to views
@@ -65,7 +65,7 @@ let app = express()
     next();
   })
   .use(async (req, res, next) => {
-    let manifestUrl = dsConfig.eSignManifestUrl;
+    let manifestUrl = dsConfig.codeExamplesManifest;
 
     const manifest = await getManifest(manifestUrl);
     res.locals.manifest = manifest;
@@ -77,6 +77,9 @@ let app = express()
   .get('/', redirectEg001)
   .get('/eg001', eg001.getController)
   .post('/eg001', eg001.createController)
+  .get('/eg041', eg041.getController)
+  .post('/eg041', eg041.createController)
+  
   .get('/ds/mustAuthenticate', redirectLogin)
   .get('/ds/login', commonControllers.login)
   .get('/ds-return', redirectReturn)

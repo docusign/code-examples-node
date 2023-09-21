@@ -1,0 +1,68 @@
+<%- include("../../partials/examplesHead") %>
+
+<%- include("../../partials/exampleInfo") %>
+
+<% include("../../partials/functions") %>
+
+<% if (clickwrapsData.clickwraps.length == 0 && clickwrapsExist.clickwraps.length == 0) { %>
+    <%- formatString(example.RedirectsToOtherCodeExamples[0].RedirectText, formatString('href="ceg00{0}"', example.RedirectsToOtherCodeExamples[0].CodeExampleToRedirectTo)) %>
+    <form class="eg" action="ceg001" method="get">
+        <%- include("../../partials/continueButton") %>
+    </form>
+<% } else if (clickwrapsData.clickwraps.length == 0) { %>
+    <%- formatString(example.RedirectsToOtherCodeExamples[1].RedirectText, formatString('href="ceg00{0}"', example.RedirectsToOtherCodeExamples[1].CodeExampleToRedirectTo)) %>
+    <form class="eg" action="ceg002" method="get">
+        <%- include("../../partials/continueButton") %>
+    </form>
+<% } else { %>
+    <form class="eg" action="" method="post" data-busy="form-download">
+        <% if(example.Forms && example.Forms[0].FormName) { %>
+          <%- example.Forms[0].FormName %>
+        <% } %>
+        
+        <div class="form-group">
+            <label for="clickwrapId"><%= example.Forms[0].Inputs[0].InputName %></label>
+            <select class="custom-select" id="clickwrapId"
+                    name="clickwrapId">
+                <% for(var i=0; i < clickwrapsData.clickwraps.length; i++) { %>
+                <option value="<%=clickwrapsData.clickwraps[i].clickwrapId%>"><%= clickwrapsData.clickwraps[i].clickwrapName %></option>
+                <% } %>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="fullName"><%= example.Forms[0].Inputs[1].InputName %></label>
+            <input type="text" class="form-control" id="fullName" name="fullName"
+                   placeholder="<%= example.Forms[0].Inputs[1].InputPlaceholder %>" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="email"><%= example.Forms[0].Inputs[2].InputName %></label>
+            <input type="email" class="form-control" id="email" name="email"
+                   placeholder="<%= example.Forms[0].Inputs[2].InputPlaceholder %>" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="company"><%= example.Forms[0].Inputs[3].InputName %></label>
+            <input type="text" class="form-control" id="company" name="company"
+                   placeholder="<%= example.Forms[0].Inputs[2].InputPlaceholder %>" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="title"><%= example.Forms[0].Inputs[4].InputName %></label>
+            <input type="text" class="form-control" id="title" name="title"
+                   placeholder="<%= example.Forms[0].Inputs[3].InputPlaceholder %>" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="date"><%= example.Forms[0].Inputs[5].InputName %></label>
+            <input type="date" class="form-control" id="date" name="date"
+                   placeholder="<%= example.Forms[0].Inputs[4].InputPlaceholder %>" required/>
+        </div>
+
+        <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+        <%- include("../../partials/submitButton") %>
+    </form>
+<% } %>
+
+<%- include("../../partials/examplesFoot") %>

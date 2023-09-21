@@ -7,11 +7,11 @@
 <% if (rooms && rooms.length > 0) { %>
 <form class="eg" action="" method="post" data-busy="form">
   <% if(example.Forms && example.Forms[0].FormName) { %>
-    <%- example.Forms[0].FormName %>
+    <%- example.Forms[1].FormName %>
   <% } %>
   
   <div class="form-group">
-    <label for="roomId"><%= example.Forms[0].Inputs[0].InputName %></label>
+    <label for="roomId"><%= example.Forms[1].Inputs[0].InputName %></label>
     <select id="roomId" name="roomId" class="form-control" required>
       <% rooms.forEach( room => { %>
         <option value="<%= room.roomId %>" selected> <%= room.name %> </option>
@@ -22,9 +22,10 @@
   <%- include("../../partials/submitButton") %>
 </form>
 <% } else { %>
-  <%- formatString(example.RedirectsToOtherCodeExamples[0].RedirectText, formatString('href="eg00{0}"', example.RedirectsToOtherCodeExamples[0].CodeExampleToRedirectTo)) %>
+
+  <%- formatString(example.RedirectsToOtherCodeExamples[1].RedirectText, formatString('href="reg00{0}"', example.RedirectsToOtherCodeExamples[1].CodeExampleToRedirectTo)) %>
    
-<form class="eg" action="eg001" method="get">
+<form class="eg" action="reg001" method="get">
     <%- include("../../partials/continueButton") %>
 </form>
 <% } %>

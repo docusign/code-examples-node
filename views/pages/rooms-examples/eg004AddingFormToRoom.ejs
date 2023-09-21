@@ -21,7 +21,7 @@
   <div class="form-group">
     <label for="libraryFormId"><%= example.Forms[0].Inputs[1].InputName %></label>
     <select id="libraryFormId" name="libraryFormId" class="form-control" required>
-      <% example.Forms.forEach( form => { %>
+      <% forms.forEach( form => { %>
         <option value="<%= form.libraryFormId %>" selected> <%= form.name %> </option>
       <% }) %>
     </select>
@@ -30,9 +30,9 @@
 <%- include("../../partials/submitButton") %>
 </form>
 <% } else { %>
-  <%- formatString(example.RedirectsToOtherCodeExamples[0].RedirectText, formatString('href="eg00{0}"', example.RedirectsToOtherCodeExamples[0].CodeExampleToRedirectTo)) %>
+  <%- formatString(example.RedirectsToOtherCodeExamples[0].RedirectText, formatString('href="reg00{0}"', example.RedirectsToOtherCodeExamples[0].CodeExampleToRedirectTo)) %>
    
-<form class="eg" action="eg001" method="get">
+<form class="eg" action="reg001" method="get">
     <%- include("../../partials/continueButton") %>
 </form>
 <% } %>

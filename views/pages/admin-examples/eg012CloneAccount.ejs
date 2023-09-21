@@ -1,0 +1,42 @@
+<%- include("../../partials/examplesHead") %>
+
+<%- include("../../partials/exampleInfo") %>
+
+<form class="eg" action="" method="post" data-busy="form">
+    <% if(example.Forms && example.Forms[0].FormName) { %>
+      <%- example.Forms[0].FormName %>
+    <% } %>
+    
+    <div class="form-group">
+        <label for="sourceAccountId"><%= example.Forms[0].Inputs[0].InputName %></label>
+        <select id="sourceAccountId" name="sourceAccountId" class="form-control">
+            <% accounts.forEach( account => { %>
+                <option value="<%= account.accountId %>"> <%= account.accountName %> </option>
+            <% }) %>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="targetAccountName"><%= example.Forms[0].Inputs[1].InputName %></label>
+        <input type="text" class="form-control" id="targetAccountName" name="targetAccountName"
+               placeholder="<%= example.Forms[0].Inputs[1].InputPlaceholder %>" required>
+    </div>
+    <div class="form-group">
+        <label for="targetAccountFirstName"><%= example.Forms[0].Inputs[2].InputName %></label>
+        <input type="text" class="form-control" id="targetAccountFirstName" name="targetAccountFirstName"
+               placeholder="<%= example.Forms[0].Inputs[2].InputPlaceholder %>" required>
+    </div>
+    <div class="form-group">
+        <label for="targetAccountLastName"><%= example.Forms[0].Inputs[3].InputName %></label>
+        <input type="text" class="form-control" id="targetAccountLastName" name="targetAccountLastName"
+               placeholder="<%= example.Forms[0].Inputs[3].InputPlaceholder %>" required>
+    </div>
+    <div class="form-group">
+        <label for="targetAccountEmail"><%= example.Forms[0].Inputs[4].InputName %></label>
+        <input type="email" class="form-control" id="targetAccountEmail" name="targetAccountEmail"
+               aria-describedby="emailHelp" placeholder="<%= example.Forms[0].Inputs[4].InputPlaceholder %>" required>
+    </div>
+    <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+    <%- include("../../partials/submitButton") %>
+</form>
+
+<%- include("../../partials/examplesFoot") %>

@@ -13,7 +13,7 @@
         <div class="form-group">
             <label for="formId"><%= example.Forms[0].Inputs[0].InputName %></label>
             <select id="formId" name="formId" class="form-control">
-                <% example.Forms.forEach( form => { %>
+                <% forms.forEach( form => { %>
                     <option value="<%= form.libraryFormId %>"> <%= form.name %> </option>
                 <% }) %>
             </select>
@@ -27,7 +27,7 @@
         <input type="hidden" name="_csrf" value="<%- csrfToken %>">
         <%- include("../../partials/submitButton") %>
     <% } else { %>
-        <%- formatString(example.RedirectsToOtherCodeExamples[0].RedirectText, formatString('href="eg00{0}"', example.RedirectsToOtherCodeExamples[0].CodeExampleToRedirectTo)) %>
+        <%- formatString(example.RedirectsToOtherCodeExamples[0].RedirectText, formatString('href="reg00{0}"', example.RedirectsToOtherCodeExamples[0].CodeExampleToRedirectTo)) %>
     <% } %>
 </form>
 

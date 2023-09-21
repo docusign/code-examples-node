@@ -1,0 +1,26 @@
+<%- include("../partials/genericHead") %>
+
+<h2><%= title %></h2>
+<p><%- message %></p>
+
+<p>Agreement URL received back from the API call: <code><%- agreementUrl %></code></p>
+
+<p id="agreementStatus">
+    <%- locals.manifest.SupportingTexts.HelpingTexts.NOTAGREED %>
+</p>
+
+<div id="ds-terms-of-service"></div>
+<script src="https://demo.docusign.net/clickapi/sdk/latest/docusign-click.js"></script>
+<script>docuSignClick.Clickwrap.render({
+  agreementUrl: "<%- agreementUrl %>",
+  onAgreed: function() {
+    // Triggered if the user has just agreed
+    document.getElementById("agreementStatus").innerHTML = "<%- locals.manifest.SupportingTexts.HelpingTexts.AGREED %>";
+  }
+}, "#ds-terms-of-service");
+</script>
+
+
+<p><a href="/">Continue</a></p>
+
+<%- include("../partials/genericFoot") %>

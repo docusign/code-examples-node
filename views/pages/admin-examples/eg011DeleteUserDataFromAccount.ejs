@@ -1,0 +1,21 @@
+<%- include("../../partials/examplesHead") %>
+
+<%- include("../../partials/exampleInfo") %>
+
+<form class="eg" action="" method="post" data-busy="form">
+  <% if(example.Forms && example.Forms[0].FormName) { %>
+    <%- example.Forms[0].FormName %>
+  <% } %>
+  
+    <div class="form-group">
+      <label for="userId"><%= example.Forms[0].Inputs[0].InputName %></label>
+      <input type="text" class="form-control" id="userId" name="userId"
+             placeholder="<%= example.Forms[0].Inputs[0].InputPlaceholder %>" required
+             pattern="[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}">
+      <small id="userIdHelp" class="form-text text-muted"><%= locals.manifest.SupportingTexts.HelpingTexts.UserIDOfUserToDelete %></small>
+    </div>
+    <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+    <%- include("../../partials/submitButton") %>
+</form>
+
+<%- include("../../partials/examplesFoot") %>
