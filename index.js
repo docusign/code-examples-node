@@ -18,7 +18,7 @@ const flash = require('express-flash');
 const helmet = require('helmet'); // https://expressjs.com/en/advanced/best-practice-security.html
 const moment = require('moment');
 const csrf = require('csurf'); // https://www.npmjs.com/package/csurf
-const { getManifest } = require('./lib/manifestService')
+const { getManifest } = require('./lib/manifestService');
 
 const eg001 = require('./lib/eSignature/controllers/eg001EmbeddedSigning');
 
@@ -29,12 +29,12 @@ const {
   eg024, eg025, eg026, eg027, eg028, eg029, eg030,
   eg031, eg032, eg033, eg034, eg035, eg036, eg037,
   eg038, eg039, eg040, eg041, eg042, eg043
-} = require("./lib/eSignature/controllers");
+} = require('./lib/eSignature/controllers');
 
 const {
   eg001click, eg002click, eg003click,
   eg004click, eg005click, eg006click,
-} = require("./lib/click/controllers");
+} = require('./lib/click/controllers');
 
 const {
   eg001rooms, eg002rooms, eg003rooms,
@@ -44,14 +44,14 @@ const {
 
 const {
   eg001monitor
-} = require("./lib/monitor/controllers/index");
+} = require('./lib/monitor/controllers/index');
 
 const {
   eg001admin, eg002admin, eg003admin,
   eg004admin, eg005admin, eg006admin,
   eg007admin, eg008admin, eg009admin,
   eg010admin, eg011admin, eg012admin
-} = require("./lib/admin/controllers");
+} = require('./lib/admin/controllers');
 
 const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || 'localhost';
@@ -133,8 +133,8 @@ app.get('/reg001', eg001rooms.getController)
   .get('/reg008', eg008rooms.getController)
   .post('/reg008', eg008rooms.createController)
   .get('/reg009', eg009rooms.getController)
-  .post('/reg009', eg009rooms.createController)
-  
+  .post('/reg009', eg009rooms.createController);
+
 app.get('/ceg001', eg001click.getController)
   .post('/ceg001', eg001click.createController)
   .get('/ceg002', eg002click.getController)
@@ -146,11 +146,11 @@ app.get('/ceg001', eg001click.getController)
   .get('/ceg005', eg005click.getController)
   .post('/ceg005', eg005click.createController)
   .get('/ceg006', eg006click.getController)
-  .post('/ceg006', eg006click.createController)
-  
+  .post('/ceg006', eg006click.createController);
+
 app.get('/meg001', eg001monitor.getController)
-  .post('/meg001', eg001monitor.createController)
-  
+  .post('/meg001', eg001monitor.createController);
+
 app.get('/aeg001', eg001admin.getController)
   .post('/aeg001', eg001admin.createController)
   .get('/aeg002', eg002admin.getController)
@@ -175,8 +175,8 @@ app.get('/aeg001', eg001admin.getController)
   .get('/aeg011', eg011admin.getController)
   .post('/aeg011', eg011admin.createController)
   .get('/aeg012', eg012admin.getController)
-  .post('/aeg012', eg012admin.createController)
-  
+  .post('/aeg012', eg012admin.createController);
+
 app.get('/eg001', eg001.getController)
   .post('/eg001', eg001.createController)
   .get('/eg002', eg002.getController)
@@ -263,7 +263,7 @@ app.get('/eg001', eg001.getController)
   .get('/eg043auth', eg043.createAuthorizationController)
   .get('/eg043reauthenticate', eg043.reauthenticate)
   .get('/eg043envelopes', eg043.listEnvelopes)
-  .post('/eg043', eg043.createController)
+  .post('/eg043', eg043.createController);
 
 function dsLoginCB1(req, res, next) { req.dsAuthCodeGrant.oauth_callback1(req, res, next); }
 function dsLoginCB2(req, res, next) { req.dsAuthCodeGrant.oauth_callback2(req, res, next); }
@@ -303,11 +303,11 @@ const MONITOR_SCOPES = [
   'signature', 'impersonation'
 ];
 const ADMIN_SCOPES = [
-  "organization_read", "group_read", "permission_read",
-  "user_read", "user_write", "account_read",
-  "domain_read", "identity_provider_read", "signature",
-  "user_data_redact", "asset_group_account_read", "asset_group_account_clone_write",
-  "asset_group_account_clone_read"
+  'organization_read', 'group_read', 'permission_read',
+  'user_read', 'user_write', 'account_read',
+  'domain_read', 'identity_provider_read', 'signature',
+  'user_data_redact', 'asset_group_account_read', 'asset_group_account_clone_write',
+  'asset_group_account_clone_read'
 ];
 
 const scope = [...ROOM_SCOPES, ...CLICK_SCOPES, ...MONITOR_SCOPES, ...ADMIN_SCOPES, ...SCOPES];

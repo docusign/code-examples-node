@@ -79,7 +79,7 @@ let app = express()
   .post('/eg001', eg001.createController)
   .get('/eg041', eg041.getController)
   .post('/eg041', eg041.createController)
-  
+
   .get('/ds/mustAuthenticate', redirectLogin)
   .get('/ds/login', commonControllers.login)
   .get('/ds-return', redirectReturn)

@@ -9,7 +9,8 @@
     "test": "mocha",
     "update-sources": "node lib/utilities/updateSources.js",
     "update-sources-debug": "node --inspect-brk lib/utilities/updateSources.js",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "lint-fix": "eslint --fix --debug ."
   },
   "directories": {
     "test": "test"
