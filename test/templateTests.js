@@ -31,7 +31,19 @@ const {
 
 let ACCOUNT_ID;
 let ACCESS_TOKEN;
-let TEMPLATE_ID;
+let TEMPLATE_ID = '';
+
+const createTestTemplate = async(newTemplateName) => {
+  const args = {
+    accessToken: ACCESS_TOKEN,
+    basePath: BASE_PATH,
+    accountId: ACCOUNT_ID,
+    templateName: newTemplateName,
+    docFile: TEST_TEMPLATE_PDF_FILE
+  };
+
+  return await createTemplate(args);
+}
 
 describe ('TemplatesApi tests:', function() {
   before(async function() {
@@ -48,17 +60,8 @@ describe ('TemplatesApi tests:', function() {
 
   it('createTemplate method should create the correct template definition if correct data is provided', async function() {
     this.timeout(TEST_TIMEOUT_MS);
-
     const newTemplateName = `${TEMPLATE_NAME}_${Date.now()}`;
-    const args = {
-      accessToken: ACCESS_TOKEN,
-      basePath: BASE_PATH,
-      accountId: ACCOUNT_ID,
-      templateName: newTemplateName,
-      docFile: TEST_TEMPLATE_PDF_FILE
-    };
-
-    const { templateId, templateName, createdNewTemplate } = await createTemplate(args);
+    const { templateId, templateName, createdNewTemplate } = await createTestTemplate(newTemplateName);
 
     TEMPLATE_ID = templateId;
 
@@ -263,8 +266,10 @@ describe ('TemplatesApi tests:', function() {
   it('useTemplate method should create the envelope with template if correct data is provided', async function() {
     this.timeout(TEST_TIMEOUT_MS);
 
+    const newTemplateName = `${TEMPLATE_NAME}_${Date.now()}`;
+    const { templateId } = await createTestTemplate(newTemplateName);
     const envelopeArgs  = {
-      templateId: TEMPLATE_ID,
+      templateId: templateId,
       signerEmail: config.signerEmail,
       signerName: config.signerName,
       ccEmail: CC_EMAIL,
@@ -319,8 +324,10 @@ describe ('TemplatesApi tests:', function() {
   it('addDocToTemplate method should correctly add document to a template if correct data is provided', async function() {
     this.timeout(TEST_TIMEOUT_MS);
 
+    const newTemplateName = `${TEMPLATE_NAME}_${Date.now()}`;
+    const { templateId } = await createTestTemplate(newTemplateName);
     const envelopeArgs  = {
-      templateId: TEMPLATE_ID,
+      templateId: templateId,
       signerEmail: config.signerEmail,
       signerName: config.signerName,
       signerClientId: signerClientId,
