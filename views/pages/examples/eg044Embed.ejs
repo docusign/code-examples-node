@@ -1,0 +1,78 @@
+<%- include("../../partials/genericHead") %>
+
+<br />
+<h2>Embedded document using focused view</h2>
+<br />
+
+<div id="agreement"></div>
+
+<p><a href="/">Continue</a></p>
+
+<script src='https://docucdn-a.akamaihd.net/demo/1ds/libs/@embedded-js/core/latest/dist/bundle.js'></script>
+<script>
+    window.DocuSign.loadDocuSign('<%= integrationKey %>')
+        .then((docusign) => {
+            const signing = docusign.signing({
+                url: '<%= url %>',
+                displayFormat: 'focused',
+                //ds-snippet-start:eSign44Step6
+                style: {
+                    /** High-level variables that mirror our existing branding APIs. Reusing the branding name here for familiarity. */
+                    branding: {
+                        primaryButton: {
+                            /** Background color of primary button */
+                            backgroundColor: '#333',
+                            /** Text color of primary button */
+                            color: '#fff',
+                        }
+                    },
+
+                    /** High-level components we allow specific overrides for */
+                    signingNavigationButton: {
+                        finishText: 'You have finished the document! Hooray!',
+                        position: 'bottom-center'
+                    }
+                }
+                //ds-snippet-end:eSign44Step6
+            });
+
+            signing.on('ready', (event) => {
+                console.log('UI is rendered');
+            });
+
+            signing.on('sessionEnd', (event) => {
+                /** The event here denotes what caused the sessionEnd to trigger, such as signing_complete, ttl_expired etc../ **/
+                console.log('sessionend', event);
+            });
+
+            signing.mount('#agreement');
+        })
+        .catch((ex) => {
+            // Any configuration or API limits will be caught here
+        });</script>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Signing</title>
+    <style>
+        html,
+        body {
+            padding: 0;
+            margin-top: 30px;
+            font: 16px Helvetica, Arial, sans-serif;
+        }
+
+        .docusign-agreement {
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="docusign-agreement" id="docusign"></div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+<%- include("../../partials/genericFoot") %>
