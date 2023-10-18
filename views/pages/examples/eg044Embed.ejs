@@ -1,10 +1,33 @@
 <%- include("../../partials/genericHead") %>
 
 <br />
-<h2>Embedded document using focused view</h2>
+<h2>The document has been embedded with focused view.</h2>
 <br />
 
-<div id="agreement"></div>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Signing</title>
+    <style>
+        html,
+        body {
+            padding: 0;
+            margin-top: 15px;
+            font: 13px Helvetica, Arial, sans-serif;
+        }
+
+        .docusign-agreement {
+            width: 75%;
+            height: 800px;
+        }
+    </style>
+</head>
+<body>
+    <div class="docusign-agreement" id="agreement"></div>
+    <script src="script.js"></script>
+</body>
+</html>
 
 <p><a href="/">Continue</a></p>
 
@@ -49,30 +72,8 @@
         })
         .catch((ex) => {
             // Any configuration or API limits will be caught here
-        });</script>
+        });
+</script>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title>Signing</title>
-    <style>
-        html,
-        body {
-            padding: 0;
-            margin-top: 30px;
-            font: 16px Helvetica, Arial, sans-serif;
-        }
-
-        .docusign-agreement {
-            width: 50%;
-        }
-    </style>
-</head>
-<body>
-    <div class="docusign-agreement" id="docusign"></div>
-    <script src="script.js"></script>
-</body>
-</html>
 
 <%- include("../../partials/genericFoot") %>
