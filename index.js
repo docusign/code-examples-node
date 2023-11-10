@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const express = require('express');
-const session = require('express-session');  // https://github.com/expressjs/session
+const session = require('express-session'); // https://github.com/expressjs/session
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const MemoryStore = require('memorystore')(session); // https://github.com/roccomuso/memorystore
@@ -18,7 +18,7 @@ const flash = require('express-flash');
 const helmet = require('helmet'); // https://expressjs.com/en/advanced/best-practice-security.html
 const moment = require('moment');
 const csrf = require('csurf'); // https://www.npmjs.com/package/csurf
-const { getManifest } = require('./lib/manifestService')
+const { getManifest } = require('./lib/manifestService');
 
 const eg001 = require('./lib/eSignature/controllers/eg001EmbeddedSigning');
 
@@ -29,37 +29,37 @@ const {
   eg024, eg025, eg026, eg027, eg028, eg029, eg030,
   eg031, eg032, eg033, eg034, eg035, eg036, eg037,
   eg038, eg039, eg040, eg041, eg042, eg043, eg044
-} = require("./lib/eSignature/controllers");
+} = require('./lib/eSignature/controllers');
 
 const {
   eg001click, eg002click, eg003click,
   eg004click, eg005click, eg006click,
-} = require("./lib/click/controllers");
+} = require('./lib/click/controllers');
 
 const {
   eg001rooms, eg002rooms, eg003rooms,
   eg004rooms, eg005rooms, eg006rooms,
   eg007rooms, eg008rooms, eg009rooms,
-} = require("./lib/rooms/controllers");
+} = require('./lib/rooms/controllers');
 
 const {
   eg001monitor
-} = require("./lib/monitor/controllers/index");
+} = require('./lib/monitor/controllers/index');
 
 const {
   eg001admin, eg002admin, eg003admin,
   eg004admin, eg005admin, eg006admin,
   eg007admin, eg008admin, eg009admin,
   eg010admin, eg011admin, eg012admin
-} = require("./lib/admin/controllers");
+} = require('./lib/admin/controllers');
 
 const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || 'localhost';
 const max_session_min = 180;
 const csrfProtection = csrf({ cookie: true });
 
-let hostUrl = 'http://' + HOST + ':' + PORT
-if (dsConfig.appUrl != '' && dsConfig.appUrl != '{APP_URL}') { hostUrl = dsConfig.appUrl }
+let hostUrl = 'http://' + HOST + ':' + PORT;
+if (dsConfig.appUrl !== '' && dsConfig.appUrl !== '{APP_URL}') { hostUrl = dsConfig.appUrl; }
 
 let app = express()
   .use(helmet())
@@ -78,13 +78,13 @@ let app = express()
   .use(passport.initialize())
   .use(passport.session())
   .use(bodyParser.urlencoded({ extended: true }))
-  .use(((req, res, next) => {
+  .use((req, res, next) => {
     res.locals.user = req.user;
     res.locals.session = req.session;
     res.locals.dsConfig = { ...dsConfig, docOptions: docOptions, docNames: docNames };
     res.locals.hostUrl = hostUrl; // Used by DSAuthCodeGrant#logout
-    next()
-  })) // Send user info to views
+    next();
+  }) // Send user info to views
   .use(flash())
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
@@ -96,7 +96,7 @@ let app = express()
     if (req.session.authMethod === 'jwt-auth') {
       req.dsAuth = req.dsAuthJwt;
     }
-    next()
+    next();
   })
   .use(async (req, res, next) => {
     const manifest = await getManifest(dsConfig.codeExamplesManifest);
@@ -133,8 +133,8 @@ app.get('/reg001', eg001rooms.getController)
   .get('/reg008', eg008rooms.getController)
   .post('/reg008', eg008rooms.createController)
   .get('/reg009', eg009rooms.getController)
-  .post('/reg009', eg009rooms.createController)
-  
+  .post('/reg009', eg009rooms.createController);
+
 app.get('/ceg001', eg001click.getController)
   .post('/ceg001', eg001click.createController)
   .get('/ceg002', eg002click.getController)
@@ -146,11 +146,11 @@ app.get('/ceg001', eg001click.getController)
   .get('/ceg005', eg005click.getController)
   .post('/ceg005', eg005click.createController)
   .get('/ceg006', eg006click.getController)
-  .post('/ceg006', eg006click.createController)
-  
+  .post('/ceg006', eg006click.createController);
+
 app.get('/meg001', eg001monitor.getController)
-  .post('/meg001', eg001monitor.createController)
-  
+  .post('/meg001', eg001monitor.createController);
+
 app.get('/aeg001', eg001admin.getController)
   .post('/aeg001', eg001admin.createController)
   .get('/aeg002', eg002admin.getController)
@@ -175,8 +175,8 @@ app.get('/aeg001', eg001admin.getController)
   .get('/aeg011', eg011admin.getController)
   .post('/aeg011', eg011admin.createController)
   .get('/aeg012', eg012admin.getController)
-  .post('/aeg012', eg012admin.createController)
-  
+  .post('/aeg012', eg012admin.createController);
+
 app.get('/eg001', eg001.getController)
   .post('/eg001', eg001.createController)
   .get('/eg002', eg002.getController)
@@ -265,15 +265,15 @@ app.get('/eg001', eg001.getController)
   .get('/eg043envelopes', eg043.listEnvelopes)
   .post('/eg043', eg043.createController)
   .get('/eg044', eg044.getController)
-  .post('/eg044', eg044.createController)
+  .post('/eg044', eg044.createController);
 
-function dsLoginCB1(req, res, next) { req.dsAuthCodeGrant.oauth_callback1(req, res, next) }
-function dsLoginCB2(req, res, next) { req.dsAuthCodeGrant.oauth_callback2(req, res, next) }
+function dsLoginCB1(req, res, next) { req.dsAuthCodeGrant.oauth_callback1(req, res, next); }
+function dsLoginCB2(req, res, next) { req.dsAuthCodeGrant.oauth_callback2(req, res, next); }
 
 /* Start the web server */
 if (dsConfig.dsClientId && dsConfig.dsClientId !== '{CLIENT_ID}' &&
   dsConfig.dsClientSecret && dsConfig.dsClientSecret !== '{CLIENT_SECRET}') {
-  app.listen(PORT)
+  app.listen(PORT);
   console.log(`Listening on ${PORT}`);
   console.log(`Ready! Open ${hostUrl}`);
 } else {
@@ -289,27 +289,27 @@ You can set them in the configuration file config/appsettings.json or set enviro
 //   the user by ID when deserializing.  However, since this example does not
 //   have a database of user records, the complete DocuSign profile is serialized
 //   and deserialized.
-passport.serializeUser(function (user, done) { done(null, user) });
-passport.deserializeUser(function (obj, done) { done(null, obj) });
+passport.serializeUser(function(user, done) { done(null, user); });
+passport.deserializeUser(function(obj, done) { done(null, obj); });
 
-const SCOPES = ["signature"];
+const SCOPES = ['signature'];
 const ROOM_SCOPES = [
-  "signature", "dtr.rooms.read", "dtr.rooms.write",
-  "dtr.documents.read", "dtr.documents.write", "dtr.profile.read", "dtr.profile.write",
-  "dtr.company.read", "dtr.company.write", "room_forms"
+  'signature', 'dtr.rooms.read', 'dtr.rooms.write',
+  'dtr.documents.read', 'dtr.documents.write', 'dtr.profile.read', 'dtr.profile.write',
+  'dtr.company.read', 'dtr.company.write', 'room_forms'
 ];
 const CLICK_SCOPES = [
-  "signature", "click.manage", "click.send"
+  'signature', 'click.manage', 'click.send'
 ];
 const MONITOR_SCOPES = [
-  "signature", "impersonation"
+  'signature', 'impersonation'
 ];
 const ADMIN_SCOPES = [
-  "organization_read", "group_read", "permission_read",
-  "user_read", "user_write", "account_read",
-  "domain_read", "identity_provider_read", "signature",
-  "user_data_redact", "asset_group_account_read", "asset_group_account_clone_write",
-  "asset_group_account_clone_read"
+  'organization_read', 'group_read', 'permission_read',
+  'user_read', 'user_write', 'account_read',
+  'domain_read', 'identity_provider_read', 'signature',
+  'user_data_redact', 'asset_group_account_read', 'asset_group_account_clone_write',
+  'asset_group_account_clone_read'
 ];
 
 const scope = [...ROOM_SCOPES, ...CLICK_SCOPES, ...MONITOR_SCOPES, ...ADMIN_SCOPES, ...SCOPES];
@@ -318,7 +318,7 @@ const scope = [...ROOM_SCOPES, ...CLICK_SCOPES, ...MONITOR_SCOPES, ...ADMIN_SCOP
 let docusignStrategy = new DocusignStrategy({
     production: dsConfig.production,
     clientID: dsConfig.dsClientId,
-    scope: scope.join(" "),
+    scope: scope.join(' '),
     clientSecret: dsConfig.dsClientSecret,
     callbackURL: hostUrl + '/ds/callback',
     state: true // automatic CSRF protection.
@@ -345,8 +345,8 @@ let docusignStrategy = new DocusignStrategy({
  */
 if (!dsConfig.allowSilentAuthentication) {
   // See https://stackoverflow.com/a/32877712/64904
-  docusignStrategy.authorizationParams = function (options) {
+  docusignStrategy.authorizationParams = function(options) {
     return { prompt: 'login' };
-  }
+  };
 }
 passport.use(docusignStrategy);
