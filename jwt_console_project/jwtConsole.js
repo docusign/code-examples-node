@@ -12,33 +12,33 @@ const doc3File = 'World_Wide_Corp_lorem.pdf';
 
 
 const SCOPES = [
-     "signature", "impersonation"
+  'signature', 'impersonation'
 ];
 
 function getConsent() {
   var urlScopes = SCOPES.join('+');
 
   // Construct consent URL
-  var redirectUri = "https://developers.docusign.com/platform/auth/consent";
+  var redirectUri = 'https://developers.docusign.com/platform/auth/consent';
   var consentUrl = `${jwtConfig.dsOauthServer}/oauth/auth?response_type=code&` +
                       `scope=${urlScopes}&client_id=${jwtConfig.dsJWTClientId}&` +
                       `redirect_uri=${redirectUri}`;
 
-  console.log("Open the following URL in your browser to grant consent to the application:");
+  console.log('Open the following URL in your browser to grant consent to the application:');
   console.log(consentUrl);
-  console.log("Consent granted? \n 1)Yes \n 2)No");
-  let consentGranted = prompt("");
-  if(consentGranted == "1"){
+  console.log('Consent granted? \n 1)Yes \n 2)No');
+  let consentGranted = prompt('');
+  if (consentGranted === '1'){
     return true;
   } else {
-    console.error("Please grant consent!");
+    console.error('Please grant consent!');
     process.exit();
   }
 }
 
 async function authenticate(){
-  const jwtLifeSec = 10 * 60, // requested lifetime for the JWT is 10 min
-    dsApi = new docusign.ApiClient();
+  const jwtLifeSec = 10 * 60; // requested lifetime for the JWT is 10 min
+  const dsApi = new docusign.ApiClient();
   dsApi.setOAuthBasePath(jwtConfig.dsOauthServer.replace('https://', '')); // it should be domain only.
   let rsaKey = fs.readFileSync(jwtConfig.privateKeyLocation);
 
@@ -53,7 +53,7 @@ async function authenticate(){
 
     // use the default account
     let userInfo = userInfoResults.accounts.find(account =>
-      account.isDefault === "true");
+      account.isDefault === 'true');
 
     return {
       accessToken: results.body.access_token,
@@ -88,7 +88,7 @@ function getArgs(apiAccountId, accessToken, basePath){
     signerName: signerName,
     ccEmail: ccEmail,
     ccName: ccName,
-    status: "sent",
+    status: 'sent',
     doc2File: path.resolve(demoDocsPath, doc2File),
     doc3File: path.resolve(demoDocsPath, doc3File)
   };
@@ -99,7 +99,7 @@ function getArgs(apiAccountId, accessToken, basePath){
     envelopeArgs: envelopeArgs
   };
 
-  return args
+  return args;
 }
 
 

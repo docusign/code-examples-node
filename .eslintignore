@@ -1,0 +1,4 @@
+config/*
+public/*
+node_modules/*
+test/*
