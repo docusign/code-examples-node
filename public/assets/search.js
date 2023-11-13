@@ -5,18 +5,7 @@ const DS_SEARCH = (function () {
     CLICK: "click",
     ROOMS: "rooms",
     ADMIN: "admin",
-  };
-
-  function getHash(value) {
-    var hash = 0,
-      i, chr;
-    if (value.length === 0) return hash;
-    for (i = 0; i < value.length; i++) {
-      chr = value.charCodeAt(i);
-      hash = ((hash << 5) - hash) + chr;
-      hash |= 0; // Convert to 32bit integer
-    }
-    return hash;
+    CONNECT: "connect",
   }
 
   const processJSONData = function () {
@@ -34,7 +23,7 @@ const DS_SEARCH = (function () {
   function checkIfExampleMatches(example, matches) {
     const name = example.ExampleName;
     const description = example.ExampleDescription;
-    const pathNames = example.LinksToAPIMethod.map((a) => a.PathName);
+    const pathNames = example.LinksToAPIMethod?.map((a) => a.PathName);
 
     for (let i = 0; i < matches.length; i++) {
       if (
@@ -85,9 +74,10 @@ const DS_SEARCH = (function () {
       ],
     };
 
-    const fuse = new Fuse(json, options);
+    const clearJSON = JSON.stringify(json).replace(/<\/?[^>]+(>|$)/g, "");
+    const fuse = new Fuse(JSON.parse(clearJSON), options);
 
-    var searchResults = fuse.search(JSON.stringify(pattern));
+    const searchResults = fuse.search(JSON.stringify(pattern));
 
     searchResults.forEach((searchResult) =>
       clearResultsAfterMatching(searchResult.item, searchResult.matches)
@@ -137,17 +127,19 @@ const DS_SEARCH = (function () {
         return "meg";
       case API_TYPES.ESIGNATURE:
         return "eg";
+      case API_TYPES.CONNECT:
+        return "cneg";
     }
   }
 
   const addCodeExampleToHomepage = function (codeExamples) {
     var cfrPart11 = processCFR11Value();
-    
+
     codeExamples.forEach((element) => {
       let linkToCodeExample = getLinkForApiType(element.Name.toLowerCase());
 
       element.Groups.forEach((group) => {
-        $("#filtered_code_examples").append(`<h2 id="${getHash(group.Name)}"></h2>`);
+        $("#filtered_code_examples").append("<h2>" + group.Name + "</h2>");
 
         group.Examples.forEach((example) => {
           if (
@@ -159,7 +151,6 @@ const DS_SEARCH = (function () {
               ((cfrPart11 == "enabled") && (example.CFREnabled == "CFROnly")) ||
               ((cfrPart11 != "enabled") && (example.CFREnabled == "NonCFR")))) 
             {
-              $(`#${getHash(group.Name)}`).html(group.Name);
               $("#filtered_code_examples").append(
                 "<h4 id=" +
                   "example"
@@ -184,36 +175,37 @@ const DS_SEARCH = (function () {
               );
 
               $("#filtered_code_examples").append("<p>");
-
-              if (example.LinksToAPIMethod.length == 1) {
-                $("#filtered_code_examples").append(
-                  processJSONData().SupportingTexts.APIMethodUsed
-                );
-              } else {
-                $("#filtered_code_examples").append(
-                  processJSONData().SupportingTexts.APIMethodUsedPlural
-                );
-              }
-
-              for (
-                let index = 0;
-                index < example.LinksToAPIMethod.length;
-                index++
-              ) {
-                $("#filtered_code_examples").append(
-                  " <a target='_blank' href='" +
-                    example.LinksToAPIMethod[index].Path +
-                    "'>" +
-                    example.LinksToAPIMethod[index].PathName +
-                    "</a>"
-                );
-
-                if (index + 1 === example.LinksToAPIMethod.length) {
-                  $("#filtered_code_examples").append("<span></span>");
-                } else if (index + 1 === example.LinksToAPIMethod.length - 1) {
-                  $("#filtered_code_examples").append("<span> and </span>");
+              if (example.LinksToAPIMethod && example.LinksToAPIMethod.length !== 0) {
+                if (example.LinksToAPIMethod.length == 1) {
+                  $("#filtered_code_examples").append(
+                    processJSONData().SupportingTexts.APIMethodUsed
+                  );
                 } else {
-                  $("#filtered_code_examples").append("<span>, </span>");
+                  $("#filtered_code_examples").append(
+                    processJSONData().SupportingTexts.APIMethodUsedPlural
+                  );
+                }
+
+                for (
+                  let index = 0;
+                  index < example.LinksToAPIMethod.length;
+                  index++
+                ) {
+                  $("#filtered_code_examples").append(
+                    " <a target='_blank' href='" +
+                      example.LinksToAPIMethod[index].Path +
+                      "'>" +
+                      example.LinksToAPIMethod[index].PathName +
+                      "</a>"
+                  );
+
+                  if (index + 1 === example.LinksToAPIMethod.length) {
+                    $("#filtered_code_examples").append("<span></span>");
+                  } else if (index + 1 === example.LinksToAPIMethod.length - 1) {
+                    $("#filtered_code_examples").append("<span> and </span>");
+                  } else {
+                    $("#filtered_code_examples").append("<span>, </span>");
+                  }
                 }
               }
 
@@ -266,6 +258,25 @@ function updateValue(esearchPattern) {
         DS_SEARCH.textCouldNotBeFound();
       } else {
         result.forEach((x) => {
+          const api = json.filter((api) => {
+            return api.Name === x.item.Name;
+          })[0];
+
+          x.item.Groups.forEach((group, groupIndex) => {
+            const unfilteredGroup = api.Groups.filter((apiGroup) => {
+              return apiGroup.Name === group.Name;
+            })[0];
+
+            group.Examples.forEach((example, index) => {
+              const clearedExample = unfilteredGroup.Examples.filter(
+                (apiExample) => {
+                  return apiExample.ExampleNumber === example.ExampleNumber;
+                }
+              )[0];
+              x.item.Groups[groupIndex].Examples[index] = clearedExample;
+            });
+          });
+
           DS_SEARCH.addCodeExampleToHomepage([x.item]);
         });
       }

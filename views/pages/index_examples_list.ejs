@@ -17,6 +17,7 @@
                         : api.Name == "Click" ? "c"
                         : api.Name == "Monitor" ? "m"
                         : api.Name == "Rooms" ? "r"
+                        : api.Name == "Connect" ? "cn"
                         : ""; %>
                         
                         <h4
@@ -31,13 +32,13 @@
                         <p><%- example.ExampleDescription %></p>
                     
                         <p>
-                            <% if (example.LinksToAPIMethod.length > 1) { %>
+                            <% if (example.LinksToAPIMethod?.length > 1) { %>
                                 API methods used:
                             <% } else { %>
                                 API method used:
                             <% } %>
                             
-                            <% example.LinksToAPIMethod.forEach(function(link) { %>
+                            <% example.LinksToAPIMethod?.forEach(function(link) { %>
                                 <a target='_blank' href="<%= link.Path %>"><%= link.PathName %></a>
                             <% }); %>
                         </p>

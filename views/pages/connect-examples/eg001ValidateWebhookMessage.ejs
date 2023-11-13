@@ -1,0 +1,28 @@
+<%- include("../../partials/examplesHead") %>
+
+<%- include("../../partials/exampleInfo") %>
+
+<p>
+  <b>Prerequisites:</b> See <a href="https://developers.docusign.com/platform/webhooks/connect/validate/">How to validate a webhook message using HMAC</a>.
+</p>
+
+<form class="eg" action="" method="post" data-busy="form">
+  <% if(example.Forms && example.Forms[0].FormName) { %>
+    <%- example.Forms[0].FormName %>
+  <% } %>
+    <div class="form-group" style="display: flex;">
+      <label for="secret" style="width: 50%;"><%= example.Forms[0].Inputs[0].InputName %></label>
+      <input type="text" class="form-control" id="secret" placeholder="<%= example.Forms[0].Inputs[0].InputPlaceholder %>" 
+             name="secret" required>
+    </div>
+    <div class="form-group">
+      <label for="payload"><%= example.Forms[0].Inputs[1].InputName %></label>
+      <textarea class="form-control" id="payload" placeholder="<%= example.Forms[0].Inputs[1].InputPlaceholder %>" 
+                name="payload" rows="6" required></textarea>
+    </div>
+
+    <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+    <%- include("../../partials/submitButton") %>
+</form>
+  
+<%- include("../../partials/examplesFoot") %>
