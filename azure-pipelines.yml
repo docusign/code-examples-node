@@ -2,29 +2,112 @@
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
+resources:
+  repositories:
+  - repository: launcher-automation
+    type: github
+    name: docusign/launcher-automation
+    ref: main
+    endpoint: launcherAutomationServiceConnection
 
-trigger:
+pr:
 - master
-
-# pool:
-#   vmImage: ubuntu-latest
+- releases/*
 
 pool:
-  name: defualt
+  name: launcher-automation-pool
 
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
+- checkout: self
+- checkout: launcher-automation
 
-# - script: |
-#     echo Add other tasks to build, test, and deploy your project.
-#     echo See https://aka.ms/yaml
-#   displayName: 'Run a multi-line script'
+- script: dir $(Build.SourcesDirectory)
+
+- task: DownloadSecureFile@1
+  name: node_dockerfile
+  displayName: 'download Dockerfile'
+  inputs:
+    secureFile: 'node.Dockerfile'
 
 - script: |
-  allure –-version
-  java --version
-  javac --version
-  mvn --version
-  docker --version
+    echo "place node.Dockerfile"
+    echo $(node_dockerfile.secureFilePath)
+    cp $(node_Dockerfile.secureFilePath) code-examples-node-private/Dockerfile
+  displayName: 'place Dockerfile'
 
+- script: |
+    allure –-version
+    java --version
+    javac --version
+    mvn --version
+    docker --version
+
+- task: DownloadSecureFile@1
+  name: tests_config_properties
+  displayName: 'download config.properties'
+  inputs:
+    secureFile: 'tests_config.properties'
+
+
+- script: |
+    echo "place config.properties"
+    echo $(tests_config_properties.secureFilePath)
+    cp $(tests_config_properties.secureFilePath) launcher-automation/src/main/resources/config.properties
+  displayName: 'place config.properties'
+
+- task: DownloadSecureFile@1
+  name: node_appsettings
+  displayName: 'download appsettings.json'
+  inputs:
+    secureFile: 'node_appsettings.json'
+
+
+- script: |
+    echo "place appsettings.json"
+    cp $(node_appsettings.secureFilePath) code-examples-node-private/config/appsettings.json
+  displayName: 'place appsettings.json'
+
+
+- task: DownloadSecureFile@1
+  name: node_private_key
+  displayName: 'download private.key'
+  inputs:
+    secureFile: 'private.key'
+
+
+- script: |
+    echo "place private.key"
+    cp $(node_private_key.secureFilePath) code-examples-node-private/config/private.key
+  displayName: 'place private.key'
+
+- script: dir $(Build.SourcesDirectory)
+
+- script: dir $(Build.SourcesDirectory)/code-examples-node-private
+
+- script: dir $(Build.SourcesDirectory)/code-examples-node-private/config
+
+- task: Docker@2
+  displayName: Build node image
+  inputs:
+    command: build
+    repository: 'launcher-automation-node'
+    dockerfile: '$(Build.SourcesDirectory)/code-examples-node-private/Dockerfile'
+    buildContext: '$(Build.SourcesDirectory)/code-examples-node-private '
+    tags: |
+      latest
+
+- script: |
+    docker run -p 3000:3000 -d launcher-automation-node:latest
+  displayName: 'start node app'
+
+- script: |
+    cd launcher-automation
+    mvn clean test -DsuiteXmlFile="node_suite.xml"
+  displayName: 'Node app tests'
+
+- script: |
+    docker stop $(docker ps -a -q)
+    docker rm $(docker ps -a -q)
+  displayName: 'stop node app'
