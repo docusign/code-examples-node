@@ -32,10 +32,12 @@
                         <p><%- example.ExampleDescription %></p>
                     
                         <p>
-                            <% if (example.LinksToAPIMethod?.length > 1) { %>
-                                API methods used:
-                            <% } else { %>
-                                API method used:
+                            <% if (example.LinksToAPIMethod?.length > 0) { %>
+                                <% if (example.LinksToAPIMethod?.length > 1) { %>
+                                    API methods used:
+                                <% } else { %>
+                                    API method used:
+                                <% } %>
                             <% } %>
                             
                             <% example.LinksToAPIMethod?.forEach(function(link) { %>

@@ -29,7 +29,7 @@ const DS_SEARCH = (function () {
       if (
         name === matches[i].value ||
         description === matches[i].value ||
-        pathNames.indexOf(matches[i].value) > -1
+        pathNames && pathNames.indexOf(matches[i].value) > -1
       ) {
         return true;
       }
@@ -175,8 +175,9 @@ const DS_SEARCH = (function () {
               );
 
               $("#filtered_code_examples").append("<p>");
-              if (example.LinksToAPIMethod && example.LinksToAPIMethod.length !== 0) {
-                if (example.LinksToAPIMethod.length == 1) {
+              const links = example.LinksToAPIMethod || [];
+              if (links.length > 0) {
+                if (links.length == 1) {
                   $("#filtered_code_examples").append(
                     processJSONData().SupportingTexts.APIMethodUsed
                   );
@@ -186,27 +187,18 @@ const DS_SEARCH = (function () {
                   );
                 }
 
-                for (
-                  let index = 0;
-                  index < example.LinksToAPIMethod.length;
-                  index++
-                ) {
-                  $("#filtered_code_examples").append(
-                    " <a target='_blank' href='" +
-                      example.LinksToAPIMethod[index].Path +
-                      "'>" +
-                      example.LinksToAPIMethod[index].PathName +
-                      "</a>"
-                  );
+                links.forEach((link, index) => {
+                  $("#filtered_code_examples").append(`<a target='_blank' href='${link.Path}'>${link.PathName}</a>`);
 
-                  if (index + 1 === example.LinksToAPIMethod.length) {
+                  if (index + 1 === links.length) {
                     $("#filtered_code_examples").append("<span></span>");
-                  } else if (index + 1 === example.LinksToAPIMethod.length - 1) {
+                  } else if (index + 1 === links.length - 1) {
                     $("#filtered_code_examples").append("<span> and </span>");
                   } else {
                     $("#filtered_code_examples").append("<span>, </span>");
                   }
-                }
+                })
+
               }
 
               $("#filtered_code_examples").append("</p> ");
@@ -268,12 +260,10 @@ function updateValue(esearchPattern) {
             })[0];
 
             group.Examples.forEach((example, index) => {
-              const clearedExample = unfilteredGroup.Examples.filter(
-                (apiExample) => {
-                  return apiExample.ExampleNumber === example.ExampleNumber;
-                }
-              )[0];
-              x.item.Groups[groupIndex].Examples[index] = clearedExample;
+              const clearedExamples = unfilteredGroup.Examples.filter((apiExample) => {
+                return apiExample.ExampleNumber === example.ExampleNumber;
+              })
+              x.item.Groups[groupIndex].Examples[index] = clearedExamples[0];
             });
           });
 
