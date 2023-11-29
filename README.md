@@ -117,8 +117,8 @@ Also, in order to select JSON Web Token authentication in the launcher, in confi
 1. When prompted, log in to your DocuSign developer account. If this is your first time using the app, select **ACCEPT** at the consent window.
 3. Select your desired code example.
 
-## JWT grant remote signing project
-See [DocuSign Quickstart overview](https://developers.docusign.com/docs/esign-rest-api/quickstart/overview/) on the DocuSign Developer Center for more information on how to run the JWT grant remote signing project.
+## JWT grant remote signing and Authorization Code Grant embedded signing projects
+See [DocuSign Quickstart overview](https://developers.docusign.com/docs/esign-rest-api/quickstart/overview/) on the DocuSign Developer Center for more information on how to run the JWT grant remote signing project and the Authorization Code Grant embedded signing project.
 
 ## Payments code example
 
