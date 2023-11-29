@@ -53,6 +53,8 @@ const {
   eg010admin, eg011admin, eg012admin
 } = require('./lib/admin/controllers');
 
+const { eg001connect } = require('./lib/connect/controllers');
+
 const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || 'localhost';
 const max_session_min = 180;
@@ -266,6 +268,9 @@ app.get('/eg001', eg001.getController)
   .post('/eg043', eg043.createController)
   .get('/eg044', eg044.getController)
   .post('/eg044', eg044.createController);
+
+app.get('/cneg001', eg001connect.getController)
+  .post('/cneg001', eg001connect.createController);
 
 function dsLoginCB1(req, res, next) { req.dsAuthCodeGrant.oauth_callback1(req, res, next); }
 function dsLoginCB2(req, res, next) { req.dsAuthCodeGrant.oauth_callback2(req, res, next); }
