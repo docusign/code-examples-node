@@ -37,13 +37,6 @@ steps:
     cp $(node_Dockerfile.secureFilePath) code-examples-node-private/Dockerfile
   displayName: 'place Dockerfile'
 
-- script: |
-    allure –-version
-    java --version
-    javac --version
-    mvn --version
-    docker --version
-
 - task: DownloadSecureFile@1
   name: tests_config_properties
   displayName: 'download config.properties'
