@@ -75,12 +75,6 @@ steps:
     cp $(node_private_key.secureFilePath) code-examples-node-private/config/private.key
   displayName: 'place private.key'
 
-- script: dir $(Build.SourcesDirectory)
-
-- script: dir $(Build.SourcesDirectory)/code-examples-node-private
-
-- script: dir $(Build.SourcesDirectory)/code-examples-node-private/config
-
 - task: Docker@2
   displayName: Build node image
   inputs:
