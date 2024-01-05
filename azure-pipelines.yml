@@ -15,7 +15,7 @@ pr:
 - releases/*
 
 pool:
-  name: Launcher Automation
+  name: launcher-automation-pool
 
 steps:
 - script: echo Hello, world!
