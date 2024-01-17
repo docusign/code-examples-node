@@ -54,6 +54,7 @@ const {
 } = require('./lib/admin/controllers');
 
 const { eg001connect } = require('./lib/connect/controllers');
+const { eg001maestro } = require('./lib/maestro/controllers');
 
 const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || 'localhost';
@@ -272,6 +273,9 @@ app.get('/eg001', eg001.getController)
 app.get('/cneg001', eg001connect.getController)
   .post('/cneg001', eg001connect.createController);
 
+app.get('/mseg001', eg001maestro.getController)
+  .post('/mseg001', eg001maestro.createController);
+
 function dsLoginCB1(req, res, next) { req.dsAuthCodeGrant.oauth_callback1(req, res, next); }
 function dsLoginCB2(req, res, next) { req.dsAuthCodeGrant.oauth_callback2(req, res, next); }
 
@@ -297,7 +301,7 @@ You can set them in the configuration file config/appsettings.json or set enviro
 passport.serializeUser(function(user, done) { done(null, user); });
 passport.deserializeUser(function(obj, done) { done(null, obj); });
 
-const SCOPES = ['signature'];
+const SCOPES = ['signature', 'webforms_manage'];
 const ROOM_SCOPES = [
   'signature', 'dtr.rooms.read', 'dtr.rooms.write',
   'dtr.documents.read', 'dtr.documents.write', 'dtr.profile.read', 'dtr.profile.write',
@@ -316,8 +320,9 @@ const ADMIN_SCOPES = [
   'user_data_redact', 'asset_group_account_read', 'asset_group_account_clone_write',
   'asset_group_account_clone_read'
 ];
+const MAESTRO_SCOPES = ['signature', 'aow_manage'];
 
-const scope = [...ROOM_SCOPES, ...CLICK_SCOPES, ...MONITOR_SCOPES, ...ADMIN_SCOPES, ...SCOPES];
+const scope = [...ROOM_SCOPES, ...CLICK_SCOPES, ...MONITOR_SCOPES, ...ADMIN_SCOPES, ...SCOPES, ...MAESTRO_SCOPES];
 
 // Configure passport for DocusignStrategy
 let docusignStrategy = new DocusignStrategy({
