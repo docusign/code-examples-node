@@ -29,12 +29,14 @@
     "node": ">=8.10"
   },
   "dependencies": {
+    "axios": "^1.6.5",
     "body-parser": "^1.20.2",
     "cookie-parser": "^1.4.6",
     "csurf": "^1.11.0",
     "docusign-admin": "^2.3.0",
     "docusign-click": "^2.2.0",
     "docusign-esign": "^6.4.0",
+    "docusign-maestro": "file:docusign-maestro-1.0.0-rc2.tgz",
     "docusign-monitor": "^2.1.0",
     "docusign-rooms": "^2.0.0",
     "ejs": "^3.1.9",
@@ -53,6 +55,7 @@
     "path": "^0.12.7",
     "request": "^2.88.2",
     "stream": "0.0.2",
+    "uuid": "^9.0.1",
     "validator": "^13.9.0"
   },
   "devDependencies": {

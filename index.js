@@ -54,7 +54,7 @@ const {
 } = require('./lib/admin/controllers');
 
 const { eg001connect } = require('./lib/connect/controllers');
-const { eg001maestro } = require('./lib/maestro/controllers');
+const { eg001maestro, eg002maestro, eg003maestro } = require('./lib/maestro/controllers');
 
 const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || 'localhost';
@@ -274,7 +274,11 @@ app.get('/cneg001', eg001connect.getController)
   .post('/cneg001', eg001connect.createController);
 
 app.get('/mseg001', eg001maestro.getController)
-  .post('/mseg001', eg001maestro.createController);
+  .post('/mseg001', eg001maestro.createController)
+  .get('/mseg002', eg002maestro.getController)
+  .post('/mseg002', eg002maestro.createController)
+  .get('/mseg003', eg003maestro.getController)
+  .post('/mseg003', eg003maestro.createController);
 
 function dsLoginCB1(req, res, next) { req.dsAuthCodeGrant.oauth_callback1(req, res, next); }
 function dsLoginCB2(req, res, next) { req.dsAuthCodeGrant.oauth_callback2(req, res, next); }
