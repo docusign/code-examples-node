@@ -44,19 +44,47 @@
       },
       //Controls the auto resize behavior of the iframe
       autoResizeHeight: true,
-      //These values are passed to the iframe URL as query params
-      tracking: {
-        "tracking-field": "tracking-value",
-      },
-      //These values are passed to the iframe URL as hash params
-      hidden: {
-        "hidden-field": "hidden-value",
-      },
     };
     const webFormWidget = docusign.webforms({
       url: '<%= formUrl %>',
       options: webFormOptions,
-    })
+    });
+    //Basic milestones in this workflow
+    webFormWidget.on("ready", (event) => {
+      // event = { type: "ready" };
+      console.log("debug form loaded", event);
+    });
+  
+    webFormWidget.on("submitted", (event) => {
+      // event = { type: "submitted", envelopeId: "abcd1234" };
+      console.log("debug form submitted", event);
+    });
+
+    webFormWidget.on("signingReady", (event) => {
+      // event = { type: "submitted", envelopeId: "abcd1234" };
+      console.log("debug form signingReady", event);
+    });
+
+    webFormWidget.on("sessionEnd", (event) => {
+      //There are 3 sessionEnd types sessionTimeout, remoteSigningInitiated, signingResult
+      // event = { type: "sessionEnd", sessionEndType: "sessionTimeout" };
+      // event = {
+      //   type: 'sessionEnd',
+      //   sessionEndType: "signingResult",
+      //   signingResultType: "signing_complete",
+      //   returnUrl: "bigcorp.com",
+      //   envelopeId: "abcd1234",
+      // };
+      // event = { type: "sessionEnd", sessionEndType: "remoteSigningInitiated", envelopeId: "abcd1234" };
+      console.log("debug form signingResult", event);
+    });
+
+    //Less commonly used events
+    webFormWidget.on("userActivity", (event) => {
+      // event = { type: "userActivity", activityType: "click" | "keydown" };
+      console.log("debug form userActivity", event);
+    });
+
     webFormWidget.mount("#docusign");
   }
   loadWebform();
