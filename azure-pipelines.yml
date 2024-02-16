@@ -54,7 +54,7 @@ steps:
   name: node_appsettings
   displayName: 'download appsettings.json'
   inputs:
-    secureFile: 'node_appsettings.json'
+    secureFile: 'node.appsettings.json'
 
 
 - script: |
