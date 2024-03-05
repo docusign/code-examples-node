@@ -1,4 +1,8 @@
-<%- include("head") %>
+<% try { %>
+    <%- include("head") %>
+<% } catch(err) { %>
+    <%- include("headQuickACG") %>
+<% } %>
 
 <% if (locals.user) { %>
     <div class="container" style="padding-top:30px; margin-left: 90px;">
