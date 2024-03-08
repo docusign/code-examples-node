@@ -98,3 +98,12 @@ steps:
     docker stop $(docker ps -a -q)
     docker rm $(docker ps -a -q)
   displayName: 'stop node app'
+
+- script: |
+    allure generate --clean --output $(Build.SourcesDirectory)/node-allure-output '$(Build.SourcesDirectory)/launcher-automation/target/allure-results'
+  displayName: generate allure html reports
+
+- task: PublishAllureReport@1
+  displayName: 'Publish Allure Report'
+  inputs:
+    reportDir: '$(Build.SourcesDirectory)/node-allure-output'
