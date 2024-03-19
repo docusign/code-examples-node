@@ -4,7 +4,7 @@
 
 <% include("../../partials/functions") %>
 
-<% if (workflowId && instanceId) { %>
+<% if (instanceOk) { %>
   <form class="eg" action="" method="post" data-busy="form">
     <% if(example.Forms && example.Forms[0].FormName) { %>
       <%- example.Forms[0].FormName %>

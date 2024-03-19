@@ -275,6 +275,7 @@ app.get('/cneg001', eg001connect.getController)
 
 app.get('/mseg001', eg001maestro.getController)
   .post('/mseg001', eg001maestro.createController)
+  .post('/mseg001publish', eg001maestro.publishController)
   .get('/mseg002', eg002maestro.getController)
   .post('/mseg002', eg002maestro.createController)
   .get('/mseg003', eg003maestro.getController)
