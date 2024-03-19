@@ -313,7 +313,7 @@ You can set them in the configuration file config/appsettings.json or set enviro
 passport.serializeUser(function(user, done) { done(null, user); });
 passport.deserializeUser(function(obj, done) { done(null, obj); });
 
-const SCOPES = ['signature', 'webforms_manage'];
+const SCOPES = ['signature'];
 const ROOM_SCOPES = [
   'signature', 'dtr.rooms.read', 'dtr.rooms.write',
   'dtr.documents.read', 'dtr.documents.write', 'dtr.profile.read', 'dtr.profile.write',
