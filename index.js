@@ -55,6 +55,7 @@ const {
 
 const { eg001connect } = require('./lib/connect/controllers');
 const { eg001maestro, eg002maestro, eg003maestro } = require('./lib/maestro/controllers');
+const { eg001webforms } = require('./lib/webforms/controllers');
 
 const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || 'localhost';
@@ -281,6 +282,12 @@ app.get('/mseg001', eg001maestro.getController)
   .get('/mseg003', eg003maestro.getController)
   .post('/mseg003', eg003maestro.createController);
 
+app.get('/weg001', eg001webforms.getController)
+  .get('/weg001webForm', eg001webforms.getWebFormCreateController)
+  .post('/weg001', eg001webforms.createWebFormTemplate)
+  .post('/weg001webForm', eg001webforms.createWebFormInstance);
+
+
 function dsLoginCB1(req, res, next) { req.dsAuthCodeGrant.oauth_callback1(req, res, next); }
 function dsLoginCB2(req, res, next) { req.dsAuthCodeGrant.oauth_callback2(req, res, next); }
 
@@ -326,8 +333,11 @@ const ADMIN_SCOPES = [
   'asset_group_account_clone_read'
 ];
 const MAESTRO_SCOPES = ['signature', 'aow_manage'];
+const WEBFORMS_SCOPES = [
+  'webforms_read', 'webforms_instance_read', 'webforms_instance_write'
+];
 
-const scope = [...ROOM_SCOPES, ...CLICK_SCOPES, ...MONITOR_SCOPES, ...ADMIN_SCOPES, ...SCOPES, ...MAESTRO_SCOPES];
+const scope = [...ROOM_SCOPES, ...CLICK_SCOPES, ...MONITOR_SCOPES, ...ADMIN_SCOPES, ...SCOPES, ...WEBFORMS_SCOPES, ...MAESTRO_SCOPES];
 
 // Configure passport for DocusignStrategy
 let docusignStrategy = new DocusignStrategy({

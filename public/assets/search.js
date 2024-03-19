@@ -7,6 +7,7 @@ const DS_SEARCH = (function () {
     ADMIN: "admin",
     CONNECT: "connect",
     MAESTRO: "maestro",
+    WEBFORMS: "webforms",
   }
 
   const processJSONData = function () {
@@ -132,6 +133,8 @@ const DS_SEARCH = (function () {
         return "cneg";
       case API_TYPES.MAESTRO:
         return "mseg";
+      case API_TYPES.WEBFORMS:
+        return "weg";
     }
   }
 

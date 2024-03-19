@@ -69,3 +69,6 @@ secret
 
 # ignore RSA keys
 private.key
+
+# ignore Web Form config
+web-form-config.json

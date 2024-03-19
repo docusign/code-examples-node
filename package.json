@@ -39,6 +39,7 @@
     "docusign-maestro": "file:docusign-maestro-1.0.0-alpha2.tgz",
     "docusign-monitor": "^2.1.0",
     "docusign-rooms": "^2.0.0",
+    "docusign-webforms": "^1.0.0",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
     "express-flash": "0.0.2",
