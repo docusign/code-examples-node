@@ -1,0 +1,38 @@
+<%- include("../../partials/examplesHead") %>
+
+<%- include("../../partials/exampleInfo") %>
+
+<% include("../../partials/functions") %>
+
+<% if (instanceOk) { %>
+  <form class="eg" action="" method="post" data-busy="form">
+    <% if(example.Forms && example.Forms[0].FormName) { %>
+      <%- example.Forms[0].FormName %>
+    <% } %>
+
+    <div class="form-group">
+      <label for="workflowId"><%= example.Forms[0].Inputs[0].InputName %></label>
+      <input type="text" class="form-control" id="workflowId" name="workflowId"
+             placeholder="<%= example.Forms[0].Inputs[0].InputPlaceholder %>" 
+             value="<%= workflowId %>" readonly>   
+    </div>
+    <div class="form-group">
+      <label for="instanceId"><%= example.Forms[0].Inputs[1].InputName %></label>
+      <input type="text" class="form-control" id="instanceId" name="instanceId"
+             placeholder="<%= example.Forms[0].Inputs[1].InputPlaceholder %>" 
+             value="<%= instanceId %>" readonly>   
+    </div>
+    
+    <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+    <%- include("../../partials/submitButton") %>
+  </form>  
+
+<% } else { %>
+  <%- formatString(example.RedirectsToOtherCodeExamples[0].RedirectText, formatString('href="mseg00{0}"', example.RedirectsToOtherCodeExamples[0].CodeExampleToRedirectTo)) %>
+     
+  <form class="eg" action="mseg001" method="get">
+      <%- include("../../partials/continueButton") %>
+  </form>
+<% } %>
+  
+<%- include("../../partials/examplesFoot") %>
