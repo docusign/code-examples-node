@@ -75,6 +75,15 @@ steps:
     cp $(node_private_key.secureFilePath) code-examples-node-private/config/private.key
   displayName: 'place private.key'
 
+- task: CmdLine@2
+  inputs:
+    script: 'docker rm -f $(docker ps -a -q)' 
+  continueOnError: true
+
+- script: |
+    docker system prune -a --force
+  displayName: "cleanup docker files"
+
 - task: Docker@2
   displayName: Build node image
   inputs:
