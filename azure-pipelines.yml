@@ -75,6 +75,21 @@ steps:
     cp $(node_private_key.secureFilePath) code-examples-node-private/config/private.key
   displayName: 'place private.key'
 
+- script: |
+    echo "Checking for running Docker containers..."
+    containers=$(docker ps -q)
+    if [ ! -z "$containers" ]; then
+      echo "Stopping running Docker containers..."
+      docker stop $(docker ps -q)
+    else
+      echo "No Docker containers are running."
+    fi
+  displayName: "check for running containers"
+
+- script: |
+    docker system prune -a --force
+  displayName: "cleanup docker files"
+
 - task: Docker@2
   displayName: Build node image
   inputs:
