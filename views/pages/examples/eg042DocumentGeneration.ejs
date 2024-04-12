@@ -2,43 +2,56 @@
 
 <%- include("../../partials/exampleInfo") %>
 
+<% var form_index = 0 %>
+<% var candidate_email_index = 0 %>
+<% var candidate_name_index = 1 %>
+<% var manager_name_index = 2 %>
+<% var job_title_index = 3 %>
+<% var salary_index = 4 %>
+<% var start_date_index = 5 %>
+<% var rsus_index = 6 %>
+
 <form class="eg" action="" method="post" data-busy="form">
-  <% if(example.Forms && example.Forms[0].FormName) { %>
-    <%- example.Forms[0].FormName %>
+  <% if(example.Forms && example.Forms[form_index].FormName) { %>
+    <%- example.Forms[form_index].FormName %>
   <% } %>
 
   <div class="form-group">
-    <label for="candidate_email"><%= example.Forms[0].Inputs[0].InputName %></label>
+    <label for="candidate_email"><%= example.Forms[form_index].Inputs[candidate_email_index].InputName %></label>
     <input type="email" class="form-control" id="candidate_email" name="candidate_email"
-           aria-describedby="emailHelp" placeholder="<%= example.Forms[0].Inputs[0].InputPlaceholder %>" required>
+           aria-describedby="emailHelp" placeholder="<%= example.Forms[form_index].Inputs[candidate_email_index].InputPlaceholder %>" required>
     <small id="emailHelp" class="form-text text-muted"><%= locals.manifest.SupportingTexts.HelpingTexts.EmailWontBeShared %></small>
   </div>
   <div class="form-group">
-    <label for="candidate_name"><%= example.Forms[0].Inputs[1].InputName %></label>
-    <input type="text" class="form-control" id="candidate_name" placeholder="<%= example.Forms[0].Inputs[1].InputPlaceholder %>" name="candidate_name"
+    <label for="candidate_name"><%= example.Forms[form_index].Inputs[candidate_name_index].InputName %></label>
+    <input type="text" class="form-control" id="candidate_name" placeholder="<%= example.Forms[form_index].Inputs[candidate_name_index].InputPlaceholder %>" name="candidate_name"
            required>
   </div>
   <div class="form-group">
-    <label for="manager_name"><%= example.Forms[0].Inputs[2].InputName %></label>
+    <label for="manager_name"><%= example.Forms[form_index].Inputs[manager_name_index].InputName %></label>
     <input type="text" class="form-control" id="manager_name" name="manager_name"
-           aria-describedby="emailHelp" placeholder="<%= example.Forms[0].Inputs[2].InputPlaceholder %>" required>
+           aria-describedby="emailHelp" placeholder="<%= example.Forms[form_index].Inputs[manager_name_index].InputPlaceholder %>" required>
   </div>
   <div class="form-group">
-    <label for="job_title"><%= example.Forms[0].Inputs[3].InputName %></label>
+    <label for="job_title"><%= example.Forms[form_index].Inputs[job_title_index].InputName %></label>
     <select class="form-control" id="job_title" name="job_title">
       <option value="Software Engineer">Software Engineer</option>
-      <option value="Product Manager">Product Manager</option>
-      <option value="Sales Representative">Sales Representative</option>
+      <option value="Account Executive">Account Executive</option>
     </select>
   </div>
   <div class="form-group">
-    <label for="salary"><%= example.Forms[0].Inputs[4].InputName %></label>
-    <input type="text" class="form-control" id="salary" placeholder="<%= example.Forms[0].Inputs[4].InputPlaceholder %>" name="salary"
+    <label for="salary"><%= example.Forms[form_index].Inputs[salary_index].InputName %></label>
+    <input type="text" class="form-control" id="salary" placeholder="<%= example.Forms[form_index].Inputs[salary_index].InputPlaceholder %>" name="salary"
            required>
+  </div>  
+  <div class="form-group">
+    <label for="rsus"><%= example.Forms[form_index].Inputs[rsus_index].InputName %></label>
+    <input type="number" class="form-control" id="rsus" placeholder="<%= example.Forms[form_index].Inputs[rsus_index].InputPlaceholder %>" name="rsus"
+           min="0" required>
   </div>
   <div class="form-group">
-    <label for="start_date"><%= example.Forms[0].Inputs[5].InputName %></label>
-    <input type="date" class="form-control" id="start_date" placeholder="<%= example.Forms[0].Inputs[5].InputPlaceholder %>" name="start_date"
+    <label for="start_date"><%= example.Forms[form_index].Inputs[start_date_index].InputName %></label>
+    <input type="date" class="form-control" id="start_date" placeholder="<%= example.Forms[form_index].Inputs[start_date_index].InputPlaceholder %>" name="start_date"
            required>
   </div>
 
