@@ -18,6 +18,7 @@ const flash = require('express-flash');
 const helmet = require('helmet'); // https://expressjs.com/en/advanced/best-practice-security.html
 const moment = require('moment');
 const csrf = require('csurf'); // https://www.npmjs.com/package/csurf
+const localStorage = require('store2');
 const { getManifest } = require('./lib/manifestService');
 
 const eg001 = require('./lib/eSignature/controllers/eg001EmbeddedSigning');
@@ -87,6 +88,9 @@ let app = express()
     res.locals.session = req.session;
     res.locals.dsConfig = { ...dsConfig, docOptions: docOptions, docNames: docNames };
     res.locals.hostUrl = hostUrl; // Used by DSAuthCodeGrant#logout
+
+    // Initialize the local storage
+    res.locals.localStorage = localStorage;
     next();
   }) // Send user info to views
   .use(flash())
