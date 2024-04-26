@@ -12,11 +12,15 @@
   "author": "DocuSign, Inc",
   "license": "ISC",
   "dependencies": {
-    "docusign-esign": "^6.1.0",
+    "docusign-esign": "^6.6.0-rc2",
     "fs": "^0.0.1-security",
-    "fs-extra": "^11.1.0",
+    "fs-extra": "^11.2.0",
     "path": "^0.12.7",
     "prompt-sync": "^4.2.0",
     "remove-node-modules": "^1.7.6"
+  },
+  "overrides": {
+    "pac-resolver": "^7.0.1",
+    "semver": "^7.5.4"
   }
 }
