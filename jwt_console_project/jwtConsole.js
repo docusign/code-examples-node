@@ -106,7 +106,7 @@ function getArgs(apiAccountId, accessToken, basePath){
 async function main(){
   let accountInfo = await authenticate();
   let args = getArgs(accountInfo.apiAccountId, accountInfo.accessToken, accountInfo.basePath);
-  let envelopeId = signingViaEmail.sendEnvelope(args);
+  let envelopeId = await signingViaEmail.sendEnvelope(args);
   console.log(envelopeId);
 }
 
