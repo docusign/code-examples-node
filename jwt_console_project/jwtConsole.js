@@ -62,7 +62,7 @@ async function authenticate(){
     };
   } catch (e) {
     console.log(e);
-    let body = e.response && e.response.body;
+    let body = e.response && e.response.data;
     // Determine the source of the error
     if (body) {
         // The user needs to grant consent
