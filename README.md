@@ -1,10 +1,10 @@
 # Node.js Launcher Code Examples
 
 >
->### PLEASE! Share your feedback in a [two-question survey](https://docs.google.com/forms/d/e/1FAIpQLScPa74hwhJwi7XWDDj4-XZVOQTF9jJWgbIFEpulXokCqYWT4A/viewform?usp=pp_url&entry.680551577=Node).
+>### PLEASE! Share your feedback in a [two-question survey](https://docs.google.com/forms/d/e/1FAIpQLScPa74hwhJwi7XWDDj4-XZVOQTF9jJWgbIFEpulXokCqYWT4A/viewform?usp=pp_url&entry.680551577=Node.js).
 >
 >
-### GitHub repo: [code-examples-csharp](./README.md)
+### GitHub repo: [code-examples-node](./README.md)
 
 ## Introduction
 
