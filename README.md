@@ -1,9 +1,12 @@
 # Node.js Launcher Code Examples
 
+>
+>### PLEASE! Share your feedback in a [two-question survey](https://docs.google.com/forms/d/e/1FAIpQLScPa74hwhJwi7XWDDj4-XZVOQTF9jJWgbIFEpulXokCqYWT4A/viewform?usp=pp_url&entry.680551577=Node.js).
+>
+>
 ### GitHub repo: [code-examples-node](./README.md)
 
-This GitHub repo includes code examples for the Docusign Admin API, Click API, eSignature REST API, Monitor API, and Rooms API. By default, the launcher will display the eSignature examples. To switch between API code examples, select "Choose API" in the top menu.
-
+This GitHub repo includes code examples for the [Web Forms API](https://developers.docusign.com/docs/web-forms-api/), [Maestro API](https://developers.docusign.com/docs/maestro-api/), [Docusign Admin API](https://developers.docusign.com/docs/admin-api/), [Click API](https://developers.docusign.com/docs/click-api/), [eSignature REST API](https://developers.docusign.com/docs/esign-rest-api/), [Monitor API](https://developers.docusign.com/docs/monitor-api/), and [Rooms API](https://developers.docusign.com/docs/rooms-api/). 
 
 ## Introduction
 
