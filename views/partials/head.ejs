@@ -49,20 +49,18 @@
 
         <% if (locals.user) { %>
           <span class="navbar-text">
-            Welcome <%= locals.user.name %>
+            Welcome <%= locals.user.name %> | 
           </span>
         <% } %>
 
       </div>
-    </nav>
+      <span class="navbar-text">
+        <% if (locals.session.accountName) { %>
+           | Docusign Account: <%= locals.session.accountName %>.
+        <% } %>
+        </span>
+      </nav>
 
-    <div class="container">
-      <!-- The closing div is in foot.ejs -->
-      <% if (locals.session.accountName) { %>
-        <p style="float: right;">
-          DocuSign Account: <%= locals.session.accountName %>.
-        </p>
-      <% } %>
 
 
       <div class="col-md-12 feedback" id="feedback">
