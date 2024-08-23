@@ -2,13 +2,16 @@ const docusign = require('docusign-esign');
 const signingViaEmail = require('../lib/eSignature/examples/signingViaEmail');
 const fs = require('fs');
 const path = require('path');
-const prompt = require('prompt-sync')();
 
 const jwtConfig = require('./jwtConfig.json');
-const { ProvisioningInformation } = require('docusign-esign');
 const demoDocsPath = path.resolve(__dirname, '../demo_documents');
 const doc2File = 'World_Wide_Corp_Battle_Plan_Trafalgar.docx';
 const doc3File = 'World_Wide_Corp_lorem.pdf';
+
+const readline = require('readline').createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
 
 
 const SCOPES = [
@@ -62,11 +65,11 @@ async function authenticate(){
     };
   } catch (e) {
     console.log(e);
-    let body = e.response && e.response.body;
+    let body = e?.response?.body || e?.response?.data;
     // Determine the source of the error
     if (body) {
         // The user needs to grant consent
-      if (body.error && body.error === 'consent_required') {
+      if (body?.error === 'consent_required') {
         if (getConsent()){ return authenticate(); };
       } else {
         // Consent has been granted. Show status code for DocuSign API error
@@ -77,11 +80,11 @@ async function authenticate(){
   }
 }
 
-function getArgs(apiAccountId, accessToken, basePath){
-  signerEmail = prompt("Enter the signer's email address: ");
-  signerName = prompt("Enter the signer's name: ");
-  ccEmail = prompt("Enter the carbon copy's email address: ");
-  ccName = prompt("Enter the carbon copy's name: ");
+async function getArgs(apiAccountId, accessToken, basePath){
+  signerEmail = await prompt("Enter the signer's email address: ");
+  signerName = await prompt("Enter the signer's name: ");
+  ccEmail = await prompt("Enter the carbon copy's email address: ");
+  ccName = await prompt("Enter the carbon copy's name: ");
 
   const envelopeArgs = {
     signerEmail: signerEmail,
@@ -102,10 +105,18 @@ function getArgs(apiAccountId, accessToken, basePath){
   return args;
 }
 
+function prompt(prompt) {
+  return new Promise((resolve) => {
+    readline.question(prompt, (answer) => {
+      resolve(answer);
+    });
+  });
+}
+
 
 async function main(){
   let accountInfo = await authenticate();
-  let args = getArgs(accountInfo.apiAccountId, accountInfo.accessToken, accountInfo.basePath);
+  let args = await getArgs(accountInfo.apiAccountId, accountInfo.accessToken, accountInfo.basePath);
   let envelopeId = await signingViaEmail.sendEnvelope(args);
   console.log(envelopeId);
 }
