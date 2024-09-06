@@ -1,0 +1,29 @@
+<%- include("../../partials/examplesHead") %>
+
+<%- include("../../partials/exampleInfo") %>
+
+<form class="eg" action="" method="post" data-busy="form">
+    <% if(example.Forms && example.Forms[0].FormName) { %>
+      <%- example.Forms[0].FormName %>
+    <% } %>
+    
+    <div class="form-group">
+        <label for="email"><%= example.Forms[0].Inputs[0].InputName %></label>
+        <input type="email" class="form-control" id="email" name="email"
+               placeholder="<%= example.Forms[0].Inputs[0].InputPlaceholder %>" required>
+    </div>
+    <div class="form-group">
+        <label for="firstName"><%= example.Forms[0].Inputs[1].InputName %></label>
+        <input type="text" class="form-control" id="firstName" name="firstName"
+               placeholder="<%= example.Forms[0].Inputs[1].InputPlaceholder %>" required>
+    </div>
+    <div class="form-group">
+        <label for="lastName"><%= example.Forms[0].Inputs[2].InputName %></label>
+        <input type="text" class="form-control" id="lastName" name="lastName"
+               placeholder="<%= example.Forms[0].Inputs[2].InputPlaceholder %>" required>
+    </div>
+    <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+    <%- include("../../partials/submitButton") %>
+</form>
+
+<%- include("../../partials/examplesFoot") %>

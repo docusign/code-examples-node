@@ -51,7 +51,8 @@ const {
   eg001admin, eg002admin, eg003admin,
   eg004admin, eg005admin, eg006admin,
   eg007admin, eg008admin, eg009admin,
-  eg010admin, eg011admin, eg012admin
+  eg010admin, eg011admin, eg012admin,
+  eg013admin,
 } = require('./lib/admin/controllers');
 
 const { eg001connect } = require('./lib/connect/controllers');
@@ -183,7 +184,9 @@ app.get('/aeg001', eg001admin.getController)
   .get('/aeg011', eg011admin.getController)
   .post('/aeg011', eg011admin.createController)
   .get('/aeg012', eg012admin.getController)
-  .post('/aeg012', eg012admin.createController);
+  .post('/aeg012', eg012admin.createController)
+  .get('/aeg013', eg013admin.getController)
+  .post('/aeg013', eg013admin.createController);
 
 app.get('/eg001', eg001.getController)
   .post('/eg001', eg001.createController)
@@ -334,7 +337,7 @@ const ADMIN_SCOPES = [
   'user_read', 'user_write', 'account_read',
   'domain_read', 'identity_provider_read', 'signature',
   'user_data_redact', 'asset_group_account_read', 'asset_group_account_clone_write',
-  'asset_group_account_clone_read'
+  'asset_group_account_clone_read', 'organization_sub_account_write', 'organization_sub_account_read'
 ];
 const MAESTRO_SCOPES = ['signature', 'aow_manage'];
 const WEBFORMS_SCOPES = [
