@@ -29,13 +29,13 @@
     "node": ">=8.10"
   },
   "dependencies": {
-    "axios": "^1.6.8",
+    "axios": "^1.7.3",
     "body-parser": "^1.20.2",
     "cookie-parser": "^1.4.6",
     "csurf": "^1.11.0",
     "docusign-admin": "^3.0.0-rc2",
     "docusign-click": "^2.2.0",
-    "docusign-esign": "^7.0.0-rc1",
+    "docusign-esign": "^8.0.0",
     "docusign-maestro": "1.0.0-rc5",
     "docusign-monitor": "^2.1.0",
     "docusign-rooms": "^2.0.0",
@@ -56,19 +56,21 @@
     "path": "^0.12.7",
     "store2": "^2.14.3",
     "stream": "0.0.2",
-    "uuid": "^9.0.1",
-    "validator": "^13.11.0"
+    "uuid": "^10.0.0",
+    "validator": "^13.12.0"
   },
   "devDependencies": {
-    "chai": "^4.4.1",
-    "chai-exclude": "^2.1.0",
+    "chai": "^4.5.0",
+    "chai-exclude": "^2.1.1",
     "eslint": "^8.57.0",
     "eslint-config-standard": "^17.1.0",
-    "mocha": "^10.4.0"
+    "mocha": "^10.7.0"
   },
   "overrides": {
+    "braces": "^3.0.3",
     "degenerator": "^5.0.1",
     "pac-resolver": "^7.0.1",
-    "formidable": "^3.5.1"
+    "formidable": "^3.5.1",
+    "socks": "^2.8.3"
   }
 }
