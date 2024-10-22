@@ -344,28 +344,34 @@ const WEBFORMS_SCOPES = [
 const scope = [...ROOM_SCOPES, ...CLICK_SCOPES, ...MONITOR_SCOPES, ...ADMIN_SCOPES, ...SCOPES, ...WEBFORMS_SCOPES, ...MAESTRO_SCOPES];
 
 // Configure passport for DocusignStrategy
-let docusignStrategy = new DocusignStrategy({
-    production: dsConfig.production,
-    clientID: dsConfig.dsClientId,
-    scope: scope.join(' '),
-    clientSecret: dsConfig.dsClientSecret,
-    callbackURL: hostUrl + '/ds/callback',
-    state: true // automatic CSRF protection.
-      // See https://github.com/jaredhanson/passport-oauth2/blob/master/lib/state/session.js
+const docusignStrategyOptions = {
+  production: dsConfig.production,
+  clientID: dsConfig.dsClientId,
+  scope: scope.join(' '),
+  clientSecret: dsConfig.dsClientSecret,
+  callbackURL: hostUrl + '/ds/callback',
+  state: true // automatic CSRF protection.
+    // See https://github.com/jaredhanson/passport-oauth2/blob/master/lib/state/session.js
+};
+function processDsResult(accessToken, refreshToken, params, profile, done) {
+  // The params arg will be passed additional parameters of the grant.
+  // See https://github.com/jaredhanson/passport-oauth2/pull/84
+  //
+  // Here we're just assigning the tokens to the account object
+  // We store the data in DSAuthCodeGrant.getDefaultAccountInfo
+  let user = profile;
+  user.accessToken = accessToken;
+  user.refreshToken = refreshToken;
+  user.expiresIn = params.expires_in;
+  user.tokenExpirationTimestamp = moment().add(user.expiresIn, 's'); // The dateTime when the access token will expire
+  return done(null, user);
+}
+const docusignStrategy = new DocusignStrategy(docusignStrategyOptions, processDsResult);
+const docusignStrategyPKCE = new DocusignStrategy({
+    ...docusignStrategyOptions,
+    pkce: true
   },
-  function _processDsResult(accessToken, refreshToken, params, profile, done) {
-    // The params arg will be passed additional parameters of the grant.
-    // See https://github.com/jaredhanson/passport-oauth2/pull/84
-    //
-    // Here we're just assigning the tokens to the account object
-    // We store the data in DSAuthCodeGrant.getDefaultAccountInfo
-    let user = profile;
-    user.accessToken = accessToken;
-    user.refreshToken = refreshToken;
-    user.expiresIn = params.expires_in;
-    user.tokenExpirationTimestamp = moment().add(user.expiresIn, 's'); // The dateTime when the access token will expire
-    return done(null, user);
-  }
+  processDsResult
 );
 
 /**
@@ -378,4 +384,5 @@ if (!dsConfig.allowSilentAuthentication) {
     return { prompt: 'login' };
   };
 }
-passport.use(docusignStrategy);
+passport.use('docusign', docusignStrategy);
+passport.use('docusign_pkce', docusignStrategyPKCE);

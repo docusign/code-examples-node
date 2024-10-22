@@ -29,21 +29,21 @@
     "node": ">=8.10"
   },
   "dependencies": {
-    "axios": "^1.7.3",
-    "body-parser": "^1.20.2",
-    "cookie-parser": "^1.4.6",
+    "axios": "^1.7.7",
+    "body-parser": "^1.20.3",
+    "cookie-parser": "^1.4.7",
     "csurf": "^1.11.0",
     "docusign-admin": "^2.3.0",
     "docusign-click": "^2.2.0",
-    "docusign-esign": "^8.0.0",
+    "docusign-esign": "^8.0.1",
     "docusign-maestro": "1.0.0-rc5",
     "docusign-monitor": "^2.1.0",
     "docusign-rooms": "^2.0.0",
     "docusign-webforms": "^1.0.0",
     "ejs": "^3.1.10",
-    "express": "^4.19.2",
+    "express": "^4.21.1",
     "express-flash": "0.0.2",
-    "express-session": "^1.18.0",
+    "express-session": "^1.18.1",
     "fs": "0.0.1-security",
     "fs-extra": "^11.2.0",
     "helmet": "^3.23.3",
@@ -64,7 +64,7 @@
     "chai-exclude": "^2.1.1",
     "eslint": "^8.57.0",
     "eslint-config-standard": "^17.1.0",
-    "mocha": "^10.7.0"
+    "mocha": "^10.7.3"
   },
   "overrides": {
     "braces": "^3.0.3",
