@@ -64,7 +64,7 @@
     "chai-exclude": "^2.1.1",
     "eslint": "^8.57.0",
     "eslint-config-standard": "^17.1.0",
-    "mocha": "^10.7.0"
+    "mocha": "^10.7.3"
   },
   "overrides": {
     "braces": "^3.0.3",
