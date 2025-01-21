@@ -56,7 +56,6 @@ const {
 } = require('./lib/admin/controllers');
 
 const { eg001connect } = require('./lib/connect/controllers');
-const { eg001maestro, eg002maestro, eg003maestro } = require('./lib/maestro/controllers');
 const { eg001webforms } = require('./lib/webforms/controllers');
 
 const PORT = process.env.PORT || 3000;
@@ -281,14 +280,6 @@ app.get('/eg001', eg001.getController)
 app.get('/cneg001', eg001connect.getController)
   .post('/cneg001', eg001connect.createController);
 
-app.get('/mseg001', eg001maestro.getController)
-  .post('/mseg001', eg001maestro.createController)
-  .post('/mseg001publish', eg001maestro.publishController)
-  .get('/mseg002', eg002maestro.getController)
-  .post('/mseg002', eg002maestro.createController)
-  .get('/mseg003', eg003maestro.getController)
-  .post('/mseg003', eg003maestro.createController);
-
 app.get('/weg001', eg001webforms.getController)
   .get('/weg001webForm', eg001webforms.getWebFormCreateController)
   .post('/weg001', eg001webforms.createWebFormTemplate)
@@ -339,12 +330,11 @@ const ADMIN_SCOPES = [
   'user_data_redact', 'asset_group_account_read', 'asset_group_account_clone_write',
   'asset_group_account_clone_read', 'organization_sub_account_write', 'organization_sub_account_read'
 ];
-const MAESTRO_SCOPES = ['signature', 'aow_manage'];
 const WEBFORMS_SCOPES = [
   'webforms_read', 'webforms_instance_read', 'webforms_instance_write'
 ];
 
-const scope = [...ROOM_SCOPES, ...CLICK_SCOPES, ...MONITOR_SCOPES, ...ADMIN_SCOPES, ...SCOPES, ...WEBFORMS_SCOPES, ...MAESTRO_SCOPES];
+const scope = [...ROOM_SCOPES, ...CLICK_SCOPES, ...MONITOR_SCOPES, ...ADMIN_SCOPES, ...SCOPES, ...WEBFORMS_SCOPES];
 
 // Configure passport for DocusignStrategy
 const docusignStrategyOptions = {
