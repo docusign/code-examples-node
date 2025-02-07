@@ -57,6 +57,7 @@ const {
 
 const { eg001connect } = require('./lib/connect/controllers');
 const { eg001webforms } = require('./lib/webforms/controllers');
+const { eg004notary } = require('./lib/notary/controllers');
 
 const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || 'localhost';
@@ -285,6 +286,9 @@ app.get('/weg001', eg001webforms.getController)
   .post('/weg001', eg001webforms.createWebFormTemplate)
   .post('/weg001webForm', eg001webforms.createWebFormInstance);
 
+  app.get('/neg004', eg004notary.getController)
+  .post('/neg004', eg004notary.createController)
+
 
 function dsLoginCB1(req, res, next) { req.dsAuthCodeGrant.oauth_callback1(req, res, next); }
 function dsLoginCB2(req, res, next) { req.dsAuthCodeGrant.oauth_callback2(req, res, next); }
@@ -333,8 +337,11 @@ const ADMIN_SCOPES = [
 const WEBFORMS_SCOPES = [
   'webforms_read', 'webforms_instance_read', 'webforms_instance_write'
 ];
+const NOTARY_SCOPES = [
+  'signature', 'organization_read', 'notary_read', 'notary_write'
+];
 
-const scope = [...ROOM_SCOPES, ...CLICK_SCOPES, ...MONITOR_SCOPES, ...ADMIN_SCOPES, ...SCOPES, ...WEBFORMS_SCOPES];
+const scope = [...ROOM_SCOPES, ...CLICK_SCOPES, ...MONITOR_SCOPES, ...ADMIN_SCOPES, ...SCOPES, ...WEBFORMS_SCOPES, ...NOTARY_SCOPES];
 
 // Configure passport for DocusignStrategy
 const docusignStrategyOptions = {
