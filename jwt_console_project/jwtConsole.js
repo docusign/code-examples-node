@@ -115,10 +115,16 @@ function prompt(prompt) {
 
 
 async function main(){
-  let accountInfo = await authenticate();
-  let args = await getArgs(accountInfo.apiAccountId, accountInfo.accessToken, accountInfo.basePath);
-  let envelopeId = await signingViaEmail.sendEnvelope(args);
-  console.log(envelopeId);
+  try {
+    let accountInfo = await authenticate();
+    let args = await getArgs(accountInfo.apiAccountId, accountInfo.accessToken, accountInfo.basePath);
+    let envelopeId = await signingViaEmail.sendEnvelope(args);
+    console.log(envelopeId);
+  } catch (error) {
+    console.error('An error occurred:', error);
+  } finally {
+    readline.close();
+  }
 }
 
 main();
