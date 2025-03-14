@@ -8,6 +8,7 @@ const DS_SEARCH = (function () {
     CONNECT: "connect",
     WEBFORMS: "webforms",
     NOTARY: "notary",
+    CONNECTED_FIELDS: "connectedfields",
   }
 
   const processJSONData = function () {
@@ -135,6 +136,8 @@ const DS_SEARCH = (function () {
         return "weg";
       case API_TYPES.NOTARY:
         return "neg";
+      case API_TYPES.CONNECTED_FIELDS:
+        return "feg";
     }
   }
 
