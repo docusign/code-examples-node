@@ -11,7 +11,7 @@
         <% } %>
         
         <div class="form-group">
-            <label for="formId"><%= example.Forms[0].Inputs[0].InputName %></label>
+            <label for="formId"><%= example.Forms[0].Inputs[1].InputName %></label>
             <select id="formId" name="formId" class="form-control">
                 <% forms.forEach( form => { %>
                     <option value="<%= form.libraryFormId %>"> <%= form.name %> </option>
