@@ -6,6 +6,14 @@
 >
 ### GitHub repo: [code-examples-node](./README.md)
 
+If you downloaded this project using the [Quickstart](https://developers.docusign.com/docs/esign-rest-api/quickstart/) tool, it may be configured in one of three ways:
+
+* **[JWT Grant remote signing example](#jwt-grant-remote-signing-example)**–demonstrates how to implement JSON Web Token authentication. It includes a single remote signing workflow.
+* **[Authorization Code Grant embedded signing example](#authorization-code-grant-embedded-signing-example)**–demonstrates how to implement Authorization Code Grant authentication. It includes a single embedded signing workflow.
+* **[Multiple code examples, Authorization Code Grant and JWT Grant](#installation-steps)**–includes the full range of examples and authentication types.
+
+***Installation and running instructions vary depending on the configuration. Follow the link that matches your project type to get started.***
+
 This GitHub repo includes code examples for the [Web Forms API](https://developers.docusign.com/docs/web-forms-api/), [Click API](https://developers.docusign.com/docs/click-api/), [eSignature REST API](https://developers.docusign.com/docs/esign-rest-api/), [Monitor API](https://developers.docusign.com/docs/monitor-api/), and [Rooms API](https://developers.docusign.com/docs/rooms-api/). 
 
 ## Introduction
@@ -132,6 +140,24 @@ Also, in order to select JSON Web Token authentication in the launcher, in confi
 
 ## JWT grant remote signing and Authorization Code Grant embedded signing projects
 See [Docusign Quickstart overview](https://developers.docusign.com/docs/esign-rest-api/quickstart/overview/) on the Docusign Developer Center for more information on how to run the JWT grant remote signing project and the Authorization Code Grant embedded signing project.
+
+### Authorization Code Grant embedded signing example:
+Run in Git Bash:
+```
+$ cd <Quickstart folder>/quick_acg
+$ npm install
+$ npm start
+```
+
+Open a browser to http://localhost:3000
+
+### JWT grant remote signing example:
+Run in Windows Command Prompt (CMD):
+```
+$ cd <Quickstart folder>/jwt_console_project
+$ npm install
+$ npm start
+```
 
 ## Payments code example
 
