@@ -59,6 +59,7 @@ const { eg001connect } = require('./lib/connect/controllers');
 const { eg001webforms } = require('./lib/webforms/controllers');
 const { eg004notary } = require('./lib/notary/controllers');
 const { eg001fields } = require('./lib/connectedFields/controllers');
+const { eg001Navigator, eg002Navigator } = require('./lib/navigator/controllers');
 
 const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || 'localhost';
@@ -293,6 +294,10 @@ app.get('/neg004', eg004notary.getController)
 app.get('/feg001', eg001fields.getController)
   .post('/feg001', eg001fields.createController);
 
+app.get('/nav001', eg001Navigator.getController)
+  .post('/nav001', eg001Navigator.createController)
+  .get('/nav002', eg002Navigator.getController)
+  .post('/nav002', eg002Navigator.createController);
 
 function dsLoginCB1(req, res, next) { req.dsAuthCodeGrant.oauth_callback1(req, res, next); }
 function dsLoginCB2(req, res, next) { req.dsAuthCodeGrant.oauth_callback2(req, res, next); }
