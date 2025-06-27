@@ -14,20 +14,21 @@
                 <% if (!example.SkipForLanguages || !example.SkipForLanguages.includes("node")) { %>
                     <% if (api.Name.toLowerCase() !== "esignature" || ((example.CFREnabled == "AllAccounts") || ((locals.statusCFR == "enabled") && (example.CFREnabled == "CFROnly")) || ((locals.statusCFR != "enabled") && (example.CFREnabled == "NonCFR")))) { %>
                         <% var apiPrefix = api.Name == "Admin" ? "a"
-                        : api.Name == "Click" ? "c"
-                        : api.Name == "Monitor" ? "m"
-                        : api.Name == "Rooms" ? "r"
-                        : api.Name == "Connect" ? "cn"
-                        : api.Name == "WebForms" ? "w"
-                        : api.Name == "Notary" ? "n"
-                        : api.Name == "ConnectedFields" ? "f"
+                        : api.Name == "Click" ? "ceg"
+                        : api.Name == "Monitor" ? "meg"
+                        : api.Name == "Rooms" ? "reg"
+                        : api.Name == "Connect" ? "cneg"
+                        : api.Name == "WebForms" ? "weg"
+                        : api.Name == "Notary" ? "neg"
+                        : api.Name == "ConnectedFields" ? "feg"
+                        : api.Name == "Navigator" ? "nav"
                         : ""; %>
                         
                         <h4
                             id=<%= `${apiPrefix}example`.concat("0".repeat(3 - example.ExampleNumber.toString().length)).concat(example.ExampleNumber) %>
                         >
                             <a 
-                                href=<%= `${apiPrefix}eg`.concat("0".repeat(3 - example.ExampleNumber.toString().length)).concat(example.ExampleNumber) %>>
+                                href=<%= apiPrefix.concat("0".repeat(3 - example.ExampleNumber.toString().length)).concat(example.ExampleNumber) %>>
                                 <%= example.ExampleName %>
                             </a>
                         </h4>
