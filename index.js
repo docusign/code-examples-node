@@ -60,6 +60,7 @@ const { eg001webforms } = require('./lib/webforms/controllers');
 const { eg004notary } = require('./lib/notary/controllers');
 const { eg001fields } = require('./lib/connectedFields/controllers');
 const { eg001Navigator, eg002Navigator } = require('./lib/navigator/controllers');
+const { eg001maestro, eg002maestro, eg003maestro, eg004maestro } = require('./lib/maestro/controllers');
 
 const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || 'localhost';
@@ -299,6 +300,15 @@ app.get('/nav001', eg001Navigator.getController)
   .get('/nav002', eg002Navigator.getController)
   .post('/nav002', eg002Navigator.createController);
 
+app.get('/mae001', eg001maestro.getController)
+  .post('/mae001', eg001maestro.createController)
+  .get('/mae002', eg002maestro.getController)
+  .post('/mae002', eg002maestro.createController)
+  .get('/mae003', eg003maestro.getController)
+  .post('/mae003', eg003maestro.createController)
+  .get('/mae004', eg004maestro.getController)
+  .post('/mae004', eg004maestro.createController);
+
 function dsLoginCB1(req, res, next) { req.dsAuthCodeGrant.oauth_callback1(req, res, next); }
 function dsLoginCB2(req, res, next) { req.dsAuthCodeGrant.oauth_callback2(req, res, next); }
 
@@ -352,6 +362,9 @@ const NOTARY_SCOPES = [
 const CONNECTED_FIELDS_SCOPES = [
   'signature', 'adm_store_unified_repo_read'
 ];
+const MAESTRO_SCOPES = [
+  'signature', 'aow_manage'
+];
 
 const scope = [
   ...ROOM_SCOPES,
@@ -362,6 +375,7 @@ const scope = [
   ...WEBFORMS_SCOPES,
   ...NOTARY_SCOPES,
   ...CONNECTED_FIELDS_SCOPES,
+  ...MAESTRO_SCOPES
 ];
 
 // Configure passport for DocusignStrategy
