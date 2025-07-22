@@ -2,7 +2,8 @@
 
 <%- include("../../partials/exampleInfo") %>
 
-<form class="eg" action="" method="post" data-busy="form">
+<% if (templateOk) { %>
+  <form class="eg" action="mae001" method="post" data-busy="form">
     <% if(example.Forms && example.Forms[0].FormName) { %>
       <%- example.Forms[0].FormName %>
     <% } %>
@@ -38,6 +39,12 @@
 
     <input type="hidden" name="_csrf" value="<%- csrfToken %>">
     <%- include("../../partials/submitButton") %>
-</form>
+  </form>
+<% } else { %>
+  <%- formatString(example.RedirectsToOtherCodeExamples[0].RedirectText, formatString('href="eg00{0}"', example.RedirectsToOtherCodeExamples[0].CodeExampleToRedirectTo)) %>
+  <form class="eg" action="eg008" method="get">
+    <%- include("../../partials/continueButton") %>
+  </form>
+<% } %>
   
 <%- include("../../partials/examplesFoot") %>

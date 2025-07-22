@@ -302,6 +302,7 @@ app.get('/nav001', eg001Navigator.getController)
 
 app.get('/mae001', eg001maestro.getController)
   .post('/mae001', eg001maestro.createController)
+  .post('/mae001publish', eg001maestro.publishController)
   .get('/mae002', eg002maestro.getController)
   .post('/mae002', eg002maestro.createController)
   .get('/mae003', eg003maestro.getController)
