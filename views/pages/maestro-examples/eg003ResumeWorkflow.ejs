@@ -1,0 +1,14 @@
+<%- include("../../partials/examplesHead") %>
+
+<%- include("../../partials/exampleInfo") %>
+
+<form class="eg" action="" method="post" data-busy="form">
+    <% if(example.Forms && example.Forms[0].FormName) { %>
+      <%- example.Forms[0].FormName %>
+    <% } %>
+
+    <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+    <%- include("../../partials/submitButton") %>
+</form>
+  
+<%- include("../../partials/examplesFoot") %>

@@ -1,0 +1,23 @@
+<%- include("../../partials/examplesHead") %>
+
+<%- include("../../partials/exampleInfo") %>
+
+<form class="eg" action="" method="post" data-busy="form">
+  <% if(example.Forms && example.Forms[0].FormName) { %>
+    <%- example.Forms[0].FormName %>
+  <% } %>
+
+  <div class="form-group">
+    <label for="agreementId"><%= example.Forms[0].Inputs[0].InputName %></label>
+      <select id="agreementId" name="agreementId" class="form-control" required>
+        <% agreements.data.forEach(agreement => { %>
+          <option value="<%= agreement.id %>" selected> <%= agreement.fileName %> </option>
+        <% }) %>
+      </select>
+  </div>
+
+  <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+  <%- include("../../partials/submitButton") %>
+</form>
+  
+<%- include("../../partials/examplesFoot") %>

@@ -1,0 +1,11 @@
+<%- include("../../partials/examplesHead") %>
+
+<h4><%= example.ExampleName %></h4>
+<p><%- formatString(message, consentUrl) %></p>
+
+<form class="eg" action="mae001publish" method="post">
+  <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+  <%- include("../../partials/continueButton") %>
+</form>
+
+<%- include("../../partials/examplesFoot") %>
