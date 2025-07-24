@@ -29,7 +29,7 @@
                             id=<%= `${apiPrefix}example`.concat("0".repeat(3 - example.ExampleNumber.toString().length)).concat(example.ExampleNumber) %>
                         >
                             <a 
-                                href=<%= apiPrefix.concat("0".repeat(3 - example.ExampleNumber.toString().length)).concat(example.ExampleNumber) %>>
+                                href=<%=`${apiPrefix}eg`.concat("0".repeat(3 - example.ExampleNumber.toString().length)).concat(example.ExampleNumber) %>>
                                 <%= example.ExampleName %>
                             </a>
                         </h4>
