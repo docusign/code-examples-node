@@ -56,7 +56,7 @@ const {
 } = require('./lib/admin/controllers');
 
 const { eg001connect } = require('./lib/connect/controllers');
-const { eg001webforms } = require('./lib/webforms/controllers');
+const { eg001webforms, eg002webforms } = require('./lib/webforms/controllers');
 const { eg004notary } = require('./lib/notary/controllers');
 const { eg001fields } = require('./lib/connectedFields/controllers');
 const { eg001Navigator, eg002Navigator } = require('./lib/navigator/controllers');
@@ -287,7 +287,11 @@ app.get('/cneg001', eg001connect.getController)
 app.get('/weg001', eg001webforms.getController)
   .get('/weg001webForm', eg001webforms.getWebFormCreateController)
   .post('/weg001', eg001webforms.createWebFormTemplate)
-  .post('/weg001webForm', eg001webforms.createWebFormInstance);
+  .post('/weg001webForm', eg001webforms.createWebFormInstance)
+  .get('/weg002', eg002webforms.getController)
+  .get('/weg002webForm', eg002webforms.getWebFormCreateController)
+  .post('/weg002', eg002webforms.createWebFormTemplate)
+  .post('/weg002webForm', eg002webforms.createWebFormInstance);
 
 app.get('/neg004', eg004notary.getController)
   .post('/neg004', eg004notary.createController);
