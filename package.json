@@ -39,7 +39,7 @@
     "docusign-esign": "^8.0.1",
     "docusign-monitor": "^2.1.0",
     "docusign-rooms": "^2.0.0",
-    "docusign-webforms": "^1.0.0",
+    "docusign-webforms": "^2.1.0",
     "ejs": "^3.1.10",
     "express": "^4.21.1",
     "express-flash": "0.0.2",
