@@ -5,7 +5,7 @@ const path = require('path');
 const config = require('./testConfig').getConfiguration();
 const { REDIRECT_URI, BASE_PATH, OAUTH_BASE_PATH, PRIVATE_KEY_FILENAME, EXPIRES_IN, SCOPES, CLICK_SCOPES, ROOM_SCOPES, ADMIN_SCOPES } = require('./constants');
 
-const TEST_TIMEOUT_MS = 30000;
+const TEST_TIMEOUT_MS = 60000;
 
 const apiClient = new docusign.ApiClient({
   basePath: BASE_PATH,
