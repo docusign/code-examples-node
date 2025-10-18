@@ -1,0 +1,22 @@
+<%- include("../../partials/examplesHead") %>
+
+<h4><%= example.ExampleName %></h4>
+<p><%- example.ExampleDescription %></p>
+<p><%- formatString(locals.manifest.SupportingTexts.HelpingTexts.EnvelopeWillBeRestored, envelopeId) %></p>
+
+<form class="eg" action="" method="post" data-busy="form">
+  <% if(example.Forms && example.Forms[0].FormName) { %>
+    <%- example.Forms[0].FormName %>
+  <% } %>
+
+  <div class="form-group">
+    <label for="folderName"><%= example.Forms[0].Inputs[1].InputName %></label>
+    <input type="text" class="form-control" id="folderName" name="folderName"
+          placeholder="<%= example.Forms[0].Inputs[1].InputPlaceholder %>" required>
+  </div>
+
+  <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+  <%- include("../../partials/submitButton") %>
+</form>
+
+<%- include("../../partials/examplesFoot") %>
