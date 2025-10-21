@@ -10,7 +10,8 @@ const DS_SEARCH = (function () {
     NOTARY: "notary",
     CONNECTED_FIELDS: "connectedfields",
     NAVIGATOR: "navigator",
-    MAESTRO: "maestro"
+    MAESTRO: "maestro",
+    WORKSPACES: "workspaces"
   }
 
   const processJSONData = function () {
@@ -144,6 +145,8 @@ const DS_SEARCH = (function () {
         return "nav";
       case API_TYPES.MAESTRO:
         return "mae";
+      case API_TYPES.WORKSPACES:
+        return "work";
     }
   }
 
