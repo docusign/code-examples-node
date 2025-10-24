@@ -109,6 +109,10 @@ pre.json-display {
   opacity: unset;
 }
 
+form .form-group #error {
+  color: red !important;
+}
+
 
 /* From http://tobiasahlin.com/spinkit/ */
 .spinner {
