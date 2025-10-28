@@ -109,7 +109,7 @@ pre.json-display {
   opacity: unset;
 }
 
-form .form-group #error {
+form .form-group .validation-error {
   color: red !important;
 }
 

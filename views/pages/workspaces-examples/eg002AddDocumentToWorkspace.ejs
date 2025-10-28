@@ -3,7 +3,7 @@
 <%- include("../../partials/exampleInfo") %>
 
 <% if (workspaceIdOk) { %>
-  <form class="eg" action="" method="post" data-busy="form">
+  <form id="uploadForm" class="eg" action="" method="post" data-busy="form">
     <% if(example.Forms && example.Forms[0].FormName) { %>
       <%- example.Forms[0].FormName %>
     <% } %>
@@ -12,13 +12,16 @@
       <label for="documentName"><%= example.Forms[0].Inputs[0].InputName %></label>
       <input type="text" class="form-control" id="documentName" placeholder="<%= example.Forms[0].Inputs[0].InputPlaceholder %>" 
              name="documentName" required>
+      <small id="nameError" class="form-text text-muted validation-error"></small>
+      <small id="emailHelp" class="form-text text-muted"><%= locals.manifest.SupportingTexts.HelpingTexts.SpecifyNameWithExtension %></small>
     </div>
 
     <div class="form-group">
       <label for="documentPath"><%= example.Forms[0].Inputs[1].InputName %></label>
       <input type="file" accept=".pdf" class="form-control" id="documentPath" placeholder="<%= example.Forms[0].Inputs[1].InputPlaceholder %>" 
              name="documentPath" required>
-      <small id="error" class="form-text text-muted"></small>
+      <small id="pathError" class="form-text text-muted validation-error"></small>
+      <small id="emailHelp" class="form-text text-muted"><%= documentFolder %></small>
     </div>
 
     <input type="hidden" name="_csrf" value="<%- csrfToken %>">
@@ -26,11 +29,24 @@
   </form>
 
   <script>
-    const fileInput = document.getElementById('documentPath');
-    const errorEl = document.getElementById('error');
+    const form = document.getElementById('uploadForm');
+    form.addEventListener('submit', function (event) {
+      const docNameInput = document.getElementById('documentName');
+      const fileInput = document.getElementById('documentPath');
+      const nameErrorEl = document.getElementById('nameError');
+      const pathErrorEl = document.getElementById('pathError');
 
-    fileInput.addEventListener('change', (e) => {
+      const documentName = docNameInput.value.trim();
       const file = fileInput.files[0];
+
+      // Validate documentName ends with .pdf
+      if (!documentName.toLowerCase().endsWith(".pdf")) {
+        nameErrorEl.textContent = 'Document name must contain .pdf extension';
+        event.preventDefault();
+        event.stopImmediatePropagation();
+      } else {
+        nameErrorEl.textContent = ''; // clear any previous errors
+      }
 
       // Check extension
       const isPdf = file.name.toLowerCase().endsWith('.pdf');
@@ -38,11 +54,13 @@
 
       if (!isPdf || !isPdfMime) {
         fileInput.value = ''; // reset file input
-        errorEl.textContent = 'Invalid file type. Please upload a PDF file.';
+        pathErrorEl.textContent = 'Invalid file type. Please upload a PDF file.';
+        event.preventDefault();
+        event.stopImmediatePropagation();
       } else {
-        errorEl.textContent = ''; // clear any previous errors
+        pathErrorEl.textContent = ''; // clear any previous errors
       }
-    });
+    }, true);
   </script>
 <% } else { %>
   <%- formatString(example.RedirectsToOtherCodeExamples[0].RedirectText, formatString('href="work00{0}"', example.RedirectsToOtherCodeExamples[0].CodeExampleToRedirectTo)) %>
