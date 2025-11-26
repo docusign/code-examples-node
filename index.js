@@ -62,7 +62,10 @@ const { eg004notary } = require('./lib/notary/controllers');
 const { eg001fields } = require('./lib/connectedFields/controllers');
 const { eg001Navigator, eg002Navigator } = require('./lib/navigator/controllers');
 const { eg001maestro, eg002maestro, eg003maestro, eg004maestro } = require('./lib/maestro/controllers');
-const { eg001workspaces, eg002workspaces, eg003workspaces } = require('./lib/workspaces/controllers');
+const {
+  eg001workspaces, eg002workspaces, eg003workspaces,
+  eg005workspaces,
+} = require('./lib/workspaces/controllers');
 
 const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || 'localhost';
@@ -325,7 +328,9 @@ app.get('/work001', eg001workspaces.getController)
   .get('/work002', eg002workspaces.getController)
   .post('/work002', eg002workspaces.createController)
   .get('/work003', eg003workspaces.getController)
-  .post('/work003', eg003workspaces.createController);
+  .post('/work003', eg003workspaces.createController)
+  .get('/work005', eg005workspaces.getController)
+  .post('/work005', eg005workspaces.createController);
 
 function dsLoginCB1(req, res, next) { req.dsAuthCodeGrant.oauth_callback1(req, res, next); }
 function dsLoginCB2(req, res, next) { req.dsAuthCodeGrant.oauth_callback2(req, res, next); }
