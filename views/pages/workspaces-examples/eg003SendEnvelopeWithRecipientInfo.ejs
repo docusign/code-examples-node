@@ -1,0 +1,40 @@
+<%- include("../../partials/examplesHead") %>
+
+<%- include("../../partials/exampleInfo") %>
+
+<% if (!workspaceIdOk) { %>
+  <%- formatString(example.RedirectsToOtherCodeExamples[0].RedirectText, formatString('href="work00{0}"', example.RedirectsToOtherCodeExamples[0].CodeExampleToRedirectTo)) %>
+  <form class="eg" action="work001" method="get">
+    <%- include("../../partials/continueButton") %>
+  </form>
+<% } else if (!documentIdOk) { %>
+  <%- formatString(example.RedirectsToOtherCodeExamples[1].RedirectText, formatString('href="work00{0}"', example.RedirectsToOtherCodeExamples[1].CodeExampleToRedirectTo)) %>
+  <form class="eg" action="work002" method="get">
+    <%- include("../../partials/continueButton") %>
+  </form>
+<% } else { %>
+  <form class="eg" action="" method="post" data-busy="form">
+    <% if(example.Forms && example.Forms[0].FormName) { %>
+      <%- example.Forms[0].FormName %>
+    <% } %>
+
+    <div class="form-group">
+      <label for="signerEmail"><%= example.Forms[0].Inputs[0].InputName %></label>
+      <input type="email" class="form-control" id="signerEmail" name="signerEmail"
+             aria-describedby="emailHelp" placeholder="<%= example.Forms[0].Inputs[0].InputPlaceholder %>" required
+             value="<%= locals.dsConfig.signerEmail %>">
+      <small id="emailHelp" class="form-text text-muted"><%= locals.manifest.SupportingTexts.HelpingTexts.EmailWontBeShared %></small>
+    </div>
+
+    <div class="form-group">
+      <label for="signerName"><%= example.Forms[0].Inputs[1].InputName %></label>
+      <input type="text" class="form-control" id="signerName" placeholder="<%= example.Forms[0].Inputs[1].InputPlaceholder %>" name="signerName"
+             value="<%= locals.dsConfig.signerName %>" required>
+    </div>
+
+    <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+    <%- include("../../partials/submitButton") %>
+  </form>
+<% } %>
+
+<%- include("../../partials/examplesFoot") %>
