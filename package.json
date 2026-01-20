@@ -36,7 +36,7 @@
     "csurf": "^1.11.0",
     "docusign-admin": "^3.0.0",
     "docusign-click": "^2.2.0",
-    "docusign-esign": "^8.4.0",
+    "docusign-esign": "^8.5.0",
     "docusign-monitor": "^2.1.0",
     "docusign-rooms": "^2.0.0",
     "docusign-webforms": "^2.1.0",
