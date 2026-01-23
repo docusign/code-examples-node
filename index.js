@@ -30,7 +30,7 @@ const {
   eg024, eg025, eg026, eg027, eg028, eg029, eg030,
   eg031, eg032, eg033, eg034, eg035, eg036, eg037,
   eg038, eg039, eg040, eg041, eg042, eg043, eg044,
-  eg045
+  eg045, eg046
 } = require('./lib/eSignature/controllers');
 
 const {
@@ -288,7 +288,9 @@ app.get('/eg001', eg001.getController)
   .get('/eg045', eg045.getDeleteController)
   .post('/eg045', eg045.deleteController)
   .get('/eg045restore', eg045.getRestoreController)
-  .post('/eg045restore', eg045.restoreController);
+  .post('/eg045restore', eg045.restoreController)
+  .get('/eg046', eg046.getController)
+  .post('/eg046', eg046.createController);
 
 app.get('/cneg001', eg001connect.getController)
   .post('/cneg001', eg001connect.createController);
