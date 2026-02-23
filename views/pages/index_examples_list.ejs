@@ -13,7 +13,7 @@
             <% group.Examples.forEach(function(example) { %>
                 <% if (!example.SkipForLanguages || !example.SkipForLanguages.includes("node")) { %>
                     <% if (api.Name.toLowerCase() !== "esignature" || ((example.CFREnabled == "AllAccounts") || ((locals.statusCFR == "enabled") && (example.CFREnabled == "CFROnly")) || ((locals.statusCFR != "enabled") && (example.CFREnabled == "NonCFR")))) { %>
-                        <% var apiPrefix = api.Name == "Admin" ? "a"
+                        <% var apiPrefix = api.Name == "Admin" ? "aeg"
                         : api.Name == "Click" ? "ceg"
                         : api.Name == "Monitor" ? "meg"
                         : api.Name == "Rooms" ? "reg"
@@ -24,13 +24,13 @@
                         : api.Name == "Navigator" ? "nav"
                         : api.Name == "Maestro" ? "mae"
                         : api.Name == "Workspaces" ? "work"
-                        : ""; %>
+                        : "eg"; %>
                         
                         <h4
                             id=<%= `${apiPrefix}example`.concat("0".repeat(3 - example.ExampleNumber.toString().length)).concat(example.ExampleNumber) %>
                         >
                             <a 
-                                href=<%=`${apiPrefix}eg`.concat("0".repeat(3 - example.ExampleNumber.toString().length)).concat(example.ExampleNumber) %>>
+                                href=<%=`${apiPrefix}`.concat("0".repeat(3 - example.ExampleNumber.toString().length)).concat(example.ExampleNumber) %>>
                                 <%= example.ExampleName %>
                             </a>
                         </h4>
