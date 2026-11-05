@@ -14,6 +14,17 @@ const DS_SEARCH = (function () {
     WORKSPACES: "workspaces"
   }
 
+  // Escape HTML metacharacters so values from the examples manifest are
+  // rendered as text and cannot be reinterpreted as markup.
+  const escapeHtml = function (value) {
+    return String(value == null ? "" : value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  }
+
   const processJSONData = function () {
     const json_raw = $("#api_json_data").text();
     const json = json_raw ? JSON.parse(json_raw) : false;
@@ -157,7 +168,7 @@ const DS_SEARCH = (function () {
       let linkToCodeExample = getLinkForApiType(element.Name.toLowerCase());
 
       element.Groups.forEach((group) => {
-        $("#filtered_code_examples").append("<h2>" + group.Name + "</h2>");
+        $("#filtered_code_examples").append("<h2>" + escapeHtml(group.Name) + "</h2>");
 
         group.Examples.forEach((example) => {
           if (
@@ -184,12 +195,12 @@ const DS_SEARCH = (function () {
                     )
                     .concat(example.ExampleNumber) +
                   " >" +
-                  example.ExampleName +
+                  escapeHtml(example.ExampleName) +
                   "</a ></h4 >"
               );
 
               $("#filtered_code_examples").append(
-                "<p>" + example.ExampleDescription + "</p>"
+                "<p>" + DOMPurify.sanitize(example.ExampleDescription) + "</p>"
               );
 
               $("#filtered_code_examples").append("<p>");
@@ -206,7 +217,7 @@ const DS_SEARCH = (function () {
                 }
 
                 links.forEach((link, index) => {
-                  $("#filtered_code_examples").append(`<a target='_blank' href='${link.Path}'>${link.PathName}</a>`);
+                  $("#filtered_code_examples").append(`<a target='_blank' href='${escapeHtml(link.Path)}'>${escapeHtml(link.PathName)}</a>`);
 
                   if (index + 1 === links.length) {
                     $("#filtered_code_examples").append("<span></span>");
@@ -229,7 +240,7 @@ const DS_SEARCH = (function () {
 
   const textCouldNotBeFound = function () {
     $("#filtered_code_examples").append(
-      processJSONData().SupportingTexts.SearchFailed
+      DOMPurify.sanitize(processJSONData().SupportingTexts.SearchFailed)
     );
   };
 

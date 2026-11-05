@@ -1,0 +1,7 @@
+{
+  "name": "buffer-equal-constant-time",
+  "version": "1.0.1",
+  "description": "Local drop-in replacement: the published package references SlowBuffer, which was removed in newer Node.js versions (breaks jwa/jws/jsonwebtoken on Node 25+).",
+  "main": "index.js",
+  "license": "BSD-3-Clause"
+}

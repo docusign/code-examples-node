@@ -42,7 +42,7 @@ const authenticate = async (apiTypes) => {
     
     return { accessToken, accountId };
   } catch(error) {
-    const body = error.response && error.response.body;
+    const body = error.response && (error.response.data || error.response.body);
 
     // Determine the source of the error.
     if (body) {
@@ -61,6 +61,9 @@ const authenticate = async (apiTypes) => {
         ${JSON.stringify(body, null, 4)}\n\n`);
       }
     }
+
+    // Not an API response (e.g. network or signing error): surface it instead of returning undefined.
+    throw error;
   }
 };
 

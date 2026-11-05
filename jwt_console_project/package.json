@@ -11,6 +11,9 @@
   },
   "author": "DocuSign, Inc",
   "license": "ISC",
+  "engines": {
+    "node": "^22.23.4 || ^24.22.1 || ^26.12.1"
+  },
   "dependencies": {
     "docusign-esign": "^8.0.1",
     "fs": "^0.0.1-security",

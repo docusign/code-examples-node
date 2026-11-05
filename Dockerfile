@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 node:16-buster-slim
+FROM --platform=linux/amd64 node:22.23.4-slim
 
 ARG UID=34251
 ARG GID=34251
@@ -11,7 +11,8 @@ RUN groupadd --system ${GROUPNAME} -g ${GID} && \
 
 WORKDIR /home/${USERNAME}
 
-COPY package.json package-lock.json ./
+COPY package.json package-lock.json .npmrc ./
+COPY shims ./shims
 RUN npm install
 
 COPY . .

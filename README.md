@@ -97,7 +97,7 @@ For a list of code examples that use the Web Forms API, see the [How-to guides o
 
    where {base_url} is the URL for the web app.
 
-1. [Node.js 8.10 or later with npm 5 or later](https://nodejs.org/en/download/).
+1. [Node.js](https://nodejs.org/en/download/) `^22.23.4`, `^24.22.1`, `^26.12.1` or higher.
 
 ### Installation steps
 

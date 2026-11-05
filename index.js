@@ -60,7 +60,7 @@ const { eg001connect } = require('./lib/connect/controllers');
 const { eg001webforms, eg002webforms } = require('./lib/webforms/controllers');
 const { eg004notary } = require('./lib/notary/controllers');
 const { eg001fields } = require('./lib/connectedFields/controllers');
-const { eg001Navigator, eg002Navigator } = require('./lib/navigator/controllers');
+const { eg001Navigator, eg002Navigator, eg003Navigator } = require('./lib/navigator/controllers');
 const { eg001maestro, eg002maestro, eg003maestro, eg004maestro } = require('./lib/maestro/controllers');
 const {
   eg001workspaces, eg002workspaces, eg003workspaces,
@@ -313,7 +313,11 @@ app.get('/feg001', eg001fields.getController)
 app.get('/nav001', eg001Navigator.getController)
   .post('/nav001', eg001Navigator.createController)
   .get('/nav002', eg002Navigator.getController)
-  .post('/nav002', eg002Navigator.createController);
+  .post('/nav002', eg002Navigator.createController)
+  .get('/nav003', eg003Navigator.getController)
+  .post('/nav003create', eg003Navigator.createController)
+  .post('/nav003upload', eg003Navigator.uploadController)
+  .post('/nav003complete', eg003Navigator.completeController);
 
 app.get('/mae001', eg001maestro.getController)
   .post('/mae001', eg001maestro.createController)
@@ -384,8 +388,8 @@ const WEBFORMS_SCOPES = [
 const NOTARY_SCOPES = [
   'signature', 'organization_read', 'notary_read', 'notary_write'
 ];
-const CONNECTED_FIELDS_SCOPES = [
-  'signature', 'adm_store_unified_repo_read'
+const CONNECTED_FIELDS_AGREEMENT_MANAGER_SCOPES = [
+  'signature', 'adm_store_unified_repo_read', 'document_uploader_write', 'document_uploader_read'
 ];
 const MAESTRO_SCOPES = [
   'signature', 'aow_manage'
@@ -399,7 +403,7 @@ const scope = [
   ...SCOPES,
   ...WEBFORMS_SCOPES,
   ...NOTARY_SCOPES,
-  ...CONNECTED_FIELDS_SCOPES,
+  ...CONNECTED_FIELDS_AGREEMENT_MANAGER_SCOPES,
   ...MAESTRO_SCOPES
 ];
 

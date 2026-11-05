@@ -12,6 +12,17 @@ let DS_SC = (function(){
   let sourceDir = "/source/",
       sources = {};
 
+  // Escape HTML metacharacters so attribute-supplied values are rendered as
+  // text and cannot be reinterpreted as markup.
+  function escapeHtml(value) {
+    return String(value == null ? "" : value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  }
+
   // Add on_click handlers to source chooser elements
   function add_listeners(){
     $('input[name="radioSource"]').change(sourceChanged);
@@ -28,7 +39,7 @@ let DS_SC = (function(){
     let docName = $(e.target).attr("x-docName");
     let langCode = $(e.target).attr("x-langCode");
     $("#sourceUrl").html(
-      'Github: <a href="' + url + '" target="_blank">' + docName + '</a>');
+      'Github: <a href="' + escapeHtml(url) + '" target="_blank">' + escapeHtml(docName) + '</a>');
     
     // fetch the source if we don't already have it.
     if (sources[langCode]) {
